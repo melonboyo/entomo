@@ -15,11 +15,6 @@ transform = Transform3D(1, 0, 0, 0, 0.840368, 0.542016, 0, -0.542016, 0.840368, 
 [node name="Parasite" parent="." instance=ExtResource("1_htcmh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.16028, 1.55166, 2.964)
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, -7.30029, 10.6476, 8.24296)
-projection = 1
-size = 20.0
-
 [node name="StaticGeometry" type="Node3D" parent="."]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="StaticGeometry"]
@@ -80,3 +75,8 @@ mesh = SubResource("BoxMesh_r6fp7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0787029, 0.173008, -0.100365)
 currentPossessedCreature = NodePath("../Parasite")
 camera = NodePath("../Camera3D")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, -12.1603, 16.5517, 12.964)
+projection = 1
+size = 20.0

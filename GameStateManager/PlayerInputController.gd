@@ -33,4 +33,8 @@ func _physics_process(delta: float) -> void:
 	if(Input.is_action_just_pressed("special_ability")):
 		currentPossessedCreature.handleSpecialAbility()
 	
+	# Simple camera follow for playtesting. TODO: implement proper camera follow as part of swapping between creatures
+	camera.size = currentPossessedCreature.CAMERA_SIZE
+	camera.position = currentPossessedCreature.position + Vector3(-10, 14, 10)
+	
 	pass

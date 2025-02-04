@@ -4,6 +4,7 @@ class_name GenericCharacterController extends CharacterBody3D
 
 @export var SPEED = 5.0
 @export var JUMP_VELOCITY = 4.5
+@export var CAMERA_SIZE = 10 # Assumes orthographic camera
 
 # Update the physics body each physics tick
 func _physics_process(delta: float) -> void:

@@ -27,7 +27,7 @@ skeleton = NodePath("../CollisionShape3D")
 surface_material_override/0 = SubResource("StandardMaterial3D_s0oth")
 
 [node name="RightEye" type="MeshInstance3D" parent="."]
-transform = Transform3D(-6.49758e-09, -2.95011e-09, 0.225587, 0.0504465, 0.280898, 0, -0.114253, 0.124025, -9.86072e-09, 0.151, 0.234412, -0.39778)
+transform = Transform3D(-4.01293e-09, -3.44821e-09, 0.225587, 0.0379797, 0.312384, 9.74912e-10, -0.067137, 0.176716, -9.81241e-09, 0.151, 0.234412, -0.408659)
 mesh = SubResource("SphereMesh_4oaq5")
 
 [node name="RightPupil" type="MeshInstance3D" parent="RightEye"]
@@ -36,7 +36,7 @@ mesh = SubResource("SphereMesh_4oaq5")
 surface_material_override/0 = SubResource("StandardMaterial3D_s65vp")
 
 [node name="LeftEye" type="MeshInstance3D" parent="."]
-transform = Transform3D(-6.49758e-09, -2.95011e-09, 0.225587, 0.0504465, 0.280898, 0, -0.114253, 0.124025, -9.86072e-09, -0.139601, 0.234412, -0.39778)
+transform = Transform3D(-4.01293e-09, -3.44821e-09, 0.225587, 0.0379797, 0.312384, 9.74912e-10, -0.067137, 0.176716, -9.81241e-09, -0.139601, 0.234412, -0.408659)
 mesh = SubResource("SphereMesh_4oaq5")
 
 [node name="RightPupil" type="MeshInstance3D" parent="LeftEye"]
