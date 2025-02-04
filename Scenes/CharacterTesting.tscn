@@ -1,0 +1,82 @@
+[gd_scene load_steps=5 format=3 uid="uid://dyudv4itc62ua"]
+
+[ext_resource type="PackedScene" uid="uid://bj7rxxs3efy3j" path="res://Characters/Parasite/Parasite.tscn" id="1_htcmh"]
+[ext_resource type="PackedScene" uid="uid://dclrt7yy6gtq6" path="res://GameStateManager/GameStateManager.tscn" id="2_lrlr4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2cuf7"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_r6fp7"]
+
+[node name="Scene" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.840368, 0.542016, 0, -0.542016, 0.840368, -0.00180054, 10.4981, 31.7402)
+
+[node name="Parasite" parent="." instance=ExtResource("1_htcmh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.16028, 1.55166, 2.964)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, -7.30029, 10.6476, 8.24296)
+projection = 1
+size = 20.0
+
+[node name="StaticGeometry" type="Node3D" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="StaticGeometry"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/StaticBody3D"]
+transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
+shape = SubResource("BoxShape3D_2cuf7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticGeometry/StaticBody3D"]
+transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
+mesh = SubResource("BoxMesh_r6fp7")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="StaticGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.0608394, 0, 0.885279, -8.17546)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/StaticBody3D2"]
+transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
+shape = SubResource("BoxShape3D_2cuf7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticGeometry/StaticBody3D2"]
+transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
+mesh = SubResource("BoxMesh_r6fp7")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="StaticGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.0608394, 0, 0.885279, 9.14636)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/StaticBody3D3"]
+transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
+shape = SubResource("BoxShape3D_2cuf7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticGeometry/StaticBody3D3"]
+transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
+mesh = SubResource("BoxMesh_r6fp7")
+
+[node name="StaticBody3D4" type="StaticBody3D" parent="StaticGeometry"]
+transform = Transform3D(0.0463659, 0, 0, 0, 1, 0, 0, 0, 0.863455, -10.1384, 0.885279, 0.518445)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/StaticBody3D4"]
+transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
+shape = SubResource("BoxShape3D_2cuf7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticGeometry/StaticBody3D4"]
+transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
+mesh = SubResource("BoxMesh_r6fp7")
+
+[node name="StaticBody3D5" type="StaticBody3D" parent="StaticGeometry"]
+transform = Transform3D(0.0463659, 0, 0, 0, 1, 0, 0, 0, 0.863455, 10.0075, 0.885277, 0.523133)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/StaticBody3D5"]
+transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
+shape = SubResource("BoxShape3D_2cuf7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticGeometry/StaticBody3D5"]
+transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
+mesh = SubResource("BoxMesh_r6fp7")
+
+[node name="GameStateManager" parent="." node_paths=PackedStringArray("currentPossessedCreature", "camera") instance=ExtResource("2_lrlr4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0787029, 0.173008, -0.100365)
+currentPossessedCreature = NodePath("../Parasite")
+camera = NodePath("../Camera3D")
