@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dyudv4itc62ua"]
+[gd_scene load_steps=11 format=3 uid="uid://dyudv4itc62ua"]
 
 [ext_resource type="Script" path="res://GameController/Camera.gd" id="1_gdsmn"]
 [ext_resource type="PackedScene" uid="uid://cxrj60oxxptdh" path="res://Characters/Parasite/Parasite.tscn" id="1_htcmh"]
 [ext_resource type="PackedScene" uid="uid://dclrt7yy6gtq6" path="res://GameStateManager/GameStateManager.tscn" id="2_lrlr4"]
 [ext_resource type="PackedScene" uid="uid://ceq3k2pduj7cb" path="res://Characters/Beetle/Beetle.tscn" id="4_4n16y"]
+[ext_resource type="PackedScene" uid="uid://daoe6gj0bo2qr" path="res://Scenes/pause_menu.tscn" id="5_c0eho"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2cuf7"]
 
@@ -106,3 +107,8 @@ transform = Transform3D(1, 0, 0, 0, 0.74444, 0.66769, 0, -0.66769, 0.74444, 0, 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.676)
 fov = 40.0
 size = 20.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("5_c0eho")]
+visible = false
