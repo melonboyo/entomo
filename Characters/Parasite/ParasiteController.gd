@@ -1,5 +1,6 @@
 # This script is for controlling the Parasite
 extends GenericCharacterController
+class_name Parasite
 
 # Overrides the handleJump method of GenericCharacterController
 func handleJump() -> void:

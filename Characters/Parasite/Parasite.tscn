@@ -1,49 +1,51 @@
-[gd_scene load_steps=7 format=3 uid="uid://bj7rxxs3efy3j"]
+[gd_scene load_steps=8 format=3 uid="uid://cxrj60oxxptdh"]
 
 [ext_resource type="Script" path="res://Characters/Parasite/ParasiteController.gd" id="1_a2cng"]
+[ext_resource type="PackedScene" uid="uid://baiok6rvrnsqh" path="res://Characters/Generic/GenericCharacter.tscn" id="1_lhite"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_b6yj3"]
+[sub_resource type="SphereMesh" id="SphereMesh_8riwa"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_cursh"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s0oth"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j7xpy"]
 albedo_color = Color(1, 0, 0, 1)
 
-[sub_resource type="SphereMesh" id="SphereMesh_4oaq5"]
+[sub_resource type="SphereMesh" id="SphereMesh_bgr7i"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s65vp"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gufly"]
 albedo_color = Color(0, 0, 0, 1)
 
-[node name="CharacterBody3D" type="CharacterBody3D"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_d6tf5"]
+
+[node name="Parasite" instance=ExtResource("1_lhite")]
 script = ExtResource("1_a2cng")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("SphereShape3D_b6yj3")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00508738, -1.19209e-07, 0.00233459)
-mesh = SubResource("SphereMesh_cursh")
+mesh = SubResource("SphereMesh_8riwa")
 skeleton = NodePath("../CollisionShape3D")
-surface_material_override/0 = SubResource("StandardMaterial3D_s0oth")
+surface_material_override/0 = SubResource("StandardMaterial3D_j7xpy")
 
-[node name="RightEye" type="MeshInstance3D" parent="."]
+[node name="RightEye" type="MeshInstance3D" parent="." index="1"]
 transform = Transform3D(-4.01293e-09, -3.44821e-09, 0.225587, 0.0379797, 0.312384, 9.74912e-10, -0.067137, 0.176716, -9.81241e-09, 0.151, 0.234412, -0.408659)
-mesh = SubResource("SphereMesh_4oaq5")
+mesh = SubResource("SphereMesh_bgr7i")
 
-[node name="RightPupil" type="MeshInstance3D" parent="RightEye"]
+[node name="RightPupil" type="MeshInstance3D" parent="RightEye" index="0"]
 transform = Transform3D(0.436916, -0.0440875, 0, 0.0477189, 0.403667, 0, 2.66454e-15, 0, 0.370559, 0.465785, 0.0768955, 0.00651431)
-mesh = SubResource("SphereMesh_4oaq5")
-surface_material_override/0 = SubResource("StandardMaterial3D_s65vp")
+mesh = SubResource("SphereMesh_bgr7i")
+surface_material_override/0 = SubResource("StandardMaterial3D_gufly")
 
-[node name="LeftEye" type="MeshInstance3D" parent="."]
+[node name="LeftEye" type="MeshInstance3D" parent="." index="2"]
 transform = Transform3D(-4.01293e-09, -3.44821e-09, 0.225587, 0.0379797, 0.312384, 9.74912e-10, -0.067137, 0.176716, -9.81241e-09, -0.139601, 0.234412, -0.408659)
-mesh = SubResource("SphereMesh_4oaq5")
+mesh = SubResource("SphereMesh_bgr7i")
 
-[node name="RightPupil" type="MeshInstance3D" parent="LeftEye"]
+[node name="RightPupil" type="MeshInstance3D" parent="LeftEye" index="0"]
 transform = Transform3D(0.436916, -0.0440875, 0, 0.0477189, 0.403667, 0, 2.66454e-15, 0, 0.370559, 0.465785, 0.0768955, 0.0293676)
-mesh = SubResource("SphereMesh_4oaq5")
-surface_material_override/0 = SubResource("StandardMaterial3D_s65vp")
+mesh = SubResource("SphereMesh_bgr7i")
+surface_material_override/0 = SubResource("StandardMaterial3D_gufly")
 
-[node name="RightEye2" type="MeshInstance3D" parent="."]
+[node name="RightEye2" type="MeshInstance3D" parent="." index="3"]
 transform = Transform3D(2.38634e-16, -0.453237, 9.86072e-09, -5.45931e-09, -1.98116e-08, -0.225587, 0.124894, 0, -9.86072e-09, 0, -0.0522866, -0.434969)
-mesh = SubResource("SphereMesh_4oaq5")
+mesh = SubResource("SphereMesh_bgr7i")
+
+[node name="CollisionShape3D" parent="." index="4"]
+shape = SubResource("SphereShape3D_d6tf5")
+metadata/_edit_group_ = true

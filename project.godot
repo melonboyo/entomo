@@ -20,6 +20,7 @@ config/icon="res://Sprites/icon.png"
 window/size/resizable=false
 window/size/always_on_top=true
 window/stretch/mode="viewport"
+window/vsync/vsync_mode=0
 
 [input]
 

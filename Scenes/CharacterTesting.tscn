@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://dyudv4itc62ua"]
 
 [ext_resource type="Script" path="res://GameController/Camera.gd" id="1_gdsmn"]
-[ext_resource type="PackedScene" uid="uid://bj7rxxs3efy3j" path="res://Characters/Parasite/Parasite.tscn" id="1_htcmh"]
+[ext_resource type="PackedScene" uid="uid://cxrj60oxxptdh" path="res://Characters/Parasite/Parasite.tscn" id="1_htcmh"]
 [ext_resource type="PackedScene" uid="uid://dclrt7yy6gtq6" path="res://GameStateManager/GameStateManager.tscn" id="2_lrlr4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2cuf7"]
@@ -24,21 +24,7 @@ currentPossessedCreature = NodePath("../Parasite")
 camera = NodePath("../CameraRoot/RotationRoot/Camera3D")
 
 [node name="Parasite" parent="." instance=ExtResource("1_htcmh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.16028, 1.55166, 2.964)
-
-[node name="CameraRoot" type="Node3D" parent="." node_paths=PackedStringArray("camera", "game_state_machine")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.16028, 1.55166, 2.964)
-script = ExtResource("1_gdsmn")
-camera = NodePath("RotationRoot/Camera3D")
-game_state_machine = NodePath("../GameStateManager")
-
-[node name="RotationRoot" type="Node3D" parent="CameraRoot"]
-transform = Transform3D(1, 0, 0, 0, 0.74444, 0.66769, 0, -0.66769, 0.74444, 0, 0, 0)
-
-[node name="Camera3D" type="Camera3D" parent="CameraRoot/RotationRoot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.676)
-fov = 40.0
-size = 20.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0768722, 1.8717, 1.8559)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.840368, 0.542016, 0, -0.542016, 0.840368, -0.00180054, 10.4981, 31.7402)
@@ -101,3 +87,18 @@ mesh = SubResource("BoxMesh_r6fp7")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_r4kk1")
+
+[node name="CameraRoot" type="Node3D" parent="." node_paths=PackedStringArray("camera", "game_state_machine")]
+process_priority = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.16028, 1.55166, 2.964)
+script = ExtResource("1_gdsmn")
+camera = NodePath("RotationRoot/Camera3D")
+game_state_machine = NodePath("../GameStateManager")
+
+[node name="RotationRoot" type="Node3D" parent="CameraRoot"]
+transform = Transform3D(1, 0, 0, 0, 0.74444, 0.66769, 0, -0.66769, 0.74444, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraRoot/RotationRoot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.676)
+fov = 40.0
+size = 20.0
