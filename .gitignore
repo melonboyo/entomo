@@ -4,3 +4,4 @@
 Exports/*
 !Exports/*.ps1
 .vscode/
+*.tmp
