@@ -1,10 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://ceq3k2pduj7cb"]
+[gd_scene load_steps=5 format=3 uid="uid://ceq3k2pduj7cb"]
 
 [ext_resource type="PackedScene" uid="uid://baiok6rvrnsqh" path="res://Characters/Generic/GenericCharacter.tscn" id="1_yggj8"]
+[ext_resource type="Script" path="res://Characters/Beetle/Beetle.gd" id="2_6n07y"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f48u6"]
 
+[sub_resource type="SphereMesh" id="SphereMesh_pxlda"]
+
 [node name="Beetle" instance=ExtResource("1_yggj8")]
+script = ExtResource("2_6n07y")
 
 [node name="CollisionShape3D" parent="." index="0"]
 shape = SubResource("BoxShape3D_f48u6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
+mesh = SubResource("SphereMesh_pxlda")
