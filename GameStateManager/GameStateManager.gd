@@ -1,5 +1,6 @@
 # This script is responsible for providing input to the current GenericCharacterController script, ensuring that only one character can be controlled at a time
-extends Node3D
+extends Node
+class_name GameStateManager
 
 @export var currentPossessedCreature: GenericCharacterController = null
 @export var camera: Camera3D = null
@@ -10,7 +11,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
+func _process(delta: float) -> void:
 	if(currentPossessedCreature == null or camera == null):
 		return
 	
@@ -32,9 +33,5 @@ func _physics_process(delta: float) -> void:
 	# Handle Special Ability
 	if(Input.is_action_just_pressed("special_ability")):
 		currentPossessedCreature.handleSpecialAbility()
-	
-	# Simple camera follow for playtesting. TODO: implement proper camera follow as part of swapping between creatures
-	camera.size = currentPossessedCreature.CAMERA_SIZE
-	camera.position = currentPossessedCreature.position + Vector3(-10, 14, 10)
 	
 	pass

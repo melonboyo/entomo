@@ -18,6 +18,7 @@ config/icon="res://Sprites/icon.png"
 [display]
 
 window/size/resizable=false
+window/size/always_on_top=true
 window/stretch/mode="viewport"
 
 [input]
