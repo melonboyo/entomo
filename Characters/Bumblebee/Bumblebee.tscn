@@ -1,0 +1,107 @@
+[gd_scene load_steps=10 format=3 uid="uid://d345ctgph51uj"]
+
+[ext_resource type="PackedScene" uid="uid://baiok6rvrnsqh" path="res://Characters/Generic/GenericCharacter.tscn" id="1_dr623"]
+[ext_resource type="Script" path="res://Characters/Bumblebee/Bumblebee.gd" id="2_70g27"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i4702"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_q35qc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uyi8e"]
+albedo_color = Color(0.858038, 0.712881, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ny8vf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xpvyu"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16d8l"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sywnj"]
+albedo_color = Color(0, 0, 0, 1)
+
+[node name="Bumblebee" instance=ExtResource("1_dr623")]
+script = ExtResource("2_70g27")
+gravityMultiplier = 2
+flyingSpeed = 15
+maxFlyingStamina = 5
+rotationSpeed = 5
+SPEED = 10.0
+JUMP_VELOCITY = 7.0
+CAMERA_SIZE = 50
+
+[node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(6, 0, 0, 0, -2.62268e-07, 6, 0, -6, -2.62268e-07, 0.010582, 3, 0.0199842)
+shape = SubResource("CapsuleShape3D_i4702")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
+transform = Transform3D(1.14641e-14, -2.62268e-07, 6, -6, -2.62268e-07, 0, 2.62268e-07, -6, -2.62268e-07, -0.00542831, 2.97634, -0.00104046)
+mesh = SubResource("CapsuleMesh_q35qc")
+surface_material_override/0 = SubResource("StandardMaterial3D_uyi8e")
+
+[node name="RightEye" type="MeshInstance3D" parent="." index="2"]
+transform = Transform3D(-3.00572e-08, -2.0569e-08, 1.30631, 0.202795, 2.00469, -3.26108e-09, -0.540988, 0.751473, -5.70076e-08, 0.847096, 4.1563, -5.54355)
+mesh = SubResource("SphereMesh_ny8vf")
+
+[node name="RightPupil" type="MeshInstance3D" parent="RightEye" index="0"]
+transform = Transform3D(0.436916, -0.0440875, 0, 0.0477189, 0.403667, 0, 2.66454e-15, 0, 0.370559, 0.465785, 0.0768955, 0.00651431)
+mesh = SubResource("SphereMesh_ny8vf")
+surface_material_override/0 = SubResource("StandardMaterial3D_xpvyu")
+
+[node name="LeftEye" type="MeshInstance3D" parent="." index="3"]
+transform = Transform3D(-3.00572e-08, -2.0569e-08, 1.30631, 0.202795, 2.00469, -3.26108e-09, -0.540988, 0.751473, -5.70076e-08, -0.835697, 4.1563, -5.54355)
+mesh = SubResource("SphereMesh_ny8vf")
+
+[node name="RightPupil" type="MeshInstance3D" parent="LeftEye" index="0"]
+transform = Transform3D(0.436916, -0.0440875, 0, 0.0477189, 0.403667, 0, 2.66454e-15, 0, 0.370559, 0.465785, 0.0768955, 0.0293676)
+mesh = SubResource("SphereMesh_ny8vf")
+surface_material_override/0 = SubResource("StandardMaterial3D_xpvyu")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." index="4"]
+transform = Transform3D(-3.23965e-08, -2.93454e-08, 1, -0.671346, 0.741144, -3.70164e-15, -0.741144, -0.671346, -4.37114e-08, 2.85688, 1.53971, -2.37135)
+mesh = SubResource("CapsuleMesh_q35qc")
+surface_material_override/0 = SubResource("StandardMaterial3D_16d8l")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." index="5"]
+transform = Transform3D(-3.23965e-08, -2.93454e-08, 1, -0.671346, 0.741144, -3.70164e-15, -0.741144, -0.671346, -4.37114e-08, 2.85688, 1.53971, 0.628648)
+mesh = SubResource("CapsuleMesh_q35qc")
+surface_material_override/0 = SubResource("StandardMaterial3D_16d8l")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="." index="6"]
+transform = Transform3D(-3.23965e-08, -2.93454e-08, 1, -0.671346, 0.741144, -3.70164e-15, -0.741144, -0.671346, -4.37114e-08, 2.85688, 1.53971, 3.62865)
+mesh = SubResource("CapsuleMesh_q35qc")
+surface_material_override/0 = SubResource("StandardMaterial3D_16d8l")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="." index="7"]
+transform = Transform3D(-3.23965e-08, -2.93454e-08, 1, -0.671346, 0.741144, -3.70164e-15, -0.741144, -0.671346, -4.37114e-08, -3.14312, 1.53971, -2.37135)
+mesh = SubResource("CapsuleMesh_q35qc")
+surface_material_override/0 = SubResource("StandardMaterial3D_16d8l")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="." index="8"]
+transform = Transform3D(-3.23965e-08, -2.93454e-08, 1, -0.671346, 0.741144, -3.70164e-15, -0.741144, -0.671346, -4.37114e-08, -3.14312, 1.53971, 0.628648)
+mesh = SubResource("CapsuleMesh_q35qc")
+surface_material_override/0 = SubResource("StandardMaterial3D_16d8l")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="." index="9"]
+transform = Transform3D(-3.23965e-08, -2.93454e-08, 1, -0.671346, 0.741144, -3.70164e-15, -0.741144, -0.671346, -4.37114e-08, -3.14312, 1.53971, 3.62865)
+mesh = SubResource("CapsuleMesh_q35qc")
+surface_material_override/0 = SubResource("StandardMaterial3D_16d8l")
+
+[node name="RightWing" type="MeshInstance3D" parent="." index="10"]
+transform = Transform3D(0.14192, 1.2233, 2.10114, 0.580871, 0.0708796, -0.563, -0.0494732, 4.34139, -0.58286, 1.89628, 5.79525, -0.855264)
+mesh = SubResource("SphereMesh_ny8vf")
+
+[node name="LeftWing" type="MeshInstance3D" parent="." index="11"]
+transform = Transform3D(-0.14192, -1.2233, 2.10114, 0.580871, 0.0708796, 0.563, -0.0494733, 4.34139, 0.582861, -1.78488, 5.79525, -0.855264)
+mesh = SubResource("SphereMesh_ny8vf")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="." index="12"]
+transform = Transform3D(1.22284e-14, -8.90533e-08, 6.4, -6.4, -8.90533e-08, 1.28485e-20, 2.79753e-07, -2.0373, -2.79753e-07, -0.00542831, 2.97634, 1.90864)
+mesh = SubResource("CapsuleMesh_q35qc")
+surface_material_override/0 = SubResource("StandardMaterial3D_sywnj")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="." index="13"]
+transform = Transform3D(1.22284e-14, -8.90533e-08, 6.4, -6.4, -8.90533e-08, 1.28485e-20, 2.79753e-07, -2.0373, -2.79753e-07, -0.00542831, 2.97634, -2.09136)
+mesh = SubResource("CapsuleMesh_q35qc")
+surface_material_override/0 = SubResource("StandardMaterial3D_sywnj")
