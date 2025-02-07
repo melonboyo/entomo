@@ -1,8 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://baiok6rvrnsqh"]
+[gd_scene load_steps=3 format=3 uid="uid://baiok6rvrnsqh"]
 
 [ext_resource type="Script" path="res://Characters/Generic/GenericCharacterController.gd" id="1_cd5ot"]
+
+[sub_resource type="GDScript" id="GDScript_eavgl"]
+script/source = "extends CollisionShape3D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
 
 [node name="GenericCharacter" type="CharacterBody3D"]
 script = ExtResource("1_cd5ot")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+script = SubResource("GDScript_eavgl")

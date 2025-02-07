@@ -4,11 +4,25 @@ class_name GameStateManager
 
 @export var currentPossessedCreature: GenericCharacterController = null
 @export var camera: Camera3D = null
+static var gameStateManagerInstance: GameStateManager 
+
+func _init() -> void:
+	if gameStateManagerInstance != null and gameStateManagerInstance != self:
+		self.queue_free()
+	gameStateManagerInstance = self
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	switchCreature(currentPossessedCreature)
 	pass # Replace with function body.
 
+func switchCreature(newCreature: GenericCharacterController) -> void:
+	if(newCreature != null):
+		currentPossessedCreature.lockMovement()
+		currentPossessedCreature = newCreature
+		currentPossessedCreature.possess(self)
+	else:
+		print("Error, newCreature not set to an instance!")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:

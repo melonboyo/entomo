@@ -35,10 +35,12 @@ func _process(delta: float) -> void:
 		currentFlyingStamina = 0
 		isFlying = false;
 		
+	if is_on_floor():
+		currentFlyingStamina = maxFlyingStamina
+		
 func jumpButtonPressed() -> void:
 	if is_on_floor():
 		print("Bumblebee stamina: " + str(100) + "%");
-		currentFlyingStamina = maxFlyingStamina
 		velocity.y = JUMP_VELOCITY * gravityMultiplier
 		
 	if(currentFlyingStamina > 0):

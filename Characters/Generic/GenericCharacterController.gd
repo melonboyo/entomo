@@ -6,6 +6,28 @@ class_name GenericCharacterController extends CharacterBody3D
 @export var JUMP_VELOCITY = 4.5
 @export var CAMERA_SIZE = 10 # Assumes orthographic camera
 
+var gameStateManagerInstance: GameStateManager
+
+# Lock the character's movement on load, this ensures that we don't get any weird physics interactions
+func _init() -> void:
+	lockMovement()
+	
+# Locks the character's movement
+func lockMovement() -> void:
+	axis_lock_linear_x = true
+	axis_lock_linear_y = true
+	axis_lock_linear_z = true
+
+# Unlocks the character's movement
+func unlockMovement() -> void:
+	axis_lock_linear_x = false
+	axis_lock_linear_y = false
+	axis_lock_linear_z = false
+
+func possess(gsm: GameStateManager) -> void:
+	unlockMovement()
+	gameStateManagerInstance = gsm
+
 # Update the physics body each physics tick
 func _physics_process(delta: float) -> void:
 	# Add gravity
@@ -44,7 +66,11 @@ func handleMove(input_dir: Vector2, camera_basis: Basis, delta: float) -> void:
 # TODO: Implement generic character interaction
 # The generic character can interact, this method should work the same for all cratures. 
 func handleInteract() -> void:
-	print("Performed interact.")
+	if gameStateManagerInstance == null:
+		print("Error, no GameStateManager in scene!")
+		return
+	
+	gameStateManagerInstance.switchCreature(null)
 
 # The generic character has no special ability, override this in the creature-specific script
 func specialAbilityButtonPressed() -> void:
