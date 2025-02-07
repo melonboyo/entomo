@@ -21,3 +21,10 @@ script = ExtResource("1_cd5ot")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 script = SubResource("GDScript_eavgl")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

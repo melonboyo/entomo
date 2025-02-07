@@ -69,8 +69,9 @@ func handleInteract() -> void:
 	if gameStateManagerInstance == null:
 		print("Error, no GameStateManager in scene!")
 		return
-	
-	gameStateManagerInstance.switchCreature(null)
+		
+	if currentCloseCharacter != null:
+		gameStateManagerInstance.switchCreature(currentCloseCharacter)
 
 # The generic character has no special ability, override this in the creature-specific script
 func specialAbilityButtonPressed() -> void:
@@ -79,3 +80,11 @@ func specialAbilityButtonPressed() -> void:
 # The generic character has no special ability, override this in the creature-specific script
 func specialAbilityButtonReleased() -> void:
 	print("Special ability button released.")
+
+var currentCloseCharacter: GenericCharacterController = null
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if body as GenericCharacterController:
+		currentCloseCharacter = body as GenericCharacterController
+
+func _on_area_3d_body_exited(body: Node3D) -> void:
+	currentCloseCharacter = null

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b4v7eokxybk5v"]
+[gd_scene load_steps=9 format=3 uid="uid://b4v7eokxybk5v"]
 
 [ext_resource type="PackedScene" uid="uid://baiok6rvrnsqh" path="res://Characters/Generic/GenericCharacter.tscn" id="1_ufw1a"]
 [ext_resource type="Script" path="res://Characters/Frog/Frog.gd" id="2_ehqrl"]
@@ -15,6 +15,9 @@ albedo_color = Color(0, 0.554266, 0.025441, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7bo2u"]
 albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_yud0r"]
+radius = 0.8
 
 [node name="Frog" instance=ExtResource("1_ufw1a")]
 script = ExtResource("2_ehqrl")
@@ -78,3 +81,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_18gbl")
 transform = Transform3D(42.095, 0, 0, 0, -0.697379, 41.1392, 0, -23.0495, -1.2447, 0, 16.301, -2.8678)
 mesh = SubResource("CapsuleMesh_5u6ia")
 surface_material_override/0 = SubResource("StandardMaterial3D_18gbl")
+
+[node name="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(70, 0, 0, 0, 70, 0, 0, 0, 70, 0, 0, 0)
+shape = SubResource("SphereShape3D_yud0r")

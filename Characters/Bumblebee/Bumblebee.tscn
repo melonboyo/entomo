@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://d345ctgph51uj"]
+[gd_scene load_steps=11 format=3 uid="uid://d345ctgph51uj"]
 
 [ext_resource type="PackedScene" uid="uid://baiok6rvrnsqh" path="res://Characters/Generic/GenericCharacter.tscn" id="1_dr623"]
 [ext_resource type="Script" path="res://Characters/Bumblebee/Bumblebee.gd" id="2_70g27"]
@@ -20,6 +20,8 @@ albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sywnj"]
 albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dib3q"]
 
 [node name="Bumblebee" instance=ExtResource("1_dr623")]
 transform = Transform3D(1, 0.000304902, 0.00013737, -0.000304879, 1, -0.000252252, -0.000137422, 0.000252223, 1, 0, 0, 0)
@@ -106,3 +108,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_sywnj")
 transform = Transform3D(1.22284e-14, -8.90533e-08, 6.4, -6.4, -8.90533e-08, 1.28485e-20, 2.79753e-07, -2.0373, -2.79753e-07, -0.00542831, 2.97634, -2.09136)
 mesh = SubResource("CapsuleMesh_q35qc")
 surface_material_override/0 = SubResource("StandardMaterial3D_sywnj")
+
+[node name="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(10, 0.00442272, -0.00167533, 0.00167533, 4.9267e-07, 10, 0.00442272, -10, -2.48663e-07, -0.000914603, 3, -0.000756796)
+shape = SubResource("CapsuleShape3D_dib3q")

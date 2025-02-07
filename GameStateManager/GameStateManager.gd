@@ -4,12 +4,6 @@ class_name GameStateManager
 
 @export var currentPossessedCreature: GenericCharacterController = null
 @export var camera: Camera3D = null
-static var gameStateManagerInstance: GameStateManager 
-
-func _init() -> void:
-	if gameStateManagerInstance != null and gameStateManagerInstance != self:
-		self.queue_free()
-	gameStateManagerInstance = self
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

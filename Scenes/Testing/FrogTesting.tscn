@@ -51,6 +51,9 @@ transform = Transform3D(0.421448, 0, -0.906853, 0, 1, 0, 0.906853, 0, 0.421448, 
 [node name="Frog" parent="." instance=ExtResource("7_e6qut")]
 transform = Transform3D(-0.985019, 0, -0.172445, 0, 1, 0, 0.172445, 0, -0.985019, 147.681, 41.5512, -181.045)
 
+[node name="Bumblebee2" parent="." instance=ExtResource("5_fmgv7")]
+transform = Transform3D(-0.998039, 0.000304902, 0.0626012, 0.000320083, 1, 0.000232655, -0.0626012, 0.000252223, -0.998039, 202.758, 200.209, -363.188)
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.998626, 0.0130416, -0.050757, 0.0284047, 0.67923, 0.733376, 0.0440401, -0.73381, 0.677926, -0.00180054, 10.4981, 31.7402)
 shadow_enabled = true
@@ -348,7 +351,7 @@ mesh = SubResource("CylinderMesh_w7viq")
 surface_material_override/0 = SubResource("StandardMaterial3D_vqri3")
 
 [node name="StaticBody3D28" type="StaticBody3D" parent="StaticGeometry"]
-transform = Transform3D(0.635525, 0, 1.18938, 0, 83.4823, 0, -1.14191, 0, 0.661944, 176.531, -29.9549, -116.772)
+transform = Transform3D(0.721266, 0, 1.77925, 0, 83.4823, 0, -1.57618, 0, 0.814191, 182.806, -29.9549, -125.366)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/StaticBody3D28"]
 transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
@@ -371,7 +374,7 @@ transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
 mesh = SubResource("BoxMesh_r6fp7")
 
 [node name="StaticBody3D30" type="StaticBody3D" parent="StaticGeometry"]
-transform = Transform3D(-0.212014, 0, 1.47099, 0, 83.4823, 0, -1.36668, 0, -0.228195, 203.843, -35.2729, -116.719)
+transform = Transform3D(0.246719, 0, 1.46471, 0, 83.4824, 0, -1.36085, 0, 0.26555, 327.614, -35.2729, -149.446)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/StaticBody3D30"]
 transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
@@ -383,7 +386,7 @@ mesh = SubResource("BoxMesh_r6fp7")
 surface_material_override/0 = SubResource("StandardMaterial3D_r0k5d")
 
 [node name="StaticBody3D31" type="StaticBody3D" parent="StaticGeometry"]
-transform = Transform3D(-1.43873, 0, 0.624212, 0, 83.4823, 0, -0.623368, 0, -1.44067, 217.474, -40.447, -135.205)
+transform = Transform3D(-0.712867, 0, 1.39844, 0, 83.4823, 0, -1.39655, 0, -0.713831, 344.541, -40.4471, -149.942)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/StaticBody3D31"]
 transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
@@ -395,7 +398,7 @@ mesh = SubResource("BoxMesh_r6fp7")
 surface_material_override/0 = SubResource("StandardMaterial3D_r0k5d")
 
 [node name="StaticBody3D32" type="StaticBody3D" parent="StaticGeometry"]
-transform = Transform3D(0.381736, 0, 1.3018, 0, 83.4823, 0, -1.24985, 0, 0.397604, 216.531, -46.1237, -108.102)
+transform = Transform3D(1.08996, 0, 0.750963, 0, 83.4823, 0, -0.720993, 0, 1.13527, 350.324, -46.1237, -129.639)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/StaticBody3D32"]
 transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
@@ -407,7 +410,7 @@ mesh = SubResource("BoxMesh_r6fp7")
 surface_material_override/0 = SubResource("StandardMaterial3D_r0k5d")
 
 [node name="StaticBody3D33" type="StaticBody3D" parent="StaticGeometry"]
-transform = Transform3D(-0.494102, 0, 1.39035, 0, 83.4824, 0, -1.29176, 0, -0.531813, 235.537, -51.4418, -121.064)
+transform = Transform3D(0.441131, 0, 1.41084, 0, 83.4824, 0, -1.31079, 0, 0.4748, 328.166, -51.4418, -127.538)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/StaticBody3D33"]
 transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
@@ -419,7 +422,7 @@ mesh = SubResource("BoxMesh_r6fp7")
 surface_material_override/0 = SubResource("StandardMaterial3D_r0k5d")
 
 [node name="StaticBody3D34" type="StaticBody3D" parent="StaticGeometry"]
-transform = Transform3D(-1.17533, 0, -3.87922, 0, 83.4823, 0, 1.55148, 0, -2.93873, 218.055, -56.6159, -157.225)
+transform = Transform3D(-0.90747, 0, -1.27278, 0, 83.4823, 0, 1.06575, 0, -1.08375, 321.714, -56.6159, -156.382)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/StaticBody3D34"]
 transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
