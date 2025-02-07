@@ -9,6 +9,7 @@ var currentMovementDirection = Vector3.ZERO
 @export var rotationSpeed = 5
 @export var airborneMovementControl = 0.5;
 @export var minJumpVelocity = 20
+@export var jumpForwardVelocity = 60
 
 # Overrides the handleMove method of GenericCharacterController
 func handleMove(input_dir: Vector2, camera_basis: Basis, delta: float) -> void:
@@ -17,8 +18,9 @@ func handleMove(input_dir: Vector2, camera_basis: Basis, delta: float) -> void:
 	currentMovementDirection = direction
 	
 	if is_on_floor() and velocity.y <= 0:
-		if isJumpButtonDown == true and direction and isChargingJump == false and currentJumpVelocityPercentage < 0.1:
-			jump(minJumpVelocity, direction)
+		if direction and !isChargingJump:
+			velocity.x = direction.x * SPEED
+			velocity.z = direction.z * SPEED
 		else:
 			velocity.x = 0
 			velocity.z = 0
@@ -30,9 +32,9 @@ func handleMove(input_dir: Vector2, camera_basis: Basis, delta: float) -> void:
 			velocity.z += direction.z * s * delta
 			
 		var xzPlaneVelocityMagnitude = Vector2(velocity.x, velocity.z).length()
-		if Vector2(velocity.x, velocity.z).length() > SPEED:
-			velocity.x = velocity.x / xzPlaneVelocityMagnitude * SPEED
-			velocity.z = velocity.z / xzPlaneVelocityMagnitude * SPEED
+		if Vector2(velocity.x, velocity.z).length() > jumpForwardVelocity:
+			velocity.x = velocity.x / xzPlaneVelocityMagnitude * jumpForwardVelocity
+			velocity.z = velocity.z / xzPlaneVelocityMagnitude * jumpForwardVelocity
 		
 	# Rotation
 	if(input_dir != Vector2.ZERO):
@@ -45,13 +47,10 @@ func _process(delta: float) -> void:
 			currentJumpVelocityPercentage = 1
 		
 func jumpButtonPressed() -> void:
-	isJumpButtonDown = true;
-	if is_on_floor():
-		currentJumpVelocityPercentage = 0
-		isChargingJump = true
+	currentJumpVelocityPercentage = 0
+	isChargingJump = true
 		
 func jumpButtonReleased() -> void:
-	isJumpButtonDown = false;
 	if(isChargingJump and is_on_floor()):
 		jump(
 			(currentJumpVelocityPercentage * JUMP_VELOCITY + minJumpVelocity) / (JUMP_VELOCITY + minJumpVelocity) * JUMP_VELOCITY,
@@ -59,8 +58,8 @@ func jumpButtonReleased() -> void:
 		)
 
 func jump(jumpSpeed: float, direction: Vector3) -> void:
-	velocity.x = direction.x * SPEED
-	velocity.z = direction.z * SPEED
+	velocity.x = direction.x * jumpForwardVelocity
+	velocity.z = direction.z * jumpForwardVelocity
 	velocity.y = jumpSpeed
 	currentJumpVelocityPercentage = 0
 	isChargingJump = false

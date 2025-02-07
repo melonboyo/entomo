@@ -25,62 +25,66 @@ timeToReachFullJumpVelocity = 0.5
 gravityMultiplier = 18
 rotationSpeed = 5
 airborneMovementControl = 0.75
-minJumpVelocity = 75
-SPEED = 45.0
-JUMP_VELOCITY = 220.0
+minJumpVelocity = 50
+jumpForwardVelocity = 45
+SPEED = 30.0
+JUMP_VELOCITY = 200.0
 CAMERA_SIZE = 350
 
 [node name="CollisionShape3D" parent="." index="0"]
-transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, 0, 0)
+transform = Transform3D(40, 0, 0, 0, 40, 0, 0, 0, 40, 0.00323399, 0.0752921, -0.11451)
 shape = SubResource("CapsuleShape3D_y8obc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
-transform = Transform3D(42.7508, 0, 0, 0, 32.3318, 0, 0, 0, 50, 0, 0, 0)
+transform = Transform3D(34.2006, 0, 0, 0, 25.8654, 0, 0, 0, 40, 0.00323399, 0.0752921, -0.11451)
 mesh = SubResource("CapsuleMesh_5u6ia")
 surface_material_override/0 = SubResource("StandardMaterial3D_18gbl")
 
 [node name="RightEye" type="MeshInstance3D" parent="." index="2"]
-transform = Transform3D(-0.466158, 0.290285, -11.7731, 0.141814, 14.245, 1.89176e-07, -1.73972, 1.08336, 3.1546, -7.8449, 18.857, -24.763)
+transform = Transform3D(-0.351354, 0.236899, -9.9904, 0.106889, 11.6248, -9.31106e-07, -1.31127, 0.884122, 2.67693, -6.27269, 15.1609, -19.9249)
 mesh = SubResource("SphereMesh_27fm2")
 
 [node name="RightPupil" type="MeshInstance3D" parent="RightEye" index="0"]
-transform = Transform3D(0.436916, -0.0440875, 0, 0.0477189, 0.403667, 0, 2.66454e-15, 0, 0.370559, 0.465785, 0.0768955, 0.00651431)
+transform = Transform3D(0.436916, -0.0440875, -2.23322e-15, 0.0477189, 0.403667, -2.43907e-16, 2.66454e-15, -1.50479e-22, 0.370559, 0.465785, 0.0768955, 0.00651431)
 mesh = SubResource("SphereMesh_27fm2")
 surface_material_override/0 = SubResource("StandardMaterial3D_7bo2u")
 
 [node name="LeftEye" type="MeshInstance3D" parent="." index="3"]
-transform = Transform3D(0.466157, -0.290285, -11.7731, 0.141814, 14.245, 1.76274e-07, -1.73972, 1.08336, -3.1546, 7.8563, 18.857, -24.763)
+transform = Transform3D(0.389589, -0.234982, -9.00702, 0.118521, 11.5307, 4.48342e-07, -1.45397, 0.876966, -2.41343, 6.28827, 15.1609, -19.9249)
 mesh = SubResource("SphereMesh_27fm2")
 
 [node name="RightPupil" type="MeshInstance3D" parent="LeftEye" index="0"]
-transform = Transform3D(0.436916, -0.0440875, 0, 0.0477189, 0.403667, 0, 2.66454e-15, 0, 0.370559, 0.465785, 0.0768955, 0.0293676)
+transform = Transform3D(0.436916, -0.0440875, -2.23322e-15, 0.0477189, 0.403667, -2.43907e-16, 2.66454e-15, -1.50479e-22, 0.370559, 0.465785, 0.0768955, 0.0293676)
 mesh = SubResource("SphereMesh_27fm2")
 surface_material_override/0 = SubResource("StandardMaterial3D_7bo2u")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." index="4"]
-transform = Transform3D(19.068, 0, 0, 0, 12.5879, 14.1651, 0, -11.0654, 16.1142, 16.4359, -7.695, 14.5868)
+transform = Transform3D(15.2544, 0, 0, 0, 12.1095, 10.4479, 0, -10.6449, 11.8854, 13.152, -6.08071, 11.5549)
 mesh = SubResource("CapsuleMesh_5u6ia")
 surface_material_override/0 = SubResource("StandardMaterial3D_18gbl")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="." index="5"]
-transform = Transform3D(19.068, 0, 0, 0, 0.767588, 21.4325, 0, -16.7424, 0.982613, 21.4481, -17.4304, 8.74923)
+transform = Transform3D(15.2544, 0, 0, 0, 0.608605, 17.3076, 0, -13.2747, 0.7935, 17.1617, -13.869, 6.88487)
 mesh = SubResource("CapsuleMesh_5u6ia")
 surface_material_override/0 = SubResource("StandardMaterial3D_18gbl")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="." index="6"]
-transform = Transform3D(19.068, 0, 0, 0, 12.5879, 14.1651, 0, -11.0654, 16.1142, -16.436, -7.695, 14.5866)
+transform = Transform3D(15.2544, 0, 0, 0, 12.1095, 10.4479, 0, -10.6449, 11.8854, -13.1456, -6.08071, 11.5548)
 mesh = SubResource("CapsuleMesh_5u6ia")
 surface_material_override/0 = SubResource("StandardMaterial3D_18gbl")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="." index="7"]
-transform = Transform3D(19.068, 0, 0, 0, 0.767588, 21.4325, 0, -16.7424, 0.982613, -21.2977, -17.43, 8.74568)
+transform = Transform3D(15.2544, 0, 0, 0, 0.608605, 17.3076, 0, -13.2747, 0.7935, -17.0349, -13.8687, 6.88203)
 mesh = SubResource("CapsuleMesh_5u6ia")
 surface_material_override/0 = SubResource("StandardMaterial3D_18gbl")
 
 [node name="MeshInstance3D6" type="MeshInstance3D" parent="." index="8"]
-transform = Transform3D(42.095, 0, 0, 0, -0.697379, 41.1392, 0, -23.0495, -1.2447, 0, 16.301, -2.8678)
+transform = Transform3D(33.676, 0, 0, 0, -0.561343, 32.716, 0, -18.5533, -0.989849, 0.00323399, 13.1161, -2.40875)
 mesh = SubResource("CapsuleMesh_5u6ia")
 surface_material_override/0 = SubResource("StandardMaterial3D_18gbl")
+
+[node name="Area3D" parent="." index="9"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0.00323399, 0.0752921, -0.11451)
 
 [node name="CollisionShape3D" parent="Area3D" index="0"]
 transform = Transform3D(70, 0, 0, 0, 70, 0, 0, 0, 70, 0, 0, 0)

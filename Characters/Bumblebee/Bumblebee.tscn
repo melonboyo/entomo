@@ -28,11 +28,11 @@ transform = Transform3D(1, 0.000304902, 0.00013737, -0.000304879, 1, -0.00025225
 script = ExtResource("2_70g27")
 gravityMultiplier = 2
 flyingSpeed = 15
-maxFlyingStamina = 12
+maxFlyingStamina = 14
 rotationSpeed = 5
 SPEED = 10.0
 JUMP_VELOCITY = 7.0
-CAMERA_SIZE = 50
+CAMERA_SIZE = 75
 
 [node name="CollisionShape3D" parent="." index="0"]
 transform = Transform3D(6, 0, 0, 0, -2.62268e-07, 6, 0, -6, -2.62268e-07, 0.010582, 3, 0.0199842)
