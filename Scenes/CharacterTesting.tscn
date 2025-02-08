@@ -25,11 +25,13 @@ sky = SubResource("Sky_snt87")
 currentPossessedCreature = NodePath("../Parasite")
 camera = NodePath("../CameraRoot/RotationRoot/Camera3D")
 
-[node name="Parasite" parent="." instance=ExtResource("1_htcmh")]
+[node name="Parasite" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("1_htcmh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0768722, 1.8717, 1.8559)
+game_state_manager = NodePath("../GameStateManager")
 
-[node name="Beetle" parent="." instance=ExtResource("4_4n16y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.74594, 1.5727, 0.996261)
+[node name="Beetle" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("4_4n16y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.74594, 1.82221, 0.996261)
+game_state_manager = NodePath("../GameStateManager")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.840368, 0.542016, 0, -0.542016, 0.840368, -0.00180054, 10.4981, 31.7402)
@@ -93,18 +95,20 @@ mesh = SubResource("BoxMesh_r6fp7")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_r4kk1")
 
-[node name="CameraRoot" type="Node3D" parent="." node_paths=PackedStringArray("camera", "game_state_machine")]
+[node name="CameraRoot" type="Node3D" parent="." node_paths=PackedStringArray("camera", "game_state_manager", "focus")]
 process_priority = 1
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.16028, 1.55166, 2.964)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0759836, 1.87157, 1.85634)
 script = ExtResource("1_gdsmn")
 camera = NodePath("RotationRoot/Camera3D")
-game_state_machine = NodePath("../GameStateManager")
+game_state_manager = NodePath("../GameStateManager")
+zoom_duration = 0.7
+focus = NodePath("../Parasite")
 
 [node name="RotationRoot" type="Node3D" parent="CameraRoot"]
 transform = Transform3D(1, 0, 0, 0, 0.74444, 0.66769, 0, -0.66769, 0.74444, 0, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="CameraRoot/RotationRoot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.676)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
 fov = 40.0
 size = 20.0
 
@@ -112,3 +116,5 @@ size = 20.0
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("5_c0eho")]
 visible = false
+
+[connection signal="zoom_changed" from="GameStateManager" to="CameraRoot" method="_on_zoom_changed"]
