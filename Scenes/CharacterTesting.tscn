@@ -1,14 +1,26 @@
-[gd_scene load_steps=11 format=3 uid="uid://dyudv4itc62ua"]
+[gd_scene load_steps=16 format=3 uid="uid://dyudv4itc62ua"]
 
 [ext_resource type="Script" path="res://GameController/Camera.gd" id="1_gdsmn"]
 [ext_resource type="PackedScene" uid="uid://cxrj60oxxptdh" path="res://Characters/Parasite/Parasite.tscn" id="1_htcmh"]
 [ext_resource type="PackedScene" uid="uid://dclrt7yy6gtq6" path="res://GameStateManager/GameStateManager.tscn" id="2_lrlr4"]
 [ext_resource type="PackedScene" uid="uid://ceq3k2pduj7cb" path="res://Characters/Beetle/Beetle.tscn" id="4_4n16y"]
+[ext_resource type="Script" path="res://Ramp.gd" id="4_rxyvj"]
+[ext_resource type="Script" path="res://Scenes/Movable.gd" id="4_tq0gy"]
 [ext_resource type="PackedScene" uid="uid://daoe6gj0bo2qr" path="res://Scenes/pause_menu.tscn" id="5_c0eho"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_cxvp0"]
+radius = 0.546412
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2cuf7"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_r6fp7"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_2j74g"]
+left_to_right = 1.0
+size = Vector3(1, 0.5, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_yxd1h"]
+points = PackedVector3Array(-0.5, -0.25, -0.5, -0.5, -0.25, 0.5, 0.5, 0.25, -0.5, 0.5, -0.25, -0.5, 0.5, -0.25, 0.5, 0.5, 0.25, 0.5)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xyw6j"]
 
@@ -22,14 +34,21 @@ sky = SubResource("Sky_snt87")
 [node name="Scene" type="Node3D"]
 
 [node name="GameStateManager" parent="." node_paths=PackedStringArray("currentPossessedCreature", "camera") instance=ExtResource("2_lrlr4")]
-currentPossessedCreature = NodePath("../Parasite")
+currentPossessedCreature = NodePath("../Beetle")
 camera = NodePath("../CameraRoot/RotationRoot/Camera3D")
 
 [node name="Parasite" parent="." instance=ExtResource("1_htcmh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0768722, 1.8717, 1.8559)
 
 [node name="Beetle" parent="." instance=ExtResource("4_4n16y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.74594, 1.5727, 0.996261)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -2.74594, 2.5381, 2.45707)
+ROLLSPEED = 20.0
+RAMPBOOST = 9.85
+
+[node name="Area3D" type="Area3D" parent="Beetle"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Beetle/Area3D"]
+shape = SubResource("SphereShape3D_cxvp0")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.840368, 0.542016, 0, -0.542016, 0.840368, -0.00180054, 10.4981, 31.7402)
@@ -37,6 +56,7 @@ transform = Transform3D(1, 0, 0, 0, 0.840368, 0.542016, 0, -0.542016, 0.840368, 
 [node name="StaticGeometry" type="Node3D" parent="."]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="StaticGeometry"]
+transform = Transform3D(0.422808, 0, 0, 0, 1, 0, 0, 0, 0.346586, 0, 0, 2.69497)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/StaticBody3D"]
 transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
@@ -47,7 +67,7 @@ transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
 mesh = SubResource("BoxMesh_r6fp7")
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="StaticGeometry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.0608394, 0, 0.885279, -8.17546)
+transform = Transform3D(0.422808, 0, 0, 0, 1, 0, 0, 0, 0.542238, -12.6548, 0, 0.167585)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/StaticBody3D2"]
 transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
@@ -58,7 +78,7 @@ transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
 mesh = SubResource("BoxMesh_r6fp7")
 
 [node name="StaticBody3D3" type="StaticBody3D" parent="StaticGeometry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.0608394, 0, 0.885279, 9.14636)
+transform = Transform3D(0.927608, 0, 0, 0, 1, 0, 0, 0, 0.414508, -6.79714, 0, 11.9035)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/StaticBody3D3"]
 transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
@@ -68,27 +88,53 @@ shape = SubResource("BoxShape3D_2cuf7")
 transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
 mesh = SubResource("BoxMesh_r6fp7")
 
-[node name="StaticBody3D4" type="StaticBody3D" parent="StaticGeometry"]
-transform = Transform3D(0.0463659, 0, 0, 0, 1, 0, 0, 0, 0.863455, -10.1384, 0.885279, 0.518445)
+[node name="Movable" type="CharacterBody3D" parent="StaticGeometry"]
+transform = Transform3D(0.0576948, 0, 0, 0, 1.61402, 0, 0, 0, 0.0778942, -9.03551, 1.52516, 14.2491)
+script = ExtResource("4_tq0gy")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/StaticBody3D4"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/Movable"]
 transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
 shape = SubResource("BoxShape3D_2cuf7")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticGeometry/StaticBody3D4"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticGeometry/Movable"]
 transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
 mesh = SubResource("BoxMesh_r6fp7")
 
-[node name="StaticBody3D5" type="StaticBody3D" parent="StaticGeometry"]
-transform = Transform3D(0.0463659, 0, 0, 0, 1, 0, 0, 0, 0.863455, 10.0075, 0.885277, 0.523133)
+[node name="Ramp" type="StaticBody3D" parent="StaticGeometry"]
+transform = Transform3D(-0.1, 0, -8.74228e-09, 0, 2, 0, 8.74228e-09, 0, -0.1, -3.16206, 1.40654, 4.34067)
+script = ExtResource("4_rxyvj")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/StaticBody3D5"]
-transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
-shape = SubResource("BoxShape3D_2cuf7")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticGeometry/Ramp"]
+transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, -0.236486, 0)
+mesh = SubResource("PrismMesh_2j74g")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticGeometry/StaticBody3D5"]
-transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
-mesh = SubResource("BoxMesh_r6fp7")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/Ramp"]
+transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, -0.205912, 0)
+shape = SubResource("ConvexPolygonShape3D_yxd1h")
+
+[node name="Ramp2" type="StaticBody3D" parent="StaticGeometry"]
+transform = Transform3D(-4.37114e-09, 0, -0.1, 0, 2, 0, 0.1, 0, -4.37114e-09, -12.6019, 1.40654, 4.34067)
+script = ExtResource("4_rxyvj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticGeometry/Ramp2"]
+transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, -0.236486, 0)
+mesh = SubResource("PrismMesh_2j74g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/Ramp2"]
+transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, -0.205912, 0)
+shape = SubResource("ConvexPolygonShape3D_yxd1h")
+
+[node name="Ramp3" type="StaticBody3D" parent="StaticGeometry"]
+transform = Transform3D(-4.37114e-09, 0, 0.1, 0, 2, 0, -0.1, 0, -4.37114e-09, -12.6019, 1.40654, 9.00345)
+script = ExtResource("4_rxyvj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticGeometry/Ramp3"]
+transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, -0.236486, 0)
+mesh = SubResource("PrismMesh_2j74g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/Ramp3"]
+transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, -0.205912, 0)
+shape = SubResource("ConvexPolygonShape3D_yxd1h")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_r4kk1")
@@ -112,3 +158,6 @@ size = 20.0
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("5_c0eho")]
 visible = false
+
+[connection signal="child_entered_tree" from="Beetle" to="Beetle" method="detectCollision"]
+[connection signal="body_entered" from="Beetle/Area3D" to="Beetle" method="detectCollision"]

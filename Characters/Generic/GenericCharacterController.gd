@@ -6,6 +6,8 @@ class_name GenericCharacterController extends CharacterBody3D
 @export var JUMP_VELOCITY = 4.5
 @export var CAMERA_SIZE = 10 # Assumes orthographic camera
 
+var directionFacing
+
 # Update the physics body each physics tick
 func _physics_process(delta: float) -> void:
 	# Add gravity
@@ -30,6 +32,7 @@ func handleMove(input_dir: Vector2, camera_basis: Basis, delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	var direction := (camera_basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
+		directionFacing = direction
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
 	else:
