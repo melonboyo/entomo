@@ -1,8 +1,10 @@
 @tool
 extends Node3D
 
-
-var zooms := {
+# Zoom levels dictionary
+# First number corresponds to the size of the character,
+# second number is the distance from the camera to the focus
+@export var zooms := {
 	1 : 10.0,
 	2 : 15.0,
 	3 : 23.0,
@@ -37,13 +39,14 @@ func _physics_process(delta):
 	if Engine.is_editor_hint():
 		return
 	
-	# For testing
+	# For testing, up and down keys to manually change zoom
 	if not zoom_tween or not zoom_tween.is_running():
 		if Input.is_action_just_pressed("ui_down"):
 			zoom_level += 1
 		elif Input.is_action_just_pressed("ui_up"):
 			zoom_level -= 1
 
+# Creates a tween that animates between the previous zoom and the new zoom
 func zoom():
 	if zoom_tween:
 		zoom_tween.kill()
@@ -54,6 +57,7 @@ func zoom():
 	zoom_tween = get_tree().create_tween().bind_node(self).set_trans(Tween.TRANS_QUART).set_parallel()
 	zoom_tween.tween_property(camera, "position:z", target_z_pos, duration)
 
+# Changes zoom when this function receives a zoom changed signal
 func _on_zoom_changed(character: GenericCharacterController):
 	zoom_level = character.size
 	focus = character

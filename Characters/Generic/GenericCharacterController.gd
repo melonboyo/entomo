@@ -45,15 +45,17 @@ func handleMove(input_dir: Vector2, camera_basis: Basis, delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
-# TODO: Implement generic character interaction
 # The generic character can interact, this method should work the same for all cratures. 
 func handleInteract() -> void:
 	print("Performed interact.")
 	if is_in_switch_area:
+		# Try switch to another creature if interacted in its switch area
 		handleSwitch()
 		return
 	if held_character:
+		# Try exiting current creature
 		handleExit()
+		return
 
 # The generic character has no special ability, override this in the creature-specific script
 func handleSpecialAbility() -> void:
@@ -98,11 +100,15 @@ func _on_switch_area_body_exited(body):
 	is_in_switch_area = false
 	current_switchable_character = null
 
+# Generic function for disabling the creature
+# Hides and makes it intangible
 func disable():
 	hide()
 	$CollisionShape3D.disabled = true
 	$SwitchArea.monitoring = false
 
+# Generic function to enable the creature
+# Unhides and makes it tangible
 func enable():
 	show()
 	$CollisionShape3D.disabled = false

@@ -97,7 +97,7 @@ environment = SubResource("Environment_r4kk1")
 
 [node name="CameraRoot" type="Node3D" parent="." node_paths=PackedStringArray("camera", "game_state_manager", "focus")]
 process_priority = 1
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0759836, 1.87157, 1.85634)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0760577, 1.87158, 1.8563)
 script = ExtResource("1_gdsmn")
 camera = NodePath("RotationRoot/Camera3D")
 game_state_manager = NodePath("../GameStateManager")
