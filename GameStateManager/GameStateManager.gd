@@ -5,10 +5,11 @@ class_name GameStateManager
 @export var currentPossessedCreature: GenericCharacterController = null
 @export var camera: Camera3D = null
 
+signal zoom_changed(character: GenericCharacterController)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -33,5 +34,8 @@ func _physics_process(delta: float) -> void:
 	# Handle Special Ability
 	if(Input.is_action_just_pressed("special_ability")):
 		currentPossessedCreature.handleSpecialAbility()
-	
-	pass
+
+
+func switchCharacter(character: GenericCharacterController):
+	zoom_changed.emit(character)
+	currentPossessedCreature = character
