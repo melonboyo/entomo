@@ -23,7 +23,7 @@ func _physics_process(delta: float) -> void:
 	# Handle moving
 	currentPossessedCreature.handleMove(
 		Input.get_vector("move_left", "move_right", "move_forward", "move_backward"),
-		camera.basis,
+		camera.global_basis,
 		delta
 	)
 	

@@ -105,7 +105,7 @@ zoom_duration = 0.7
 focus = NodePath("../Parasite")
 
 [node name="RotationRoot" type="Node3D" parent="CameraRoot"]
-transform = Transform3D(1, 0, 0, 0, 0.74444, 0.66769, 0, -0.66769, 0.74444, 0, 0, 0)
+transform = Transform3D(0.904336, -0.343351, 0.253548, 0, 0.594037, 0.804438, -0.426821, -0.727482, 0.537209, 0, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="CameraRoot/RotationRoot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
