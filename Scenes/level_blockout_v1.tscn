@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfyb34soy0h7x"]
+
+[ext_resource type="PackedScene" uid="uid://cxrj60oxxptdh" path="res://Characters/Parasite/Parasite.tscn" id="1_nc2ee"]
+[ext_resource type="PackedScene" uid="uid://b8go5fmhdqs0r" path="res://EnvironmentAssets/InitialBlockout.glb" id="2_rmi32"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Parasite" parent="." instance=ExtResource("1_nc2ee")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 1, -4)
+
+[node name="InitialBlockout" parent="." instance=ExtResource("2_rmi32")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
