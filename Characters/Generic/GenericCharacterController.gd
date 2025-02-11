@@ -5,6 +5,7 @@ class_name GenericCharacterController extends CharacterBody3D
 @export var SPEED = 5.0
 @export var JUMP_VELOCITY = 4.5
 @export var CAMERA_SIZE = 10 # Assumes orthographic camera
+var direction_facing
 
 # Update the physics body each physics tick
 func _physics_process(delta: float) -> void:
@@ -20,10 +21,14 @@ func handleGravity(delta: float) -> void:
 			velocity += get_gravity() * delta
 
 # The generic character jumps when the jump button is pressed and they are on the ground, override this in the creature-specific script for additional functionality 
-func handleJump() -> void:
+func jumpButtonPressed() -> void:
+	print("Jump button pressed.")
 	if is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		print("Performed jump.")
+		
+func jumpButtonReleased() -> void:
+	print("Jump button released.");
 
 # The handleMove method of Generic Character Controller is called every tick
 func handleMove(input_dir: Vector2, camera_basis: Basis, delta: float) -> void:
@@ -32,6 +37,7 @@ func handleMove(input_dir: Vector2, camera_basis: Basis, delta: float) -> void:
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
+		direction_facing = direction
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
@@ -42,5 +48,9 @@ func handleInteract() -> void:
 	print("Performed interact.")
 
 # The generic character has no special ability, override this in the creature-specific script
-func handleSpecialAbility() -> void:
-	print("Performed special ability.")
+func specialAbilityButtonPressed() -> void:
+	print("Special ability button pressed.")
+	
+func specialAbilityButtonReleased() -> void:
+	print("Special ability button released.")
+	

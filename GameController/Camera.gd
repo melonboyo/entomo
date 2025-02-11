@@ -14,3 +14,4 @@ func _physics_process(delta: float) -> void:
 	# Simple camera follow for playtesting. TODO: implement proper camera follow as part of swapping between creatures
 	#camera.size = game_state_machine.currentPossessedCreature.CAMERA_SIZE
 	global_position = game_state_machine.currentPossessedCreature.global_position
+	camera.position.z = game_state_machine.currentPossessedCreature.CAMERA_SIZE

@@ -17,7 +17,9 @@ func _physics_process(delta: float) -> void:
 	
 	# Handle jump
 	if Input.is_action_just_pressed("move_jump"):
-		currentPossessedCreature.handleJump()
+		currentPossessedCreature. jumpButtonPressed()
+	if Input.is_action_just_released("move_jump"):
+		currentPossessedCreature.jumpButtonReleased()
 	
 	# Handle moving
 	currentPossessedCreature.handleMove(
