@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dyudv4itc62ua"]
+[gd_scene load_steps=13 format=3 uid="uid://dyudv4itc62ua"]
 
 [ext_resource type="Script" path="res://GameController/Camera.gd" id="1_gdsmn"]
 [ext_resource type="PackedScene" uid="uid://cxrj60oxxptdh" path="res://Characters/Parasite/Parasite.tscn" id="1_htcmh"]
@@ -9,6 +9,13 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_2cuf7"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_r6fp7"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_hvxxp"]
+left_to_right = 0.0
+size = Vector3(6, 2.5, 4)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_rsk06"]
+data = PackedVector3Array(-3, 1.25, 2, 3, -1.25, 2, -3, -1.25, 2, -3, 1.25, -2, -3, -1.25, -2, 3, -1.25, -2, -3, 1.25, 2, -3, 1.25, -2, 3, -1.25, 2, -3, 1.25, -2, 3, -1.25, -2, 3, -1.25, 2, -3, 1.25, -2, -3, 1.25, 2, -3, -1.25, -2, -3, 1.25, 2, -3, -1.25, 2, -3, -1.25, -2, -3, -1.25, 2, 3, -1.25, 2, -3, -1.25, -2, 3, -1.25, 2, 3, -1.25, -2, -3, -1.25, -2)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xyw6j"]
 
@@ -31,7 +38,9 @@ game_state_manager = NodePath("../GameStateManager")
 
 [node name="Beetle" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("4_4n16y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.74594, 1.82221, 0.996261)
+walk_acceleration = 5.0
 game_state_manager = NodePath("../GameStateManager")
+SPEED = 15.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.840368, 0.542016, 0, -0.542016, 0.840368, -0.00180054, 10.4981, 31.7402)
@@ -92,6 +101,72 @@ shape = SubResource("BoxShape3D_2cuf7")
 transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
 mesh = SubResource("BoxMesh_r6fp7")
 
+[node name="StaticGeometry2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.19963, 0, -32.6835)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="StaticGeometry2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry2/StaticBody3D"]
+transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
+shape = SubResource("BoxShape3D_2cuf7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticGeometry2/StaticBody3D"]
+transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
+mesh = SubResource("BoxMesh_r6fp7")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="StaticGeometry2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.0608394, 0, 0.885279, -8.17546)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry2/StaticBody3D2"]
+transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
+shape = SubResource("BoxShape3D_2cuf7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticGeometry2/StaticBody3D2"]
+transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
+mesh = SubResource("BoxMesh_r6fp7")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="StaticGeometry2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.0608394, 0, 0.885279, 9.14636)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry2/StaticBody3D3"]
+transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
+shape = SubResource("BoxShape3D_2cuf7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticGeometry2/StaticBody3D3"]
+transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
+mesh = SubResource("BoxMesh_r6fp7")
+
+[node name="StaticBody3D4" type="StaticBody3D" parent="StaticGeometry2"]
+transform = Transform3D(0.0463659, 0, 0, 0, 1, 0, 0, 0, 0.863455, -10.1384, 0.885279, 0.518445)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry2/StaticBody3D4"]
+transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
+shape = SubResource("BoxShape3D_2cuf7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticGeometry2/StaticBody3D4"]
+transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
+mesh = SubResource("BoxMesh_r6fp7")
+
+[node name="StaticBody3D5" type="StaticBody3D" parent="StaticGeometry2"]
+transform = Transform3D(0.0463659, 0, 0, 0, 1, 0, 0, 0, 0.863455, 10.0075, 0.885277, 0.523133)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry2/StaticBody3D5"]
+transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
+shape = SubResource("BoxShape3D_2cuf7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticGeometry2/StaticBody3D5"]
+transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
+mesh = SubResource("BoxMesh_r6fp7")
+
+[node name="Ramp" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.277231, 0, -0.960803, 0, 1, 0, 0.960803, 0, -0.277231, 1.31284, 1.71222, -6.82919)
+mesh = SubResource("PrismMesh_hvxxp")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="Ramp"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ramp/StaticBody3D2"]
+shape = SubResource("ConcavePolygonShape3D_rsk06")
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_r4kk1")
 
@@ -99,13 +174,20 @@ environment = SubResource("Environment_r4kk1")
 process_priority = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0760577, 1.87158, 1.8563)
 script = ExtResource("1_gdsmn")
+zooms = {
+1: 8.0,
+2: 18.0,
+3: 40.0,
+4: 60.0,
+5: 90.0
+}
 camera = NodePath("RotationRoot/Camera3D")
 game_state_manager = NodePath("../GameStateManager")
-zoom_duration = 0.7
+zoom_duration = 0.4
 focus = NodePath("../Parasite")
 
 [node name="RotationRoot" type="Node3D" parent="CameraRoot"]
-transform = Transform3D(0.904336, -0.343351, 0.253548, 0, 0.594037, 0.804438, -0.426821, -0.727482, 0.537209, 0, 0, 0)
+transform = Transform3D(0.904336, -0.305702, 0.297864, 0, 0.697866, 0.716229, -0.426821, -0.647711, 0.631105, 0, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="CameraRoot/RotationRoot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)

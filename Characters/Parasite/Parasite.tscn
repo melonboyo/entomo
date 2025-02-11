@@ -20,6 +20,7 @@ radius = 1.58
 
 [node name="Parasite" instance=ExtResource("1_lhite")]
 collision_layer = 6
+floor_max_angle = 0.959931
 script = ExtResource("1_a2cng")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." index="0"]

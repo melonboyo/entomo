@@ -6,7 +6,7 @@ class_name GenericCharacterController extends CharacterBody3D
 @export var game_state_manager: GameStateManager
 @export var SPEED = 5.0
 @export var JUMP_VELOCITY = 4.5
-@export var CAMERA_SIZE = 10 # Assumes orthographic camera
+#@export var CAMERA_SIZE = 10 # Assumes orthographic camera
 var held_character: GenericCharacterController = null
 
 var is_in_switch_area := false
@@ -26,7 +26,9 @@ func _physics_process(delta: float) -> void:
 # The generic character uses gravity
 func handleGravity(delta: float) -> void:
 	if not is_on_floor():
-			velocity += get_gravity() * delta
+		velocity += get_gravity() * delta
+	#else:
+		#velocity = velocity * Vector3(1,0,1)
 
 # The generic character jumps when the jump button is pressed and they are on the ground, override this in the creature-specific script for additional functionality 
 func handleJump() -> void:

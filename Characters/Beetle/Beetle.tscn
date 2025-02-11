@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://ceq3k2pduj7cb"]
 
 [ext_resource type="PackedScene" uid="uid://baiok6rvrnsqh" path="res://Characters/Generic/GenericCharacter.tscn" id="1_yggj8"]
-[ext_resource type="Script" path="res://Characters/Beetle/Beetle.gd" id="2_6n07y"]
+[ext_resource type="Script" path="res://Characters/Beetle/BeetleController.gd" id="2_6n07y"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_f2lf7"]
 radius = 1.0
@@ -15,6 +15,9 @@ radius = 1.74963
 
 [node name="Beetle" instance=ExtResource("1_yggj8")]
 script = ExtResource("2_6n07y")
+walk_acceleration = 10.0
+roll_acceleration = 5.0
+air_acceleration = 0.5
 size = 2
 
 [node name="CollisionShape3D" parent="." index="0"]
