@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dqkke1lxyvwta"]
+[gd_scene load_steps=5 format=3 uid="uid://dqkke1lxyvwta"]
 
 [ext_resource type="Script" path="res://Ramp.gd" id="1_vrnmi"]
 
@@ -9,14 +9,26 @@ size = Vector3(1, 0.5, 1)
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_yxd1h"]
 points = PackedVector3Array(-0.5, -0.25, -0.5, -0.5, -0.25, 0.5, 0.5, 0.25, -0.5, 0.5, -0.25, -0.5, 0.5, -0.25, 0.5, 0.5, 0.25, 0.5)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_qh8od"]
+size = Vector3(0.592773, 0.435913, 0.506592)
+
 [node name="Ramp" type="StaticBody3D"]
-transform = Transform3D(-0.1, 0, -8.74228e-09, 0, 2, 0, 8.74228e-09, 0, -0.1, -3.16206, 1.40654, 4.34067)
+transform = Transform3D(-40, 0, -4.83187e-06, 0, 40, 0, 6.03983e-06, 0, -32, -3.16206, 17.0792, 4.34067)
 script = ExtResource("1_vrnmi")
+RAMPBOOST = 40.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, -0.236486, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.236486, 0)
 mesh = SubResource("PrismMesh_2j74g")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, -0.205912, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.235256, 0)
 shape = SubResource("ConvexPolygonShape3D_yxd1h")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, -1.42109e-14, 0, 1, 0, 4.41958e-12, 0, 1, 0.113769, 0.0189819, -0.164185)
+shape = SubResource("BoxShape3D_qh8od")
+
+[connection signal="body_entered" from="Area3D" to="." method="OnObjectUseRamp"]

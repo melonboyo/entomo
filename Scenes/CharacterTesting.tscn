@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://GameController/Camera.gd" id="1_gdsmn"]
 [ext_resource type="PackedScene" uid="uid://cxrj60oxxptdh" path="res://Characters/Parasite/Parasite.tscn" id="1_htcmh"]
 [ext_resource type="PackedScene" uid="uid://dclrt7yy6gtq6" path="res://GameStateManager/GameStateManager.tscn" id="2_lrlr4"]
-[ext_resource type="PackedScene" uid="uid://ceq3k2pduj7cb" path="res://Characters/Beetle/Beetle.tscn" id="4_4n16y"]
+[ext_resource type="PackedScene" uid="uid://ceq3k2pduj7cb" path="res://Beetle.tscn" id="4_4n16y"]
 [ext_resource type="Script" path="res://Ramp.gd" id="4_rxyvj"]
 [ext_resource type="Script" path="res://Scenes/Movable.gd" id="4_tq0gy"]
 [ext_resource type="PackedScene" uid="uid://dqkke1lxyvwta" path="res://Scenes/ramp.tscn" id="5_1j333"]
@@ -43,8 +43,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0768722, 1.8717, 1.8559)
 
 [node name="Beetle" parent="." instance=ExtResource("4_4n16y")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -2.74594, 2.5381, 2.45707)
-ROLLSPEED = 20.0
-RAMPBOOST = 9.85
+ROLLSPEED = 150.0
+MAXROLLSPEED = 500.0
 
 [node name="Area3D2" type="Area3D" parent="Beetle"]
 

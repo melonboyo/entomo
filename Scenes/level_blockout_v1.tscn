@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://GameController/Camera.gd" id="1_x6jyc"]
 [ext_resource type="PackedScene" uid="uid://dclrt7yy6gtq6" path="res://GameStateManager/GameStateManager.tscn" id="2_cqo16"]
 [ext_resource type="PackedScene" uid="uid://d345ctgph51uj" path="res://Characters/Bumblebee/Bumblebee.tscn" id="4_usii5"]
-[ext_resource type="PackedScene" uid="uid://ceq3k2pduj7cb" path="res://Characters/Beetle/Beetle.tscn" id="5_7jldt"]
+[ext_resource type="PackedScene" uid="uid://ceq3k2pduj7cb" path="res://Beetle.tscn" id="5_7jldt"]
 [ext_resource type="PackedScene" uid="uid://dqkke1lxyvwta" path="res://Scenes/ramp.tscn" id="6_vnun7"]
 [ext_resource type="Script" path="res://Scenes/Movable.gd" id="7_yxptn"]
 [ext_resource type="PackedScene" uid="uid://b4v7eokxybk5v" path="res://Characters/Frog/Frog.tscn" id="8_slu6r"]
@@ -31,7 +31,7 @@ size = Vector3(1.78229, 1, 1)
 transform = Transform3D(1.01827, 0, 0, 0, 1.01827, 0, 0, 0, 1.01827, 0, 0, 0)
 
 [node name="GameStateManager" parent="." node_paths=PackedStringArray("currentPossessedCreature", "camera") instance=ExtResource("2_cqo16")]
-currentPossessedCreature = NodePath("../Bumblebee")
+currentPossessedCreature = NodePath("../Beetle")
 camera = NodePath("../CameraRoot/RotationRoot/Camera3D")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -48,8 +48,8 @@ jumpForwardVelocity = 60
 
 [node name="Beetle" parent="." instance=ExtResource("5_7jldt")]
 transform = Transform3D(23.867, 0, 0, 0, 23.867, 0, 0, 0, 23.867, 142.38, 20.6871, -19.7749)
-ROLLSPEED = 150.0
-RAMPBOOST = 20.0
+ROLLSPEED = 250.0
+MAXROLLSPEED = 600.0
 SPEED = 50.0
 CAMERA_SIZE = 150
 
@@ -222,13 +222,13 @@ fov = 40.0
 size = 20.0
 
 [node name="Ramp" parent="." instance=ExtResource("6_vnun7")]
-transform = Transform3D(-1.373, 0, -2.07317e-07, 0, 27.515, 0, 2.07317e-07, 0, -1.373, 122.935, 23.4456, -64.1193)
+transform = Transform3D(-40, 0, -6.03983e-06, 0, 40, 0, 6.03983e-06, 0, -40, 122.935, 27.5375, -64.1193)
 
 [node name="Ramp2" parent="." instance=ExtResource("6_vnun7")]
-transform = Transform3D(0.00124815, -0.0219177, -1.373, 0.000690361, 27.515, -0.00109308, 1.373, -0.0138155, 0.00124868, -122.698, 23.4456, -13.265)
+transform = Transform3D(0.0363649, -0.0318629, -40, 0.0201125, 40, -0.0318446, 40, -0.0200835, 0.0363809, -122.698, 27.5375, -20.8411)
 
 [node name="Ramp3" parent="." instance=ExtResource("6_vnun7")]
-transform = Transform3D(-6.00157e-08, 0, 1.373, 0, 27.515, 0, -1.373, 0, -6.00157e-08, -122.698, 23.4456, 72.3091)
+transform = Transform3D(-1.74846e-06, 0, 40, 0, 40, 0, -40, 0, -1.74846e-06, -122.698, 27.5375, 72.3091)
 
 [node name="Movable" type="CharacterBody3D" parent="."]
 transform = Transform3D(1.133, 0, 0, 0, 31.529, 0, 0, 0, 1.524, -49.6123, 26.9881, 188.14)
