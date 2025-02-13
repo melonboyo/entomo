@@ -1,0 +1,166 @@
+[gd_scene load_steps=13 format=3 uid="uid://bfocl56e6vpv7"]
+
+[ext_resource type="PackedScene" uid="uid://dclrt7yy6gtq6" path="res://GameStateManager/GameStateManager.tscn" id="1_lbq6a"]
+[ext_resource type="PackedScene" uid="uid://cxrj60oxxptdh" path="res://Characters/Parasite/Parasite.tscn" id="2_nyv6y"]
+[ext_resource type="PackedScene" uid="uid://ceq3k2pduj7cb" path="res://Characters/Beetle/Beetle.tscn" id="3_7au8f"]
+[ext_resource type="PackedScene" uid="uid://daoe6gj0bo2qr" path="res://Scenes/pause_menu.tscn" id="4_dwxbo"]
+[ext_resource type="PackedScene" uid="uid://d345ctgph51uj" path="res://Characters/Bumblebee/Bumblebee.tscn" id="5_j0qdc"]
+[ext_resource type="Script" path="res://GameController/Camera.gd" id="6_1gvc8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2cuf7"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_r6fp7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bfhb2"]
+albedo_color = Color(0.0224063, 0.558515, 3.85046e-06, 1)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xyw6j"]
+
+[sub_resource type="Sky" id="Sky_snt87"]
+sky_material = SubResource("ProceduralSkyMaterial_xyw6j")
+
+[sub_resource type="Environment" id="Environment_r4kk1"]
+background_mode = 2
+sky = SubResource("Sky_snt87")
+
+[node name="Scene" type="Node3D"]
+
+[node name="GameStateManager" parent="." node_paths=PackedStringArray("currentPossessedCreature", "camera") instance=ExtResource("1_lbq6a")]
+currentPossessedCreature = NodePath("../Parasite")
+camera = NodePath("../CameraRoot/RotationRoot/Camera3D")
+
+[node name="Parasite" parent="." instance=ExtResource("2_nyv6y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.07687, 1.8717, -1.1441)
+
+[node name="Beetle" parent="." instance=ExtResource("3_7au8f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.74594, 1.5727, 4.99626)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.840368, 0.542016, 0, -0.542016, 0.840368, -0.00180054, 10.4981, 31.7402)
+
+[node name="StaticGeometry" type="Node3D" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="StaticGeometry"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/StaticBody3D"]
+transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
+shape = SubResource("BoxShape3D_2cuf7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticGeometry/StaticBody3D"]
+transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0.0327587, 0, 0.0343437)
+mesh = SubResource("BoxMesh_r6fp7")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="StaticGeometry"]
+transform = Transform3D(3.81819, 0, 0, 0, 1, 0, 0, 0, 0.995793, 13.0631, 0.885279, -17.4277)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/StaticBody3D2"]
+transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
+shape = SubResource("BoxShape3D_2cuf7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticGeometry/StaticBody3D2"]
+transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
+mesh = SubResource("BoxMesh_r6fp7")
+
+[node name="StaticBody3D4" type="StaticBody3D" parent="StaticGeometry"]
+transform = Transform3D(0.897457, 0, 0, 0, 1, 0, 0, 0, 0.863455, -19.3166, 0.885279, 0.518445)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/StaticBody3D4"]
+transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
+shape = SubResource("BoxShape3D_2cuf7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticGeometry/StaticBody3D4"]
+transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
+mesh = SubResource("BoxMesh_r6fp7")
+
+[node name="StaticBody3D5" type="StaticBody3D" parent="StaticGeometry"]
+transform = Transform3D(0.495699, 0, 0, 0, 1, 0, 0, 0, 0.863455, 15.2114, 0.920635, 0.46548)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/StaticBody3D5"]
+transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
+shape = SubResource("BoxShape3D_2cuf7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticGeometry/StaticBody3D5"]
+transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
+mesh = SubResource("BoxMesh_r6fp7")
+
+[node name="StaticBody3D6" type="StaticBody3D" parent="StaticGeometry"]
+transform = Transform3D(1.6031, 0, 0, 0, 1, 0, 0, 0, 0.757805, -3.17204, 0.880396, 16.1006)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/StaticBody3D6"]
+transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
+shape = SubResource("BoxShape3D_2cuf7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticGeometry/StaticBody3D6"]
+transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
+mesh = SubResource("BoxMesh_r6fp7")
+
+[node name="StaticBody3D7" type="StaticBody3D" parent="StaticGeometry"]
+transform = Transform3D(1.40924, 0, 0.562434, 0, 1, 0, -0.483399, 0, 1.63965, 101.644, 0.966042, -17.279)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/StaticBody3D7"]
+transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
+shape = SubResource("BoxShape3D_2cuf7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticGeometry/StaticBody3D7"]
+transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
+mesh = SubResource("BoxMesh_r6fp7")
+
+[node name="StaticBody3D8" type="StaticBody3D" parent="StaticGeometry"]
+transform = Transform3D(0.657486, 0, 0.235507, 0, 10.7162, 0, -0.165564, 0, 0.935244, 111.074, 4.78478, -26.1555)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/StaticBody3D8"]
+transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
+shape = SubResource("BoxShape3D_2cuf7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticGeometry/StaticBody3D8"]
+transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
+mesh = SubResource("BoxMesh_r6fp7")
+
+[node name="StaticBody3D9" type="StaticBody3D" parent="StaticGeometry"]
+transform = Transform3D(0.367467, 0, 0, 0, 8.93073, 0, 0, 0, 1.46674, 27.7215, 0.965886, -17.9537)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/StaticBody3D9"]
+transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
+shape = SubResource("BoxShape3D_2cuf7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticGeometry/StaticBody3D9"]
+transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
+mesh = SubResource("BoxMesh_r6fp7")
+
+[node name="StaticBody3D10" type="StaticBody3D" parent="StaticGeometry"]
+transform = Transform3D(0.111326, 0, -0.104535, 0, 2.53848, 0, 0.0844398, 0, 0.13782, 117.221, 10.8185, -21.8141)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/StaticBody3D10"]
+transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
+shape = SubResource("BoxShape3D_2cuf7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticGeometry/StaticBody3D10"]
+transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
+mesh = SubResource("BoxMesh_r6fp7")
+surface_material_override/0 = SubResource("StandardMaterial3D_bfhb2")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_r4kk1")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("4_dwxbo")]
+visible = false
+
+[node name="Bumblebee" parent="." instance=ExtResource("5_j0qdc")]
+transform = Transform3D(0.421448, 0, -0.906853, 0, 1, 0, 0.906853, 0, 0.421448, -3.24928, 0.504695, -3.09863)
+
+[node name="CameraRoot" type="Node3D" parent="." node_paths=PackedStringArray("camera", "game_state_machine")]
+process_priority = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.16028, 1.55166, 2.964)
+script = ExtResource("6_1gvc8")
+camera = NodePath("RotationRoot/Camera3D")
+game_state_machine = NodePath("../GameStateManager")
+
+[node name="RotationRoot" type="Node3D" parent="CameraRoot"]
+transform = Transform3D(1, 0, 0, 0, 0.74444, 0.66769, 0, -0.66769, 0.74444, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraRoot/RotationRoot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.41628)
+fov = 40.0
+size = 20.0

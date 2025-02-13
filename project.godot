@@ -11,14 +11,13 @@ config_version=5
 [application]
 
 config/name="Entomo"
-run/main_scene="res://Scenes/CharacterTesting.tscn"
+run/main_scene="res://Scenes/level_blockout_v1.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://Sprites/icon.png"
 
 [display]
 
 window/size/resizable=false
-window/size/always_on_top=true
 window/stretch/mode="viewport"
 window/vsync/vsync_mode=0
 

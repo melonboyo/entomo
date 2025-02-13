@@ -12,6 +12,8 @@ var held_character: GenericCharacterController = null
 var is_in_switch_area := false
 var current_switchable_character: GenericCharacterController = null
 
+var direction_facing
+
 func _ready():
 	pass
 
@@ -29,10 +31,14 @@ func handleGravity(delta: float) -> void:
 			velocity += get_gravity() * delta
 
 # The generic character jumps when the jump button is pressed and they are on the ground, override this in the creature-specific script for additional functionality 
-func handleJump() -> void:
+func jumpButtonPressed() -> void:
+	print("Jump button pressed.")
 	if is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		print("Performed jump.")
+		
+func jumpButtonReleased() -> void:
+	print("Jump button released.");
 
 # The handleMove method of Generic Character Controller is called every tick
 func handleMove(input_dir: Vector2, camera_basis: Basis, delta: float) -> void:
@@ -41,6 +47,7 @@ func handleMove(input_dir: Vector2, camera_basis: Basis, delta: float) -> void:
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
+		direction_facing = direction
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
@@ -58,8 +65,11 @@ func handleInteract() -> void:
 		return
 
 # The generic character has no special ability, override this in the creature-specific script
-func handleSpecialAbility() -> void:
-	print("Performed special ability.")
+func specialAbilityButtonPressed() -> void:
+	print("Special ability button pressed.")
+	
+func specialAbilityButtonReleased() -> void:
+	print("Special ability button released.")
 
 # Switch to another character
 func handleSwitch() -> void:

@@ -18,7 +18,9 @@ func _physics_process(delta: float) -> void:
 	
 	# Handle jump
 	if Input.is_action_just_pressed("move_jump"):
-		currentPossessedCreature.handleJump()
+		currentPossessedCreature.jumpButtonPressed()
+	if Input.is_action_just_released("move_jump"):
+		currentPossessedCreature.jumpButtonReleased()
 	
 	# Handle moving
 	currentPossessedCreature.handleMove(
@@ -32,8 +34,10 @@ func _physics_process(delta: float) -> void:
 		currentPossessedCreature.handleInteract()
 	
 	# Handle Special Ability
-	if(Input.is_action_just_pressed("special_ability")):
-		currentPossessedCreature.handleSpecialAbility()
+	if Input.is_action_just_pressed("special_ability"):
+		currentPossessedCreature.specialAbilityButtonPressed()
+	if Input.is_action_just_released("special_ability"):
+		currentPossessedCreature.specialAbilityButtonReleased()
 
 
 func switchCharacter(character: GenericCharacterController):
