@@ -3,6 +3,18 @@
 [ext_resource type="Script" path="res://Characters/Generic/GenericCharacterController.gd" id="1_cd5ot"]
 
 [node name="GenericCharacter" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 3
 script = ExtResource("1_cd5ot")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+
+[node name="SwitchArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SwitchArea"]
+
+[connection signal="body_entered" from="SwitchArea" to="." method="_on_switch_area_body_entered"]
+[connection signal="body_exited" from="SwitchArea" to="." method="_on_switch_area_body_exited"]
