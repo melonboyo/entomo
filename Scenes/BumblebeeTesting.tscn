@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dclrt7yy6gtq6" path="res://GameStateManager/GameStateManager.tscn" id="1_lbq6a"]
 [ext_resource type="PackedScene" uid="uid://cxrj60oxxptdh" path="res://Characters/Parasite/Parasite.tscn" id="2_nyv6y"]
-[ext_resource type="PackedScene" uid="uid://ceq3k2pduj7cb" path="res://Characters/Beetle/Beetle.tscn" id="3_7au8f"]
+[ext_resource type="PackedScene" uid="uid://ceq3k2pduj7cb" path="res://Characters/Pillbug/Pillbug.tscn" id="3_i0dll"]
 [ext_resource type="PackedScene" uid="uid://daoe6gj0bo2qr" path="res://Scenes/pause_menu.tscn" id="4_dwxbo"]
 [ext_resource type="PackedScene" uid="uid://d345ctgph51uj" path="res://Characters/Bumblebee/Bumblebee.tscn" id="5_j0qdc"]
 [ext_resource type="Script" path="res://GameController/Camera.gd" id="6_1gvc8"]
@@ -32,7 +32,7 @@ camera = NodePath("../CameraRoot/RotationRoot/Camera3D")
 [node name="Parasite" parent="." instance=ExtResource("2_nyv6y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.07687, 1.8717, -1.1441)
 
-[node name="Beetle" parent="." instance=ExtResource("3_7au8f")]
+[node name="Pillbug" parent="." instance=ExtResource("3_i0dll")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.74594, 1.5727, 4.99626)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -150,12 +150,11 @@ visible = false
 [node name="Bumblebee" parent="." instance=ExtResource("5_j0qdc")]
 transform = Transform3D(0.421448, 0, -0.906853, 0, 1, 0, 0.906853, 0, 0.421448, -3.24928, 0.504695, -3.09863)
 
-[node name="CameraRoot" type="Node3D" parent="." node_paths=PackedStringArray("camera", "game_state_machine")]
+[node name="CameraRoot" type="Node3D" parent="." node_paths=PackedStringArray("camera")]
 process_priority = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.16028, 1.55166, 2.964)
 script = ExtResource("6_1gvc8")
 camera = NodePath("RotationRoot/Camera3D")
-game_state_machine = NodePath("../GameStateManager")
 
 [node name="RotationRoot" type="Node3D" parent="CameraRoot"]
 transform = Transform3D(1, 0, 0, 0, 0.74444, 0.66769, 0, -0.66769, 0.74444, 0, 0, 0)

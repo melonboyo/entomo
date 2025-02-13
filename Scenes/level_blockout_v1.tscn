@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://GameController/Camera.gd" id="1_x6jyc"]
 [ext_resource type="PackedScene" uid="uid://dclrt7yy6gtq6" path="res://GameStateManager/GameStateManager.tscn" id="2_cqo16"]
 [ext_resource type="PackedScene" uid="uid://d345ctgph51uj" path="res://Characters/Bumblebee/Bumblebee.tscn" id="4_usii5"]
-[ext_resource type="PackedScene" uid="uid://ceq3k2pduj7cb" path="res://Beetle.tscn" id="5_43pp8"]
+[ext_resource type="PackedScene" uid="uid://ceq3k2pduj7cb" path="res://Characters/Pillbug/Pillbug.tscn" id="5_d4u6e"]
 [ext_resource type="PackedScene" uid="uid://dqkke1lxyvwta" path="res://Scenes/ramp.tscn" id="6_vnun7"]
 [ext_resource type="Script" path="res://Scenes/Movable.gd" id="7_yxptn"]
 [ext_resource type="PackedScene" uid="uid://b4v7eokxybk5v" path="res://Characters/Frog/Frog.tscn" id="8_slu6r"]
@@ -48,11 +48,10 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 159.06
 jumpForwardVelocity = 60
 game_state_manager = NodePath("../GameStateManager")
 
-[node name="Pillbug" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("5_43pp8")]
+[node name="Pillbug" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("5_d4u6e")]
 transform = Transform3D(23.867, 0, 0, 0, 23.867, 0, 0, 0, 23.867, 142.38, 20.6871, -19.7749)
 ROLLSPEED = 250.0
 MAXROLLSPEED = 650.0
-size = 3
 game_state_manager = NodePath("../GameStateManager")
 SPEED = 50.0
 CAMERA_SIZE = 150
