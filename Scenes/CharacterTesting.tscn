@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dyudv4itc62ua"]
+[gd_scene load_steps=16 format=3 uid="uid://dyudv4itc62ua"]
 
 [ext_resource type="Script" path="res://GameController/Camera.gd" id="1_gdsmn"]
 [ext_resource type="PackedScene" uid="uid://cxrj60oxxptdh" path="res://Characters/Parasite/Parasite.tscn" id="1_htcmh"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://ceq3k2pduj7cb" path="res://Beetle.tscn" id="4_4n16y"]
 [ext_resource type="Script" path="res://Ramp.gd" id="4_rxyvj"]
 [ext_resource type="Script" path="res://Scenes/Movable.gd" id="4_tq0gy"]
-[ext_resource type="PackedScene" uid="uid://dqkke1lxyvwta" path="res://Scenes/ramp.tscn" id="5_1j333"]
 [ext_resource type="PackedScene" uid="uid://daoe6gj0bo2qr" path="res://Scenes/pause_menu.tscn" id="5_c0eho"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_cxvp0"]
@@ -35,21 +34,21 @@ sky = SubResource("Sky_snt87")
 [node name="Scene" type="Node3D"]
 
 [node name="GameStateManager" parent="." node_paths=PackedStringArray("currentPossessedCreature", "camera") instance=ExtResource("2_lrlr4")]
-currentPossessedCreature = NodePath("../Beetle")
+currentPossessedCreature = NodePath("../Parasite")
 camera = NodePath("../CameraRoot/RotationRoot/Camera3D")
 
 [node name="Parasite" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("1_htcmh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0768722, 1.8717, 1.8559)
 game_state_manager = NodePath("../GameStateManager")
 
-[node name="Beetle" parent="." instance=ExtResource("4_4n16y")]
+[node name="Pillbug" parent="." instance=ExtResource("4_4n16y")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -2.74594, 2.5381, 2.45707)
 ROLLSPEED = 150.0
 MAXROLLSPEED = 500.0
 
-[node name="Area3D2" type="Area3D" parent="Beetle"]
+[node name="Area3D2" type="Area3D" parent="Pillbug"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Beetle/Area3D2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pillbug/Area3D2"]
 shape = SubResource("SphereShape3D_cxvp0")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -102,8 +101,6 @@ shape = SubResource("BoxShape3D_2cuf7")
 transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
 mesh = SubResource("BoxMesh_r6fp7")
 
-[node name="Ramp" parent="StaticGeometry" instance=ExtResource("5_1j333")]
-
 [node name="Ramp2" type="StaticBody3D" parent="StaticGeometry"]
 transform = Transform3D(-4.37114e-09, 0, -0.1, 0, 2, 0, 0.1, 0, -4.37114e-09, -12.6019, 1.40654, 4.34067)
 script = ExtResource("4_rxyvj")
@@ -153,7 +150,6 @@ size = 20.0
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("5_c0eho")]
 visible = false
 
-[connection signal="child_entered_tree" from="Beetle" to="Beetle" method="detectCollision"]
-[connection signal="body_entered" from="Beetle/Area3D2" to="Beetle" method="detectCollision"]
-
 [connection signal="zoom_changed" from="GameStateManager" to="CameraRoot" method="_on_zoom_changed"]
+[connection signal="child_entered_tree" from="Pillbug" to="Pillbug" method="detectCollision"]
+[connection signal="body_entered" from="Pillbug/Area3D2" to="Pillbug" method="detectCollision"]

@@ -15,7 +15,7 @@ size = Vector3(0.592773, 0.435913, 0.506592)
 [node name="Ramp" type="StaticBody3D"]
 transform = Transform3D(-40, 0, -4.83187e-06, 0, 40, 0, 6.03983e-06, 0, -32, -3.16206, 17.0792, 4.34067)
 script = ExtResource("1_vrnmi")
-RAMPBOOST = 40.0
+RAMPBOOST = 50.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.236486, 0)

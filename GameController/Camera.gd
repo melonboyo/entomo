@@ -58,6 +58,6 @@ func zoom():
 	zoom_tween.tween_property(camera, "position:z", target_z_pos, duration)
 
 # Changes zoom when this function receives a zoom changed signal
-func _on_zoom_changed(character: GenericCharacterController):
+func _on_game_state_manager_zoom_changed(character: GenericCharacterController) -> void:
 	zoom_level = character.size
 	focus = character

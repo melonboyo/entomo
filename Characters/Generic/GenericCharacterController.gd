@@ -70,7 +70,6 @@ func specialAbilityButtonPressed() -> void:
 	
 func specialAbilityButtonReleased() -> void:
 	print("Special ability button released.")
-	
 
 # Switch to another character
 func handleSwitch() -> void:
