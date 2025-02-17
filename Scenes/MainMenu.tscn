@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://cpn7kar3goqrl"]
+[gd_scene load_steps=5 format=3 uid="uid://cpn7kar3goqrl"]
 
+[ext_resource type="Script" path="res://Scenes/main_menu.gd" id="1_dwquw"]
 [ext_resource type="FontFile" uid="uid://0pcsmgvhx3hf" path="res://Kavoon-Regular.ttf" id="1_eo1fa"]
 [ext_resource type="StyleBox" uid="uid://dhgnclwd1fv1p" path="res://buttonstyle.tres" id="2_nwlum"]
 
@@ -13,6 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_dwquw")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -82,3 +84,7 @@ theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("1_eo1fa")
 theme_override_font_sizes/font_size = 64
 text = "Entomo"
+
+[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

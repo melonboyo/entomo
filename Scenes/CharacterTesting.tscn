@@ -147,8 +147,9 @@ size = 20.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("5_c0eho")]
+[node name="PauseMenu" parent="CanvasLayer" node_paths=PackedStringArray("game_manager") instance=ExtResource("5_c0eho")]
 visible = false
+game_manager = NodePath("../../GameStateManager")
 
 [connection signal="zoom_changed" from="GameStateManager" to="CameraRoot" method="_on_zoom_changed"]
 [connection signal="child_entered_tree" from="Pillbug" to="Pillbug" method="detectCollision"]
