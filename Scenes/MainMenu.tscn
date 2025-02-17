@@ -47,6 +47,7 @@ size_flags_stretch_ratio = 2.0
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("1_eo1fa")
 theme_override_font_sizes/font_size = 32
+theme_override_styles/hover = ExtResource("2_nwlum")
 theme_override_styles/normal = ExtResource("2_nwlum")
 text = "Play"
 
@@ -57,6 +58,7 @@ size_flags_stretch_ratio = 2.0
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("1_eo1fa")
 theme_override_font_sizes/font_size = 32
+theme_override_styles/hover = ExtResource("2_nwlum")
 theme_override_styles/normal = ExtResource("2_nwlum")
 text = "Options"
 
@@ -67,6 +69,7 @@ size_flags_stretch_ratio = 2.0
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("1_eo1fa")
 theme_override_font_sizes/font_size = 32
+theme_override_styles/hover = ExtResource("2_nwlum")
 theme_override_styles/normal = ExtResource("2_nwlum")
 text = "Quit"
 
