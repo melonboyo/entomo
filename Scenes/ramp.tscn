@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dqkke1lxyvwta"]
 
-[ext_resource type="Script" path="res://Scenes/Ramp.gd" id="1_vrnmi"]
+[ext_resource type="Script" path="res://Scripts/Ramp.gd" id="1_vrnmi"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_2j74g"]
 left_to_right = 1.0

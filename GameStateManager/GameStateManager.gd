@@ -48,7 +48,7 @@ var game_paused : bool = false:
 		get_tree().paused = game_paused
 		emit_signal("toggle_game_paused", game_paused)
 func _input(event: InputEvent):
-		if(event.is_action_pressed("escape")):
+		if(event.is_action_pressed("pause")):
 			game_paused = !game_paused
 		
 

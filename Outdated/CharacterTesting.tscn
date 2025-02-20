@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cxrj60oxxptdh" path="res://Characters/Parasite/Parasite.tscn" id="2_mqpb6"]
 [ext_resource type="PackedScene" uid="uid://ceq3k2pduj7cb" path="res://Outdated/Beetle.tscn" id="3_v5ndc"]
 [ext_resource type="Script" path="res://Scripts/Movable.gd" id="4_yf3l1"]
-[ext_resource type="Script" path="res://Scenes/Ramp.gd" id="5_q0h12"]
+[ext_resource type="Script" path="res://Scripts/Ramp.gd" id="5_q0h12"]
 [ext_resource type="Script" path="res://GameController/Camera.gd" id="6_bmj2q"]
 [ext_resource type="PackedScene" uid="uid://daoe6gj0bo2qr" path="res://Scenes/pause_menu.tscn" id="7_ipqrc"]
 
