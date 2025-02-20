@@ -1,14 +1,15 @@
-[gd_scene load_steps=19 format=3 uid="uid://cfyb34soy0h7x"]
+[gd_scene load_steps=20 format=3 uid="uid://cfyb34soy0h7x"]
 
 [ext_resource type="PackedScene" uid="uid://cxrj60oxxptdh" path="res://Characters/Parasite/Parasite.tscn" id="1_nc2ee"]
 [ext_resource type="Script" path="res://GameController/Camera.gd" id="1_x6jyc"]
 [ext_resource type="PackedScene" uid="uid://dclrt7yy6gtq6" path="res://GameStateManager/GameStateManager.tscn" id="2_cqo16"]
-[ext_resource type="PackedScene" uid="uid://ceq3k2pduj7cb" path="res://Characters/Pillbug/Pillbug.tscn" id="4_5rpnx"]
+[ext_resource type="PackedScene" uid="uid://ceq3k2pduj7cb" path="res://Outdated/Beetle.tscn" id="4_5rpnx"]
 [ext_resource type="PackedScene" uid="uid://d345ctgph51uj" path="res://Characters/Bumblebee/Bumblebee.tscn" id="4_usii5"]
 [ext_resource type="PackedScene" uid="uid://dqkke1lxyvwta" path="res://Scenes/ramp.tscn" id="6_vnun7"]
 [ext_resource type="Script" path="res://Scripts/Movable.gd" id="7_yxptn"]
 [ext_resource type="Script" path="res://Scripts/paint.gd" id="8_47fge"]
 [ext_resource type="PackedScene" uid="uid://b4v7eokxybk5v" path="res://Characters/Frog/Frog.tscn" id="8_slu6r"]
+[ext_resource type="PackedScene" uid="uid://daoe6gj0bo2qr" path="res://Scenes/pause_menu.tscn" id="10_khvnh"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_75gon"]
 
@@ -344,5 +345,8 @@ shape = SubResource("BoxShape3D_ww5pt")
 transform = Transform3D(21.1851, 0, 0, 0, 0.0652168, 0, 0, 0, 19.3849, 0, -0.482895, 0)
 mesh = SubResource("BoxMesh_he0qs")
 surface_material_override/0 = SubResource("StandardMaterial3D_iboan")
+
+[node name="PauseMenu" parent="." node_paths=PackedStringArray("game_manager") instance=ExtResource("10_khvnh")]
+game_manager = NodePath("../GameStateManager")
 
 [connection signal="zoom_changed" from="GameStateManager" to="CameraRoot" method="_on_game_state_manager_zoom_changed"]
