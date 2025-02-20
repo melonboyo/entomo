@@ -1,12 +1,12 @@
 [gd_scene load_steps=16 format=3 uid="uid://dyudv4itc62ua"]
 
-[ext_resource type="Script" path="res://GameController/Camera.gd" id="1_gdsmn"]
-[ext_resource type="PackedScene" uid="uid://cxrj60oxxptdh" path="res://Characters/Parasite/Parasite.tscn" id="1_htcmh"]
-[ext_resource type="PackedScene" uid="uid://dclrt7yy6gtq6" path="res://GameStateManager/GameStateManager.tscn" id="2_lrlr4"]
-[ext_resource type="PackedScene" uid="uid://ceq3k2pduj7cb" path="res://Beetle.tscn" id="4_4n16y"]
-[ext_resource type="Script" path="res://Ramp.gd" id="4_rxyvj"]
-[ext_resource type="Script" path="res://Scenes/Movable.gd" id="4_tq0gy"]
-[ext_resource type="PackedScene" uid="uid://daoe6gj0bo2qr" path="res://Scenes/pause_menu.tscn" id="5_c0eho"]
+[ext_resource type="PackedScene" uid="uid://dclrt7yy6gtq6" path="res://GameStateManager/GameStateManager.tscn" id="1_21fjv"]
+[ext_resource type="PackedScene" uid="uid://cxrj60oxxptdh" path="res://Characters/Parasite/Parasite.tscn" id="2_mqpb6"]
+[ext_resource type="PackedScene" uid="uid://ceq3k2pduj7cb" path="res://Outdated/Beetle.tscn" id="3_v5ndc"]
+[ext_resource type="Script" path="res://Scripts/Movable.gd" id="4_yf3l1"]
+[ext_resource type="Script" path="res://Scenes/Ramp.gd" id="5_q0h12"]
+[ext_resource type="Script" path="res://GameController/Camera.gd" id="6_bmj2q"]
+[ext_resource type="PackedScene" uid="uid://daoe6gj0bo2qr" path="res://Scenes/pause_menu.tscn" id="7_ipqrc"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_cxvp0"]
 radius = 0.546412
@@ -33,18 +33,19 @@ sky = SubResource("Sky_snt87")
 
 [node name="Scene" type="Node3D"]
 
-[node name="GameStateManager" parent="." node_paths=PackedStringArray("currentPossessedCreature", "camera") instance=ExtResource("2_lrlr4")]
+[node name="GameStateManager" parent="." node_paths=PackedStringArray("currentPossessedCreature", "camera") instance=ExtResource("1_21fjv")]
 currentPossessedCreature = NodePath("../Parasite")
 camera = NodePath("../CameraRoot/RotationRoot/Camera3D")
 
-[node name="Parasite" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("1_htcmh")]
+[node name="Parasite" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("2_mqpb6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0768722, 1.8717, 1.8559)
 game_state_manager = NodePath("../GameStateManager")
 
-[node name="Pillbug" parent="." instance=ExtResource("4_4n16y")]
+[node name="Pillbug" parent="." instance=ExtResource("3_v5ndc")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -2.74594, 2.5381, 2.45707)
 ROLLSPEED = 150.0
 MAXROLLSPEED = 500.0
+CUSTOMGRAVITY = 10.0
 
 [node name="Area3D2" type="Area3D" parent="Pillbug"]
 
@@ -91,7 +92,7 @@ mesh = SubResource("BoxMesh_r6fp7")
 
 [node name="Movable" type="CharacterBody3D" parent="StaticGeometry"]
 transform = Transform3D(0.0576948, 0, 0, 0, 1.61402, 0, 0, 0, 0.0778942, -9.03551, 1.52516, 14.2491)
-script = ExtResource("4_tq0gy")
+script = ExtResource("4_yf3l1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/Movable"]
 transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
@@ -103,7 +104,7 @@ mesh = SubResource("BoxMesh_r6fp7")
 
 [node name="Ramp2" type="StaticBody3D" parent="StaticGeometry"]
 transform = Transform3D(-4.37114e-09, 0, -0.1, 0, 2, 0, 0.1, 0, -4.37114e-09, -12.6019, 1.40654, 4.34067)
-script = ExtResource("4_rxyvj")
+script = ExtResource("5_q0h12")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticGeometry/Ramp2"]
 transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, -0.236486, 0)
@@ -115,7 +116,7 @@ shape = SubResource("ConvexPolygonShape3D_yxd1h")
 
 [node name="Ramp3" type="StaticBody3D" parent="StaticGeometry"]
 transform = Transform3D(-4.37114e-09, 0, 0.1, 0, 2, 0, -0.1, 0, -4.37114e-09, -12.6019, 1.40654, 9.00345)
-script = ExtResource("4_rxyvj")
+script = ExtResource("5_q0h12")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticGeometry/Ramp3"]
 transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, -0.236486, 0)
@@ -131,7 +132,7 @@ environment = SubResource("Environment_r4kk1")
 [node name="CameraRoot" type="Node3D" parent="." node_paths=PackedStringArray("camera", "game_state_manager", "focus")]
 process_priority = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0760577, 1.87158, 1.8563)
-script = ExtResource("1_gdsmn")
+script = ExtResource("6_bmj2q")
 camera = NodePath("RotationRoot/Camera3D")
 game_state_manager = NodePath("../GameStateManager")
 zoom_duration = 0.7
@@ -147,7 +148,7 @@ size = 20.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("5_c0eho")]
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("7_ipqrc")]
 visible = false
 
 [connection signal="zoom_changed" from="GameStateManager" to="CameraRoot" method="_on_zoom_changed"]

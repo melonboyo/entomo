@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://b52yugfrhuywh"]
+[gd_scene load_steps=4 format=3 uid="uid://tw8u6l8w1pvd"]
 
 [ext_resource type="FontFile" uid="uid://0pcsmgvhx3hf" path="res://Kavoon-Regular.ttf" id="1_xypns"]
-[ext_resource type="StyleBox" uid="uid://dhgnclwd1fv1p" path="res://buttonstyle.tres" id="2_0m3vy"]
+[ext_resource type="StyleBox" path="res://buttonstyle.tres" id="2_0m3vy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sf83b"]
 bg_color = Color(0.556863, 0.886275, 0.529412, 1)

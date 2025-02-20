@@ -11,7 +11,6 @@ var held_character: GenericCharacterController = null
 
 var is_in_switch_area := false
 var current_switchable_character: GenericCharacterController = null
-
 var direction_facing
 
 func _ready():
@@ -19,11 +18,14 @@ func _ready():
 
 # Update the physics body each physics tick
 func _physics_process(delta: float) -> void:
+	if game_state_manager.currentPossessedCreature == self:
 	# Add gravity
-	handleGravity(delta)
+		handleGravity(delta)
 	
-	# move_and_slide is called each physics tick
-	move_and_slide()
+		# move_and_slide is called each physics tick
+		move_and_slide()
+	else:
+		move_and_collide(get_gravity() * delta)
 		
 # The generic character uses gravity
 func handleGravity(delta: float) -> void:
@@ -79,11 +81,16 @@ func handleSwitch() -> void:
 	if current_switchable_character.size < size:
 		return
 	velocity = Vector3.ZERO
+	resetAbilities()
 	game_state_manager.switchCharacter(current_switchable_character)
 	current_switchable_character.held_character = self
 	disable()
 
+func resetAbilities():
+	pass
+
 func handleExit() -> void:
+	resetAbilities()
 	held_character.global_position = global_position + Vector3.RIGHT*2
 	held_character.enable()
 	game_state_manager.switchCharacter(held_character)
@@ -96,7 +103,6 @@ func _on_switch_area_body_entered(body):
 		return
 	if body == self:
 		return
-	print("Entered")
 	is_in_switch_area = true
 	current_switchable_character = body
 

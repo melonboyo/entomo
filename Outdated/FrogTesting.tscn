@@ -1,11 +1,11 @@
 [gd_scene load_steps=15 format=3 uid="uid://cxwkpvua0s77u"]
 
-[ext_resource type="PackedScene" uid="uid://dclrt7yy6gtq6" path="res://GameStateManager/GameStateManager.tscn" id="1_8ysjd"]
-[ext_resource type="PackedScene" uid="uid://cxrj60oxxptdh" path="res://Characters/Parasite/Parasite.tscn" id="2_q2sb5"]
-[ext_resource type="PackedScene" uid="uid://daoe6gj0bo2qr" path="res://Scenes/pause_menu.tscn" id="4_ioi1f"]
-[ext_resource type="PackedScene" uid="uid://d345ctgph51uj" path="res://Characters/Bumblebee/Bumblebee.tscn" id="5_fmgv7"]
-[ext_resource type="Script" path="res://GameController/Camera.gd" id="6_o56cv"]
-[ext_resource type="PackedScene" uid="uid://b4v7eokxybk5v" path="res://Characters/Frog/Frog.tscn" id="7_e6qut"]
+[ext_resource type="PackedScene" uid="uid://dclrt7yy6gtq6" path="res://GameStateManager/GameStateManager.tscn" id="1_t1sdp"]
+[ext_resource type="PackedScene" uid="uid://cxrj60oxxptdh" path="res://Characters/Parasite/Parasite.tscn" id="2_4uhq2"]
+[ext_resource type="PackedScene" uid="uid://d345ctgph51uj" path="res://Characters/Bumblebee/Bumblebee.tscn" id="3_ojhtj"]
+[ext_resource type="PackedScene" uid="uid://b4v7eokxybk5v" path="res://Characters/Frog/Frog.tscn" id="4_h84ww"]
+[ext_resource type="PackedScene" uid="uid://daoe6gj0bo2qr" path="res://Scenes/pause_menu.tscn" id="5_sh78d"]
+[ext_resource type="Script" path="res://GameController/Camera.gd" id="6_kvmrt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2cuf7"]
 
@@ -31,21 +31,21 @@ sky = SubResource("Sky_snt87")
 
 [node name="Scene" type="Node3D"]
 
-[node name="GameStateManager" parent="." node_paths=PackedStringArray("currentPossessedCreature", "camera") instance=ExtResource("1_8ysjd")]
+[node name="GameStateManager" parent="." node_paths=PackedStringArray("currentPossessedCreature", "camera") instance=ExtResource("1_t1sdp")]
 currentPossessedCreature = NodePath("../Bumblebee")
 camera = NodePath("../CameraRoot/RotationRoot/Camera3D")
 
-[node name="Parasite" parent="." instance=ExtResource("2_q2sb5")]
+[node name="Parasite" parent="." instance=ExtResource("2_4uhq2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.07687, 1.08288, 5.8559)
 
-[node name="Bumblebee" parent="." instance=ExtResource("5_fmgv7")]
+[node name="Bumblebee" parent="." instance=ExtResource("3_ojhtj")]
 transform = Transform3D(0.421448, 0, -0.906853, 0, 1, 0, 0.906853, 0, 0.421448, -3.24928, 0.504695, -3.09863)
 
-[node name="Frog" parent="." instance=ExtResource("7_e6qut")]
+[node name="Frog" parent="." instance=ExtResource("4_h84ww")]
 transform = Transform3D(-0.985019, 0, -0.172445, 0, 1, 0, 0.172445, 0, -0.985019, 147.681, 41.5512, -181.045)
 jumpForwardVelocity = 60
 
-[node name="Bumblebee2" parent="." instance=ExtResource("5_fmgv7")]
+[node name="Bumblebee2" parent="." instance=ExtResource("3_ojhtj")]
 transform = Transform3D(-0.952056, 0.000304902, -0.305926, 0.000213112, 1, 0.000333422, 0.305926, 0.000252223, -0.952056, -4.6342, 200.211, -119.548)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -456,15 +456,14 @@ environment = SubResource("Environment_r4kk1")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("4_ioi1f")]
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("5_sh78d")]
 visible = false
 
-[node name="CameraRoot" type="Node3D" parent="." node_paths=PackedStringArray("camera", "game_state_machine")]
+[node name="CameraRoot" type="Node3D" parent="." node_paths=PackedStringArray("camera")]
 process_priority = 1
 transform = Transform3D(1.00045, 0, 0, 0, 1.00045, 0, 0, 0, 1.00045, -2.16028, 1.55166, 2.964)
-script = ExtResource("6_o56cv")
+script = ExtResource("6_kvmrt")
 camera = NodePath("RotationRoot/Camera3D")
-game_state_machine = NodePath("../GameStateManager")
 
 [node name="RotationRoot" type="Node3D" parent="CameraRoot"]
 transform = Transform3D(1, 0, 0, 0, 0.74444, 0.66769, 0, -0.66769, 0.74444, 0, 0, 0)

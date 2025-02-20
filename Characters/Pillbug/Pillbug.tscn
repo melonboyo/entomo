@@ -1,11 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://ceq3k2pduj7cb"]
+[gd_scene load_steps=10 format=3 uid="uid://ceq3k2pduj7cb"]
 
 [ext_resource type="PackedScene" uid="uid://baiok6rvrnsqh" path="res://Characters/Generic/GenericCharacter.tscn" id="1_yggj8"]
 [ext_resource type="Script" path="res://Characters/Pillbug/Pillbug.gd" id="2_6n07y"]
+[ext_resource type="Script" path="res://Scripts/coloured_bug.gd" id="3_wt1y3"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_tdvly"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_pxlda"]
+
+[sub_resource type="Skin" id="Skin_u8r0o"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1o8la"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0kang"]
 
@@ -13,11 +18,12 @@
 height = 1.0
 radius = 0.985806
 
-[node name="Pillbug" instance=ExtResource("1_yggj8")]
+[node name="Pillbug" node_paths=PackedStringArray("COLOR") instance=ExtResource("1_yggj8")]
 script = ExtResource("2_6n07y")
 ROLLSPEED = 10.0
-MAXROLLSPEED = 10.0
-GRAVITYFORCE = 10.0
+MAXROLLSPEED = 600.0
+CUSTOMGRAVITY = 10.0
+COLOR = NodePath("Color")
 size = 3
 
 [node name="CollisionShape3D" parent="." index="0"]
@@ -25,6 +31,8 @@ shape = SubResource("SphereShape3D_tdvly")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
 mesh = SubResource("SphereMesh_pxlda")
+skin = SubResource("Skin_u8r0o")
+surface_material_override/0 = SubResource("StandardMaterial3D_1o8la")
 
 [node name="RampCheckArea" type="Area3D" parent="." index="2"]
 
@@ -32,7 +40,14 @@ mesh = SubResource("SphereMesh_pxlda")
 transform = Transform3D(1.05, 0, 0, 0, 1.05, 0, 0, 0, 1.05, 0, 0, 0)
 shape = SubResource("SphereShape3D_0kang")
 
+[node name="SwitchArea" parent="." index="3"]
+transform = Transform3D(1.24851, 0, 0, 0, 1.00627, 0, 0, 0, 1.00627, 0, 0, 0)
+
 [node name="CollisionShape3D" parent="SwitchArea" index="0"]
 shape = SubResource("CylinderShape3D_ow3bi")
+
+[node name="Color" type="Node" parent="." index="4" node_paths=PackedStringArray("MESH")]
+script = ExtResource("3_wt1y3")
+MESH = NodePath("../MeshInstance3D")
 
 [connection signal="body_entered" from="RampCheckArea" to="." method="detectCollision"]

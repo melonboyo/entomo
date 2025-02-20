@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dqkke1lxyvwta"]
 
-[ext_resource type="Script" path="res://Ramp.gd" id="1_vrnmi"]
+[ext_resource type="Script" path="res://Scenes/Ramp.gd" id="1_vrnmi"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_2j74g"]
 left_to_right = 1.0
@@ -15,7 +15,7 @@ size = Vector3(0.592773, 0.435913, 0.506592)
 [node name="Ramp" type="StaticBody3D"]
 transform = Transform3D(-40, 0, -4.83187e-06, 0, 40, 0, 6.03983e-06, 0, -32, -3.16206, 17.0792, 4.34067)
 script = ExtResource("1_vrnmi")
-RAMPBOOST = 50.0
+RAMPBOOST = 40.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.236486, 0)

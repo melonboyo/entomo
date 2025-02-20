@@ -14,8 +14,7 @@ radius = 0.489785
 script = ExtResource("2_6n07y")
 ROLLSPEED = 10.0
 MAXROLLSPEED = 10.0
-RAMPBOOST = 10.0
-GRAVITYFORCE = 10.0
+CUSTOMGRAVITY = 10.0
 
 [node name="CollisionShape3D" parent="." index="0"]
 shape = SubResource("BoxShape3D_f48u6")

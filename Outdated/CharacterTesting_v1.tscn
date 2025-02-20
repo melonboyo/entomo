@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=3 uid="uid://dyudv4itc62ua"]
 
-[ext_resource type="Script" path="res://GameController/Camera.gd" id="1_gdsmn"]
-[ext_resource type="PackedScene" uid="uid://cxrj60oxxptdh" path="res://Characters/Parasite/Parasite.tscn" id="1_htcmh"]
-[ext_resource type="PackedScene" uid="uid://dclrt7yy6gtq6" path="res://GameStateManager/GameStateManager.tscn" id="2_lrlr4"]
-[ext_resource type="PackedScene" uid="uid://ceq3k2pduj7cb" path="res://Characters/Beetle/Beetle.tscn" id="4_4n16y"]
-[ext_resource type="PackedScene" uid="uid://daoe6gj0bo2qr" path="res://Scenes/pause_menu.tscn" id="5_c0eho"]
+[ext_resource type="PackedScene" uid="uid://dclrt7yy6gtq6" path="res://GameStateManager/GameStateManager.tscn" id="1_ttoqe"]
+[ext_resource type="PackedScene" uid="uid://cxrj60oxxptdh" path="res://Characters/Parasite/Parasite.tscn" id="2_xd57r"]
+[ext_resource type="PackedScene" uid="uid://ceq3k2pduj7cb" path="res://Outdated/Beetle.tscn" id="3_fn3t2"]
+[ext_resource type="Script" path="res://GameController/Camera.gd" id="4_dxeas"]
+[ext_resource type="PackedScene" uid="uid://daoe6gj0bo2qr" path="res://Scenes/pause_menu.tscn" id="5_d2jnj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2cuf7"]
 
@@ -21,15 +21,16 @@ sky = SubResource("Sky_snt87")
 
 [node name="Scene" type="Node3D"]
 
-[node name="GameStateManager" parent="." node_paths=PackedStringArray("currentPossessedCreature", "camera") instance=ExtResource("2_lrlr4")]
+[node name="GameStateManager" parent="." node_paths=PackedStringArray("currentPossessedCreature", "camera") instance=ExtResource("1_ttoqe")]
 currentPossessedCreature = NodePath("../Parasite")
 camera = NodePath("../CameraRoot/RotationRoot/Camera3D")
 
-[node name="Parasite" parent="." instance=ExtResource("1_htcmh")]
+[node name="Parasite" parent="." instance=ExtResource("2_xd57r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0768722, 1.8717, 1.8559)
 
-[node name="Beetle" parent="." instance=ExtResource("4_4n16y")]
+[node name="Beetle" parent="." instance=ExtResource("3_fn3t2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.74594, 1.5727, 0.996261)
+CUSTOMGRAVITY = 10.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.840368, 0.542016, 0, -0.542016, 0.840368, -0.00180054, 10.4981, 31.7402)
@@ -93,12 +94,11 @@ mesh = SubResource("BoxMesh_r6fp7")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_r4kk1")
 
-[node name="CameraRoot" type="Node3D" parent="." node_paths=PackedStringArray("camera", "game_state_machine")]
+[node name="CameraRoot" type="Node3D" parent="." node_paths=PackedStringArray("camera")]
 process_priority = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.16028, 1.55166, 2.964)
-script = ExtResource("1_gdsmn")
+script = ExtResource("4_dxeas")
 camera = NodePath("RotationRoot/Camera3D")
-game_state_machine = NodePath("../GameStateManager")
 
 [node name="RotationRoot" type="Node3D" parent="CameraRoot"]
 transform = Transform3D(1, 0, 0, 0, 0.74444, 0.66769, 0, -0.66769, 0.74444, 0, 0, 0)
@@ -110,5 +110,5 @@ size = 20.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("5_c0eho")]
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("5_d2jnj")]
 visible = false

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dgrrljt5a3dqp"]
 
-[ext_resource type="Material" uid="uid://dijlvcyu11s31" path="res://grid.tres" id="1_cuc7h"]
+[ext_resource type="Material" uid="uid://dijlvcyu11s31" path="res://grid.tres" id="1_hf8sh"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -9,22 +9,22 @@
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.6346, 0, 7.01868)
 size = Vector3(40.2692, 1, 19.4016)
-material = ExtResource("1_cuc7h")
+material = ExtResource("1_hf8sh")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.6508, 0.238389, 44.1522)
 size = Vector3(12.1259, 1, 8.81844)
-material = ExtResource("1_cuc7h")
+material = ExtResource("1_hf8sh")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.28787, -0.022058, 21.0163)
 size = Vector3(13.5636, 1, 8.59119)
-material = ExtResource("1_cuc7h")
+material = ExtResource("1_hf8sh")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.19517, 0.546961, 40.9039)
 size = Vector3(13.1952, 1, 10.508)
-material = ExtResource("1_cuc7h")
+material = ExtResource("1_hf8sh")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.56389, 1.31759, 23.4122)
@@ -39,13 +39,13 @@ depth = 1.85
 [node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.0957, 1.23012, 31.4022)
 radius = 4.29549
-material = ExtResource("1_cuc7h")
+material = ExtResource("1_hf8sh")
 
 [node name="CSGPolygon3D2" type="CSGPolygon3D" parent="CSGCombiner3D"]
 transform = Transform3D(0.985354, -0.170518, 0.000324773, -0.00926443, -0.0554365, -0.998419, 0.170267, 0.983794, -0.0562043, -25.9694, 1.77124, 26.6457)
 operation = 2
 polygon = PackedVector2Array(0.368587, 0.220463, -0.479275, -0.480289, -2.58356, -0.115203, 0.138608, 3.59511)
-material = ExtResource("1_cuc7h")
+material = ExtResource("1_hf8sh")
 
 [node name="CSGPolygon3D3" type="CSGPolygon3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.1509, 2.2622, 32.103)
