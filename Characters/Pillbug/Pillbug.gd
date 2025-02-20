@@ -26,7 +26,6 @@ func detectCollision(collided: Node):
 		COLOR.changeColor()
 
 func resetAbilities():
-	print("reset")
 	isDashing = false
 	timeDashed = 0
 	

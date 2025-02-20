@@ -6,7 +6,7 @@ class_name GameStateManager
 @export var camera: Camera3D = null
 
 signal zoom_changed(character: GenericCharacterController)
-
+signal toggle_game_paused(is_paused : bool)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -38,7 +38,19 @@ func _physics_process(delta: float) -> void:
 		currentPossessedCreature.specialAbilityButtonPressed()
 	if Input.is_action_just_released("special_ability"):
 		currentPossessedCreature.specialAbilityButtonReleased()
-
+	
+	#handle pausing the game
+var game_paused : bool = false:
+	get:
+		return game_paused
+	set(value):
+		game_paused = value
+		get_tree().paused = game_paused
+		emit_signal("toggle_game_paused", game_paused)
+func _input(event: InputEvent):
+		if(event.is_action_pressed("escape")):
+			game_paused = !game_paused
+		
 
 func switchCharacter(character: GenericCharacterController):
 	zoom_changed.emit(character)

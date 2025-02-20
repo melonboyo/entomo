@@ -1,35 +1,38 @@
 extends Control
+@export var game_manager : GameStateManager
 
-func resume():
-	get_tree().paused = false
+func _ready():
 	hide()
-func pause():
-	get_tree().paused = true
-	
-func testEsc():
-	if Input.is_action_just_pressed("escape") and !get_tree().paused:
-		pause()
-		show()
-	elif Input.is_action_just_pressed("escape") and get_tree().paused:
-		resume()
-		hide()
+	game_manager.connect("toggle_game_paused", _on_game_manager_toggle_game_paused)
+
 
 
 
 
 
 func _on_resume_pressed():
-	resume()
+	game_manager.get_tree().paused = false
+	hide()
 
 
 func _on_restart_pressed():
-	resume()
+	
+	game_manager.get_tree().paused = false
 	get_tree().reload_current_scene()
+	
 	
 
 
 func _on_quit_pressed():
 	get_tree().quit()
-
+	
 func _process(delta):
-	testEsc()
+	pass
+
+func _on_game_manager_toggle_game_paused(is_paused : bool):
+	if(is_paused):
+		show()
+	else:
+		hide()
+	
+	

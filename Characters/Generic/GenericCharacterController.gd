@@ -75,11 +75,11 @@ func specialAbilityButtonReleased() -> void:
 
 # Switch to another character
 func handleSwitch() -> void:
-	print("Handle switch")
 	if not current_switchable_character:
 		return
-	if current_switchable_character.size < size:
+	if current_switchable_character.size < size:	
 		return
+	
 	velocity = Vector3.ZERO
 	resetAbilities()
 	game_state_manager.switchCharacter(current_switchable_character)

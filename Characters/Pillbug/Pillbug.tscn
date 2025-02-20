@@ -16,15 +16,18 @@
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ow3bi"]
 height = 1.0
-radius = 0.985806
+radius = 0.859432
 
 [node name="Pillbug" node_paths=PackedStringArray("COLOR") instance=ExtResource("1_yggj8")]
+transform = Transform3D(3.32352, 0, 0, 0, 3.32352, 0, 0, 0, 3.32352, 0, 0, 0)
 script = ExtResource("2_6n07y")
-ROLLSPEED = 10.0
-MAXROLLSPEED = 600.0
+ROLLSPEED = 300.0
+MAXROLLSPEED = 2000.0
 CUSTOMGRAVITY = 10.0
 COLOR = NodePath("Color")
 size = 3
+SPEED = 50.0
+CAMERA_SIZE = 150
 
 [node name="CollisionShape3D" parent="." index="0"]
 shape = SubResource("SphereShape3D_tdvly")

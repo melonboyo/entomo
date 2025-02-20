@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://tw8u6l8w1pvd"]
+[gd_scene load_steps=7 format=3 uid="uid://b52yugfrhuywh"]
 
 [ext_resource type="FontFile" uid="uid://0pcsmgvhx3hf" path="res://Kavoon-Regular.ttf" id="1_xypns"]
-[ext_resource type="StyleBox" path="res://buttonstyle.tres" id="2_0m3vy"]
+[ext_resource type="StyleBox" uid="uid://dhgnclwd1fv1p" path="res://buttonstyle.tres" id="2_0m3vy"]
+[ext_resource type="Script" path="res://Scenes/music_slider.gd" id="3_h5cyc"]
+[ext_resource type="Script" path="res://Scenes/sfx_slider.gd" id="4_53fsi"]
+[ext_resource type="Script" path="res://Scenes/controls.gd" id="5_l6fbn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sf83b"]
 bg_color = Color(0.556863, 0.886275, 0.529412, 1)
@@ -77,49 +80,186 @@ text = "Music volume"
 layout_mode = 2
 text = "SFX volume"
 
-[node name="Video" type="TabBar" parent="TabContainer"]
-layout_mode = 2
-metadata/_tab_index = 1
+[node name="MusicSlider" type="HSlider" parent="TabContainer/Audio"]
+layout_mode = 0
+offset_left = 151.0
+offset_top = 88.0
+offset_right = 302.0
+offset_bottom = 176.0
+max_value = 1.0
+step = 0.05
+script = ExtResource("3_h5cyc")
 
-[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Video"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 24
-theme_override_constants/margin_top = 24
-theme_override_constants/margin_right = 24
-theme_override_constants/margin_bottom = 24
-
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Video/MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 64
-alignment = 1
-
-[node name="Label" type="Label" parent="TabContainer/Video/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Screen resolution"
-
-[node name="Label2" type="Label" parent="TabContainer/Video/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "???"
+[node name="SFXSlider" type="HSlider" parent="TabContainer/Audio"]
+layout_mode = 0
+offset_left = 153.0
+offset_top = 177.0
+offset_right = 304.0
+offset_bottom = 265.0
+max_value = 1.0
+step = 0.05
+script = ExtResource("4_53fsi")
 
 [node name="Controls" type="TabBar" parent="TabContainer"]
-visible = false
 layout_mode = 2
-metadata/_tab_index = 2
+script = ExtResource("5_l6fbn")
+metadata/_tab_index = 1
 
-[node name="Button" type="Button" parent="."]
+[node name="Label" type="Label" parent="TabContainer/Controls"]
 layout_mode = 0
-offset_left = 814.0
-offset_top = 484.0
-offset_right = 1056.0
-offset_bottom = 576.0
+offset_left = 236.0
+offset_top = 9.0
+offset_right = 337.0
+offset_bottom = 32.0
+text = "Input control"
+
+[node name="Inputs" type="VBoxContainer" parent="TabContainer/Controls"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 47.0
+offset_top = -114.5
+offset_right = 519.0
+offset_bottom = 132.5
+grow_vertical = 2
+theme_override_constants/separation = 5
+
+[node name="move_left" type="HBoxContainer" parent="TabContainer/Controls/Inputs"]
+layout_mode = 2
+theme_override_constants/separation = 161
+
+[node name="Label" type="Label" parent="TabContainer/Controls/Inputs/move_left"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+text = "Move Left"
+
+[node name="Button" type="Button" parent="TabContainer/Controls/Inputs/move_left"]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "W"
+
+[node name="move_right" type="HBoxContainer" parent="TabContainer/Controls/Inputs"]
+layout_mode = 2
+theme_override_constants/separation = 151
+
+[node name="Label" type="Label" parent="TabContainer/Controls/Inputs/move_right"]
+layout_mode = 2
+text = "Move Right"
+
+[node name="Button" type="Button" parent="TabContainer/Controls/Inputs/move_right"]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "W"
+
+[node name="move_down" type="HBoxContainer" parent="TabContainer/Controls/Inputs"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/Controls/Inputs/move_down"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Move Down"
+
+[node name="Button" type="Button" parent="TabContainer/Controls/Inputs/move_down"]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "W"
+
+[node name="move_up" type="HBoxContainer" parent="TabContainer/Controls/Inputs"]
+layout_mode = 2
+theme_override_constants/separation = 161
+
+[node name="Label" type="Label" parent="TabContainer/Controls/Inputs/move_up"]
+layout_mode = 2
+text = "Move Left"
+
+[node name="Button" type="Button" parent="TabContainer/Controls/Inputs/move_up"]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "W"
+
+[node name="move_jump" type="HBoxContainer" parent="TabContainer/Controls/Inputs"]
+layout_mode = 2
+theme_override_constants/separation = 197
+
+[node name="Label" type="Label" parent="TabContainer/Controls/Inputs/move_jump"]
+layout_mode = 2
+text = "Jump"
+
+[node name="Button" type="Button" parent="TabContainer/Controls/Inputs/move_jump"]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "W"
+
+[node name="interact" type="HBoxContainer" parent="TabContainer/Controls/Inputs"]
+layout_mode = 2
+theme_override_constants/separation = 177
+
+[node name="Label" type="Label" parent="TabContainer/Controls/Inputs/interact"]
+layout_mode = 2
+text = "Interact"
+
+[node name="Button" type="Button" parent="TabContainer/Controls/Inputs/interact"]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "W"
+
+[node name="special_ability" type="HBoxContainer" parent="TabContainer/Controls/Inputs"]
+layout_mode = 2
+theme_override_constants/separation = 130
+
+[node name="Label" type="Label" parent="TabContainer/Controls/Inputs/special_ability"]
+layout_mode = 2
+text = "Special Ability"
+
+[node name="Button" type="Button" parent="TabContainer/Controls/Inputs/special_ability"]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "W"
+
+[node name="pause" type="HBoxContainer" parent="TabContainer/Controls/Inputs"]
+layout_mode = 2
+theme_override_constants/separation = 143
+
+[node name="Label" type="Label" parent="TabContainer/Controls/Inputs/pause"]
+layout_mode = 2
+text = "Pause Game"
+
+[node name="Button" type="Button" parent="TabContainer/Controls/Inputs/pause"]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "W"
+
+[node name="SaveReturn" type="Button" parent="."]
+layout_mode = 0
+offset_left = 829.0
+offset_top = 347.0
+offset_right = 1057.0
+offset_bottom = 443.0
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_xypns")
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = ExtResource("2_0m3vy")
 text = "Save & Return to Main Menu"
+autowrap_mode = 3
+
+[node name="ReturnNoSave" type="Button" parent="."]
+layout_mode = 0
+offset_left = 828.0
+offset_top = 503.0
+offset_right = 1060.0
+offset_bottom = 587.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_xypns")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("2_0m3vy")
+text = "Return without saving"
 autowrap_mode = 3
