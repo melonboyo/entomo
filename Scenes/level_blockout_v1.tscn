@@ -1,14 +1,15 @@
-[gd_scene load_steps=19 format=3 uid="uid://cfyb34soy0h7x"]
+[gd_scene load_steps=21 format=3 uid="uid://cfyb34soy0h7x"]
 
 [ext_resource type="PackedScene" uid="uid://cxrj60oxxptdh" path="res://Characters/Parasite/Parasite.tscn" id="1_nc2ee"]
 [ext_resource type="Script" path="res://GameController/Camera.gd" id="1_x6jyc"]
 [ext_resource type="PackedScene" uid="uid://dclrt7yy6gtq6" path="res://GameStateManager/GameStateManager.tscn" id="2_cqo16"]
-[ext_resource type="PackedScene" uid="uid://ceq3k2pduj7cb" path="res://Characters/Pillbug/Pillbug.tscn" id="4_5rpnx"]
+[ext_resource type="PackedScene" uid="uid://ceq3k2pduj7cb" path="res://Outdated/Beetle.tscn" id="4_5rpnx"]
 [ext_resource type="PackedScene" uid="uid://d345ctgph51uj" path="res://Characters/Bumblebee/Bumblebee.tscn" id="4_usii5"]
 [ext_resource type="PackedScene" uid="uid://dqkke1lxyvwta" path="res://Scenes/ramp.tscn" id="6_vnun7"]
 [ext_resource type="Script" path="res://Scripts/Movable.gd" id="7_yxptn"]
 [ext_resource type="Script" path="res://Scripts/paint.gd" id="8_47fge"]
 [ext_resource type="PackedScene" uid="uid://b4v7eokxybk5v" path="res://Characters/Frog/Frog.tscn" id="8_slu6r"]
+[ext_resource type="PackedScene" uid="uid://msprui4s0rep" path="res://Scenes/dragonfly.tscn" id="10_f6exh"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_75gon"]
 
@@ -32,6 +33,13 @@ size = Vector3(1, 1, 1.16724)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iboan"]
 albedo_color = Color(0.490054, 6.30031e-05, 0.430393, 1)
 
+[sub_resource type="Curve3D" id="Curve3D_r1a8g"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -393.114, 0, -71.5789, -24.3018, 0, 4.62892, 24.3018, 0, -4.62892, -313.236, 0, -91.7162, -43.9266, 0, -16.639, 43.9266, 0, 16.639, -210.29, 0, -80.2848, -29.9217, 0, -28.0022, 29.9217, 0, 28.0022, -130.644, 0, -29.9735, -38.4468, 0, -20.8418, 38.4468, 0, 20.8418, -78.2392, 0, 54.8275, 0, 0, 0, 0, 0, 0, -11.5417, 0, 80.5537, -28.9789, 0, 18.0053, 28.9789, 0, -18.0053, 54.203, 0, 72.9311, 0, 0, 0, 0, 0, 0, 102.797, 0, 25.2901),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
 [node name="Node3D" type="Node3D"]
 transform = Transform3D(1.01827, 0, 0, 0, 1.01827, 0, 0, 0, 1.01827, 0, 0, 0)
 
@@ -49,7 +57,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5629, 0.599761, 2.05833)
 game_state_manager = NodePath("../GameStateManager")
 
 [node name="Frog" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("8_slu6r")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 159.066, 23.3343, 100.022)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 159.066, 23.3343, 127.769)
 jumpForwardVelocity = 60
 size = 1
 game_state_manager = NodePath("../GameStateManager")
@@ -198,7 +206,7 @@ shape = SubResource("BoxShape3D_sa0xy")
 [node name="Stage2" type="Node" parent="Blockout"]
 
 [node name="StaticBody3D14" type="StaticBody3D" parent="Blockout/Stage2"]
-transform = Transform3D(28.1299, 0, 0, 0, 0.442988, 0, 0, 0, 35.3729, 164.799, 0.652917, 90.5439)
+transform = Transform3D(28.1299, 0, 0, 0, 0.442988, 0, 0, 0, 35.3729, 164.799, 0.652917, 118.798)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Blockout/Stage2/StaticBody3D14"]
 transform = Transform3D(3.39647, 0, 0, 0, 1, 0, 0, 0, 2.7152, 0, 0, 0)
@@ -286,7 +294,7 @@ transform = Transform3D(3.37133, 0, 0, 0, 1.00002, 0, 0, 0, 2.32313, 1.1313, 0.0
 shape = SubResource("BoxShape3D_i8oe3")
 
 [node name="StaticBody3D12" type="StaticBody3D" parent="Blockout/Stage2"]
-transform = Transform3D(39.8754, 0, 0, 0, 11.4006, 0, 0, 0, 43.8942, -101.011, 5.31772, 215.797)
+transform = Transform3D(33.0636, 0, 0, 0, 11.4006, 0, 0, 0, 43.8942, -112.439, 5.31772, 215.797)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Blockout/Stage2/StaticBody3D12"]
 transform = Transform3D(5.99284, 0, 0, 0, 1, 0, 0, 0, 2.7152, 1.09724, 0, -0.237687)
@@ -297,7 +305,7 @@ transform = Transform3D(3.37133, 0, 0, 0, 1.00002, 0, 0, 0, 2.32313, 1.09691, 0.
 shape = SubResource("BoxShape3D_i8oe3")
 
 [node name="StaticBody3D17" type="StaticBody3D" parent="Blockout/Stage2"]
-transform = Transform3D(22.3596, 0, 0, 0, 11.4006, 0, 0, 0, 37.5909, 102.5, 5.31772, 259.38)
+transform = Transform3D(29.1247, 0, 0, 0, 11.4006, 0, 0, 0, 11.8682, 75.7606, 5.31772, 252.286)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Blockout/Stage2/StaticBody3D17"]
 transform = Transform3D(5.99284, 0, 0, 0, 1, 0, 0, 0, 2.7152, 1.09724, 0, -0.237687)
@@ -344,5 +352,28 @@ shape = SubResource("BoxShape3D_ww5pt")
 transform = Transform3D(21.1851, 0, 0, 0, 0.0652168, 0, 0, 0, 19.3849, 0, -0.482895, 0)
 mesh = SubResource("BoxMesh_he0qs")
 surface_material_override/0 = SubResource("StandardMaterial3D_iboan")
+
+[node name="Dragonflies" type="Path3D" parent="Blockout/Stage2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.649, 34.1017, 120.055)
+curve = SubResource("Curve3D_r1a8g")
+
+[node name="Dragonfly" parent="Blockout/Stage2/Dragonflies" instance=ExtResource("10_f6exh")]
+transform = Transform3D(0.244451, 0, -0.969661, 0, 1, 0, 0.969661, 0, 0.244451, -393.114, 0, -71.5789)
+
+[node name="Dragonfly2" parent="Blockout/Stage2/Dragonflies" instance=ExtResource("10_f6exh")]
+transform = Transform3D(0.244486, 0, -0.969652, 0, 1, 0, 0.969652, 0, 0.244486, -344.794, 0, -84.4259)
+progress = 50.0
+
+[node name="Dragonfly3" parent="Blockout/Stage2/Dragonflies" instance=ExtResource("10_f6exh")]
+transform = Transform3D(0.0770071, 0, -0.99703, 0, 1, 0, 0.99703, 0, 0.0770071, -295.792, 0, -94.0357)
+progress = 100.0
+
+[node name="Dragonfly4" parent="Blockout/Stage2/Dragonflies" instance=ExtResource("10_f6exh")]
+transform = Transform3D(-0.198114, 0, -0.980178, 0, 1, 0, 0.980178, 0, -0.198114, -246.062, 0, -90.7193)
+progress = 150.0
+
+[node name="Dragonfly5" parent="Blockout/Stage2/Dragonflies" instance=ExtResource("10_f6exh")]
+transform = Transform3D(-0.371065, 0, -0.928606, 0, 1, 0, 0.928606, 0, -0.371065, -198.453, 0, -75.6927)
+progress = 200.0
 
 [connection signal="zoom_changed" from="GameStateManager" to="CameraRoot" method="_on_game_state_manager_zoom_changed"]
