@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cpn7kar3goqrl"]
 
-[ext_resource type="Script" path="res://Scenes/main_menu.gd" id="1_dwquw"]
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_dwquw"]
 [ext_resource type="FontFile" uid="uid://0pcsmgvhx3hf" path="res://Kavoon-Regular.ttf" id="1_eo1fa"]
 [ext_resource type="StyleBox" path="res://buttonstyle.tres" id="2_nwlum"]
 
