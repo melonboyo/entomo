@@ -4,16 +4,24 @@ class_name GameStateManager
 
 @export var currentPossessedCreature: GenericCharacterController = null
 @export var camera: Camera3D = null
+@export var first_flag: Flag
 
-signal zoom_changed(character: GenericCharacterController)
+var isInputEnabled = true
+
+signal zoom_changed(newFocus: Node3D, zoomSize: int)
 signal toggle_game_paused(is_paused : bool)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	if(first_flag != null):
+		show_flag(first_flag)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	if(currentPossessedCreature == null or camera == null):
+		return
+		
+	if(!isInputEnabled):
+		currentPossessedCreature.handleMove(Vector2.ZERO, camera.basis, delta);
 		return
 	
 	# Handle jump
@@ -53,5 +61,15 @@ func _input(event: InputEvent):
 		
 
 func switchCharacter(character: GenericCharacterController):
-	zoom_changed.emit(character)
+	zoom_changed.emit(character, character.size)
 	currentPossessedCreature = character
+
+func show_flag(next_flag: Flag):
+	print(next_flag.name);
+	isInputEnabled = false
+	zoom_changed.emit(currentPossessedCreature, next_flag.zoom_size)
+	await(get_tree().create_timer(2.0).timeout)
+	zoom_changed.emit(next_flag, next_flag.zoom_size)
+	await(get_tree().create_timer(3.0).timeout)
+	zoom_changed.emit(currentPossessedCreature, currentPossessedCreature.size)
+	isInputEnabled = true
