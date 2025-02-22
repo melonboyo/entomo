@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cfyb34soy0h7x"]
+[gd_scene load_steps=23 format=3 uid="uid://cfyb34soy0h7x"]
 
 [ext_resource type="PackedScene" uid="uid://cxrj60oxxptdh" path="res://Characters/Parasite/Parasite.tscn" id="1_nc2ee"]
 [ext_resource type="Script" path="res://GameController/Camera.gd" id="1_x6jyc"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://b4v7eokxybk5v" path="res://Characters/Frog/Frog.tscn" id="8_slu6r"]
 [ext_resource type="PackedScene" uid="uid://msprui4s0rep" path="res://Scenes/dragonfly.tscn" id="10_f6exh"]
 [ext_resource type="PackedScene" uid="uid://daoe6gj0bo2qr" path="res://Scenes/pause_menu.tscn" id="11_c6575"]
+[ext_resource type="Script" path="res://Scenes/zoomed_out_camera.gd" id="12_we45n"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_75gon"]
 
@@ -45,8 +46,8 @@ point_count = 8
 transform = Transform3D(1.01827, 0, 0, 0, 1.01827, 0, 0, 0, 1.01827, 0, 0, 0)
 
 [node name="GameStateManager" parent="." node_paths=PackedStringArray("currentPossessedCreature", "camera") instance=ExtResource("2_cqo16")]
-currentPossessedCreature = NodePath("../Parasite")
-camera = NodePath("../CameraRoot/RotationRoot/Camera3D")
+currentPossessedCreature = NodePath("../Frog")
+camera = NodePath("../ZoomedOutCamera")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.998626, 0.0130417, -0.050757, 0.0284047, 0.67923, 0.733376, 0.0440401, -0.73381, 0.677926, -0.00180054, 10.4981, 31.7402)
@@ -58,7 +59,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5629, 0.599761, 2.05833)
 game_state_manager = NodePath("../GameStateManager")
 
 [node name="Frog" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("8_slu6r")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 159.066, 23.3343, 127.769)
+transform = Transform3D(-1, 0, 8.74229e-08, 0, 1, 0, -8.74229e-08, 0, -1, 162.831, 19.9174, 135.233)
 jumpForwardVelocity = 60
 size = 1
 game_state_manager = NodePath("../GameStateManager")
@@ -68,7 +69,7 @@ transform = Transform3D(22.1209, 0, 0, 0, 22.1209, 0, 0, 0, 22.1209, 133.508, 28
 game_state_manager = NodePath("../GameStateManager")
 
 [node name="Bumblebee" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("4_usii5")]
-transform = Transform3D(0.421448, 0, -0.906853, 0, 1, 0, 0.906853, 0, 0.421448, 0.827266, 0.504695, -3.09863)
+transform = Transform3D(0.421448, 0, -0.906854, 0, 1, 0, 0.906854, 0, 0.421448, 2.52931, 0.786812, -3.09863)
 game_state_manager = NodePath("../GameStateManager")
 
 [node name="CameraRoot" type="Node3D" parent="." node_paths=PackedStringArray("camera", "game_state_manager", "focus")]
@@ -359,25 +360,31 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.649, 34.1017, 120.055)
 curve = SubResource("Curve3D_r1a8g")
 
 [node name="Dragonfly" parent="Blockout/Stage2/Dragonflies" instance=ExtResource("10_f6exh")]
-transform = Transform3D(0.244451, 0, -0.969661, 0, 1, 0, 0.969661, 0, 0.244451, -393.114, 0, -71.5789)
+transform = Transform3D(0.244452, 0, -0.969661, 0, 1, 0, 0.969661, 0, 0.244452, -393.114, 0, -71.5789)
 
 [node name="Dragonfly2" parent="Blockout/Stage2/Dragonflies" instance=ExtResource("10_f6exh")]
-transform = Transform3D(0.244486, 0, -0.969652, 0, 1, 0, 0.969652, 0, 0.244486, -344.794, 0, -84.4259)
+transform = Transform3D(0.244487, 0, -0.969652, 0, 1, 0, 0.969652, 0, 0.244487, -344.794, 0, -84.4261)
 progress = 50.0
 
 [node name="Dragonfly3" parent="Blockout/Stage2/Dragonflies" instance=ExtResource("10_f6exh")]
-transform = Transform3D(0.0770071, 0, -0.99703, 0, 1, 0, 0.99703, 0, 0.0770071, -295.792, 0, -94.0357)
+transform = Transform3D(0.0770034, 0, -0.99703, 0, 1, 0, 0.99703, 0, 0.0770034, -295.791, 0, -94.0358)
 progress = 100.0
 
 [node name="Dragonfly4" parent="Blockout/Stage2/Dragonflies" instance=ExtResource("10_f6exh")]
-transform = Transform3D(-0.198114, 0, -0.980178, 0, 1, 0, 0.980178, 0, -0.198114, -246.062, 0, -90.7193)
+transform = Transform3D(-0.198114, 0, -0.980178, 0, 1, 0, 0.980178, 0, -0.198114, -246.061, 0, -90.7193)
 progress = 150.0
 
 [node name="Dragonfly5" parent="Blockout/Stage2/Dragonflies" instance=ExtResource("10_f6exh")]
-transform = Transform3D(-0.371065, 0, -0.928605, 0, 1, 0, 0.928605, 0, -0.371065, -198.453, 0, -75.6927)
+transform = Transform3D(-0.371066, 0, -0.928605, 0, 1, 0, 0.928605, 0, -0.371066, -198.453, 0, -75.6926)
 progress = 200.0
 
 [node name="PauseMenu" parent="." node_paths=PackedStringArray("game_manager") instance=ExtResource("11_c6575")]
 game_manager = NodePath("../GameStateManager")
+
+[node name="ZoomedOutCamera" type="Camera3D" parent="."]
+transform = Transform3D(0.982058, 0, 0, 0, 0.982058, 0, 0, 0, 0.982058, 124.526, 85.8723, 280.897)
+current = true
+script = ExtResource("12_we45n")
+sensitivity = 0.736
 
 [connection signal="zoom_changed" from="GameStateManager" to="CameraRoot" method="_on_game_state_manager_zoom_changed"]

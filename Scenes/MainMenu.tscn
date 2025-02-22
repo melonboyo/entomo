@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_dwquw"]
 [ext_resource type="FontFile" uid="uid://0pcsmgvhx3hf" path="res://Kavoon-Regular.ttf" id="1_eo1fa"]
-[ext_resource type="StyleBox" path="res://buttonstyle.tres" id="2_nwlum"]
+[ext_resource type="StyleBox" uid="uid://dhgnclwd1fv1p" path="res://buttonstyle.tres" id="2_nwlum"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sf83b"]
 bg_color = Color(0.556863, 0.886275, 0.529412, 1)
