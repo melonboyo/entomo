@@ -54,14 +54,12 @@ transform = Transform3D(0.998626, 0.0130417, -0.050757, 0.0284047, 0.67923, 0.73
 shadow_enabled = true
 directional_shadow_max_distance = 3386.3
 
-[node name="Parasite" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("1_nc2ee")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5629, 0.599761, 2.05833)
+[node name="Frog" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("8_slu6r")]
+transform = Transform3D(-0.982059, 0, 8.58543e-08, 0, 0.982059, 0, -8.58543e-08, 0, -0.982059, 161.058, 37.3182, 129.632)
 game_state_manager = NodePath("../GameStateManager")
 
-[node name="Frog" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("8_slu6r")]
-transform = Transform3D(-1, 0, 8.74229e-08, 0, 1, 0, -8.74229e-08, 0, -1, 162.831, 19.9174, 135.233)
-jumpForwardVelocity = 60
-size = 1
+[node name="Parasite" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("1_nc2ee")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5629, 0.599761, 2.05833)
 game_state_manager = NodePath("../GameStateManager")
 
 [node name="Pillbug" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("4_5rpnx")]
@@ -382,7 +380,7 @@ progress = 200.0
 game_manager = NodePath("../GameStateManager")
 
 [node name="ZoomedOutCamera" type="Camera3D" parent="."]
-transform = Transform3D(0.982058, 0, 0, 0, 0.982058, 0, 0, 0, 0.982058, 124.526, 85.8723, 280.897)
+transform = Transform3D(0.982058, 0, 0, 0, 0.982058, 0, 0, 0, 0.982058, 99.5524, -4.79858, 355.641)
 current = true
 script = ExtResource("12_we45n")
 sensitivity = 0.736

@@ -45,10 +45,14 @@ func _process(delta: float) -> void:
 		currentJumpVelocityPercentage += delta / timeToReachFullJumpVelocity
 		if(currentJumpVelocityPercentage > 1):
 			currentJumpVelocityPercentage = 1
+			
+func specialAbilityButtonPressed() -> void:
+	$froggyPC_v2/AnimationPlayer.play("gape")
 		
 func jumpButtonPressed() -> void:
 	currentJumpVelocityPercentage = 0
 	isChargingJump = true
+	$froggyPC_v2/AnimationPlayer.play("idle_croak")
 		
 func jumpButtonReleased() -> void:
 	if(isChargingJump and is_on_floor()):
