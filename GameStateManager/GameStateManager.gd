@@ -10,6 +10,7 @@ var isInputEnabled = true
 
 signal zoom_changed(newFocus: Node3D, zoomSize: int)
 signal toggle_game_paused(is_paused : bool)
+signal show_victory_screen()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if(first_flag != null):
@@ -65,11 +66,18 @@ func switchCharacter(character: GenericCharacterController):
 	currentPossessedCreature = character
 
 func show_flag(next_flag: Flag):
-	print(next_flag.name);
 	isInputEnabled = false
 	zoom_changed.emit(currentPossessedCreature, next_flag.zoom_size)
 	await(get_tree().create_timer(2.0).timeout)
-	zoom_changed.emit(next_flag, next_flag.zoom_size)
+	zoom_changed.emit(next_flag, next_flag.zoom_size, next_flag.focus_move_speed)
 	await(get_tree().create_timer(3.0).timeout)
 	zoom_changed.emit(currentPossessedCreature, currentPossessedCreature.size)
 	isInputEnabled = true
+	
+func final_flag_reached():
+	isInputEnabled = false
+	zoom_changed.emit(currentPossessedCreature, 10)
+	await(get_tree().create_timer(3).timeout)
+	isInputEnabled = true
+	game_paused = !game_paused
+	show_victory_screen.emit()

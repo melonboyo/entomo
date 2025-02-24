@@ -377,6 +377,7 @@ game_state_manager = NodePath("../GameStateManager")
 [node name="Flag3" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("11_dfkrd")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 300.331, 11.3614, 129.811)
 zoom_size = 4
+focus_move_speed = 2.0
 game_state_manager = NodePath("../GameStateManager")
 
 [connection signal="zoom_changed" from="GameStateManager" to="CameraRoot" method="_on_game_state_manager_zoom_changed"]

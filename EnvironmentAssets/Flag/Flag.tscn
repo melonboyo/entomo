@@ -17,7 +17,7 @@ albedo_color = Color(0.439049, 0.439049, 0.439049, 1)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_jqlcm"]
 height = 2.96562
-radius = 0.673494
+radius = 0.105451
 
 [node name="Flag" type="Node3D" node_paths=PackedStringArray("flag_mesh")]
 script = ExtResource("1_taywr")
@@ -50,7 +50,7 @@ collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Node3D/SwitchArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3716, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48816, 0)
 shape = SubResource("CylinderShape3D_jqlcm")
 
 [connection signal="body_entered" from="Node3D/SwitchArea" to="." method="_on_switch_area_body_entered"]
