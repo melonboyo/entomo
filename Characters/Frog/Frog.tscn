@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://baiok6rvrnsqh" path="res://Characters/Generic/GenericCharacter.tscn" id="1_ufw1a"]
 [ext_resource type="Script" path="res://Characters/Frog/Frog.gd" id="2_ehqrl"]
-[ext_resource type="PackedScene" uid="uid://dblh8mbjrphkj" path="res://Characters/Frog/froggyPC_v2.glb" id="3_gn40u"]
+[ext_resource type="PackedScene" uid="uid://udcbq88gckm3" path="res://Characters/Frog/froggy_v3.glb" id="3_xspcd"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3nnd8"]
 radius = 21.24
@@ -31,5 +31,5 @@ shape = SubResource("CapsuleShape3D_3nnd8")
 [node name="CollisionShape3D" parent="SwitchArea" index="0"]
 shape = SubResource("CylinderShape3D_nc2sr")
 
-[node name="froggyPC_v2" parent="." index="2" instance=ExtResource("3_gn40u")]
-transform = Transform3D(0.417591, 0, 32.2437, 0, 32.2464, 0, -32.2437, 0, 0.417591, -1.50393, -29.2777, -1.28742)
+[node name="froggy_v3" parent="." index="2" instance=ExtResource("3_xspcd")]
+transform = Transform3D(-8.74228e-07, 0, 20, 0, 20, 0, -20, 0, -8.74228e-07, 0, -28.014, 0)

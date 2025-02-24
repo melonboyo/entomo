@@ -47,12 +47,12 @@ func _process(delta: float) -> void:
 			currentJumpVelocityPercentage = 1
 			
 func specialAbilityButtonPressed() -> void:
-	$froggyPC_v2/AnimationPlayer.play("gape")
+	$froggy_v3/AnimationPlayer.play("idle_croak")
 		
 func jumpButtonPressed() -> void:
 	currentJumpVelocityPercentage = 0
 	isChargingJump = true
-	$froggyPC_v2/AnimationPlayer.play("idle_croak")
+	$froggy_v3/AnimationPlayer.play("squish")
 		
 func jumpButtonReleased() -> void:
 	if(isChargingJump and is_on_floor()):
@@ -60,6 +60,7 @@ func jumpButtonReleased() -> void:
 			(currentJumpVelocityPercentage * JUMP_VELOCITY + minJumpVelocity) / (JUMP_VELOCITY + minJumpVelocity) * JUMP_VELOCITY,
 			currentMovementDirection if currentMovementDirection else -global_transform.basis.z.normalized()
 		)
+		$froggy_v3/AnimationPlayer.play("jump")
 
 func jump(jumpSpeed: float, direction: Vector3) -> void:
 	velocity.x = direction.x * jumpForwardVelocity
