@@ -18,5 +18,8 @@ func changeColor():
 
 func resetColor():
 	is_coloured = false	
-	MESH.mesh.surface_get_material(0).albedo_color = DEFAULT_COLOUR
+	
+	var mat = MESH.get_surface_override_material(0)	
+	mat.albedo_color = DEFAULT_COLOUR
+	MESH.set_surface_override_material(0, mat)
 	
