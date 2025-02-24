@@ -1,0 +1,383 @@
+[gd_scene load_steps=21 format=3 uid="uid://0tao5ale3dda"]
+
+[ext_resource type="PackedScene" uid="uid://dclrt7yy6gtq6" path="res://GameStateManager/GameStateManager.tscn" id="1_huvyw"]
+[ext_resource type="PackedScene" uid="uid://cxrj60oxxptdh" path="res://Characters/Parasite/Parasite.tscn" id="2_r8f3q"]
+[ext_resource type="PackedScene" uid="uid://b4v7eokxybk5v" path="res://Characters/Frog/Frog.tscn" id="3_xv73x"]
+[ext_resource type="PackedScene" uid="uid://ceq3k2pduj7cb" path="res://Outdated/Beetle.tscn" id="4_mfn8p"]
+[ext_resource type="PackedScene" uid="uid://d345ctgph51uj" path="res://Characters/Bumblebee/Bumblebee.tscn" id="5_trvcn"]
+[ext_resource type="Script" path="res://GameController/Camera.gd" id="6_34bth"]
+[ext_resource type="PackedScene" uid="uid://dqkke1lxyvwta" path="res://Scenes/ramp.tscn" id="7_obpu5"]
+[ext_resource type="Script" path="res://Scripts/Movable.gd" id="8_vtmog"]
+[ext_resource type="Script" path="res://Scripts/paint.gd" id="9_4tblv"]
+[ext_resource type="PackedScene" uid="uid://daoe6gj0bo2qr" path="res://Scenes/pause_menu.tscn" id="10_02b0i"]
+[ext_resource type="PackedScene" uid="uid://caxb37ohqq7q3" path="res://EnvironmentAssets/Flag/Flag.tscn" id="11_dfkrd"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_w67ko"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_thapk"]
+height = 2.70382
+
+[sub_resource type="BoxMesh" id="BoxMesh_7sqb2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jgxqc"]
+size = Vector3(1.74712, 1, 1.14751)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lwxw7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qbrh8"]
+size = Vector3(1, 1, 1.16724)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tnb54"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_av2wy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xq3wc"]
+albedo_color = Color(0.490054, 6.30031e-05, 0.430393, 1)
+
+[node name="ProgressionTesting" type="Node3D"]
+
+[node name="GameStateManager" parent="." node_paths=PackedStringArray("currentPossessedCreature", "camera", "first_flag") instance=ExtResource("1_huvyw")]
+currentPossessedCreature = NodePath("../Parasite")
+camera = NodePath("../CameraRoot/RotationRoot/Camera3D")
+first_flag = NodePath("../Flag")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.998626, 0.0130417, -0.050757, 0.0284047, 0.67923, 0.733376, 0.0440401, -0.73381, 0.677926, -0.00180054, 10.4981, 31.7402)
+shadow_enabled = true
+directional_shadow_max_distance = 3386.3
+
+[node name="Parasite" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("2_r8f3q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.91574, 0.794067, 1.98593)
+game_state_manager = NodePath("../GameStateManager")
+
+[node name="Frog" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("3_xv73x")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 159.066, 23.3343, 100.022)
+jumpForwardVelocity = 60
+size = 1
+game_state_manager = NodePath("../GameStateManager")
+
+[node name="Pillbug" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("4_mfn8p")]
+transform = Transform3D(22.1209, 0, 0, 0, 22.1209, 0, 0, 0, 22.1209, 133.508, 28.7439, -11.5948)
+game_state_manager = NodePath("../GameStateManager")
+
+[node name="Bumblebee" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("5_trvcn")]
+transform = Transform3D(0.421448, 0, -0.906853, 0, 1, 0, 0.906853, 0, 0.421448, 0.827266, 0.504695, -3.09863)
+game_state_manager = NodePath("../GameStateManager")
+
+[node name="CameraRoot" type="Node3D" parent="." node_paths=PackedStringArray("camera", "game_state_manager", "focus")]
+process_priority = 1
+transform = Transform3D(1.00045, 0, 0, 0, 1.00045, 0, 0, 0, 1.00045, 2.91575, 0.795018, 1.98593)
+script = ExtResource("6_34bth")
+zooms = {
+1: 10.0,
+2: 55.0,
+3: 110.0,
+4: 200.0,
+5: 500.0
+}
+camera = NodePath("RotationRoot/Camera3D")
+game_state_manager = NodePath("../GameStateManager")
+focus = NodePath("../Parasite")
+
+[node name="RotationRoot" type="Node3D" parent="CameraRoot"]
+transform = Transform3D(1, 0, 0, 0, 0.74444, 0.66769, 0, -0.66769, 0.74444, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraRoot/RotationRoot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.41628)
+fov = 40.0
+size = 20.0
+
+[node name="Blockout" type="Node3D" parent="."]
+
+[node name="Stage1" type="Node" parent="Blockout"]
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="Blockout/Stage1"]
+transform = Transform3D(12.1228, 0, 0, 0, 0.442988, 0, 0, 0, 11.6143, 2.26443, -0.159414, 0.0334194)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Blockout/Stage1/StaticBody3D2"]
+transform = Transform3D(3.39647, 0, 0, 0, 1, 0, 0, 0, 2.7152, 0, 0, 0)
+mesh = SubResource("CylinderMesh_w67ko")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blockout/Stage1/StaticBody3D2"]
+transform = Transform3D(3.37133, 0, 0, 0, 1, 0, 0, 0, 2.32313, 0, 0, 0)
+shape = SubResource("CylinderShape3D_thapk")
+
+[node name="StaticBody3D4" type="StaticBody3D" parent="Blockout/Stage1"]
+transform = Transform3D(6.36849, 0, 0, 0, 0.442988, 0, 0, 0, 5.90134, 36.3017, -0.159414, 0.0334194)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Blockout/Stage1/StaticBody3D4"]
+transform = Transform3D(3.39647, 0, 0, 0, 1, 0, 0, 0, 2.7152, 0, 0, 0)
+mesh = SubResource("CylinderMesh_w67ko")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blockout/Stage1/StaticBody3D4"]
+transform = Transform3D(3.37133, 0, 0, 0, 1, 0, 0, 0, 2.32313, 0, 0, 0)
+shape = SubResource("CylinderShape3D_thapk")
+
+[node name="StaticBody3D8" type="StaticBody3D" parent="Blockout/Stage1"]
+transform = Transform3D(8.12717, 0, 0, 0, 0.442989, 0, 0, 0, 9.23589, 79.9375, -0.159414, 0.0334194)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Blockout/Stage1/StaticBody3D8"]
+transform = Transform3D(3.39647, 0, 0, 0, 1, 0, 0, 0, 2.7152, 0, 0, 0)
+mesh = SubResource("CylinderMesh_w67ko")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blockout/Stage1/StaticBody3D8"]
+transform = Transform3D(3.37133, 0, 0, 0, 1, 0, 0, 0, 2.32313, 0, 0, 0)
+shape = SubResource("CylinderShape3D_thapk")
+
+[node name="StaticBody3D9" type="StaticBody3D" parent="Blockout/Stage1"]
+transform = Transform3D(12.996, 0, 0, 0, 11.4006, 0, 0, 0, 14.7689, 106.117, 5.31772, -10.2539)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Blockout/Stage1/StaticBody3D9"]
+transform = Transform3D(3.39647, 0, 0, 0, 0.702739, 0, 0, 0, 2.7152, 0, -0.174034, 0)
+mesh = SubResource("BoxMesh_7sqb2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blockout/Stage1/StaticBody3D9"]
+transform = Transform3D(3.33435, 0, 0, 0, 0.701525, 0, 0, 0, 2.67008, 0.826326, -0.171502, 0.00563604)
+shape = SubResource("BoxShape3D_jgxqc")
+
+[node name="StaticBody3D10" type="StaticBody3D" parent="Blockout/Stage1"]
+transform = Transform3D(26.6882, 0, 0, 0, 11.4006, 0, 0, 0, 34.4278, 158.381, 5.31772, -35.7025)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Blockout/Stage1/StaticBody3D10"]
+transform = Transform3D(5.99284, 0, 0, 0, 1, 0, 0, 0, 2.7152, 1.09724, 0, -0.237687)
+mesh = SubResource("BoxMesh_7sqb2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blockout/Stage1/StaticBody3D10"]
+transform = Transform3D(3.37133, 0, 0, 0, 1.00002, 0, 0, 0, 2.32313, 0.987305, 0.0327438, -0.0245998)
+shape = SubResource("BoxShape3D_jgxqc")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Blockout/Stage1"]
+transform = Transform3D(3.67021, 0, 0, 0, 0.391737, 0, 0, 0, 11.5811, -2.43852, 0.204851, 0.0334194)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Blockout/Stage1/StaticBody3D"]
+transform = Transform3D(1.00659, 0, 0, 0, 1.87851, 0, 0, 0, 1.00659, -0.0083586, 0, 1.9216e-05)
+mesh = SubResource("BoxMesh_lwxw7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blockout/Stage1/StaticBody3D"]
+shape = SubResource("BoxShape3D_qbrh8")
+
+[node name="StaticBody3D7" type="StaticBody3D" parent="Blockout/Stage1"]
+transform = Transform3D(5.02528, 0, 0, 0, 2.04067, 0, 0, 0, 5.00422, 26.4051, 1.97881, -10.3369)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Blockout/Stage1/StaticBody3D7"]
+transform = Transform3D(3.39647, 0, 0, 0, 0.63285, 0, 0, 0, 2.7152, 0, -0.142619, 0)
+mesh = SubResource("CylinderMesh_w67ko")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blockout/Stage1/StaticBody3D7"]
+transform = Transform3D(3.37133, 0, 0, 0, 1, 0, 0, 0, 2.32313, 0, 0, 0)
+shape = SubResource("CylinderShape3D_thapk")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="Blockout/Stage1"]
+transform = Transform3D(3.67021, 0, 0, 0, 0.391737, 0, 0, 0, 11.5811, 6.79589, 0.204851, 0.0334194)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Blockout/Stage1/StaticBody3D3"]
+transform = Transform3D(1.00659, 0, 0, 0, 1.87851, 0, 0, 0, 1.00659, 0.00822461, 0, 1.9216e-05)
+mesh = SubResource("BoxMesh_lwxw7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blockout/Stage1/StaticBody3D3"]
+shape = SubResource("BoxShape3D_qbrh8")
+
+[node name="StaticBody3D5" type="StaticBody3D" parent="Blockout/Stage1"]
+transform = Transform3D(-0.00875978, 0, -6.67594, 0, 0.391736, 0, 1.88684, 0, -0.0309935, 2.25337, 0.204851, -4.62838)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Blockout/Stage1/StaticBody3D5"]
+transform = Transform3D(1.00659, 0, -1.86265e-09, 0, 1.87851, 0, 0, 0, 1.00659, -0.016166, 0, -1.56462e-05)
+mesh = SubResource("BoxMesh_lwxw7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blockout/Stage1/StaticBody3D5"]
+shape = SubResource("BoxShape3D_qbrh8")
+
+[node name="StaticBody3D6" type="StaticBody3D" parent="Blockout/Stage1"]
+transform = Transform3D(-0.00875978, 0, -6.67594, 0, 0.391736, 0, 1.88684, 0, -0.0309935, 2.25337, 0.204851, 5.03583)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Blockout/Stage1/StaticBody3D6"]
+transform = Transform3D(1.00659, 0, -1.86265e-09, 0, 1.87851, 0, 0, 0, 1.00659, -0.016166, 0, -1.56462e-05)
+mesh = SubResource("BoxMesh_lwxw7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blockout/Stage1/StaticBody3D6"]
+shape = SubResource("BoxShape3D_qbrh8")
+
+[node name="Stage2" type="Node" parent="Blockout"]
+
+[node name="StaticBody3D14" type="StaticBody3D" parent="Blockout/Stage2"]
+transform = Transform3D(28.1299, 0, 0, 0, 0.442988, 0, 0, 0, 35.3729, 164.799, 0.652917, 90.5439)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Blockout/Stage2/StaticBody3D14"]
+transform = Transform3D(3.39647, 0, 0, 0, 1, 0, 0, 0, 2.7152, 0, 0, 0)
+mesh = SubResource("CylinderMesh_w67ko")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blockout/Stage2/StaticBody3D14"]
+transform = Transform3D(3.37133, 0, 0, 0, 1, 0, 0, 0, 2.32313, 0, 0, 0)
+shape = SubResource("CylinderShape3D_thapk")
+
+[node name="StaticBody3D18" type="StaticBody3D" parent="Blockout/Stage2"]
+transform = Transform3D(26.6882, 0, 0, 0, 16.8088, 0, 0, 0, 6.74785, 158.381, 10.8802, 13.273)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Blockout/Stage2/StaticBody3D18"]
+transform = Transform3D(5.99284, 0, 0, 0, 1, 0, 0, 0, 2.7152, 1.09724, 0, -0.237687)
+mesh = SubResource("BoxMesh_7sqb2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blockout/Stage2/StaticBody3D18"]
+transform = Transform3D(3.37133, 0, 0, 0, 1.00002, 0, 0, 0, 2.32313, 1.15509, 0.0327438, -0.0245998)
+shape = SubResource("BoxShape3D_jgxqc")
+
+[node name="StaticBody3D19" type="StaticBody3D" parent="Blockout/Stage2"]
+transform = Transform3D(26.6882, 0, 0, 0, 16.8088, 0, 0, 0, 6.74785, 158.381, 10.8802, -97.7389)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Blockout/Stage2/StaticBody3D19"]
+transform = Transform3D(5.99284, 0, 0, 0, 1, 0, 0, 0, 2.7152, 1.09724, 0, -0.237687)
+mesh = SubResource("BoxMesh_7sqb2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blockout/Stage2/StaticBody3D19"]
+transform = Transform3D(3.37133, 0, 0, 0, 1.00002, 0, 0, 0, 2.32313, 1.06393, 0.032744, -0.0245991)
+shape = SubResource("BoxShape3D_jgxqc")
+
+[node name="StaticBody3D20" type="StaticBody3D" parent="Blockout/Stage2"]
+transform = Transform3D(3.88638, 0, 0, 0, 16.8088, 0, 0, 0, 38.1463, 252.598, 10.8802, -36.2588)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Blockout/Stage2/StaticBody3D20"]
+transform = Transform3D(5.99284, 0, 0, 0, 1, 0, 0, 0, 2.7152, 1.09724, 0, -0.237687)
+mesh = SubResource("BoxMesh_7sqb2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blockout/Stage2/StaticBody3D20"]
+transform = Transform3D(3.37133, 0, 0, 0, 1.00002, 0, 0, 0, 2.32314, 1.15509, 0.0327439, -0.091464)
+shape = SubResource("BoxShape3D_jgxqc")
+
+[node name="StaticBody3D11" type="StaticBody3D" parent="Blockout/Stage2"]
+transform = Transform3D(26.6882, 0, 0, 0, 11.4006, 0, 0, 0, 95.5387, -155.298, 5.31772, -104.752)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Blockout/Stage2/StaticBody3D11"]
+transform = Transform3D(5.99284, 0, 0, 0, 1, 0, 0, 0, 2.7152, 1.09724, 0, -0.237687)
+mesh = SubResource("BoxMesh_7sqb2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blockout/Stage2/StaticBody3D11"]
+transform = Transform3D(3.37133, 0, 0, 0, 1.00002, 0, 0, 0, 2.32313, 1.15509, 0.0327438, -0.244748)
+shape = SubResource("BoxShape3D_jgxqc")
+
+[node name="StaticBody3D15" type="StaticBody3D" parent="Blockout/Stage2"]
+transform = Transform3D(9.68916, 0, 0, 0, 11.4006, 0, 0, 0, 26.163, -29.8738, 5.31772, -73.7553)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Blockout/Stage2/StaticBody3D15"]
+transform = Transform3D(5.99284, 0, 0, 0, 1, 0, 0, 0, 2.7152, 1.09724, 0, -0.237687)
+mesh = SubResource("BoxMesh_7sqb2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blockout/Stage2/StaticBody3D15"]
+transform = Transform3D(3.37133, 0, 0, 0, 1.00002, 0, 0, 0, 2.32313, 1.15509, 0.0327438, -0.226512)
+shape = SubResource("BoxShape3D_jgxqc")
+
+[node name="StaticBody3D16" type="StaticBody3D" parent="Blockout/Stage2"]
+transform = Transform3D(9.68916, 0, 0, 0, 11.4006, 0, 0, 0, 13.8877, -29.8738, 5.31773, 131.295)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Blockout/Stage2/StaticBody3D16"]
+transform = Transform3D(5.99284, 0, 0, 0, 1, 0, 0, 0, 2.7152, 1.09724, 0, -0.237687)
+mesh = SubResource("BoxMesh_7sqb2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blockout/Stage2/StaticBody3D16"]
+transform = Transform3D(3.37133, 0, 0, 0, 1.00002, 0, 0, 0, 2.32313, 0.970887, 0.0327438, -0.226512)
+shape = SubResource("BoxShape3D_jgxqc")
+
+[node name="StaticBody3D13" type="StaticBody3D" parent="Blockout/Stage2"]
+transform = Transform3D(26.6882, 0, 0, 0, 11.4006, 0, 0, 0, 34.4278, -155.298, 5.31772, 113.455)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Blockout/Stage2/StaticBody3D13"]
+transform = Transform3D(5.99284, 0, 0, 0, 1, 0, 0, 0, 2.7152, 1.09724, 0, -0.237687)
+mesh = SubResource("BoxMesh_7sqb2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blockout/Stage2/StaticBody3D13"]
+transform = Transform3D(3.37133, 0, 0, 0, 1.00002, 0, 0, 0, 2.32313, 1.1313, 0.0327438, -0.229864)
+shape = SubResource("BoxShape3D_jgxqc")
+
+[node name="StaticBody3D12" type="StaticBody3D" parent="Blockout/Stage2"]
+transform = Transform3D(39.8754, 0, 0, 0, 11.4006, 0, 0, 0, 43.8942, -101.011, 5.31772, 215.797)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Blockout/Stage2/StaticBody3D12"]
+transform = Transform3D(5.99284, 0, 0, 0, 1, 0, 0, 0, 2.7152, 1.09724, 0, -0.237687)
+mesh = SubResource("BoxMesh_7sqb2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blockout/Stage2/StaticBody3D12"]
+transform = Transform3D(3.37133, 0, 0, 0, 1.00002, 0, 0, 0, 2.32313, 1.09691, 0.0327438, -0.157808)
+shape = SubResource("BoxShape3D_jgxqc")
+
+[node name="StaticBody3D17" type="StaticBody3D" parent="Blockout/Stage2"]
+transform = Transform3D(22.3596, 0, 0, 0, 11.4006, 0, 0, 0, 37.5909, 102.5, 5.31772, 259.38)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Blockout/Stage2/StaticBody3D17"]
+transform = Transform3D(5.99284, 0, 0, 0, 1, 0, 0, 0, 2.7152, 1.09724, 0, -0.237687)
+mesh = SubResource("BoxMesh_7sqb2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blockout/Stage2/StaticBody3D17"]
+transform = Transform3D(3.37133, 0, 0, 0, 1.00002, 0, 0, 0, 2.32313, 1.15509, 0.0327438, -0.222874)
+shape = SubResource("BoxShape3D_jgxqc")
+
+[node name="Ramps" type="Node3D" parent="Blockout/Stage2"]
+transform = Transform3D(1.01827, 0, 0, 0, 1.01827, 0, 0, 0, 1.01827, 0, 0, 0)
+
+[node name="Ramp" parent="Blockout/Stage2/Ramps" instance=ExtResource("7_obpu5")]
+transform = Transform3D(-40, 0, -6.03983e-06, 0, 40, 0, 6.03983e-06, 0, -40, 122.935, 27.5375, -64.1193)
+
+[node name="Ramp2" parent="Blockout/Stage2/Ramps" instance=ExtResource("7_obpu5")]
+transform = Transform3D(0.0363649, -0.0318629, -40, 0.0201125, 40, -0.0318446, 40, -0.0200835, 0.0363809, -122.698, 27.5375, -20.8411)
+
+[node name="Ramp3" parent="Blockout/Stage2/Ramps" instance=ExtResource("7_obpu5")]
+transform = Transform3D(-1.74846e-06, 0, 40, 0, 40, 0, -40, 0, -1.74846e-06, -122.698, 27.5375, 72.3091)
+
+[node name="PaintBucket" type="CharacterBody3D" parent="Blockout/Stage2"]
+transform = Transform3D(1.1537, 0, 0, 0, 20.4856, 0, 0, 0, 1.31831, -38.0176, 23.9056, 191.577)
+script = ExtResource("8_vtmog")
+MOVESPEED = 200.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blockout/Stage2/PaintBucket"]
+transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
+shape = SubResource("BoxShape3D_tnb54")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Blockout/Stage2/PaintBucket"]
+transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
+mesh = SubResource("BoxMesh_av2wy")
+
+[node name="Paint" type="CharacterBody3D" parent="Blockout/Stage2/PaintBucket"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04719, 0)
+script = ExtResource("9_4tblv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blockout/Stage2/PaintBucket/Paint"]
+transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
+shape = SubResource("BoxShape3D_tnb54")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Blockout/Stage2/PaintBucket/Paint"]
+transform = Transform3D(21.1851, 0, 0, 0, 0.0652168, 0, 0, 0, 19.3849, 0, -0.482895, 0)
+mesh = SubResource("BoxMesh_av2wy")
+surface_material_override/0 = SubResource("StandardMaterial3D_xq3wc")
+
+[node name="StaticBody3D21" type="StaticBody3D" parent="Blockout/Stage2"]
+transform = Transform3D(22.3596, 0, 0, 0, 11.4006, 0, 0, 0, 37.5909, 273.5, 5.31772, 130.38)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Blockout/Stage2/StaticBody3D21"]
+transform = Transform3D(5.99284, 0, 0, 0, 1, 0, 0, 0, 2.7152, 1.09724, 0, -0.237687)
+mesh = SubResource("BoxMesh_7sqb2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blockout/Stage2/StaticBody3D21"]
+transform = Transform3D(3.37133, 0, 0, 0, 1.00002, 0, 0, 0, 2.32313, 1.15509, 0.0327438, -0.222874)
+shape = SubResource("BoxShape3D_jgxqc")
+
+[node name="PauseMenu" parent="." node_paths=PackedStringArray("game_manager") instance=ExtResource("10_02b0i")]
+process_mode = 2
+game_manager = NodePath("../GameStateManager")
+
+[node name="Flag" parent="." node_paths=PackedStringArray("next_flag", "game_state_manager") instance=ExtResource("11_dfkrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96.2902, 7.3614, -17.9012)
+next_flag = NodePath("../Flag2")
+zoom_size = 2
+game_state_manager = NodePath("../GameStateManager")
+
+[node name="Flag2" parent="." node_paths=PackedStringArray("next_flag", "game_state_manager") instance=ExtResource("11_dfkrd")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -129.669, 11.3614, -119.189)
+next_flag = NodePath("../Flag3")
+zoom_size = 3
+game_state_manager = NodePath("../GameStateManager")
+
+[node name="Flag3" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("11_dfkrd")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 300.331, 11.3614, 129.811)
+zoom_size = 4
+focus_move_speed = 2.0
+game_state_manager = NodePath("../GameStateManager")
+
+[connection signal="zoom_changed" from="GameStateManager" to="CameraRoot" method="_on_game_state_manager_zoom_changed"]

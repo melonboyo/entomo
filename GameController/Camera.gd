@@ -17,6 +17,7 @@ extends Node3D
 
 @export_range(0.0, 10.0) var zoom_duration := 0.9
 @export_range(0.0, 100.0) var focus_move_speed := 5.0
+var current_focus_move_speed = focus_move_speed
 @export_range(1, 10) var zoom_level := 1:
 	set(value):
 		var new_zoom_level = clampi(value, 1, zooms.size())
@@ -34,7 +35,7 @@ func _ready():
 
 func _physics_process(delta):
 	if focus and global_position.distance_to(focus.global_position) > 0.001:
-		global_position = global_position.lerp(focus.global_position, focus_move_speed * delta)
+		global_position = global_position.lerp(focus.global_position, current_focus_move_speed * delta)
 	
 	if Engine.is_editor_hint():
 		return
@@ -58,6 +59,10 @@ func zoom():
 	zoom_tween.tween_property(camera, "position:z", target_z_pos, duration)
 
 # Changes zoom when this function receives a zoom changed signal
-func _on_game_state_manager_zoom_changed(character: GenericCharacterController) -> void:
-	zoom_level = character.size
-	focus = character
+func _on_game_state_manager_zoom_changed(newFocus: Node3D, zoomSize: int, new_focus_move_speed: float = -1) -> void:
+	zoom_level = zoomSize
+	focus = newFocus
+	if(new_focus_move_speed <= 0):
+		current_focus_move_speed = focus_move_speed
+	else:
+		focus_move_speed = new_focus_move_speed
