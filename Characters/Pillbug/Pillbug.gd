@@ -24,6 +24,11 @@ func detectCollision(collided: Node):
 	
 	if(collided is Paint):
 		COLOR.changeColor()
+	elif(collided is PillbugEatingRange and COLOR.is_coloured):
+		isFlying = true
+		velocity = collided.FORCEPUSH
+		await get_tree().create_timer(0.2).timeout
+		isFlying = false
 
 func resetAbilities():
 	isDashing = false
@@ -31,7 +36,9 @@ func resetAbilities():
 	
 
 func handleMove(input_dir: Vector2, camera_basis: Basis, delta: float) -> void:
-	if isDashing :		
+	if isFlying:
+		pass
+	elif isDashing :		
 		var rollBoost = min(ROLLSPEED * timeDashed ** 2, MAXROLLSPEED)
 		
 		velocity.x = direction_facing.x * rollBoost

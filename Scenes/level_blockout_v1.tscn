@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cfyb34soy0h7x"]
+[gd_scene load_steps=24 format=3 uid="uid://cfyb34soy0h7x"]
 
 [ext_resource type="PackedScene" uid="uid://cxrj60oxxptdh" path="res://Characters/Parasite/Parasite.tscn" id="1_nc2ee"]
 [ext_resource type="Script" path="res://GameController/Camera.gd" id="1_x6jyc"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dqkke1lxyvwta" path="res://Scenes/ramp.tscn" id="6_vnun7"]
 [ext_resource type="Script" path="res://Scripts/Movable.gd" id="7_yxptn"]
 [ext_resource type="Script" path="res://Scripts/paint.gd" id="8_47fge"]
+[ext_resource type="Script" path="res://Scripts/PillbugEatingRange.gd" id="8_ha7xt"]
 [ext_resource type="PackedScene" uid="uid://b4v7eokxybk5v" path="res://Characters/Frog/Frog.tscn" id="8_slu6r"]
 [ext_resource type="PackedScene" uid="uid://msprui4s0rep" path="res://Scenes/dragonfly.tscn" id="10_f6exh"]
 [ext_resource type="PackedScene" uid="uid://daoe6gj0bo2qr" path="res://Scenes/pause_menu.tscn" id="11_c6575"]
@@ -28,6 +29,9 @@ size = Vector3(1.74712, 1, 1.14751)
 size = Vector3(1, 1, 1.16724)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ww5pt"]
+size = Vector3(1, 0.97226, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xddjs"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_he0qs"]
 
@@ -306,7 +310,7 @@ transform = Transform3D(3.37133, 0, 0, 0, 1.00002, 0, 0, 0, 2.32313, 1.09691, 0.
 shape = SubResource("BoxShape3D_i8oe3")
 
 [node name="StaticBody3D17" type="StaticBody3D" parent="Blockout/Stage2"]
-transform = Transform3D(29.1247, 0, 0, 0, 11.4006, 0, 0, 0, 11.8682, 75.7606, 5.31772, 252.286)
+transform = Transform3D(21.1415, 0, 0, 0, 11.4006, 0, 0, 0, 11.8682, 66.865, 5.31772, 252.286)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Blockout/Stage2/StaticBody3D17"]
 transform = Transform3D(5.99284, 0, 0, 0, 1, 0, 0, 0, 2.7152, 1.09724, 0, -0.237687)
@@ -328,13 +332,25 @@ transform = Transform3D(0.0363649, -0.0318629, -40, 0.0201125, 40, -0.0318446, 4
 [node name="Ramp3" parent="Blockout/Stage2/Ramps" instance=ExtResource("6_vnun7")]
 transform = Transform3D(-1.74846e-06, 0, 40, 0, 40, 0, -40, 0, -1.74846e-06, -122.698, 27.5375, 72.3091)
 
+[node name="PillbugEatingRange" type="StaticBody3D" parent="Blockout/Stage2"]
+transform = Transform3D(24.7196, 0, 0, 0, 6.30967, 0, 0, 0, 24.9233, 167.693, 7.6286, 249.278)
+script = ExtResource("8_ha7xt")
+FORCEPUSH = Vector3(0, 30, -500)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blockout/Stage2/PillbugEatingRange"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0338917, 0)
+shape = SubResource("BoxShape3D_ww5pt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Blockout/Stage2/PillbugEatingRange"]
+mesh = SubResource("BoxMesh_xddjs")
+
 [node name="PaintBucket" type="CharacterBody3D" parent="Blockout/Stage2"]
 transform = Transform3D(1.1537, 0, 0, 0, 20.4856, 0, 0, 0, 1.31831, -38.0176, 23.9056, 191.577)
 script = ExtResource("7_yxptn")
 MOVESPEED = 200.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Blockout/Stage2/PaintBucket"]
-transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
+transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0.00984168, 0)
 shape = SubResource("BoxShape3D_ww5pt")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Blockout/Stage2/PaintBucket"]
@@ -342,7 +358,7 @@ transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
 mesh = SubResource("BoxMesh_he0qs")
 
 [node name="Paint" type="CharacterBody3D" parent="Blockout/Stage2/PaintBucket"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04719, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03763, 0)
 script = ExtResource("8_47fge")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Blockout/Stage2/PaintBucket/Paint"]
@@ -359,22 +375,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.649, 34.1017, 120.055)
 curve = SubResource("Curve3D_r1a8g")
 
 [node name="Dragonfly" parent="Blockout/Stage2/Dragonflies" instance=ExtResource("10_f6exh")]
-transform = Transform3D(0.244451, 0, -0.969661, 0, 1, 0, 0.969661, 0, 0.244451, -393.114, 0, -71.5789)
+transform = Transform3D(0.244452, 0, -0.969661, 0, 1, 0, 0.969661, 0, 0.244452, -393.114, 0, -71.5789)
 
 [node name="Dragonfly2" parent="Blockout/Stage2/Dragonflies" instance=ExtResource("10_f6exh")]
-transform = Transform3D(0.244486, 0, -0.969652, 0, 1, 0, 0.969652, 0, 0.244486, -344.794, 0, -84.4259)
+transform = Transform3D(0.244487, 0, -0.969652, 0, 1, 0, 0.969652, 0, 0.244487, -344.794, 0, -84.4261)
 progress = 50.0
 
 [node name="Dragonfly3" parent="Blockout/Stage2/Dragonflies" instance=ExtResource("10_f6exh")]
-transform = Transform3D(0.0770071, 0, -0.99703, 0, 1, 0, 0.99703, 0, 0.0770071, -295.792, 0, -94.0357)
+transform = Transform3D(0.0770034, 0, -0.99703, 0, 1, 0, 0.99703, 0, 0.0770034, -295.791, 0, -94.0358)
 progress = 100.0
 
 [node name="Dragonfly4" parent="Blockout/Stage2/Dragonflies" instance=ExtResource("10_f6exh")]
-transform = Transform3D(-0.198114, 0, -0.980178, 0, 1, 0, 0.980178, 0, -0.198114, -246.062, 0, -90.7193)
+transform = Transform3D(-0.198114, 0, -0.980178, 0, 1, 0, 0.980178, 0, -0.198114, -246.061, 0, -90.7193)
 progress = 150.0
 
 [node name="Dragonfly5" parent="Blockout/Stage2/Dragonflies" instance=ExtResource("10_f6exh")]
-transform = Transform3D(-0.371065, 0, -0.928605, 0, 1, 0, 0.928605, 0, -0.371065, -198.453, 0, -75.6927)
+transform = Transform3D(-0.371066, 0, -0.928605, 0, 1, 0, 0.928605, 0, -0.371066, -198.453, 0, -75.6926)
 progress = 200.0
 
 [node name="PauseMenu" parent="." node_paths=PackedStringArray("game_manager") instance=ExtResource("11_c6575")]
