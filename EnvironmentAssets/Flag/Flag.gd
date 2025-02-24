@@ -23,7 +23,7 @@ func _on_switch_area_body_entered(body: Node3D) -> void:
 	has_been_triggered = true
 	
 	if(next_flag == null):
-		game_state_manager.final_flag_reached()
+		game_state_manager.ending_reached()
 		print("No next flag assigned, this is expected behaviour for the last flag.");
 		return
 	

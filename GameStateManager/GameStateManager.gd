@@ -74,10 +74,10 @@ func show_flag(next_flag: Flag):
 	zoom_changed.emit(currentPossessedCreature, currentPossessedCreature.size)
 	isInputEnabled = true
 	
-func final_flag_reached():
+func ending_reached():
 	isInputEnabled = false
 	zoom_changed.emit(currentPossessedCreature, 10)
 	await(get_tree().create_timer(3).timeout)
 	isInputEnabled = true
-	game_paused = !game_paused
+	game_paused = true
 	show_victory_screen.emit()
