@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cxrj60oxxptdh" path="res://Characters/Parasite/Parasite.tscn" id="1_nc2ee"]
 [ext_resource type="Script" path="res://GameController/Camera.gd" id="1_x6jyc"]
 [ext_resource type="PackedScene" uid="uid://dclrt7yy6gtq6" path="res://GameStateManager/GameStateManager.tscn" id="2_cqo16"]
-[ext_resource type="PackedScene" uid="uid://ceq3k2pduj7cb" path="res://Outdated/Beetle.tscn" id="4_5rpnx"]
+[ext_resource type="PackedScene" uid="uid://ceq3k2pduj7cb" path="res://Characters/Pillbug/Pillbug.tscn" id="4_4ute3"]
 [ext_resource type="PackedScene" uid="uid://d345ctgph51uj" path="res://Characters/Bumblebee/Bumblebee.tscn" id="4_usii5"]
 [ext_resource type="PackedScene" uid="uid://dqkke1lxyvwta" path="res://Scenes/ramp.tscn" id="6_vnun7"]
 [ext_resource type="Script" path="res://Scripts/Movable.gd" id="7_yxptn"]
@@ -67,8 +67,8 @@ jumpForwardVelocity = 60
 size = 1
 game_state_manager = NodePath("../GameStateManager")
 
-[node name="Pillbug" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("4_5rpnx")]
-transform = Transform3D(22.1209, 0, 0, 0, 22.1209, 0, 0, 0, 22.1209, 133.508, 28.7439, -11.5948)
+[node name="Pillbug2" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("4_4ute3")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 169.957, 20.639, -18.6083)
 game_state_manager = NodePath("../GameStateManager")
 
 [node name="Bumblebee" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("4_usii5")]

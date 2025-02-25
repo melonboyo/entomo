@@ -19,7 +19,7 @@ height = 1.0
 radius = 0.859432
 
 [node name="Pillbug" node_paths=PackedStringArray("COLOR") instance=ExtResource("1_yggj8")]
-transform = Transform3D(3.32352, 0, 0, 0, 3.32352, 0, 0, 0, 3.32352, 0, 0, 0)
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
 script = ExtResource("2_6n07y")
 ROLLSPEED = 300.0
 MAXROLLSPEED = 2000.0
@@ -42,9 +42,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_1o8la")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RampCheckArea" index="0"]
 transform = Transform3D(1.05, 0, 0, 0, 1.05, 0, 0, 0, 1.05, 0, 0, 0)
 shape = SubResource("SphereShape3D_0kang")
-
-[node name="SwitchArea" parent="." index="3"]
-transform = Transform3D(1.24851, 0, 0, 0, 1.00627, 0, 0, 0, 1.00627, 0, 0, 0)
 
 [node name="CollisionShape3D" parent="SwitchArea" index="0"]
 shape = SubResource("CylinderShape3D_ow3bi")
