@@ -56,3 +56,5 @@ func handleGravity(delta: float) -> void:
 	if isFlying and velocity.y < 0:
 		velocity.y = 0
 	
+func resetAbilities():
+	isFlying = false

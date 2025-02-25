@@ -34,3 +34,6 @@ shape = SubResource("CapsuleShape3D_5dqkc")
 
 [node name="bumblebee" parent="." index="2" instance=ExtResource("3_xvftt")]
 transform = Transform3D(3.31477, -0.00101056, -0.000455604, 0.00101072, 3.31477, 0.000836017, 0.000455267, -0.000836199, 3.31477, 0, 0, 0)
+
+[node name="ExitPosition" parent="." index="3"]
+transform = Transform3D(1, -4.59366e-12, 5.82077e-11, 3.44968e-12, 1, 0, 0, 0, 1, -0.00128353, 7.61954, -3.1294)

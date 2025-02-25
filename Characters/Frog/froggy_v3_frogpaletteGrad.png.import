@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fcb4l4vlemna"
+uid="uid://p7bttb38ba24"
 path.s3tc="res://.godot/imported/froggy_v3_frogpaletteGrad.png-aac15715174663476b214df5cfb1b4e9.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "a826e3814b8e9e241a286d1abeee5c94"
 }
 
 [deps]

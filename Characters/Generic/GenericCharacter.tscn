@@ -2,10 +2,11 @@
 
 [ext_resource type="Script" path="res://Characters/Generic/GenericCharacterController.gd" id="1_cd5ot"]
 
-[node name="GenericCharacter" type="CharacterBody3D"]
+[node name="GenericCharacter" type="CharacterBody3D" node_paths=PackedStringArray("exitPosition")]
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_cd5ot")
+exitPosition = NodePath("ExitPosition")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 
@@ -15,6 +16,9 @@ collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SwitchArea"]
+
+[node name="ExitPosition" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
 [connection signal="body_entered" from="SwitchArea" to="." method="_on_switch_area_body_entered"]
 [connection signal="body_exited" from="SwitchArea" to="." method="_on_switch_area_body_exited"]
