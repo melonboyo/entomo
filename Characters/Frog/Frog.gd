@@ -11,8 +11,21 @@ var currentMovementDirection = Vector3.ZERO
 @export var minJumpVelocity = 20
 @export var jumpForwardVelocity = 60
 
+var was_on_floor_last_frame = true
+
+func _ready() -> void:
+	super._ready()
+	$froggy_v3/AnimationPlayer.play("idle_croak")
+	
+
 # Overrides the handleMove method of GenericCharacterController
 func handleMove(input_dir: Vector2, camera_basis: Basis, delta: float) -> void:
+	
+	if(is_on_floor() && !was_on_floor_last_frame):
+		$froggy_v3/AnimationPlayer.play("idle_croak")
+	
+	was_on_floor_last_frame = is_on_floor();
+	
 	# Movement speed dependent on if bug are airborne or grounded
 	var direction := (camera_basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	currentMovementDirection = direction

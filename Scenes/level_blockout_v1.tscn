@@ -49,7 +49,7 @@ radius = 4.89989
 transform = Transform3D(1.01827, 0, 0, 0, 1.01827, 0, 0, 0, 1.01827, 0, 0, 0)
 
 [node name="GameStateManager" parent="." node_paths=PackedStringArray("currentPossessedCreature", "camera") instance=ExtResource("2_cqo16")]
-currentPossessedCreature = NodePath("../Bumblebee")
+currentPossessedCreature = NodePath("../Frog")
 camera = NodePath("../CameraRoot/RotationRoot/Camera3D")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -75,7 +75,7 @@ game_state_manager = NodePath("../GameStateManager")
 
 [node name="CameraRoot" type="Node3D" parent="." node_paths=PackedStringArray("camera", "game_state_manager", "focus")]
 process_priority = 1
-transform = Transform3D(1.00045, 0, 0, 0, 1.00045, 0, 0, 0, 1.00045, 2.5629, 2.42748, 2.05833)
+transform = Transform3D(1.00045, 0, 0, 0, 1.00045, 0, 0, 0, 1.00045, 2.56365, 2.42856, 2.05893)
 script = ExtResource("1_x6jyc")
 zooms = {
 1: 10.0,
@@ -334,7 +334,7 @@ progress = 200.0
 game_manager = NodePath("../GameStateManager")
 
 [node name="ZoomedOutCamera" type="Camera3D" parent="."]
-transform = Transform3D(0.982058, 0, 0, 0, 0.957061, 0.220163, 0, -0.220163, 0.957061, 1.97582, 32.319, 49.8521)
+transform = Transform3D(0.982058, 0, 0, 0, 0.957061, 0.220163, 0, -0.220163, 0.957061, 130.861, 59.9922, 357.054)
 current = true
 script = ExtResource("12_we45n")
 sensitivity = 0.736
