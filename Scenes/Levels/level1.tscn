@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://daoe6gj0bo2qr" path="res://Scenes/Menus/PauseMenu/pause_menu.tscn" id="11_c6575"]
 [ext_resource type="PackedScene" uid="uid://caxb37ohqq7q3" path="res://EnvironmentAssets/Flag/Flag.tscn" id="15_3xa5f"]
 [ext_resource type="PackedScene" uid="uid://dxqjrf22vjo3t" path="res://EnvironmentAssets/lilipad.tscn" id="15_ajvuj"]
-[ext_resource type="PackedScene" uid="uid://ceq3k2pduj7cb" path="res://Outdated/Beetle.tscn" id="15_cbjvc"]
+[ext_resource type="PackedScene" uid="uid://ceq3k2pduj7cb" path="res://Characters/Pillbug/Pillbug.tscn" id="15_cbjvc"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_75gon"]
 
@@ -59,7 +59,7 @@ shadow_enabled = true
 directional_shadow_max_distance = 3386.3
 
 [node name="Parasite" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("1_nc2ee")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.32945, 4.75076, 19.7354)
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -3.32945, 1.80459, 19.7354)
 game_state_manager = NodePath("../GameStateManager")
 
 [node name="Bumblebee" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("4_usii5")]
@@ -76,7 +76,7 @@ game_state_manager = NodePath("../GameStateManager")
 
 [node name="CameraRoot" type="Node3D" parent="." node_paths=PackedStringArray("camera", "game_state_manager", "focus")]
 process_priority = 1
-transform = Transform3D(1.00045, 0, 0, 0, 1.00045, 0, 0, 0, 1.00045, -3.32945, 4.74981, 19.7354)
+transform = Transform3D(1.00045, 0, 0, 0, 1.00045, 0, 0, 0, 1.00045, -3.32945, 1.80556, 19.7354)
 script = ExtResource("1_x6jyc")
 zooms = {
 1: 10.0,
