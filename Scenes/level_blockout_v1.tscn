@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://b4v7eokxybk5v" path="res://Characters/Frog/Frog.tscn" id="8_slu6r"]
 [ext_resource type="PackedScene" uid="uid://msprui4s0rep" path="res://Scenes/dragonfly.tscn" id="10_f6exh"]
 [ext_resource type="PackedScene" uid="uid://daoe6gj0bo2qr" path="res://Scenes/pause_menu.tscn" id="11_c6575"]
+[ext_resource type="Script" path="res://Scenes/zoomed_out_camera.gd" id="12_we45n"]
+[ext_resource type="PackedScene" uid="uid://tdiqj4l8fe0w" path="res://EnvironmentAssets/lilipad.glb" id="13_tg2gj"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_75gon"]
 
@@ -22,8 +24,6 @@ height = 2.70382
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i8oe3"]
 size = Vector3(1.74712, 1, 1.14751)
-
-[sub_resource type="BoxMesh" id="BoxMesh_ocbnp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sa0xy"]
 size = Vector3(1, 1, 1.16724)
@@ -45,11 +45,15 @@ _data = {
 }
 point_count = 8
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_8hreu"]
+height = 0.551525
+radius = 4.89989
+
 [node name="Node3D" type="Node3D"]
 transform = Transform3D(1.01827, 0, 0, 0, 1.01827, 0, 0, 0, 1.01827, 0, 0, 0)
 
 [node name="GameStateManager" parent="." node_paths=PackedStringArray("currentPossessedCreature", "camera") instance=ExtResource("2_cqo16")]
-currentPossessedCreature = NodePath("../Parasite")
+currentPossessedCreature = NodePath("../Frog")
 camera = NodePath("../CameraRoot/RotationRoot/Camera3D")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -57,14 +61,12 @@ transform = Transform3D(0.998626, 0.0130417, -0.050757, 0.0284047, 0.67923, 0.73
 shadow_enabled = true
 directional_shadow_max_distance = 3386.3
 
-[node name="Parasite" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("1_nc2ee")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5629, 0.599761, 2.05833)
+[node name="Frog" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("8_slu6r")]
+transform = Transform3D(-0.982059, 0, 8.58543e-08, 0, 0.982059, 0, -8.58543e-08, 0, -0.982059, 161.058, 30.4244, 129.632)
 game_state_manager = NodePath("../GameStateManager")
 
-[node name="Frog" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("8_slu6r")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 159.066, 23.3343, 127.769)
-jumpForwardVelocity = 60
-size = 1
+[node name="Parasite" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("1_nc2ee")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5629, 2.42843, 2.05833)
 game_state_manager = NodePath("../GameStateManager")
 
 [node name="Pillbug2" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("4_4ute3")]
@@ -72,12 +74,12 @@ transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 169.957, 20.639, -18.6083)
 game_state_manager = NodePath("../GameStateManager")
 
 [node name="Bumblebee" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("4_usii5")]
-transform = Transform3D(0.421448, 0, -0.906853, 0, 1, 0, 0.906853, 0, 0.421448, 0.827266, 0.504695, -3.09863)
+transform = Transform3D(0.421448, 0, -0.906854, 0, 1, 0, 0.906854, 0, 0.421448, 2.52931, 4.55651, 0.355372)
 game_state_manager = NodePath("../GameStateManager")
 
 [node name="CameraRoot" type="Node3D" parent="." node_paths=PackedStringArray("camera", "game_state_manager", "focus")]
 process_priority = 1
-transform = Transform3D(1.00045, 0, 0, 0, 1.00045, 0, 0, 0, 1.00045, 2.56197, 0.59995, 2.05851)
+transform = Transform3D(1.00045, 0, 0, 0, 1.00045, 0, 0, 0, 1.00045, 2.56365, 2.42856, 2.05893)
 script = ExtResource("1_x6jyc")
 zooms = {
 1: 10.0,
@@ -101,28 +103,6 @@ size = 20.0
 [node name="Blockout" type="Node3D" parent="."]
 
 [node name="Stage1" type="Node" parent="Blockout"]
-
-[node name="StaticBody3D2" type="StaticBody3D" parent="Blockout/Stage1"]
-transform = Transform3D(12.1228, 0, 0, 0, 0.442988, 0, 0, 0, 11.6143, 2.26443, -0.159414, 0.0334194)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Blockout/Stage1/StaticBody3D2"]
-transform = Transform3D(3.39647, 0, 0, 0, 1, 0, 0, 0, 2.7152, 0, 0, 0)
-mesh = SubResource("CylinderMesh_75gon")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Blockout/Stage1/StaticBody3D2"]
-transform = Transform3D(3.37133, 0, 0, 0, 1, 0, 0, 0, 2.32313, 0, 0, 0)
-shape = SubResource("CylinderShape3D_fjjt4")
-
-[node name="StaticBody3D4" type="StaticBody3D" parent="Blockout/Stage1"]
-transform = Transform3D(6.36849, 0, 0, 0, 0.442988, 0, 0, 0, 5.90134, 36.3017, -0.159414, 0.0334194)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Blockout/Stage1/StaticBody3D4"]
-transform = Transform3D(3.39647, 0, 0, 0, 1, 0, 0, 0, 2.7152, 0, 0, 0)
-mesh = SubResource("CylinderMesh_75gon")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Blockout/Stage1/StaticBody3D4"]
-transform = Transform3D(3.37133, 0, 0, 0, 1, 0, 0, 0, 2.32313, 0, 0, 0)
-shape = SubResource("CylinderShape3D_fjjt4")
 
 [node name="StaticBody3D8" type="StaticBody3D" parent="Blockout/Stage1"]
 transform = Transform3D(8.12717, 0, 0, 0, 0.442989, 0, 0, 0, 9.23589, 79.9375, -0.159414, 0.0334194)
@@ -160,30 +140,11 @@ shape = SubResource("BoxShape3D_i8oe3")
 [node name="StaticBody3D" type="StaticBody3D" parent="Blockout/Stage1"]
 transform = Transform3D(3.67021, 0, 0, 0, 0.391737, 0, 0, 0, 11.5811, -2.43852, 0.204851, 0.0334194)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Blockout/Stage1/StaticBody3D"]
-transform = Transform3D(1.00659, 0, 0, 0, 1.87851, 0, 0, 0, 1.00659, -0.0083586, 0, 1.9216e-05)
-mesh = SubResource("BoxMesh_ocbnp")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Blockout/Stage1/StaticBody3D"]
 shape = SubResource("BoxShape3D_sa0xy")
 
-[node name="StaticBody3D7" type="StaticBody3D" parent="Blockout/Stage1"]
-transform = Transform3D(5.02528, 0, 0, 0, 2.04067, 0, 0, 0, 5.00422, 26.4051, 1.97881, -10.3369)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Blockout/Stage1/StaticBody3D7"]
-transform = Transform3D(3.39647, 0, 0, 0, 0.63285, 0, 0, 0, 2.7152, 0, -0.142619, 0)
-mesh = SubResource("CylinderMesh_75gon")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Blockout/Stage1/StaticBody3D7"]
-transform = Transform3D(3.37133, 0, 0, 0, 1, 0, 0, 0, 2.32313, 0, 0, 0)
-shape = SubResource("CylinderShape3D_fjjt4")
-
 [node name="StaticBody3D3" type="StaticBody3D" parent="Blockout/Stage1"]
 transform = Transform3D(3.67021, 0, 0, 0, 0.391737, 0, 0, 0, 11.5811, 6.79589, 0.204851, 0.0334194)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Blockout/Stage1/StaticBody3D3"]
-transform = Transform3D(1.00659, 0, 0, 0, 1.87851, 0, 0, 0, 1.00659, 0.00822461, 0, 1.9216e-05)
-mesh = SubResource("BoxMesh_ocbnp")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Blockout/Stage1/StaticBody3D3"]
 shape = SubResource("BoxShape3D_sa0xy")
@@ -191,19 +152,11 @@ shape = SubResource("BoxShape3D_sa0xy")
 [node name="StaticBody3D5" type="StaticBody3D" parent="Blockout/Stage1"]
 transform = Transform3D(-0.00875978, 0, -6.67594, 0, 0.391736, 0, 1.88684, 0, -0.0309935, 2.25337, 0.204851, -4.62838)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Blockout/Stage1/StaticBody3D5"]
-transform = Transform3D(1.00659, 0, -1.86265e-09, 0, 1.87851, 0, 0, 0, 1.00659, -0.016166, 0, -1.56462e-05)
-mesh = SubResource("BoxMesh_ocbnp")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Blockout/Stage1/StaticBody3D5"]
 shape = SubResource("BoxShape3D_sa0xy")
 
 [node name="StaticBody3D6" type="StaticBody3D" parent="Blockout/Stage1"]
 transform = Transform3D(-0.00875978, 0, -6.67594, 0, 0.391736, 0, 1.88684, 0, -0.0309935, 2.25337, 0.204851, 5.03583)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Blockout/Stage1/StaticBody3D6"]
-transform = Transform3D(1.00659, 0, -1.86265e-09, 0, 1.87851, 0, 0, 0, 1.00659, -0.016166, 0, -1.56462e-05)
-mesh = SubResource("BoxMesh_ocbnp")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Blockout/Stage1/StaticBody3D6"]
 shape = SubResource("BoxShape3D_sa0xy")
@@ -395,5 +348,18 @@ progress = 200.0
 
 [node name="PauseMenu" parent="." node_paths=PackedStringArray("game_manager") instance=ExtResource("11_c6575")]
 game_manager = NodePath("../GameStateManager")
+
+[node name="ZoomedOutCamera" type="Camera3D" parent="."]
+transform = Transform3D(0.982058, 0, 0, 0, 0.957061, 0.220163, 0, -0.220163, 0.957061, 130.861, 59.9922, 357.054)
+current = true
+script = ExtResource("12_we45n")
+sensitivity = 0.736
+
+[node name="lilipad" parent="." instance=ExtResource("13_tg2gj")]
+transform = Transform3D(-0.0782083, 0, -3.972, 0, 3.97277, 0, 3.972, 0, -0.0782083, 3.17065, 0, 2.81812)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="lilipad"]
+transform = Transform3D(1, 0, -2.04891e-08, 0, 1, 0, 2.04891e-08, 0, 1, 0, -0.122314, 0)
+shape = SubResource("CylinderShape3D_8hreu")
 
 [connection signal="zoom_changed" from="GameStateManager" to="CameraRoot" method="_on_game_state_manager_zoom_changed"]
