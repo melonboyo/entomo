@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cklvcya0j3osm" path="res://Characters/Bumblebee/bumblebee.glb" id="3_xvftt"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dib3q"]
-radius = 0.34594
+radius = 0.440761
 height = 1.33172
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5dqkc"]
@@ -16,16 +16,16 @@ height = 18.1966
 transform = Transform3D(1, 0.000304902, 0.00013737, -0.000304879, 1, -0.000252252, -0.000137422, 0.000252223, 1, 0, 0, 0)
 script = ExtResource("2_70g27")
 gravityMultiplier = 2
-flyingSpeed = 18
-maxFlyingStamina = 4
+flyingSpeed = 24
+maxFlyingStamina = 3
 rotationSpeed = 5
 size = 2
-SPEED = 10.0
+SPEED = 16.0
 JUMP_VELOCITY = 7.0
 CAMERA_SIZE = 75
 
 [node name="CollisionShape3D" parent="." index="0"]
-transform = Transform3D(10, 0.00442272, 1.93323e-10, 0, -4.37114e-07, 10, 0.00442272, -10, -4.37114e-07, -0.000914603, 3, -0.000756796)
+transform = Transform3D(10, 0.00442272, -1.32493e-09, 7.53744e-10, -4.38886e-07, 10, 0.00442272, -10, -4.35393e-07, -0.000598074, 2.06967, -0.240038)
 shape = SubResource("CapsuleShape3D_dib3q")
 
 [node name="CollisionShape3D" parent="SwitchArea" index="0"]
@@ -36,4 +36,4 @@ shape = SubResource("CapsuleShape3D_5dqkc")
 transform = Transform3D(3.31477, -0.00101056, -0.000455604, 0.00101072, 3.31477, 0.000836017, 0.000455267, -0.000836199, 3.31477, 0, 0, 0)
 
 [node name="ExitPosition" parent="." index="3"]
-transform = Transform3D(1, -4.59366e-12, 5.82077e-11, 3.44968e-12, 1, 0, 0, 0, 1, -0.00128353, 7.61954, -3.1294)
+transform = Transform3D(1, -4.60076e-12, 7.27596e-11, 3.44968e-12, 1, 0, 0, 0, 1, -0.00120213, 7.35253, -3.12933)

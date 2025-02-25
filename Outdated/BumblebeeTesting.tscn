@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dclrt7yy6gtq6" path="res://GameStateManager/GameStateManager.tscn" id="1_bh4t0"]
 [ext_resource type="PackedScene" uid="uid://cxrj60oxxptdh" path="res://Characters/Parasite/Parasite.tscn" id="2_rvnqh"]
 [ext_resource type="PackedScene" uid="uid://ceq3k2pduj7cb" path="res://Outdated/Beetle.tscn" id="3_j3lip"]
-[ext_resource type="PackedScene" uid="uid://daoe6gj0bo2qr" path="res://Scenes/pause_menu.tscn" id="4_wn2wh"]
+[ext_resource type="PackedScene" uid="uid://daoe6gj0bo2qr" path="res://Scenes/Menus/PauseMenu/pause_menu.tscn" id="4_wn2wh"]
 [ext_resource type="PackedScene" uid="uid://d345ctgph51uj" path="res://Characters/Bumblebee/Bumblebee.tscn" id="5_qelfv"]
 [ext_resource type="Script" path="res://GameController/Camera.gd" id="6_jmeua"]
 

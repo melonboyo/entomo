@@ -1,9 +1,8 @@
-[gd_scene load_steps=27 format=3 uid="uid://cfyb34soy0h7x"]
+[gd_scene load_steps=25 format=3 uid="uid://cfyb34soy0h7x"]
 
 [ext_resource type="PackedScene" uid="uid://cxrj60oxxptdh" path="res://Characters/Parasite/Parasite.tscn" id="1_nc2ee"]
 [ext_resource type="Script" path="res://GameController/Camera.gd" id="1_x6jyc"]
 [ext_resource type="PackedScene" uid="uid://dclrt7yy6gtq6" path="res://GameStateManager/GameStateManager.tscn" id="2_cqo16"]
-[ext_resource type="PackedScene" uid="uid://ceq3k2pduj7cb" path="res://Outdated/Beetle.tscn" id="4_4ute3"]
 [ext_resource type="PackedScene" uid="uid://d345ctgph51uj" path="res://Characters/Bumblebee/Bumblebee.tscn" id="4_usii5"]
 [ext_resource type="PackedScene" uid="uid://dqkke1lxyvwta" path="res://Scenes/ramp.tscn" id="6_vnun7"]
 [ext_resource type="Script" path="res://Scripts/Movable.gd" id="7_yxptn"]
@@ -11,10 +10,10 @@
 [ext_resource type="Script" path="res://Scripts/PillbugEatingRange.gd" id="8_ha7xt"]
 [ext_resource type="PackedScene" uid="uid://b4v7eokxybk5v" path="res://Characters/Frog/Frog.tscn" id="8_slu6r"]
 [ext_resource type="PackedScene" uid="uid://msprui4s0rep" path="res://Scenes/dragonfly.tscn" id="10_f6exh"]
-[ext_resource type="PackedScene" uid="uid://daoe6gj0bo2qr" path="res://Scenes/pause_menu.tscn" id="11_c6575"]
-[ext_resource type="Script" path="res://Scenes/zoomed_out_camera.gd" id="12_we45n"]
-[ext_resource type="PackedScene" uid="uid://tdiqj4l8fe0w" path="res://EnvironmentAssets/lilipad.glb" id="13_tg2gj"]
+[ext_resource type="PackedScene" uid="uid://daoe6gj0bo2qr" path="res://Scenes/Menus/PauseMenu/pause_menu.tscn" id="11_c6575"]
 [ext_resource type="PackedScene" uid="uid://caxb37ohqq7q3" path="res://EnvironmentAssets/Flag/Flag.tscn" id="15_3xa5f"]
+[ext_resource type="PackedScene" uid="uid://dxqjrf22vjo3t" path="res://EnvironmentAssets/lilipad.tscn" id="15_ajvuj"]
+[ext_resource type="PackedScene" uid="uid://ceq3k2pduj7cb" path="res://Outdated/Beetle.tscn" id="15_cbjvc"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_75gon"]
 
@@ -46,41 +45,38 @@ _data = {
 }
 point_count = 8
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_8hreu"]
-height = 0.551525
-radius = 4.89989
-
 [node name="Node3D" type="Node3D"]
 transform = Transform3D(1.01827, 0, 0, 0, 1.01827, 0, 0, 0, 1.01827, 0, 0, 0)
 
-[node name="GameStateManager" parent="." node_paths=PackedStringArray("currentPossessedCreature", "camera") instance=ExtResource("2_cqo16")]
-currentPossessedCreature = NodePath("../Frog")
+[node name="GameStateManager" parent="." node_paths=PackedStringArray("currentPossessedCreature", "camera", "first_flag") instance=ExtResource("2_cqo16")]
+currentPossessedCreature = NodePath("../Parasite")
 camera = NodePath("../CameraRoot/RotationRoot/Camera3D")
+first_flag = NodePath("../Flag")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.998626, 0.0130417, -0.050757, 0.0284047, 0.67923, 0.733376, 0.0440401, -0.73381, 0.677926, -0.00180054, 10.4981, 31.7402)
 shadow_enabled = true
 directional_shadow_max_distance = 3386.3
 
-[node name="Frog" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("8_slu6r")]
-transform = Transform3D(-0.982059, 0, 8.58543e-08, 0, 0.982059, 0, -8.58543e-08, 0, -0.982059, 161.058, 30.4244, 129.632)
-game_state_manager = NodePath("../GameStateManager")
-
 [node name="Parasite" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("1_nc2ee")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5629, 2.42843, 2.05833)
-game_state_manager = NodePath("../GameStateManager")
-
-[node name="Pillbug2" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("4_4ute3")]
-transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 169.957, 20.639, -18.6083)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.32945, 4.75076, 19.7354)
 game_state_manager = NodePath("../GameStateManager")
 
 [node name="Bumblebee" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("4_usii5")]
 transform = Transform3D(0.421448, 0, -0.906854, 0, 1, 0, 0.906854, 0, 0.421448, 2.52931, 4.55651, 0.355372)
 game_state_manager = NodePath("../GameStateManager")
 
+[node name="Pillbug" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("15_cbjvc")]
+transform = Transform3D(0.982058, 0, 0, 0, 0.982058, 0, 0, 0, 0.982058, 154.154, 21.0076, -16.0837)
+game_state_manager = NodePath("../GameStateManager")
+
+[node name="Frog" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("8_slu6r")]
+transform = Transform3D(-0.982059, 0, 8.58543e-08, 0, 0.982059, 0, -8.58543e-08, 0, -0.982059, 161.058, 30.4244, 129.632)
+game_state_manager = NodePath("../GameStateManager")
+
 [node name="CameraRoot" type="Node3D" parent="." node_paths=PackedStringArray("camera", "game_state_manager", "focus")]
 process_priority = 1
-transform = Transform3D(1.00045, 0, 0, 0, 1.00045, 0, 0, 0, 1.00045, 2.56365, 2.42856, 2.05893)
+transform = Transform3D(1.00045, 0, 0, 0, 1.00045, 0, 0, 0, 1.00045, -3.32945, 4.74981, 19.7354)
 script = ExtResource("1_x6jyc")
 zooms = {
 1: 10.0,
@@ -94,12 +90,15 @@ game_state_manager = NodePath("../GameStateManager")
 focus = NodePath("../Parasite")
 
 [node name="RotationRoot" type="Node3D" parent="CameraRoot"]
-transform = Transform3D(1, 0, 0, 0, 0.74444, 0.66769, 0, -0.66769, 0.74444, 0, 0, 0)
+transform = Transform3D(0.707107, 0.472128, -0.526399, 3.4874e-15, 0.74444, 0.66769, 0.707107, -0.472128, 0.526399, 0, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="CameraRoot/RotationRoot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.41628)
 fov = 40.0
 size = 20.0
+
+[node name="lilipad2" parent="." instance=ExtResource("15_ajvuj")]
+transform = Transform3D(-1.74846e-07, 0, -4, 0, 4, 0, 4, 0, -1.74846e-07, 3.62383, 0.609616, 4.99713)
 
 [node name="Blockout" type="Node3D" parent="."]
 
@@ -176,7 +175,7 @@ transform = Transform3D(3.37133, 0, 0, 0, 1, 0, 0, 0, 2.32313, 0, 0, 0)
 shape = SubResource("CylinderShape3D_fjjt4")
 
 [node name="StaticBody3D18" type="StaticBody3D" parent="Blockout/Stage2"]
-transform = Transform3D(26.6882, 0, 0, 0, 16.8088, 0, 0, 0, 6.74785, 158.381, 10.8802, 13.273)
+transform = Transform3D(26.6882, 0, 0, 0, 16.8088, 0, 0, 0, 6.74785, 159.045, 10.8802, 13.6717)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Blockout/Stage2/StaticBody3D18"]
 transform = Transform3D(5.99284, 0, 0, 0, 1, 0, 0, 0, 2.7152, 1.09724, 0, -0.237687)
@@ -347,33 +346,36 @@ progress = 150.0
 transform = Transform3D(-0.371066, 0, -0.928605, 0, 1, 0, 0.928605, 0, -0.371066, -198.453, 0, -75.6926)
 progress = 200.0
 
+[node name="StaticBody3D21" type="StaticBody3D" parent="Blockout/Stage2"]
+transform = Transform3D(-46.133, 0, 0, 0, 7.15211, 0, 0, 0, -58.0116, 332.799, -0.409064, 118.798)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Blockout/Stage2/StaticBody3D21"]
+transform = Transform3D(3.39647, 0, 0, 0, 1, 0, 0, 0, 2.7152, 0, 0, 0)
+mesh = SubResource("CylinderMesh_75gon")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blockout/Stage2/StaticBody3D21"]
+transform = Transform3D(3.37133, 0, 0, 0, 1, 0, 0, 0, 2.32313, 0, 0, 0)
+shape = SubResource("CylinderShape3D_fjjt4")
+
 [node name="PauseMenu" parent="." node_paths=PackedStringArray("game_manager") instance=ExtResource("11_c6575")]
 game_manager = NodePath("../GameStateManager")
 
-[node name="ZoomedOutCamera" type="Camera3D" parent="."]
-transform = Transform3D(0.982058, 0, 0, 0, 0.957061, 0.220163, 0, -0.220163, 0.957061, 130.861, 59.9922, 357.054)
-current = true
-script = ExtResource("12_we45n")
-sensitivity = 0.736
-
-[node name="lilipad" parent="." instance=ExtResource("13_tg2gj")]
-transform = Transform3D(-0.0782083, 0, -3.972, 0, 3.97277, 0, 3.972, 0, -0.0782083, 3.17065, 0, 2.81812)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="lilipad"]
-transform = Transform3D(1, 0, -2.04891e-08, 0, 1, 0, 2.04891e-08, 0, 1, 0, -0.122314, 0)
-shape = SubResource("CylinderShape3D_8hreu")
-
-[node name="Flag" parent="." instance=ExtResource("15_3xa5f")]
+[node name="Flag" parent="." node_paths=PackedStringArray("next_flag", "game_state_manager") instance=ExtResource("15_3xa5f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96.2902, 7.3614, -17.9012)
+next_flag = NodePath("../Flag2")
 zoom_size = 2
+game_state_manager = NodePath("../GameStateManager")
 
-[node name="Flag2" parent="." instance=ExtResource("15_3xa5f")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -129.669, 11.3614, -119.189)
+[node name="Flag2" parent="." node_paths=PackedStringArray("next_flag", "game_state_manager") instance=ExtResource("15_3xa5f")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -129.774, 10.9796, -119.051)
+next_flag = NodePath("../Flag3")
 zoom_size = 3
+game_state_manager = NodePath("../GameStateManager")
 
-[node name="Flag3" parent="." instance=ExtResource("15_3xa5f")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 300.331, 11.3614, 129.811)
+[node name="Flag3" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("15_3xa5f")]
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 343.542, 9.32777, 129.811)
 zoom_size = 4
 focus_move_speed = 2.0
+game_state_manager = NodePath("../GameStateManager")
 
 [connection signal="zoom_changed" from="GameStateManager" to="CameraRoot" method="_on_game_state_manager_zoom_changed"]

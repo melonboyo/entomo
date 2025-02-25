@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dqkke1lxyvwta" path="res://Scenes/ramp.tscn" id="7_obpu5"]
 [ext_resource type="Script" path="res://Scripts/Movable.gd" id="8_vtmog"]
 [ext_resource type="Script" path="res://Scripts/paint.gd" id="9_4tblv"]
-[ext_resource type="PackedScene" uid="uid://daoe6gj0bo2qr" path="res://Scenes/pause_menu.tscn" id="10_02b0i"]
+[ext_resource type="PackedScene" uid="uid://daoe6gj0bo2qr" path="res://Scenes/Menus/PauseMenu/pause_menu.tscn" id="10_02b0i"]
 [ext_resource type="PackedScene" uid="uid://caxb37ohqq7q3" path="res://EnvironmentAssets/Flag/Flag.tscn" id="11_dfkrd"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_w67ko"]

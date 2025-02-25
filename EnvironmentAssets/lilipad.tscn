@@ -213,35 +213,39 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_by4e8")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_1o1nf"]
-height = 0.343468
+height = 0.8
 radius = 4.99815
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_7nsxv"]
-height = 0.397848
+height = 0.631254
 radius = 2.40239
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_no2p3"]
 radius = 3.1247
 
 [node name="lilipad" type="StaticBody3D"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 
-[node name="Cube" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.639443, 0, 0, 0, 0.402907, 0, 0, 0, 0.639443, -3.55063, 0.235734, -4.31791)
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -3.55063, 0.235734, -4.31791)
+
+[node name="Cube" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.639443, 0, 0, 0, 0.402907, 0, 0, 0, 0.639443, 0, 0, 0)
 mesh = SubResource("ArrayMesh_yfd68")
 skeleton = NodePath("")
 
-[node name="Plane" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.37675, 0, 0, 0, 1.37675, 0, 0, 0, 1.37675, -3.55063, 0.441477, -4.31791)
+[node name="Plane" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1.37675, 0, 0, 0, 1.37675, 0, 0, 0, 1.37675, 0, 0.205743, 0)
 mesh = SubResource("ArrayMesh_av3id")
 skeleton = NodePath("")
 
-[node name="Plane_001" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.21403, 0, -0.649283, 0, 1.37675, 0, 0.649283, 0, 1.21403, -3.55063, 0.646005, -4.31791)
+[node name="Plane_001" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1.21403, 0, -0.649283, 0, 1.37675, 0, 0.649283, 0, 1.21403, 0, 0.410271, 0)
 mesh = SubResource("ArrayMesh_lkdt5")
 skeleton = NodePath("")
 
-[node name="Plane_002" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.37654, 0, -0.0240276, 0, 1.37675, 0, 0.0240276, 0, 1.37654, -3.55063, 0.49984, -4.31791)
+[node name="Plane_002" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1.37654, 0, -0.0240276, 0, 1.37675, 0, 0.0240276, 0, 1.37654, 0, 0.264106, 0)
 mesh = SubResource("ArrayMesh_572d7")
 skeleton = NodePath("")
 
@@ -256,10 +260,11 @@ mesh = SubResource("ArrayMesh_ewpcs")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.235078, 0)
 shape = SubResource("CylinderShape3D_1o1nf")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.29182)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.110776, -7.29182)
 shape = SubResource("CylinderShape3D_7nsxv")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
