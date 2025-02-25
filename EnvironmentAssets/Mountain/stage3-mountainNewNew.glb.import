@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c5ul3dlgeqfy2"
-path="res://.godot/imported/stage3-mountain.glb-7d1952194e56ea5d3d5e9b1fddd31d13.scn"
+uid="uid://ddqi27ajx4hx4"
+path="res://.godot/imported/stage3-mountainNewNew.glb-ea00590dd9018f1d3d57f5261b952722.scn"
 
 [deps]
 
-source_file="res://EnvironmentAssets/Mountain/stage3-mountain.glb"
-dest_files=["res://.godot/imported/stage3-mountain.glb-7d1952194e56ea5d3d5e9b1fddd31d13.scn"]
+source_file="res://EnvironmentAssets/Mountain/stage3-mountainNewNew.glb"
+dest_files=["res://.godot/imported/stage3-mountainNewNew.glb-ea00590dd9018f1d3d57f5261b952722.scn"]
 
 [params]
 
