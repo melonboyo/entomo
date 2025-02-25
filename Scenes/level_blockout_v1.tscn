@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cfyb34soy0h7x"]
+[gd_scene load_steps=24 format=3 uid="uid://cfyb34soy0h7x"]
 
 [ext_resource type="PackedScene" uid="uid://cxrj60oxxptdh" path="res://Characters/Parasite/Parasite.tscn" id="1_nc2ee"]
 [ext_resource type="Script" path="res://GameController/Camera.gd" id="1_x6jyc"]
@@ -12,11 +12,12 @@
 [ext_resource type="PackedScene" uid="uid://msprui4s0rep" path="res://Scenes/dragonfly.tscn" id="10_f6exh"]
 [ext_resource type="PackedScene" uid="uid://daoe6gj0bo2qr" path="res://Scenes/pause_menu.tscn" id="11_c6575"]
 [ext_resource type="Script" path="res://Scenes/zoomed_out_camera.gd" id="12_we45n"]
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_75gon"]
+[ext_resource type="PackedScene" uid="uid://tdiqj4l8fe0w" path="res://EnvironmentAssets/lilipad.glb" id="13_tg2gj"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_fjjt4"]
 height = 2.70382
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_75gon"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_1eheq"]
 
@@ -67,7 +68,7 @@ transform = Transform3D(22.1209, 0, 0, 0, 22.1209, 0, 0, 0, 22.1209, 133.508, 28
 game_state_manager = NodePath("../GameStateManager")
 
 [node name="Bumblebee" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("4_usii5")]
-transform = Transform3D(0.421448, 0, -0.906854, 0, 1, 0, 0.906854, 0, 0.421448, 2.52931, 0.786812, -3.09863)
+transform = Transform3D(0.421448, 0, -0.906854, 0, 1, 0, 0.906854, 0, 0.421448, 2.52931, 4.55651, 0.355372)
 game_state_manager = NodePath("../GameStateManager")
 
 [node name="CameraRoot" type="Node3D" parent="." node_paths=PackedStringArray("camera", "game_state_manager", "focus")]
@@ -100,20 +101,12 @@ size = 20.0
 [node name="StaticBody3D2" type="StaticBody3D" parent="Blockout/Stage1"]
 transform = Transform3D(12.1228, 0, 0, 0, 0.442988, 0, 0, 0, 11.6143, 2.26443, -0.159414, 0.0334194)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Blockout/Stage1/StaticBody3D2"]
-transform = Transform3D(3.39647, 0, 0, 0, 1, 0, 0, 0, 2.7152, 0, 0, 0)
-mesh = SubResource("CylinderMesh_75gon")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Blockout/Stage1/StaticBody3D2"]
 transform = Transform3D(3.37133, 0, 0, 0, 1, 0, 0, 0, 2.32313, 0, 0, 0)
 shape = SubResource("CylinderShape3D_fjjt4")
 
 [node name="StaticBody3D4" type="StaticBody3D" parent="Blockout/Stage1"]
 transform = Transform3D(6.36849, 0, 0, 0, 0.442988, 0, 0, 0, 5.90134, 36.3017, -0.159414, 0.0334194)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Blockout/Stage1/StaticBody3D4"]
-transform = Transform3D(3.39647, 0, 0, 0, 1, 0, 0, 0, 2.7152, 0, 0, 0)
-mesh = SubResource("CylinderMesh_75gon")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Blockout/Stage1/StaticBody3D4"]
 transform = Transform3D(3.37133, 0, 0, 0, 1, 0, 0, 0, 2.32313, 0, 0, 0)
@@ -164,10 +157,6 @@ shape = SubResource("BoxShape3D_sa0xy")
 
 [node name="StaticBody3D7" type="StaticBody3D" parent="Blockout/Stage1"]
 transform = Transform3D(5.02528, 0, 0, 0, 2.04067, 0, 0, 0, 5.00422, 26.4051, 1.97881, -10.3369)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Blockout/Stage1/StaticBody3D7"]
-transform = Transform3D(3.39647, 0, 0, 0, 0.63285, 0, 0, 0, 2.7152, 0, -0.142619, 0)
-mesh = SubResource("CylinderMesh_75gon")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Blockout/Stage1/StaticBody3D7"]
 transform = Transform3D(3.37133, 0, 0, 0, 1, 0, 0, 0, 2.32313, 0, 0, 0)
@@ -384,5 +373,8 @@ transform = Transform3D(0.982058, 0, 0, 0, 0.957061, 0.220163, 0, -0.220163, 0.9
 current = true
 script = ExtResource("12_we45n")
 sensitivity = 0.736
+
+[node name="lilipad" parent="." instance=ExtResource("13_tg2gj")]
+transform = Transform3D(-0.0782083, 0, -3.972, 0, 3.97277, 0, 3.972, 0, -0.0782083, 3.17065, 0, 2.81812)
 
 [connection signal="zoom_changed" from="GameStateManager" to="CameraRoot" method="_on_game_state_manager_zoom_changed"]

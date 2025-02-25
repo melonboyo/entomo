@@ -29,7 +29,7 @@ transform = Transform3D(10, 0.00442272, 1.93323e-10, 0, -4.37114e-07, 10, 0.0044
 shape = SubResource("CapsuleShape3D_dib3q")
 
 [node name="CollisionShape3D" parent="SwitchArea" index="0"]
-transform = Transform3D(1, 0.000442272, -0.000167532, 0.000167532, 4.92146e-08, 1, 0.000442272, -1, -2.48547e-08, -0.000862247, 2.82827, -0.000713473)
+transform = Transform3D(1, 0.000442272, -0.000167532, 0.000167532, 4.91855e-08, 1, 0.000442272, -1, -2.48547e-08, -0.000556698, 1.82603, -0.000460644)
 shape = SubResource("CapsuleShape3D_5dqkc")
 
 [node name="bumblebee" parent="." index="2" instance=ExtResource("3_xvftt")]
