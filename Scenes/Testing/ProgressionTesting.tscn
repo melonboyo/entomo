@@ -3,13 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://dclrt7yy6gtq6" path="res://GameStateManager/GameStateManager.tscn" id="1_huvyw"]
 [ext_resource type="PackedScene" uid="uid://cxrj60oxxptdh" path="res://Characters/Parasite/Parasite.tscn" id="2_r8f3q"]
 [ext_resource type="PackedScene" uid="uid://b4v7eokxybk5v" path="res://Characters/Frog/Frog.tscn" id="3_xv73x"]
-[ext_resource type="PackedScene" uid="uid://ceq3k2pduj7cb" path="res://Outdated/Beetle.tscn" id="4_mfn8p"]
+[ext_resource type="PackedScene" uid="uid://ceq3k2pduj7cb" path="res://Characters/Pillbug/Pillbug.tscn" id="4_mfn8p"]
 [ext_resource type="PackedScene" uid="uid://d345ctgph51uj" path="res://Characters/Bumblebee/Bumblebee.tscn" id="5_trvcn"]
 [ext_resource type="Script" path="res://GameController/Camera.gd" id="6_34bth"]
 [ext_resource type="PackedScene" uid="uid://dqkke1lxyvwta" path="res://Scenes/ramp.tscn" id="7_obpu5"]
 [ext_resource type="Script" path="res://Scripts/Movable.gd" id="8_vtmog"]
 [ext_resource type="Script" path="res://Scripts/paint.gd" id="9_4tblv"]
-[ext_resource type="PackedScene" uid="uid://daoe6gj0bo2qr" path="res://Scenes/pause_menu.tscn" id="10_02b0i"]
+[ext_resource type="PackedScene" uid="uid://daoe6gj0bo2qr" path="res://Scenes/Menus/PauseMenu/pause_menu.tscn" id="10_02b0i"]
 [ext_resource type="PackedScene" uid="uid://caxb37ohqq7q3" path="res://EnvironmentAssets/Flag/Flag.tscn" id="11_dfkrd"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_w67ko"]
@@ -53,11 +53,10 @@ game_state_manager = NodePath("../GameStateManager")
 [node name="Frog" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("3_xv73x")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 159.066, 23.3343, 100.022)
 jumpForwardVelocity = 60
-size = 1
 game_state_manager = NodePath("../GameStateManager")
 
 [node name="Pillbug" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("4_mfn8p")]
-transform = Transform3D(22.1209, 0, 0, 0, 22.1209, 0, 0, 0, 22.1209, 133.508, 28.7439, -11.5948)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 133.508, 28.7439, -11.5948)
 game_state_manager = NodePath("../GameStateManager")
 
 [node name="Bumblebee" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("5_trvcn")]
@@ -80,7 +79,7 @@ game_state_manager = NodePath("../GameStateManager")
 focus = NodePath("../Parasite")
 
 [node name="RotationRoot" type="Node3D" parent="CameraRoot"]
-transform = Transform3D(1, 0, 0, 0, 0.74444, 0.66769, 0, -0.66769, 0.74444, 0, 0, 0)
+transform = Transform3D(0.707107, 0.472128, -0.526399, -2.1064e-08, 0.744441, 0.66769, 0.707107, -0.472128, 0.526399, 0, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="CameraRoot/RotationRoot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.41628)
@@ -200,7 +199,7 @@ shape = SubResource("BoxShape3D_qbrh8")
 [node name="Stage2" type="Node" parent="Blockout"]
 
 [node name="StaticBody3D14" type="StaticBody3D" parent="Blockout/Stage2"]
-transform = Transform3D(28.1299, 0, 0, 0, 0.442988, 0, 0, 0, 35.3729, 164.799, 0.652917, 90.5439)
+transform = Transform3D(28.1299, 0, 0, 0, 7.77909, 0, 0, 0, 35.3729, 164.799, -12.4662, 90.5439)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Blockout/Stage2/StaticBody3D14"]
 transform = Transform3D(3.39647, 0, 0, 0, 1, 0, 0, 0, 2.7152, 0, 0, 0)
@@ -369,13 +368,13 @@ zoom_size = 2
 game_state_manager = NodePath("../GameStateManager")
 
 [node name="Flag2" parent="." node_paths=PackedStringArray("next_flag", "game_state_manager") instance=ExtResource("11_dfkrd")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -129.669, 11.3614, -119.189)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -129.669, 11.3614, -119.189)
 next_flag = NodePath("../Flag3")
 zoom_size = 3
 game_state_manager = NodePath("../GameStateManager")
 
 [node name="Flag3" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("11_dfkrd")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 300.331, 11.3614, 129.811)
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 300.331, 11.3614, 129.811)
 zoom_size = 4
 focus_move_speed = 2.0
 game_state_manager = NodePath("../GameStateManager")

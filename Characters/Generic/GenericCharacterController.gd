@@ -7,11 +7,12 @@ class_name GenericCharacterController extends CharacterBody3D
 @export var SPEED = 5.0
 @export var JUMP_VELOCITY = 4.5
 @export var CAMERA_SIZE = 10 # Assumes orthographic camera
+@export var exitPosition: Node3D
 var held_character: GenericCharacterController = null
 
 var is_in_switch_area := false
 var current_switchable_character: GenericCharacterController = null
-var direction_facing
+var direction_facing: Vector3 = Vector3.ZERO
 
 func _ready():
 	pass
@@ -91,7 +92,7 @@ func resetAbilities():
 
 func handleExit() -> void:
 	resetAbilities()
-	held_character.global_position = global_position + Vector3.RIGHT*2
+	held_character.global_position = exitPosition.global_position
 	held_character.enable()
 	game_state_manager.switchCharacter(held_character)
 	velocity = Vector3.ZERO

@@ -2,8 +2,8 @@
 extends GenericCharacterController
 class_name Parasite
 
-# Overrides the handleJump method of GenericCharacterController
-func handleJump() -> void:
+# Overrides the jumpButtonPressed method of GenericCharacterController
+func jumpButtonPressed() -> void:
 	return
 
 # Overrides the handleMove method of GenericCharacterController

@@ -48,4 +48,4 @@ func _on_game_manager_show_victory_screen():
 	
 func _on_return_pressed() -> void:
 	game_manager.get_tree().paused = false
-	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Menus/MainMenu/MainMenu.tscn")

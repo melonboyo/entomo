@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cxrj60oxxptdh" path="res://Characters/Parasite/Parasite.tscn" id="2_4uhq2"]
 [ext_resource type="PackedScene" uid="uid://d345ctgph51uj" path="res://Characters/Bumblebee/Bumblebee.tscn" id="3_ojhtj"]
 [ext_resource type="PackedScene" uid="uid://b4v7eokxybk5v" path="res://Characters/Frog/Frog.tscn" id="4_h84ww"]
-[ext_resource type="PackedScene" uid="uid://daoe6gj0bo2qr" path="res://Scenes/pause_menu.tscn" id="5_sh78d"]
+[ext_resource type="PackedScene" uid="uid://daoe6gj0bo2qr" path="res://Scenes/Menus/PauseMenu/pause_menu.tscn" id="5_sh78d"]
 [ext_resource type="Script" path="res://GameController/Camera.gd" id="6_kvmrt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2cuf7"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://daoe6gj0bo2qr"]
 
-[ext_resource type="Script" path="res://Scripts/pausemenu.gd" id="1_6ddw0"]
+[ext_resource type="Script" path="res://Scenes/Menus/PauseMenu/pausemenu.gd" id="1_6ddw0"]
 [ext_resource type="FontFile" uid="uid://0pcsmgvhx3hf" path="res://Kavoon-Regular.ttf" id="2_batdy"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lm5bg"]
