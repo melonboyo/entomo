@@ -29,24 +29,24 @@ SPEED = 50.0
 CAMERA_SIZE = 150
 
 [node name="CollisionShape3D" parent="." index="0"]
-transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+transform = Transform3D(22, 0, 0, 0, 22, 0, 0, 0, 22, 0, 0, 0)
 shape = SubResource("SphereShape3D_tdvly")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
-transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+transform = Transform3D(22, 0, 0, 0, 22, 0, 0, 0, 22, 0, 0, 0)
 mesh = SubResource("SphereMesh_pxlda")
 skin = SubResource("Skin_u8r0o")
 surface_material_override/0 = SubResource("StandardMaterial3D_1o8la")
 
 [node name="RampCheckArea" type="Area3D" parent="." index="2"]
-transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+transform = Transform3D(22, 0, 0, 0, 22, 0, 0, 0, 22, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RampCheckArea" index="0"]
 transform = Transform3D(1.05, 0, 0, 0, 1.05, 0, 0, 0, 1.05, 0, 0, 0)
 shape = SubResource("SphereShape3D_0kang")
 
 [node name="SwitchArea" parent="." index="3"]
-transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+transform = Transform3D(22, 0, 0, 0, 22, 0, 0, 0, 22, 0, 0, 0)
 
 [node name="CollisionShape3D" parent="SwitchArea" index="0"]
 shape = SubResource("CylinderShape3D_ow3bi")
