@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cxrj60oxxptdh" path="res://Characters/Parasite/Parasite.tscn" id="1_nc2ee"]
 [ext_resource type="Script" path="res://GameController/Camera.gd" id="1_x6jyc"]
 [ext_resource type="PackedScene" uid="uid://dclrt7yy6gtq6" path="res://GameStateManager/GameStateManager.tscn" id="2_cqo16"]
+[ext_resource type="PackedScene" uid="uid://ceq3k2pduj7cb" path="res://Characters/Pillbug/Pillbug.tscn" id="4_gd3qd"]
 [ext_resource type="PackedScene" uid="uid://d345ctgph51uj" path="res://Characters/Bumblebee/Bumblebee.tscn" id="4_usii5"]
 [ext_resource type="PackedScene" uid="uid://dqkke1lxyvwta" path="res://Scenes/ramp.tscn" id="6_vnun7"]
 [ext_resource type="Script" path="res://Scripts/Movable.gd" id="7_yxptn"]
@@ -13,7 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://daoe6gj0bo2qr" path="res://Scenes/Menus/PauseMenu/pause_menu.tscn" id="11_c6575"]
 [ext_resource type="PackedScene" uid="uid://caxb37ohqq7q3" path="res://EnvironmentAssets/Flag/Flag.tscn" id="15_3xa5f"]
 [ext_resource type="PackedScene" uid="uid://dxqjrf22vjo3t" path="res://EnvironmentAssets/lilipad.tscn" id="15_ajvuj"]
-[ext_resource type="PackedScene" uid="uid://ceq3k2pduj7cb" path="res://Characters/Pillbug/Pillbug.tscn" id="15_cbjvc"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_75gon"]
 
@@ -66,8 +66,8 @@ game_state_manager = NodePath("../GameStateManager")
 transform = Transform3D(0.421448, 0, -0.906854, 0, 1, 0, 0.906854, 0, 0.421448, 2.52931, 4.55651, 0.355372)
 game_state_manager = NodePath("../GameStateManager")
 
-[node name="Pillbug" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("15_cbjvc")]
-transform = Transform3D(0.982058, 0, 0, 0, 0.982058, 0, 0, 0, 0.982058, 154.154, 21.0076, -16.0837)
+[node name="Pillbug" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("4_gd3qd")]
+transform = Transform3D(0.982058, 0, 0, 0, 0.982058, 0, 0, 0, 0.982058, 164.263, 21.0076, -16.1218)
 game_state_manager = NodePath("../GameStateManager")
 
 [node name="Frog" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("8_slu6r")]
