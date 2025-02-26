@@ -39,6 +39,19 @@ func save_keybinding(action: StringName, event: InputEvent):
 		event_str = OS.get_keycode_string(event.physical_keycode)
 	elif event is InputEventMouseButton:
 		event_str = "mouse_" + str(event.button_index)
-	
+		
 	newConfig.set_value("keybinding", action, event_str)
 	newConfig.save(SETTINGS_FILE_PATH)
+
+
+func load_keybinding():
+	var keybindings = {}
+	var keys = newConfig.get_section_keys("keybinding")
+	for key in keys:
+		var input_event
+		var event_str = newConfig.get_value("keybinding", key)
+		input_event = InputEventKey.new()
+		input_event.keycode = OS.find_keycode_from_string(event_str)
+		keybindings[key] = input_event
+	return keybindings
+	
