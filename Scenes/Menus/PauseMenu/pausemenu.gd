@@ -24,8 +24,11 @@ func _on_restart_pressed():
 	game_manager.get_tree().paused = false
 	get_tree().reload_current_scene()
 	
-	
 
+func _on_return_pressed():
+	game_manager.get_tree().paused = false
+	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
+	
 
 func _on_quit_pressed():
 	get_tree().quit()
