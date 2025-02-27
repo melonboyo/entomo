@@ -55,6 +55,7 @@ current_tab = 1
 [node name="Audio" type="TabBar" parent="TabContainer"]
 visible = false
 layout_mode = 2
+focus_mode = 0
 theme_override_styles/tab_selected = ExtResource("2_0m3vy")
 metadata/_tab_index = 0
 
