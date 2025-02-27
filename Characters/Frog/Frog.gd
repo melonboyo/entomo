@@ -85,3 +85,7 @@ func jump(jumpSpeed: float, direction: Vector3) -> void:
 func handleGravity(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta * gravityMultiplier
+		
+# The frog does not die when entering water
+func entered_water():
+	pass

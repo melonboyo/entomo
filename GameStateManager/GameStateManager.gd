@@ -7,10 +7,12 @@ class_name GameStateManager
 @export var first_flag: Flag
 
 var isInputEnabled = true
+var is_player_alive = true
 
 signal zoom_changed(newFocus: Node3D, zoomSize: int)
 signal toggle_game_paused(is_paused : bool)
 signal show_victory_screen()
+signal show_death_screen()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if(first_flag != null):
@@ -21,7 +23,7 @@ func _physics_process(delta: float) -> void:
 	if(currentPossessedCreature == null or camera == null):
 		return
 		
-	if(!isInputEnabled):
+	if(!isInputEnabled || !is_player_alive):
 		currentPossessedCreature.handleMove(Vector2.ZERO, camera.global_basis, delta);
 		return
 	
@@ -83,3 +85,10 @@ func ending_reached():
 	isInputEnabled = true
 	game_paused = true
 	show_victory_screen.emit()
+	
+func player_died():
+	is_player_alive = false;
+	zoom_changed.emit(currentPossessedCreature, currentPossessedCreature.size + 1)
+	await(get_tree().create_timer(3).timeout)
+	game_paused = true
+	show_death_screen.emit()
