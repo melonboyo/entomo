@@ -107,3 +107,9 @@ func _on_save_return_pressed():
 		ConfigFileHandler.save_keybinding(action, pending_keybindings[action])
 	pending_keybindings.clear()
 	print("Keybindings saved!")
+	get_tree().change_scene_to_file("res://Scenes/Menus/MainMenu/MainMenu.tscn")
+	
+func _on_return_no_save_pressed() -> void:
+	pending_keybindings.clear()
+	print("Keybindings not saved!")
+	get_tree().change_scene_to_file("res://Scenes/Menus/MainMenu/MainMenu.tscn")

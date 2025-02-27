@@ -195,4 +195,4 @@ autowrap_mode = 3
 
 [connection signal="pressed" from="TabContainer/Controls/ResetButton" to="TabContainer/Controls" method="_on_reset_button_pressed"]
 [connection signal="pressed" from="SaveReturn" to="TabContainer/Controls" method="_on_save_return_pressed"]
-[connection signal="pressed" from="ReturnNoSave" to="." method="_on_return_no_save_pressed"]
+[connection signal="pressed" from="ReturnNoSave" to="TabContainer/Controls" method="_on_return_no_save_pressed"]
