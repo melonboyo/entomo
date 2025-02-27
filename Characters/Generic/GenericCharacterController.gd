@@ -130,3 +130,8 @@ func enable():
 	show()
 	$CollisionShape3D.disabled = false
 	$SwitchArea.monitoring = true
+
+# Kills the player when they enter water, override this method in child class to stop this behaviour
+# TODO: change this to be more generalized, being able to enter different types of areas (if necessary)
+func entered_water():
+	game_state_manager.player_died()
