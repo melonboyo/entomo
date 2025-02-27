@@ -67,6 +67,11 @@ text = "Victory!
 "
 horizontal_alignment = 1
 
+[node name="Restart" type="Button" parent="VictoryPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Restart"
+
 [node name="Return" type="Button" parent="VictoryPanel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -76,4 +81,5 @@ text = "Return to Main Menu"
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Return" to="." method="_on_return_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="VictoryPanel/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="VictoryPanel/VBoxContainer/Return" to="." method="_on_return_pressed"]
