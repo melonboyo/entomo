@@ -66,13 +66,14 @@ func jumpButtonPressed() -> void:
 	currentJumpVelocityPercentage = 0
 	isChargingJump = true
 	$froggy_v3/AnimationPlayer.play("squish")
-		
+
 func jumpButtonReleased() -> void:
 	if(isChargingJump and is_on_floor()):
 		jump(
 			(currentJumpVelocityPercentage * JUMP_VELOCITY + minJumpVelocity) / (JUMP_VELOCITY + minJumpVelocity) * JUMP_VELOCITY,
 			currentMovementDirection if currentMovementDirection else -global_transform.basis.z.normalized()
 		)
+		AudioManager.play_frog_sfx_pack()
 		$froggy_v3/AnimationPlayer.play("jump")
 
 func jump(jumpSpeed: float, direction: Vector3) -> void:

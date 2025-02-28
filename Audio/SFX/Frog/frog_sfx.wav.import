@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cecop0nqpnao3"
-path="res://.godot/imported/frog_sfx.wav-aa3522cbbe4131929325f486e86ad342.sample"
+path="res://.godot/imported/frog_sfx.wav-9e1902cc95f231d8839c57eadf0ba219.sample"
 
 [deps]
 
-source_file="res://Audio/SFX/frog_sfx.wav"
-dest_files=["res://.godot/imported/frog_sfx.wav-aa3522cbbe4131929325f486e86ad342.sample"]
+source_file="res://Audio/SFX/Frog/frog_sfx.wav"
+dest_files=["res://.godot/imported/frog_sfx.wav-9e1902cc95f231d8839c57eadf0ba219.sample"]
 
 [params]
 
