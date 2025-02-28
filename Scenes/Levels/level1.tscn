@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://daoe6gj0bo2qr" path="res://Scenes/Menus/PauseMenu/pause_menu.tscn" id="11_c6575"]
 [ext_resource type="PackedScene" uid="uid://caxb37ohqq7q3" path="res://EnvironmentAssets/Flag/Flag.tscn" id="15_3xa5f"]
 [ext_resource type="PackedScene" uid="uid://ddqi27ajx4hx4" path="res://EnvironmentAssets/Mountain/stage3-mountainNewNew.glb" id="15_5uh5g"]
-[ext_resource type="PackedScene" uid="uid://dxqjrf22vjo3t" path="res://EnvironmentAssets/lilipad.tscn" id="15_ajvuj"]
+[ext_resource type="PackedScene" path="res://EnvironmentAssets/lilipad.tscn" id="15_ajvuj"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_75gon"]
 
@@ -50,7 +50,7 @@ point_count = 8
 transform = Transform3D(1.01827, 0, 0, 0, 1.01827, 0, 0, 0, 1.01827, 0, 0, 0)
 
 [node name="GameStateManager" parent="." node_paths=PackedStringArray("currentPossessedCreature", "camera", "first_flag") instance=ExtResource("2_cqo16")]
-currentPossessedCreature = NodePath("../Parasite")
+currentPossessedCreature = NodePath("../Frog")
 camera = NodePath("../CameraRoot/RotationRoot/Camera3D")
 first_flag = NodePath("../Flag")
 
@@ -73,6 +73,8 @@ game_state_manager = NodePath("../GameStateManager")
 
 [node name="Frog" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("8_slu6r")]
 transform = Transform3D(-0.982059, 0, 8.58543e-08, 0, 0.982059, 0, -8.58543e-08, 0, -0.982059, 161.058, 30.4244, 129.632)
+collisionScaleDifference = 0.0
+collisionOffsetDifference = 0.0
 game_state_manager = NodePath("../GameStateManager")
 
 [node name="CameraRoot" type="Node3D" parent="." node_paths=PackedStringArray("camera", "game_state_manager", "focus")]
@@ -128,7 +130,7 @@ transform = Transform3D(3.33435, 0, 0, 0, 0.701525, 0, 0, 0, 2.67008, 0.826326, 
 shape = SubResource("BoxShape3D_i8oe3")
 
 [node name="StaticBody3D10" type="StaticBody3D" parent="Blockout/Stage1"]
-transform = Transform3D(26.6882, 0, 0, 0, 11.4006, 0, 0, 0, 34.4278, 158.381, 5.31772, -35.7025)
+transform = Transform3D(26.6882, 0, 0, 0, 11.4006, 0, 0, 0, 34.4278, 158.381, 5.31772, 16.7477)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Blockout/Stage1/StaticBody3D10"]
 transform = Transform3D(5.99284, 0, 0, 0, 1, 0, 0, 0, 2.7152, 1.09724, 0, -0.237687)
@@ -176,7 +178,7 @@ transform = Transform3D(3.37133, 0, 0, 0, 1, 0, 0, 0, 2.32313, 0, 0, 0)
 shape = SubResource("CylinderShape3D_fjjt4")
 
 [node name="StaticBody3D18" type="StaticBody3D" parent="Blockout/Stage2"]
-transform = Transform3D(26.6882, 0, 0, 0, 16.8088, 0, 0, 0, 6.74785, 159.045, 10.8802, 13.6717)
+transform = Transform3D(26.6882, 0, 0, 0, 16.8088, 0, 0, 0, 6.74785, 159.045, 115.089, 13.6717)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Blockout/Stage2/StaticBody3D18"]
 transform = Transform3D(5.99284, 0, 0, 0, 1, 0, 0, 0, 2.7152, 1.09724, 0, -0.237687)
