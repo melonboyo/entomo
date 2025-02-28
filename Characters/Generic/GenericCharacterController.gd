@@ -85,6 +85,7 @@ func handleSwitch() -> void:
 	resetAbilities()
 	game_state_manager.switchCharacter(current_switchable_character)
 	current_switchable_character.held_character = self
+	AudioManager.play_switch_sfx_pack(-15.0)
 	disable()
 
 func resetAbilities():

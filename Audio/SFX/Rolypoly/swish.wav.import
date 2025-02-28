@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://d6qhcgucck4o"
-path="res://.godot/imported/switch_1.wav-da2637eb35a9cb3907eddbcbde673202.sample"
+uid="uid://tjcus7ee4ui1"
+path="res://.godot/imported/swish.wav-7b4497f762a31869b32baaec65d212d6.sample"
 
 [deps]
 
-source_file="res://Audio/SFX/switch_1.wav"
-dest_files=["res://.godot/imported/switch_1.wav-da2637eb35a9cb3907eddbcbde673202.sample"]
+source_file="res://Audio/SFX/Rolypoly/swish.wav"
+dest_files=["res://.godot/imported/swish.wav-7b4497f762a31869b32baaec65d212d6.sample"]
 
 [params]
 

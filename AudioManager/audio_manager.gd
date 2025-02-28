@@ -4,8 +4,10 @@ extends Node
 @onready var music_player = $poop
 @export_dir var music_folder_path: String = "res://Audio/Music"
 @export_dir var frog_folder_path: String = "res://Audio/SFX/Frog/"
+@export_dir var switch_folder_path: String = "res://Audio/SFX/Switch/"
 var songlist: Dictionary = {}  # Dictionary to store song references by name
 var froglist: Dictionary = {}  # Dictionary to store song references by name
+var switchlist: Dictionary = {}  # Dictionary to store song references by name
 
 
 
@@ -14,7 +16,7 @@ var froglist: Dictionary = {}  # Dictionary to store song references by name
 func _ready() -> void:
 	load_music_files()
 	load_frog_sfx_pack()
-
+	load_switch_sfx_pack()
 
 func load_music_files(folder_path: String = ""):
 	# Standard	
@@ -56,8 +58,23 @@ func load_frog_sfx_pack(folder_path: String = ""):
 		dir.list_dir_end()
 	else:
 		print("Error: Could not open folder at path:", music_folder_path + folder_path)
-	print(froglist)
 
+func load_switch_sfx_pack(folder_path: String = ""):
+	var sfx_num = 0
+	var dir: DirAccess = DirAccess.open(switch_folder_path + folder_path)
+	if dir:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != "":
+			if file_name != "." and file_name != "..":
+				var full_path = switch_folder_path + folder_path + "/" + file_name
+				if file_name.ends_with(".wav.import") or file_name.ends_with(".mp3.import") or file_name.ends_with(".ogg.import"):
+					switchlist[sfx_num] = full_path.get_basename()
+					sfx_num += 1
+			file_name = dir.get_next()
+		dir.list_dir_end()
+	else:
+		print("Error: Could not open folder at path:", music_folder_path + folder_path)
 # Uses and instantiates the sound_effect.tscn
 func play_sfx(path: String, volume_modifier: float = 0):
 	var sfx = sfx_scene.instantiate()
@@ -72,6 +89,15 @@ func play_frog_sfx_pack(volume_modifier: float = 0):
 	sfx.stream = load(froglist.get(num))
 	sfx.volume_db = 0 + volume_modifier
 	add_child(sfx)
+	
+func play_switch_sfx_pack(volume_modifier: float = 0):
+	var sfx = sfx_scene.instantiate()
+	var num = randi_range(0, 2)
+	print(switchlist.get(num))
+	sfx.stream = load(switchlist.get(num))
+	sfx.volume_db = 0 + volume_modifier
+	add_child(sfx)
+
 
 
 # Uses paths, not AudioStream.

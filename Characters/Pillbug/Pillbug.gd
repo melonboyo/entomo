@@ -60,7 +60,10 @@ func handleGravity(delta: float) -> void:
 func jumpButtonPressed() -> void:
 	if is_on_floor():
 		isDashing = true
+		
+		
 
 func jumpButtonReleased() -> void:
 	isDashing = false;
 	timeDashed = 0
+	AudioManager.play_sfx("res://Audio/SFX/Rolypoly/swish.wav")
