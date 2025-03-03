@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cfyb34soy0h7x"]
+[gd_scene load_steps=32 format=3 uid="uid://cfyb34soy0h7x"]
 
 [ext_resource type="PackedScene" uid="uid://cxrj60oxxptdh" path="res://Characters/Parasite/Parasite.tscn" id="1_nc2ee"]
 [ext_resource type="Script" path="res://GameController/Camera.gd" id="1_x6jyc"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://dgbb4hupj6ope" path="res://EnvironmentAssets/Flower/Flower.tscn" id="17_sf6lv"]
 [ext_resource type="PackedScene" uid="uid://c3cmfp8nipyi3" path="res://EnvironmentAssets/Lilypad/Lilypad.tscn" id="18_h1o36"]
 [ext_resource type="PackedScene" uid="uid://bndnynpd7wftq" path="res://EnvironmentAssets/StaticObjects/StaticCylinder.tscn" id="20_1gghd"]
+[ext_resource type="PackedScene" uid="uid://bkw6fjstele8" path="res://Scenes/Tutorial/TutorialPrompt.tscn" id="21_e8mcr"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_1eheq"]
 
@@ -55,10 +56,11 @@ point_count = 8
 [node name="Node3D" type="Node3D"]
 transform = Transform3D(1.01827, 0, 0, 0, 1.01827, 0, 0, 0, 1.01827, 0, 0, 0)
 
-[node name="GameStateManager" parent="." node_paths=PackedStringArray("currentPossessedCreature", "camera", "first_flag") instance=ExtResource("2_cqo16")]
+[node name="GameStateManager" parent="." node_paths=PackedStringArray("currentPossessedCreature", "camera", "first_flag", "tutorial_prompt") instance=ExtResource("2_cqo16")]
 currentPossessedCreature = NodePath("../Parasite")
 camera = NodePath("../CameraRoot/RotationRoot/Camera3D")
 first_flag = NodePath("../Blockout/Flags/Flag1")
+tutorial_prompt = NodePath("../TutorialPrompt")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.998626, 0.0130417, -0.050757, 0.0284047, 0.67923, 0.733376, 0.0440401, -0.73381, 0.677926, -0.00180054, 10.4981, 31.7402)
@@ -86,7 +88,7 @@ process_priority = 1
 transform = Transform3D(1.00045, 0, 0, 0, 1.00045, 0, 0, 0, 1.00045, -40.3541, 1.80485, -52.8062)
 script = ExtResource("1_x6jyc")
 zooms = {
-1: 10.0,
+1: 15.0,
 2: 75.0,
 3: 150.0,
 4: 250.0,
@@ -279,26 +281,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.649, 34.1017, 120.055)
 curve = SubResource("Curve3D_r1a8g")
 
 [node name="Dragonfly" parent="Blockout/Stage2/Dragonflies" instance=ExtResource("10_f6exh")]
-transform = Transform3D(-0.706028, 0, -0.708167, 0, 1, 0, 0.708167, 0, -0.706028, -608.371, 0.000106812, -337.189)
+transform = Transform3D(-0.706026, 0, -0.708169, 0, 1, 0, 0.708169, 0, -0.706026, -608.371, 0.000106812, -337.189)
 frogPoint = 840.0
 
 [node name="Dragonfly2" parent="Blockout/Stage2/Dragonflies" instance=ExtResource("10_f6exh")]
-transform = Transform3D(-0.578405, 0, -0.815726, 0, 1, 0, 0.815726, 0, -0.578405, -567.074, 0.000106812, -309.006)
+transform = Transform3D(-0.578403, 0, -0.815727, 0, 1, 0, 0.815727, 0, -0.578403, -567.075, 0.000106812, -309.006)
 progress = 50.0
 frogPoint = 840.0
 
 [node name="Dragonfly3" parent="Blockout/Stage2/Dragonflies" instance=ExtResource("10_f6exh")]
-transform = Transform3D(-0.605385, 0, -0.795905, 0, 1, 0, 0.795905, 0, -0.605385, -526.772, 0.000106812, -279.418)
+transform = Transform3D(-0.605383, 0, -0.795906, 0, 1, 0, 0.795906, 0, -0.605383, -526.772, 0.000106812, -279.418)
 progress = 100.0
 frogPoint = 840.0
 
 [node name="Dragonfly4" parent="Blockout/Stage2/Dragonflies" instance=ExtResource("10_f6exh")]
-transform = Transform3D(-0.636371, 0, -0.771354, 0, 1, 0, 0.771354, 0, -0.636371, -487.561, 0.000106812, -248.399)
+transform = Transform3D(-0.636369, 0, -0.771356, 0, 1, 0, 0.771356, 0, -0.636369, -487.561, 0.000106812, -248.399)
 progress = 150.0
 frogPoint = 840.0
 
 [node name="Dragonfly5" parent="Blockout/Stage2/Dragonflies" instance=ExtResource("10_f6exh")]
-transform = Transform3D(-0.676112, 0, -0.736766, 0, 1, 0, 0.736766, 0, -0.676112, -449.799, 0.000106812, -215.635)
+transform = Transform3D(-0.67611, 0, -0.736768, 0, 1, 0, 0.736768, 0, -0.67611, -449.799, 0.000106812, -215.635)
 progress = 200.0
 frogPoint = 840.0
 
@@ -419,6 +421,8 @@ transform = Transform3D(5.29109, 0, -3.05481, 0, 6.10963, 0, 3.05481, 0, 5.29109
 zoom_size = 5
 focus_move_speed = 2.0
 game_state_manager = NodePath("../../../GameStateManager")
+
+[node name="TutorialPrompt" parent="." instance=ExtResource("21_e8mcr")]
 
 [node name="PauseMenu" parent="." node_paths=PackedStringArray("game_manager") instance=ExtResource("11_c6575")]
 game_manager = NodePath("../GameStateManager")
