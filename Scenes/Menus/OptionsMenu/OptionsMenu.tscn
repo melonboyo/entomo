@@ -63,25 +63,60 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 142.0
+offset_top = 74.0
+offset_right = -168.0
+offset_bottom = -52.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 24
-theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 24
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Audio/MarginContainer"]
+[node name="Sliders" type="VBoxContainer" parent="TabContainer/Audio/MarginContainer"]
 layout_mode = 2
+size_flags_vertical = 8
 theme_override_constants/separation = 64
 alignment = 1
 
-[node name="Label" type="Label" parent="TabContainer/Audio/MarginContainer/VBoxContainer"]
+[node name="MasterSlider" type="HSlider" parent="TabContainer/Audio/MarginContainer/Sliders"]
 layout_mode = 2
-text = "Music volume"
+max_value = 1.0
+step = 0.01
 
-[node name="Label2" type="Label" parent="TabContainer/Audio/MarginContainer/VBoxContainer"]
+[node name="MusicSlider" type="HSlider" parent="TabContainer/Audio/MarginContainer/Sliders"]
 layout_mode = 2
-text = "SFX volume"
+max_value = 1.0
+step = 0.01
+
+[node name="SFXSlider" type="HSlider" parent="TabContainer/Audio/MarginContainer/Sliders"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+
+[node name="MasterVLabel" type="Label" parent="TabContainer/Audio"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 96.0
+offset_right = 148.0
+offset_bottom = 119.0
+text = "Master volume"
+
+[node name="MusicVLabel" type="Label" parent="TabContainer/Audio"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 177.0
+offset_right = 147.0
+offset_bottom = 200.0
+text = "Music"
+
+[node name="SFXVLabel" type="Label" parent="TabContainer/Audio"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 255.0
+offset_right = 147.0
+offset_bottom = 278.0
+text = "Sound effects"
 
 [node name="Controls" type="TabBar" parent="TabContainer"]
 visible = false
@@ -173,6 +208,11 @@ theme_override_styles/normal = ExtResource("2_0m3vy")
 text = "Return without saving"
 autowrap_mode = 3
 
+[connection signal="value_changed" from="TabContainer/Audio/MarginContainer/Sliders/MasterSlider" to="TabContainer/Audio" method="_on_master_slider_value_changed"]
+[connection signal="value_changed" from="TabContainer/Audio/MarginContainer/Sliders/MusicSlider" to="TabContainer/Audio" method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="TabContainer/Audio/MarginContainer/Sliders/SFXSlider" to="TabContainer/Audio" method="_on_sfx_slider_value_changed"]
 [connection signal="pressed" from="TabContainer/Controls/ResetButton" to="TabContainer/Controls" method="_on_reset_button_pressed"]
+[connection signal="pressed" from="SaveReturn" to="TabContainer/Audio" method="_on_save_return_pressed"]
 [connection signal="pressed" from="SaveReturn" to="TabContainer/Controls" method="_on_save_return_pressed"]
+[connection signal="pressed" from="ReturnNoSave" to="TabContainer/Audio" method="_on_return_no_save_pressed"]
 [connection signal="pressed" from="ReturnNoSave" to="TabContainer/Controls" method="_on_return_no_save_pressed"]
