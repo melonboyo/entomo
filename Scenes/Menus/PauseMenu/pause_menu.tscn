@@ -20,6 +20,7 @@ death_panel = NodePath("DeathPanel")
 help_panel = NodePath("HelpPanel")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 329.0
 offset_top = 80.0
@@ -56,7 +57,6 @@ text = "Quit
 "
 
 [node name="HelpPanel" type="PanelContainer" parent="."]
-visible = false
 layout_mode = 0
 offset_left = 329.0
 offset_top = 82.0
@@ -95,7 +95,7 @@ custom_minimum_size = Vector2(10, 10)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_batdy")
 theme_override_font_sizes/font_size = 17
-text = "Lorem ipsum (add controls here)"
+text = "Use the WASD keys to move around. When you reach a creature, press E to enter it. Press Space to jump, and Q to activate the creatures special ability."
 autowrap_mode = 2
 
 [node name="ReturnToPause" type="Button" parent="HelpPanel/VBoxContainer"]
