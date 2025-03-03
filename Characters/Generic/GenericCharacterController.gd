@@ -85,6 +85,7 @@ func handleSwitch() -> void:
 	resetAbilities()
 	game_state_manager.switchCharacter(current_switchable_character)
 	current_switchable_character.held_character = self
+	AudioManager.play_switch_sfx_pack(-15.0)
 	disable()
 
 func resetAbilities():
@@ -130,3 +131,12 @@ func enable():
 	show()
 	$CollisionShape3D.disabled = false
 	$SwitchArea.monitoring = true
+
+# Kills the player when they enter water, override this method in child class to stop this behaviour
+# TODO: change this to be more generalized, being able to enter different types of areas (if necessary)
+func entered_water():
+	game_state_manager.player_died()
+	
+# This method is called when the creature gets possessed
+func switched_to_this_character():
+	pass

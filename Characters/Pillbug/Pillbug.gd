@@ -55,12 +55,74 @@ func handleMove(input_dir: Vector2, camera_basis: Basis, delta: float) -> void:
 # The generic character uses gravity
 func handleGravity(delta: float) -> void:
 	if not is_on_floor() && not isFlying:
-			velocity += get_gravity() * delta * CUSTOMGRAVITY
+		velocity += get_gravity() * delta * CUSTOMGRAVITY
 
 func jumpButtonPressed() -> void:
 	if is_on_floor():
 		isDashing = true
+		
+		if(!has_dashed_before):
+			game_state_manager.hide_tutorial_prompt()
+			has_dashed_before = true
+		
+		AudioManager.play_sfx("res://Audio/SFX/Rolypoly/swish.wav")
 
 func jumpButtonReleased() -> void:
 	isDashing = false;
 	timeDashed = 0
+
+func entered_water():
+	super()
+	resetAbilities()
+
+############################################### Tutorial prompts about this creature ###############################################
+var has_been_controlled_before = false # Used to show a prompt when the player enteres this creature's area for the first time
+var has_dashed_before = false # Used to show a prompt about how to dash
+func _on_switch_area_body_entered(body):
+	super(body)
+	
+	if(body == self):
+		return
+	
+	if(has_been_controlled_before):
+		return
+	
+	if(body as GenericCharacterController):
+		var key = InputMap.action_get_events("interact")[0].as_text().trim_suffix(" (Physical)")
+		if(key.length() == 0):
+			key = "null"
+		key[0] = key[0].to_upper()
+		game_state_manager.show_tutorial_prompt("A Rolypoly! Press [" + key + "] to possess" )
+
+# Called when a character exits this character's switch area
+func _on_switch_area_body_exited(body):
+	super(body)
+	
+	if(body == self):
+		return
+	
+	if(has_been_controlled_before):
+		return
+	
+	if(body as GenericCharacterController):
+		game_state_manager.hide_tutorial_prompt()
+		
+func switched_to_this_character():
+	if(has_been_controlled_before):
+		return
+	
+	has_been_controlled_before = true
+	game_state_manager.hide_tutorial_prompt()
+	
+	await(get_tree().create_timer(1.5).timeout)
+
+	# The player may already have dashed during the 1.5s wait above
+	if(has_dashed_before):
+		return
+	
+	var key = InputMap.action_get_events("move_jump")[0].as_text().trim_suffix(" (Physical)")
+	if(key.length() == 0):
+		key = "null"
+	key[0] = key[0].to_upper()
+	
+	game_state_manager.show_tutorial_prompt("I've seen these go super fast! Hold [" + key + "] to roll")

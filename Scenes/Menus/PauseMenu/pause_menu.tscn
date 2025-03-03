@@ -5,7 +5,7 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lm5bg"]
 
-[node name="PauseMenu" type="Control" node_paths=PackedStringArray("pause_panel", "victory_panel")]
+[node name="PauseMenu" type="Control" node_paths=PackedStringArray("pause_panel", "victory_panel", "death_panel")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -16,6 +16,7 @@ grow_vertical = 2
 script = ExtResource("1_6ddw0")
 pause_panel = NodePath("PanelContainer")
 victory_panel = NodePath("VictoryPanel")
+death_panel = NodePath("DeathPanel")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 0
@@ -67,7 +68,41 @@ text = "Victory!
 "
 horizontal_alignment = 1
 
+[node name="Restart" type="Button" parent="VictoryPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Restart"
+
 [node name="Return" type="Button" parent="VictoryPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Return to Main Menu"
+
+[node name="DeathPanel" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 329.0
+offset_top = 198.0
+offset_right = 779.0
+offset_bottom = 430.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_lm5bg")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DeathPanel"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="DeathPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_batdy")
+theme_override_font_sizes/font_size = 100
+text = "You Died
+"
+horizontal_alignment = 1
+
+[node name="Restart" type="Button" parent="DeathPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Restart"
+
+[node name="Return" type="Button" parent="DeathPanel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Return to Main Menu"
@@ -76,4 +111,7 @@ text = "Return to Main Menu"
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Return" to="." method="_on_return_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="VictoryPanel/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="VictoryPanel/VBoxContainer/Return" to="." method="_on_return_pressed"]
+[connection signal="pressed" from="DeathPanel/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="DeathPanel/VBoxContainer/Return" to="." method="_on_return_pressed"]

@@ -20,8 +20,8 @@ flyingSpeed = 24
 maxFlyingStamina = 3
 rotationSpeed = 5
 size = 2
-SPEED = 16.0
-JUMP_VELOCITY = 7.0
+SPEED = 18.0
+JUMP_VELOCITY = 9.0
 CAMERA_SIZE = 75
 
 [node name="CollisionShape3D" parent="." index="0"]
