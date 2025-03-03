@@ -7,7 +7,7 @@
 [node name="rolypoly" node_paths=PackedStringArray("meshes") instance=ExtResource("1_h74fj")]
 script = ExtResource("2_2shc3")
 paint_material = ExtResource("3_3lnlr")
-meshes = [NodePath("body"), NodePath("helmet"), NodePath("shell")]
+meshes = [NodePath("body"), NodePath("helmet"), NodePath("shell"), NodePath("tail"), NodePath("AntennaR"), NodePath("antennaL")]
 
 [node name="body" parent="." index="0"]
 blend_shapes/BendL = 0.348543

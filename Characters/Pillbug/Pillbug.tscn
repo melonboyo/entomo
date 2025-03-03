@@ -14,14 +14,14 @@
 height = 1.0
 radius = 0.859432
 
-[node name="Pillbug" node_paths=PackedStringArray("COLOR", "normal_mesh", "painted_mesh", "ball_pivot") instance=ExtResource("1_yggj8")]
+[node name="Pillbug" node_paths=PackedStringArray("COLOR", "normal_mesh", "rolling_mesh", "ball_pivot") instance=ExtResource("1_yggj8")]
 script = ExtResource("2_6n07y")
 ROLLSPEED = 300.0
 MAXROLLSPEED = 2000.0
 CUSTOMGRAVITY = 10.0
 COLOR = NodePath("Color")
 normal_mesh = NodePath("rolypoly")
-painted_mesh = NodePath("BallPivot/rolypolyBALL")
+rolling_mesh = NodePath("BallPivot/rolypolyBALL")
 ball_pivot = NodePath("BallPivot")
 size = 3
 SPEED = 50.0

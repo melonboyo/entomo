@@ -10,7 +10,7 @@ var isFlying = false
 @export var CUSTOMGRAVITY = 10.0
 @export var COLOR : ColouredBug
 @export var normal_mesh: RolypolyMaterialSwitcher
-@export var painted_mesh: RolypolyMaterialSwitcher
+@export var rolling_mesh: RolypolyMaterialSwitcher
 @export var ball_pivot: Node3D
 
 var timeDashed = 0;
@@ -18,7 +18,7 @@ var is_coloured = false
 
 func _ready() -> void:
 	super()
-	painted_mesh.hide()
+	rolling_mesh.hide()
 	normal_mesh.show()
 
 func detectCollision(collided: Node):	
@@ -27,11 +27,13 @@ func detectCollision(collided: Node):
 			collided.move(direction_facing * ROLLSPEED, timeDashed)
 			timeDashed = 0
 			isDashing = false
+			rolling_mesh.hide()
+			normal_mesh.show()
 		elif (collided is Ramp):
 			velocity.y = collided.RAMPBOOST * timeDashed
 	
 	if(collided is Paint):
-		painted_mesh.set_painted()
+		rolling_mesh.set_painted()
 		normal_mesh.set_painted()
 		is_coloured = true
 	elif(collided is PillbugEatingRange and is_coloured):
@@ -65,7 +67,10 @@ func handleMove(input_dir: Vector2, camera_basis: Basis, delta: float) -> void:
 		rotation.y = lerp_angle(rotation.y, atan2(-direction_facing.x, -direction_facing.z), delta * rotationSpeed)
 	else :
 		super(input_dir, camera_basis, delta)
-		$rolypoly/AnimationPlayer.play("walk")
+		if(input_dir != Vector2.ZERO):
+			$rolypoly/AnimationPlayer.play("walk")
+		else:
+			$rolypoly/AnimationPlayer.stop()
 
 
 # The generic character uses gravity
@@ -76,7 +81,7 @@ func handleGravity(delta: float) -> void:
 func jumpButtonPressed() -> void:
 	if is_on_floor():
 		isDashing = true
-		painted_mesh.show()
+		rolling_mesh.show()
 		normal_mesh.hide()
 		
 		if(!has_dashed_before):
@@ -88,7 +93,7 @@ func jumpButtonPressed() -> void:
 func jumpButtonReleased() -> void:
 	isDashing = false;
 	timeDashed = 0
-	painted_mesh.hide()
+	rolling_mesh.hide()
 	normal_mesh.show()
 
 func entered_water():
