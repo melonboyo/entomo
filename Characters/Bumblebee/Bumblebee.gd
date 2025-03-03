@@ -4,6 +4,8 @@ var isFlying = false
 @export var gravityMultiplier = 2
 @export var flyingSpeed = 15
 @export var maxFlyingStamina = 5
+@export var left_wing : Node3D
+@export var right_wing : Node3D
 var currentFlyingStamina = 0.0
 
 # Overrides the handleMove method of GenericCharacterController
@@ -26,10 +28,20 @@ func handleMove(input_dir: Vector2, camera_basis: Basis, delta: float) -> void:
 var has_shown_stamina_prompt_before = false # Used to show the tiredness prompt the first time
 func _process(delta: float) -> void:
 	if(isFlying and currentFlyingStamina > 0):
-		var currentStamina = int((currentFlyingStamina / maxFlyingStamina) * 100)
+		var stamina_fraction = currentFlyingStamina / maxFlyingStamina
+		var currentStamina = int(stamina_fraction * 100)
 		if(Time.get_ticks_msec() % 500 == 0):  
 			print("Bumblebee stamina: " + str(currentStamina) + "%");
 		currentFlyingStamina -= delta
+		
+		var f = 1 - stamina_fraction
+		var wing_flap_intensity = 1 - (f * f * f * f)
+		
+		var flaps_per_second = 60
+		var flap_magnitude = 30
+		
+		left_wing.rotation_degrees.z = (13.4 - sin(Time.get_ticks_msec() * 0.001 * flaps_per_second) * flap_magnitude * wing_flap_intensity)
+		right_wing.rotation_degrees.z = (13.4 + sin(Time.get_ticks_msec() * 0.001 * flaps_per_second) * flap_magnitude * wing_flap_intensity) 
 		
 		if(!has_shown_stamina_prompt_before and currentStamina < 50):
 			has_shown_stamina_prompt_before = true
