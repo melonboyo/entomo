@@ -3,7 +3,7 @@ extends Node
 class_name ColouredBug
 
 @export var DEFAULT_COLOUR = Color.WHITE
-@export var CHANGED_COLOUR = Color.REBECCA_PURPLE
+@export var CHANGED_COLOUR = Color.ORANGE_RED
 @export var MESH : MeshInstance3D
 
 var is_coloured = false

@@ -16,7 +16,6 @@ radius = 43.2736
 script = ExtResource("2_ehqrl")
 timeToReachFullJumpVelocity = 0.5
 gravityMultiplier = 18
-rotationSpeed = 5
 airborneMovementControl = 0.75
 minJumpVelocity = 50
 jumpForwardVelocity = 60

@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://cymvr25bfe8h7"]
+
+[ext_resource type="PackedScene" uid="uid://35sqe64uq1ss" path="res://Characters/Pillbug/rolypolyBALL.glb" id="1_5q1by"]
+[ext_resource type="Script" path="res://Characters/Pillbug/RolypolyMaterialSwitcher.gd" id="2_vjqxi"]
+[ext_resource type="Material" uid="uid://b0f08nx0esit5" path="res://Characters/Pillbug/rolypoly_red.tres" id="3_inete"]
+
+[node name="rolypolyBALL" node_paths=PackedStringArray("meshes") instance=ExtResource("1_5q1by")]
+script = ExtResource("2_vjqxi")
+paint_material = ExtResource("3_inete")
+meshes = [NodePath("shell_001")]

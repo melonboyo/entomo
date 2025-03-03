@@ -9,9 +9,17 @@ var isFlying = false
 @export var MAXROLLSPEED = 10.0
 @export var CUSTOMGRAVITY = 10.0
 @export var COLOR : ColouredBug
+@export var normal_mesh: RolypolyMaterialSwitcher
+@export var painted_mesh: RolypolyMaterialSwitcher
+@export var ball_pivot: Node3D
 
 var timeDashed = 0;
+var is_coloured = false
 
+func _ready() -> void:
+	super()
+	painted_mesh.hide()
+	normal_mesh.show()
 
 func detectCollision(collided: Node):	
 	if isDashing:
@@ -23,8 +31,10 @@ func detectCollision(collided: Node):
 			velocity.y = collided.RAMPBOOST * timeDashed
 	
 	if(collided is Paint):
-		COLOR.changeColor()
-	elif(collided is PillbugEatingRange and COLOR.is_coloured):
+		painted_mesh.set_painted()
+		normal_mesh.set_painted()
+		is_coloured = true
+	elif(collided is PillbugEatingRange and is_coloured):
 		isFlying = true
 		velocity = collided.FORCEPUSH
 		await get_tree().create_timer(0.2).timeout
@@ -49,6 +59,10 @@ func handleMove(input_dir: Vector2, camera_basis: Basis, delta: float) -> void:
 		else:
 			timeDashed -= delta/2;
 			timeDashed = max(0, timeDashed)
+			
+		ball_pivot.rotate_x(-min(timeDashed * 0.5, 0.5))
+		
+		rotation.y = lerp_angle(rotation.y, atan2(-direction_facing.x, -direction_facing.z), delta * rotationSpeed)
 	else :
 		super(input_dir, camera_basis, delta)
 		$rolypoly/AnimationPlayer.play("walk")
@@ -62,6 +76,8 @@ func handleGravity(delta: float) -> void:
 func jumpButtonPressed() -> void:
 	if is_on_floor():
 		isDashing = true
+		painted_mesh.show()
+		normal_mesh.hide()
 		
 		if(!has_dashed_before):
 			game_state_manager.hide_tutorial_prompt()
@@ -72,6 +88,8 @@ func jumpButtonPressed() -> void:
 func jumpButtonReleased() -> void:
 	isDashing = false;
 	timeDashed = 0
+	painted_mesh.hide()
+	normal_mesh.show()
 
 func entered_water():
 	super()

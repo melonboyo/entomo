@@ -21,6 +21,7 @@ radius = 1.58
 [node name="Parasite" instance=ExtResource("1_lhite")]
 collision_layer = 6
 script = ExtResource("1_a2cng")
+SPEED = 6.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00508738, -1.19209e-07, 0.00233459)

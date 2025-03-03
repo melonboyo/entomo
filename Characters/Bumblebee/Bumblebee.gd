@@ -4,7 +4,6 @@ var isFlying = false
 @export var gravityMultiplier = 2
 @export var flyingSpeed = 15
 @export var maxFlyingStamina = 5
-@export var rotationSpeed = 5
 var currentFlyingStamina = 0.0
 
 # Overrides the handleMove method of GenericCharacterController

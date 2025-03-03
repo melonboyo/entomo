@@ -44,7 +44,7 @@ albedo_color = Color(0.160784, 0.678431, 0.372549, 1)
 albedo_color = Color(0.529067, 0.529067, 0.529067, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iboan"]
-albedo_color = Color(0.490054, 6.30031e-05, 0.430393, 1)
+albedo_color = Color(1, 0.271, 0, 1)
 
 [sub_resource type="Curve3D" id="Curve3D_r1a8g"]
 _data = {
