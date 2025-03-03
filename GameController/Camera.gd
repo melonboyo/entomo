@@ -40,11 +40,11 @@ func _physics_process(delta):
 		return
 	
 	# For testing, up and down keys to manually change zoom
-	if not zoom_tween or not zoom_tween.is_running():
-		if Input.is_action_just_pressed("ui_down"):
-			zoom_level += 1
-		elif Input.is_action_just_pressed("ui_up"):
-			zoom_level -= 1
+	#if not zoom_tween or not zoom_tween.is_running():
+	#	if Input.is_action_just_pressed("ui_down"):
+	#		zoom_level += 1
+	#	elif Input.is_action_just_pressed("ui_up"):
+	#		zoom_level -= 1
 
 # Creates a tween that animates between the previous zoom and the new zoom
 func zoom():

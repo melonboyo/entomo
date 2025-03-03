@@ -83,7 +83,7 @@ func _on_switch_area_body_entered(body):
 		return
 	
 	if(body as Parasite):
-		var key = OS.get_keycode_string((InputMap.action_get_events("interact")[0] as InputEventKey).unicode)
+		var key = InputMap.action_get_events("interact")[0].as_text().trim_suffix(" (Physical)")
 		if(key.length() == 0):
 			key = "null"
 		key[0] = key[0].to_upper()
@@ -111,7 +111,7 @@ func switched_to_this_character():
 	
 	await(get_tree().create_timer(1.5).timeout)
 	
-	var key = OS.get_keycode_string((InputMap.action_get_events("move_jump")[0] as InputEventKey).unicode)
+	var key = InputMap.action_get_events("move_jump")[0].as_text().trim_suffix(" (Physical)")
 	if(key.length() == 0):
 		key = "null"
 	key[0] = key[0].to_upper()
