@@ -21,9 +21,8 @@ var current_focus_move_speed = focus_move_speed
 @export_range(1, 10) var zoom_level := 1:
 	set(value):
 		var new_zoom_level = clampi(value, 1, zooms.size())
-		if zoom_level != new_zoom_level:
-			zoom_level = new_zoom_level
-			zoom()
+		zoom_level = new_zoom_level
+		zoom()
 @export var focus: Node3D
 
 var zoom_tween: Tween
