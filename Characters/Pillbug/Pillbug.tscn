@@ -1,16 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://ceq3k2pduj7cb"]
+[gd_scene load_steps=8 format=3 uid="uid://ceq3k2pduj7cb"]
 
 [ext_resource type="PackedScene" uid="uid://baiok6rvrnsqh" path="res://Characters/Generic/GenericCharacter.tscn" id="1_yggj8"]
 [ext_resource type="Script" path="res://Characters/Pillbug/Pillbug.gd" id="2_6n07y"]
 [ext_resource type="Script" path="res://Scripts/coloured_bug.gd" id="3_wt1y3"]
+[ext_resource type="PackedScene" uid="uid://bj50gmlq8ig7i" path="res://Characters/Pillbug/rolypoly.glb" id="4_kh8bh"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_tdvly"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_pxlda"]
-
-[sub_resource type="Skin" id="Skin_u8r0o"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1o8la"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0kang"]
 
@@ -32,30 +27,26 @@ CAMERA_SIZE = 150
 transform = Transform3D(22, 0, 0, 0, 22, 0, 0, 0, 22, 0, 0, 0)
 shape = SubResource("SphereShape3D_tdvly")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
-transform = Transform3D(22, 0, 0, 0, 22, 0, 0, 0, 22, 0, 0, 0)
-mesh = SubResource("SphereMesh_pxlda")
-skin = SubResource("Skin_u8r0o")
-surface_material_override/0 = SubResource("StandardMaterial3D_1o8la")
-
-[node name="RampCheckArea" type="Area3D" parent="." index="2"]
+[node name="RampCheckArea" type="Area3D" parent="." index="1"]
 transform = Transform3D(22, 0, 0, 0, 22, 0, 0, 0, 22, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RampCheckArea" index="0"]
 transform = Transform3D(1.05, 0, 0, 0, 1.05, 0, 0, 0, 1.05, 0, 0, 0)
 shape = SubResource("SphereShape3D_0kang")
 
-[node name="SwitchArea" parent="." index="3"]
+[node name="SwitchArea" parent="." index="2"]
 transform = Transform3D(22, 0, 0, 0, 22, 0, 0, 0, 22, 0, 0, 0)
 
 [node name="CollisionShape3D" parent="SwitchArea" index="0"]
 shape = SubResource("CylinderShape3D_ow3bi")
 
-[node name="Color" type="Node" parent="." index="4" node_paths=PackedStringArray("MESH")]
+[node name="Color" type="Node" parent="." index="3"]
 script = ExtResource("3_wt1y3")
-MESH = NodePath("../MeshInstance3D")
 
-[node name="ExitPosition" parent="." index="5"]
+[node name="ExitPosition" parent="." index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.85, 0)
+
+[node name="rolypoly" parent="." index="5" instance=ExtResource("4_kh8bh")]
+transform = Transform3D(-10, 0, -1.50996e-06, 0, 10, 0, 1.50996e-06, 0, -10, 0.104538, -10.9257, -0.0147934)
 
 [connection signal="body_entered" from="RampCheckArea" to="." method="detectCollision"]

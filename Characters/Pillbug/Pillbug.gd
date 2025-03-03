@@ -51,6 +51,8 @@ func handleMove(input_dir: Vector2, camera_basis: Basis, delta: float) -> void:
 			timeDashed = max(0, timeDashed)
 	else :
 		super(input_dir, camera_basis, delta)
+		$rolypoly/AnimationPlayer.play("walk")
+
 
 # The generic character uses gravity
 func handleGravity(delta: float) -> void:
