@@ -25,10 +25,7 @@ func detectCollision(collided: Node):
 	if(collided is Paint):
 		COLOR.changeColor()
 	elif(collided is PillbugEatingRange and COLOR.is_coloured):
-		isFlying = true
-		velocity = collided.FORCEPUSH
-		await get_tree().create_timer(0.2).timeout
-		isFlying = false
+		collided.Launch()
 
 func resetAbilities():
 	isDashing = false

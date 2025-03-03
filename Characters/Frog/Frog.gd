@@ -1,10 +1,12 @@
 extends GenericCharacterController
 
+class_name Frog
+
 var isChargingJump = false
 var isJumpButtonDown = false;
 var currentJumpVelocityPercentage = 0
 var currentMovementDirection = Vector3.ZERO
-var isToungeOut = false
+var isTongueOut = false
 
 @export var timeToReachFullJumpVelocity = 0.5
 @export var gravityMultiplier = 10
@@ -15,12 +17,14 @@ var isToungeOut = false
 
 
 @export var raycast : RayCast3D
-@export var toungeCollision : Node3D
-@export var toungeMesh : Node3D
+@export var tongueCollision : Node3D
+@export var tongueMesh : Node3D
 @export var collisionScaleDifference : float
 @export var collisionOffsetDifference : float
 
 var was_on_floor_last_frame = true
+
+var reachedStage3 = false
 
 func _ready() -> void:
 	super._ready()
@@ -30,7 +34,7 @@ func _ready() -> void:
 # Overrides the handleMove method of GenericCharacterController
 func handleMove(input_dir: Vector2, camera_basis: Basis, delta: float) -> void:
 	
-	if(isToungeOut):
+	if(isTongueOut):
 		return
 	
 	if(is_on_floor() && !was_on_floor_last_frame):
@@ -71,32 +75,37 @@ func _process(delta: float) -> void:
 		if(currentJumpVelocityPercentage > 1):
 			currentJumpVelocityPercentage = 1
 			
+
+# On toggle special ability
 func specialAbilityButtonPressed() -> void:
 	$froggy_v3/AnimationPlayer.play("idle_croak")
-	if(isToungeOut):
-		lerpToungeMesh(toungeCollision.scale.z, 0.1, 0.2)
+	# If the tongue is out, retract it
+	if(isTongueOut):
+		lerpTongueMesh(tongueCollision.scale.z, 0.1, 0.2)
 		
-		toungeCollision.scale.z = 0.1
-		toungeCollision.position.z = 0
+		tongueCollision.scale.z = 0.1
+		tongueCollision.position.z = 0
 		
-		isToungeOut = false
+		isTongueOut = false
+	# If close enough, launch the toungue
 	elif(raycast.is_colliding()):
-		print("A")
+		velocity = Vector3()
 		var collisionPoint = raycast.get_collision_point()
 		var distance = collisionPoint.distance_to(raycast.global_position)
 				
-		lerpToungeMesh(0.1, distance, 0.1)
+		lerpTongueMesh(0.1, distance, 0.1)
 		
-		toungeCollision.position.z = ((distance / 2) * -1) + collisionOffsetDifference
-		toungeCollision.scale.z = distance - collisionScaleDifference
+		tongueCollision.position.z = ((distance / 2) * -1) + collisionOffsetDifference
+		tongueCollision.scale.z = distance - collisionScaleDifference
 		
-		print(distance)
-		isToungeOut = true
+		isTongueOut = true
+	# Else do a quick animation
 	else:
-		quickToungeAnimation(100)
+		quickTongueAnimation(100, 0.15)
 
-func lerpToungeMesh(distanceStart, distanceEnd, delay):
-	
+# Extend (Scale and offset) the tongue mesh over a period of time
+func lerpTongueMesh(distanceStart, distanceEnd, delay):
+	tongueMesh.visible = true;
 	var startingDelay = delay
 		
 	while delay > 0:
@@ -105,21 +114,26 @@ func lerpToungeMesh(distanceStart, distanceEnd, delay):
 		var t = 1 - delay/startingDelay
 		var currentDistance = distanceStart + (distanceEnd - distanceStart) * t
 		
-		toungeMesh.position.z = ((currentDistance / 2) * -1) + collisionOffsetDifference
-		toungeMesh.scale.y = max(currentDistance - collisionScaleDifference, 0.1)
-
-func quickToungeAnimation(distance):
-	lerpToungeMesh(0.1, distance, 0.15)
-	await get_tree().create_timer(0.1).timeout
-	lerpToungeMesh(distance, 0.1, 0.1)
+		tongueMesh.position.z = ((currentDistance / 2) * -1) + collisionOffsetDifference
+		tongueMesh.scale.y = max(currentDistance - collisionScaleDifference, 0.1)
+	
+	if(distanceEnd <= 0.1):
+		tongueMesh.visible = false;
+	
+# Quickly extend and retract the tongue mesh
+func quickTongueAnimation(distance, delay):
+	lerpTongueMesh(0.1, distance, delay)
+	await get_tree().create_timer(delay).timeout
+	lerpTongueMesh(distance, 0.1, delay)
 
 func jumpButtonPressed() -> void:
-	currentJumpVelocityPercentage = 0
-	isChargingJump = true
-	$froggy_v3/AnimationPlayer.play("squish")
+	if(!isTongueOut):
+		currentJumpVelocityPercentage = 0
+		isChargingJump = true
+		$froggy_v3/AnimationPlayer.play("squish")
 		
 func jumpButtonReleased() -> void:
-	if(isChargingJump and is_on_floor() and !isToungeOut):
+	if(isChargingJump and is_on_floor() and !isTongueOut):
 		jump(
 			(currentJumpVelocityPercentage * JUMP_VELOCITY + minJumpVelocity) / (JUMP_VELOCITY + minJumpVelocity) * JUMP_VELOCITY,
 			currentMovementDirection if currentMovementDirection else -global_transform.basis.z.normalized()
@@ -136,3 +150,6 @@ func jump(jumpSpeed: float, direction: Vector3) -> void:
 func handleGravity(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta * gravityMultiplier
+
+func entered_water():
+	pass

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cfyb34soy0h7x"]
+[gd_scene load_steps=29 format=3 uid="uid://cfyb34soy0h7x"]
 
 [ext_resource type="PackedScene" uid="uid://cxrj60oxxptdh" path="res://Characters/Parasite/Parasite.tscn" id="1_nc2ee"]
 [ext_resource type="Script" path="res://GameController/Camera.gd" id="1_x6jyc"]
@@ -15,11 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://caxb37ohqq7q3" path="res://EnvironmentAssets/Flag/Flag.tscn" id="15_3xa5f"]
 [ext_resource type="PackedScene" uid="uid://ddqi27ajx4hx4" path="res://EnvironmentAssets/Mountain/stage3-mountainNewNew.glb" id="15_5uh5g"]
 [ext_resource type="PackedScene" path="res://EnvironmentAssets/lilipad.tscn" id="15_ajvuj"]
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_75gon"]
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_fjjt4"]
-height = 2.70382
+[ext_resource type="PackedScene" uid="uid://bvs8he515iq2m" path="res://EnvironmentAssets/Water/Water.tscn" id="16_yn4d4"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_1eheq"]
 
@@ -28,6 +24,11 @@ size = Vector3(1.74712, 1, 1.14751)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sa0xy"]
 size = Vector3(1, 1, 1.16724)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_75gon"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_fjjt4"]
+height = 2.70382
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ww5pt"]
 size = Vector3(1, 0.97226, 1)
@@ -46,11 +47,15 @@ _data = {
 }
 point_count = 8
 
+[sub_resource type="BoxMesh" id="BoxMesh_a8w2o"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v7y1b"]
+
 [node name="Node3D" type="Node3D"]
 transform = Transform3D(1.01827, 0, 0, 0, 1.01827, 0, 0, 0, 1.01827, 0, 0, 0)
 
 [node name="GameStateManager" parent="." node_paths=PackedStringArray("currentPossessedCreature", "camera", "first_flag") instance=ExtResource("2_cqo16")]
-currentPossessedCreature = NodePath("../Frog")
+currentPossessedCreature = NodePath("../Pillbug")
 camera = NodePath("../CameraRoot/RotationRoot/Camera3D")
 first_flag = NodePath("../Flag")
 
@@ -68,7 +73,7 @@ transform = Transform3D(0.421448, 0, -0.906854, 0, 1, 0, 0.906854, 0, 0.421448, 
 game_state_manager = NodePath("../GameStateManager")
 
 [node name="Pillbug" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("4_gd3qd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 164.263, 21.0076, -16.1218)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.6328, 68.8786, 189.242)
 game_state_manager = NodePath("../GameStateManager")
 
 [node name="Frog" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("8_slu6r")]
@@ -107,17 +112,6 @@ transform = Transform3D(-1.74846e-07, 0, -4, 0, 4, 0, 4, 0, -1.74846e-07, 3.6238
 
 [node name="Stage1" type="Node" parent="Blockout"]
 
-[node name="StaticBody3D8" type="StaticBody3D" parent="Blockout/Stage1"]
-transform = Transform3D(8.12717, 0, 0, 0, 0.442989, 0, 0, 0, 9.23589, 79.9375, -0.159414, 0.0334194)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Blockout/Stage1/StaticBody3D8"]
-transform = Transform3D(3.39647, 0, 0, 0, 1, 0, 0, 0, 2.7152, 0, 0, 0)
-mesh = SubResource("CylinderMesh_75gon")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Blockout/Stage1/StaticBody3D8"]
-transform = Transform3D(3.37133, 0, 0, 0, 1, 0, 0, 0, 2.32313, 0, 0, 0)
-shape = SubResource("CylinderShape3D_fjjt4")
-
 [node name="StaticBody3D9" type="StaticBody3D" parent="Blockout/Stage1"]
 transform = Transform3D(12.996, 0, 0, 0, 11.4006, 0, 0, 0, 14.7689, 106.117, 5.31772, -10.2539)
 
@@ -130,7 +124,7 @@ transform = Transform3D(3.33435, 0, 0, 0, 0.701525, 0, 0, 0, 2.67008, 0.826326, 
 shape = SubResource("BoxShape3D_i8oe3")
 
 [node name="StaticBody3D10" type="StaticBody3D" parent="Blockout/Stage1"]
-transform = Transform3D(26.6882, 0, 0, 0, 11.4006, 0, 0, 0, 34.4278, 158.381, 5.31772, 16.7477)
+transform = Transform3D(26.6882, 0, 0, 0, 11.4006, 0, 0, 0, 34.4278, 158.381, 5.31772, -30.8623)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Blockout/Stage1/StaticBody3D10"]
 transform = Transform3D(5.99284, 0, 0, 0, 1, 0, 0, 0, 2.7152, 1.09724, 0, -0.237687)
@@ -178,7 +172,7 @@ transform = Transform3D(3.37133, 0, 0, 0, 1, 0, 0, 0, 2.32313, 0, 0, 0)
 shape = SubResource("CylinderShape3D_fjjt4")
 
 [node name="StaticBody3D18" type="StaticBody3D" parent="Blockout/Stage2"]
-transform = Transform3D(26.6882, 0, 0, 0, 16.8088, 0, 0, 0, 6.74785, 159.045, 115.089, 13.6717)
+transform = Transform3D(26.6882, 0, 0, 0, 16.8088, 0, 0, 0, 6.74785, 159.045, 11.7995, 13.6717)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Blockout/Stage2/StaticBody3D18"]
 transform = Transform3D(5.99284, 0, 0, 0, 1, 0, 0, 0, 2.7152, 1.09724, 0, -0.237687)
@@ -288,10 +282,13 @@ transform = Transform3D(0.0363649, -0.0318629, -40, 0.0201125, 40, -0.0318446, 4
 [node name="Ramp3" parent="Blockout/Stage2/Ramps" instance=ExtResource("6_vnun7")]
 transform = Transform3D(-1.74846e-06, 0, 40, 0, 40, 0, -40, 0, -1.74846e-06, -122.698, 27.5375, 72.3091)
 
-[node name="PillbugEatingRange" type="StaticBody3D" parent="Blockout/Stage2"]
+[node name="PillbugEatingRange" type="StaticBody3D" parent="Blockout/Stage2" node_paths=PackedStringArray("frog", "pillbug")]
 transform = Transform3D(24.7196, 0, 0, 0, 6.30967, 0, 0, 0, 24.9233, 167.693, 7.6286, 249.278)
 script = ExtResource("8_ha7xt")
 FORCEPUSH = Vector3(0, 30, -500)
+frog = NodePath("../../../Frog")
+pillbug = NodePath("../../../Pillbug")
+distanceToFrog = 120.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Blockout/Stage2/PillbugEatingRange"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0338917, 0)
@@ -330,24 +327,34 @@ surface_material_override/0 = SubResource("StandardMaterial3D_iboan")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.649, 34.1017, 120.055)
 curve = SubResource("Curve3D_r1a8g")
 
-[node name="Dragonfly" parent="Blockout/Stage2/Dragonflies" instance=ExtResource("10_f6exh")]
+[node name="Dragonfly" parent="Blockout/Stage2/Dragonflies" node_paths=PackedStringArray("frog", "gameState") instance=ExtResource("10_f6exh")]
 transform = Transform3D(0.244452, 0, -0.969661, 0, 1, 0, 0.969661, 0, 0.244452, -393.114, 0, -71.5789)
+frog = NodePath("../../../../Frog")
+gameState = NodePath("../../../../GameStateManager")
 
-[node name="Dragonfly2" parent="Blockout/Stage2/Dragonflies" instance=ExtResource("10_f6exh")]
+[node name="Dragonfly2" parent="Blockout/Stage2/Dragonflies" node_paths=PackedStringArray("frog", "gameState") instance=ExtResource("10_f6exh")]
 transform = Transform3D(0.244487, 0, -0.969652, 0, 1, 0, 0.969652, 0, 0.244487, -344.794, 0, -84.4261)
 progress = 50.0
+frog = NodePath("../../../../Frog")
+gameState = NodePath("../../../../GameStateManager")
 
-[node name="Dragonfly3" parent="Blockout/Stage2/Dragonflies" instance=ExtResource("10_f6exh")]
+[node name="Dragonfly3" parent="Blockout/Stage2/Dragonflies" node_paths=PackedStringArray("frog", "gameState") instance=ExtResource("10_f6exh")]
 transform = Transform3D(0.0770034, 0, -0.99703, 0, 1, 0, 0.99703, 0, 0.0770034, -295.791, 0, -94.0358)
 progress = 100.0
+frog = NodePath("../../../../Frog")
+gameState = NodePath("../../../../GameStateManager")
 
-[node name="Dragonfly4" parent="Blockout/Stage2/Dragonflies" instance=ExtResource("10_f6exh")]
+[node name="Dragonfly4" parent="Blockout/Stage2/Dragonflies" node_paths=PackedStringArray("frog", "gameState") instance=ExtResource("10_f6exh")]
 transform = Transform3D(-0.198114, 0, -0.980178, 0, 1, 0, 0.980178, 0, -0.198114, -246.061, 0, -90.7193)
 progress = 150.0
+frog = NodePath("../../../../Frog")
+gameState = NodePath("../../../../GameStateManager")
 
-[node name="Dragonfly5" parent="Blockout/Stage2/Dragonflies" instance=ExtResource("10_f6exh")]
+[node name="Dragonfly5" parent="Blockout/Stage2/Dragonflies" node_paths=PackedStringArray("frog", "gameState") instance=ExtResource("10_f6exh")]
 transform = Transform3D(-0.371066, 0, -0.928605, 0, 1, 0, 0.928605, 0, -0.371066, -198.453, 0, -75.6926)
 progress = 200.0
+frog = NodePath("../../../../Frog")
+gameState = NodePath("../../../../GameStateManager")
 
 [node name="StaticBody3D21" type="StaticBody3D" parent="Blockout/Stage2"]
 transform = Transform3D(-46.133, 0, 0, 0, 7.15211, 0, 0, 0, -58.0116, 332.799, -0.409064, 118.798)
@@ -367,6 +374,18 @@ shape = SubResource("CylinderShape3D_fjjt4")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Blockout/Stage3/StaticBody3D"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Blockout/Stage3/StaticBody3D"]
+
+[node name="Water" parent="Blockout" instance=ExtResource("16_yn4d4")]
+transform = Transform3D(1000, 0, 0, 0, 10, 0, 0, 0, 1000, 0, -4.45, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Blockout"]
+transform = Transform3D(1000, 0, 0, 0, 10, 0, 0, 0, 1000, 0, -14.45, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Blockout/StaticBody3D"]
+mesh = SubResource("BoxMesh_a8w2o")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blockout/StaticBody3D"]
+shape = SubResource("BoxShape3D_v7y1b")
 
 [node name="PauseMenu" parent="." node_paths=PackedStringArray("game_manager") instance=ExtResource("11_c6575")]
 game_manager = NodePath("../GameStateManager")
