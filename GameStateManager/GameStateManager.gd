@@ -14,6 +14,7 @@ signal zoom_changed(newFocus: Node3D, zoomSize: int)
 signal toggle_game_paused(is_paused : bool)
 signal show_victory_screen()
 signal show_death_screen()
+signal show_help_screen()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:	
 	AudioManager.play_music("Froggu_Final", -5)

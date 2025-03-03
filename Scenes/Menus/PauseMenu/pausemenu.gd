@@ -3,6 +3,7 @@ extends Control
 @export var pause_panel: PanelContainer
 @export var victory_panel: PanelContainer
 @export var death_panel: PanelContainer
+@export var help_panel: PanelContainer
 @export var final_flag: Flag
 
 func _ready():
@@ -10,6 +11,8 @@ func _ready():
 	game_manager.connect("toggle_game_paused", _on_game_manager_toggle_game_paused)
 	game_manager.connect("show_victory_screen", _on_game_manager_show_victory_screen)
 	game_manager.connect("show_death_screen", _on_game_manager_show_death_screen)
+	game_manager.connect("show_help_screen",_on_help_pressed)
+	
 
 
 
@@ -44,6 +47,7 @@ func _on_game_manager_toggle_game_paused(is_paused : bool):
 		pause_panel.show()
 		victory_panel.hide()
 		death_panel.hide()
+		help_panel.hide()
 	else:
 		hide()
 		
@@ -52,10 +56,26 @@ func _on_game_manager_show_victory_screen():
 	victory_panel.show()
 	pause_panel.hide()
 	death_panel.hide()
+	help_panel.hide()
 
 func _on_game_manager_show_death_screen():
 	show()
 	death_panel.show()
 	victory_panel.hide()
 	pause_panel.hide()
+	help_panel.hide()
 	
+
+
+func _on_return_to_pause_pressed():
+		help_panel.hide()
+		pause_panel.show()
+		death_panel.hide()
+		victory_panel.hide()
+
+
+func _on_help_pressed():
+		pause_panel.hide()
+		help_panel.show()
+		victory_panel.hide()
+		death_panel.hide()

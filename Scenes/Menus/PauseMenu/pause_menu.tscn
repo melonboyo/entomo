@@ -5,7 +5,7 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lm5bg"]
 
-[node name="PauseMenu" type="Control" node_paths=PackedStringArray("pause_panel", "victory_panel", "death_panel")]
+[node name="PauseMenu" type="Control" node_paths=PackedStringArray("pause_panel", "victory_panel", "death_panel", "help_panel")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -17,6 +17,7 @@ script = ExtResource("1_6ddw0")
 pause_panel = NodePath("PanelContainer")
 victory_panel = NodePath("VictoryPanel")
 death_panel = NodePath("DeathPanel")
+help_panel = NodePath("HelpPanel")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 0
@@ -38,6 +39,11 @@ layout_mode = 2
 size_flags_vertical = 3
 text = "Restart"
 
+[node name="Help" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Help"
+
 [node name="Return" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -49,7 +55,56 @@ size_flags_vertical = 3
 text = "Quit
 "
 
+[node name="HelpPanel" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 329.0
+offset_top = 82.0
+offset_right = 780.0
+offset_bottom = 546.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HelpPanel"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HelpPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_batdy")
+theme_override_font_sizes/font_size = 32
+text = "How to Play:"
+
+[node name="Label2" type="Label" parent="HelpPanel/VBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_batdy")
+theme_override_font_sizes/font_size = 17
+text = "You are a tiny parasite looking to reach the flags around the world with the help of the different creatures in your vicinity. Use the different creatures unique abilities to reach the top of the mountain!"
+autowrap_mode = 2
+
+[node name="Label3" type="Label" parent="HelpPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_batdy")
+theme_override_font_sizes/font_size = 32
+text = "Controls:"
+
+[node name="Label4" type="Label" parent="HelpPanel/VBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_batdy")
+theme_override_font_sizes/font_size = 17
+text = "Lorem ipsum (add controls here)"
+autowrap_mode = 2
+
+[node name="ReturnToPause" type="Button" parent="HelpPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+text = "Return"
+
 [node name="VictoryPanel" type="PanelContainer" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 329.0
 offset_top = 198.0
@@ -79,6 +134,7 @@ size_flags_vertical = 3
 text = "Return to Main Menu"
 
 [node name="DeathPanel" type="PanelContainer" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 329.0
 offset_top = 198.0
@@ -109,8 +165,10 @@ text = "Return to Main Menu"
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Help" to="." method="_on_help_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Return" to="." method="_on_return_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="HelpPanel/VBoxContainer/ReturnToPause" to="." method="_on_return_to_pause_pressed"]
 [connection signal="pressed" from="VictoryPanel/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="VictoryPanel/VBoxContainer/Return" to="." method="_on_return_pressed"]
 [connection signal="pressed" from="DeathPanel/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
