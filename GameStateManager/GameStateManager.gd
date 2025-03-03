@@ -80,6 +80,7 @@ func switchCharacter(character: GenericCharacterController):
 # Zooms out, pans over to the next flag, and zooms back to the player character
 func show_flag(next_flag: Flag):
 	isInputEnabled = false
+	currentPossessedCreature.resetAbilities()
 	zoom_changed.emit(currentPossessedCreature, next_flag.zoom_size)
 	await(get_tree().create_timer(next_flag.zoom_out_duration).timeout)
 	zoom_changed.emit(next_flag, next_flag.zoom_size, next_flag.focus_move_speed)

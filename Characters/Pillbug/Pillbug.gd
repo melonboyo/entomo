@@ -69,6 +69,10 @@ func jumpButtonReleased() -> void:
 	isDashing = false;
 	timeDashed = 0
 
+func entered_water():
+	super()
+	resetAbilities()
+
 ############################################### Tutorial prompts about this creature ###############################################
 var has_been_controlled_before = false # Used to show a prompt when the player enteres this creature's area for the first time
 var has_dashed_before = false # Used to show a prompt about how to dash
