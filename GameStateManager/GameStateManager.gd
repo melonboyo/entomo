@@ -15,11 +15,10 @@ signal toggle_game_paused(is_paused : bool)
 signal show_victory_screen()
 signal show_death_screen()
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	if(first_flag == null):
-		return
-	
-	start_intro_tutorial()
+func _ready() -> void:	
+	AudioManager.play_music("Froggu_Final", -5)
+	if(first_flag != null):
+		start_intro_tutorial()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:

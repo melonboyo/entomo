@@ -64,6 +64,8 @@ func jumpButtonPressed() -> void:
 		if(!has_dashed_before):
 			game_state_manager.hide_tutorial_prompt()
 			has_dashed_before = true
+		
+		AudioManager.play_sfx("res://Audio/SFX/Rolypoly/swish.wav")
 
 func jumpButtonReleased() -> void:
 	isDashing = false;
