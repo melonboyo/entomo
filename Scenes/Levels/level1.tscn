@@ -75,7 +75,7 @@ transform = Transform3D(-0.5, 0, 0.866026, 0, 1, 0, -0.866026, 0, -0.5, -40.3542
 game_state_manager = NodePath("../GameStateManager")
 
 [node name="Bumblebee" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("4_usii5")]
-transform = Transform3D(-0.985033, 0, -0.172376, 0, 1, 0, 0.172376, 0, -0.985033, -27.715, 4.55651, -73.8405)
+transform = Transform3D(-0.872259, 0, -0.489048, 0, 1, 0, 0.489048, 0, -0.872259, -25.2075, 4.55651, -54.9732)
 game_state_manager = NodePath("../GameStateManager")
 
 [node name="Pillbug" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("4_gd3qd")]
