@@ -5,6 +5,10 @@ class_name Dragonfly
 @export var speed : float
 @export var color : ColouredBug
 @export var frogPoint : float
+@export var distanceToFrog : float
+@export var frog : Frog
+@export var gameState : GameStateManager
+
 
 var lastProgressCheck = 0
 var rng = RandomNumberGenerator.new()
@@ -19,7 +23,8 @@ func _process(delta):
 	progress += speed * delta
 	
 	if (progress < lastProgressCheck):
-		setColour()
+		color.MESH.visible = true
+		checked = false
 	elif (!checked and progress > frogPoint):
 		checkIfEaten()
 	
@@ -29,12 +34,15 @@ func _process(delta):
 func setColour():
 	color.MESH.visible = true
 	checked = false
-	if(rng.randi_range(1,3) == 3):
+	if(rng.randi_range(1,2) == 2):
 		color.changeColor()
 	else:
 		color.resetColor()
 
 func checkIfEaten():
-	if color.is_coloured:
-		color.MESH.visible = false
 	checked = true
+	if color.is_coloured and gameState.maxStageReached < 4:
+		frog.quickTongueAnimation(distanceToFrog, 0.1)
+		await get_tree().create_timer(0.1).timeout
+		color.MESH.visible = false
+	

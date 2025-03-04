@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://ceq3k2pduj7cb"]
+[gd_scene load_steps=8 format=3 uid="uid://ceq3k2pduj7cb"]
 
 [ext_resource type="PackedScene" uid="uid://baiok6rvrnsqh" path="res://Characters/Generic/GenericCharacter.tscn" id="1_yggj8"]
 [ext_resource type="Script" path="res://Characters/Pillbug/Pillbug.gd" id="2_6n07y"]
-[ext_resource type="Script" path="res://Scripts/coloured_bug.gd" id="3_wt1y3"]
 [ext_resource type="PackedScene" uid="uid://cymvr25bfe8h7" path="res://Characters/Pillbug/PaintedRolypolyModel.tscn" id="5_53whx"]
 [ext_resource type="PackedScene" uid="uid://pybsf0l33dhf" path="res://Characters/Pillbug/NormalRolypolyModel.tscn" id="5_675f0"]
 
@@ -14,12 +13,11 @@
 height = 1.0
 radius = 0.859432
 
-[node name="Pillbug" node_paths=PackedStringArray("COLOR", "normal_mesh", "rolling_mesh", "ball_pivot") instance=ExtResource("1_yggj8")]
+[node name="Pillbug" node_paths=PackedStringArray("normal_mesh", "rolling_mesh", "ball_pivot") instance=ExtResource("1_yggj8")]
 script = ExtResource("2_6n07y")
 ROLLSPEED = 300.0
 MAXROLLSPEED = 2000.0
 CUSTOMGRAVITY = 10.0
-COLOR = NodePath("Color")
 normal_mesh = NodePath("rolypoly")
 rolling_mesh = NodePath("BallPivot/rolypolyBALL")
 ball_pivot = NodePath("BallPivot")
@@ -44,19 +42,16 @@ transform = Transform3D(22, 0, 0, 0, 22, 0, 0, 0, 22, 0, 0, 0)
 [node name="CollisionShape3D" parent="SwitchArea" index="0"]
 shape = SubResource("CylinderShape3D_ow3bi")
 
-[node name="Color" type="Node" parent="." index="3"]
-script = ExtResource("3_wt1y3")
-
-[node name="rolypoly" parent="." index="4" instance=ExtResource("5_675f0")]
+[node name="rolypoly" parent="." index="3" instance=ExtResource("5_675f0")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -11, 0)
 
-[node name="BallPivot" type="Node3D" parent="." index="5"]
+[node name="BallPivot" type="Node3D" parent="." index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.581279, 0)
 
 [node name="rolypolyBALL" parent="BallPivot" index="0" instance=ExtResource("5_53whx")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -7.068, 1.729)
 
-[node name="ExitPosition" parent="." index="6"]
+[node name="ExitPosition" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.85, 0)
 
 [connection signal="body_entered" from="RampCheckArea" to="." method="detectCollision"]
