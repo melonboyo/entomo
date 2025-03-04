@@ -8,6 +8,7 @@ class_name GenericCharacterController extends CharacterBody3D
 @export var JUMP_VELOCITY = 4.5
 @export var CAMERA_SIZE = 10 # Assumes orthographic camera
 @export var exitPosition: Node3D
+@export var rotationSpeed = 5
 var held_character: GenericCharacterController = null
 
 var is_in_switch_area := false
@@ -54,6 +55,9 @@ func handleMove(input_dir: Vector2, camera_basis: Basis, delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
+		
+	if(input_dir != Vector2.ZERO):
+		rotation.y = lerp_angle(rotation.y, atan2(-direction.x, -direction.z), delta * rotationSpeed)
 
 # The generic character can interact, this method should work the same for all cratures. 
 func handleInteract() -> void:

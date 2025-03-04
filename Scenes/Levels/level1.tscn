@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cfyb34soy0h7x"]
+[gd_scene load_steps=34 format=3 uid="uid://cfyb34soy0h7x"]
 
 [ext_resource type="PackedScene" uid="uid://cxrj60oxxptdh" path="res://Characters/Parasite/Parasite.tscn" id="1_nc2ee"]
 [ext_resource type="Script" path="res://GameController/Camera.gd" id="1_x6jyc"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cynjesuoq6b5x" path="res://EnvironmentAssets/StaticObjects/StaticCube.tscn" id="14_wvx2g"]
 [ext_resource type="PackedScene" uid="uid://caxb37ohqq7q3" path="res://EnvironmentAssets/Flag/Flag.tscn" id="15_3xa5f"]
 [ext_resource type="PackedScene" uid="uid://ddqi27ajx4hx4" path="res://EnvironmentAssets/Mountain/stage3-mountainNewNew.glb" id="15_5uh5g"]
+[ext_resource type="Material" uid="uid://b0f08nx0esit5" path="res://Characters/Pillbug/rolypoly_red.tres" id="16_3fps6"]
 [ext_resource type="PackedScene" uid="uid://bvs8he515iq2m" path="res://EnvironmentAssets/Water/Water.tscn" id="16_yn4d4"]
 [ext_resource type="PackedScene" uid="uid://dgbb4hupj6ope" path="res://EnvironmentAssets/Flower/Flower.tscn" id="17_sf6lv"]
 [ext_resource type="PackedScene" uid="uid://c3cmfp8nipyi3" path="res://EnvironmentAssets/Lilypad/Lilypad.tscn" id="18_h1o36"]
@@ -44,7 +45,7 @@ albedo_color = Color(0.160784, 0.678431, 0.372549, 1)
 albedo_color = Color(0.529067, 0.529067, 0.529067, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iboan"]
-albedo_color = Color(0.490054, 6.30031e-05, 0.430393, 1)
+albedo_color = Color(1, 0.271, 0, 1)
 
 [sub_resource type="Curve3D" id="Curve3D_r1a8g"]
 _data = {
@@ -52,6 +53,8 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 8
+
+[sub_resource type="SphereMesh" id="SphereMesh_5kmdm"]
 
 [node name="Node3D" type="Node3D"]
 transform = Transform3D(1.01827, 0, 0, 0, 1.01827, 0, 0, 0, 1.01827, 0, 0, 0)
@@ -77,7 +80,7 @@ transform = Transform3D(-0.985033, 0, -0.172376, 0, 1, 0, 0.172376, 0, -0.985033
 game_state_manager = NodePath("../GameStateManager")
 
 [node name="Pillbug" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("4_gd3qd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 196.531, 27.5557, -28.9992)
+transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 216.17, 22.1063, -43.3409)
 game_state_manager = NodePath("../GameStateManager")
 
 [node name="Frog" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("8_slu6r")]
@@ -103,7 +106,7 @@ focus = NodePath("../Parasite")
 transform = Transform3D(0.707107, 0.472128, -0.526399, 3.4874e-15, 0.74444, 0.66769, 0.707107, -0.472128, 0.526399, 0, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="CameraRoot/RotationRoot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.41628)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 19.5)
 fov = 40.0
 size = 20.0
 
@@ -420,6 +423,11 @@ transform = Transform3D(-4.84301e-06, 0, -20.3654, 0, 50.9135, 0, 110.795, 0, -8
 [node name="StaticBody3D20" parent="Blockout/Stage2" instance=ExtResource("14_wvx2g")]
 transform = Transform3D(-71.7024, 0, -14.4005, 0, 50.9135, 0, 71.7024, 0, -14.4005, 242.458, 2.92631, 28.2038)
 
+[node name="f" type="MeshInstance3D" parent="Blockout/Stage2"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -85, 0)
+mesh = SubResource("SphereMesh_5kmdm")
+surface_material_override/0 = ExtResource("16_3fps6")
+
 [node name="Stage3" type="Node" parent="Blockout"]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Blockout/Stage3"]
@@ -490,7 +498,7 @@ game_state_manager = NodePath("../../../GameStateManager")
 
 [node name="Flag4" parent="Blockout/Flags" node_paths=PackedStringArray("game_state_manager") instance=ExtResource("15_3xa5f")]
 transform = Transform3D(5.29109, 0, -3.05481, 0, 6.10963, 0, 3.05481, 0, 5.29109, 471.509, 391.529, -137.838)
-zoom_size = 3
+zoom_size = 5
 focus_move_speed = 2.0
 game_state_manager = NodePath("../../../GameStateManager")
 

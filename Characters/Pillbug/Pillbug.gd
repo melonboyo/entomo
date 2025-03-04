@@ -8,11 +8,18 @@ var isFlying = false
 @export var ROLLSPEED = 10.0
 @export var MAXROLLSPEED = 10.0
 @export var CUSTOMGRAVITY = 10.0
-@export var COLOR : ColouredBug
+@export var normal_mesh: RolypolyMaterialSwitcher
+@export var rolling_mesh: RolypolyMaterialSwitcher
+@export var ball_pivot: Node3D
 var intro_sfx
 
 var timeDashed = 0;
+var is_coloured = false
 
+func _ready() -> void:
+	super()
+	rolling_mesh.hide()
+	normal_mesh.show()
 
 func detectCollision(collided: Node):	
 	if isDashing:
@@ -20,12 +27,16 @@ func detectCollision(collided: Node):
 			collided.move(direction_facing * ROLLSPEED, timeDashed)
 			timeDashed = 0
 			isDashing = false
+			rolling_mesh.hide()
+			normal_mesh.show()
 		elif (collided is Ramp):
 			velocity.y = collided.RAMPBOOST * timeDashed
 	
 	if(collided is Paint):
-		COLOR.changeColor()
-	elif(collided is PillbugEatingRange and COLOR.is_coloured):
+		rolling_mesh.set_painted()
+		normal_mesh.set_painted()
+		is_coloured = true
+	elif(collided is PillbugEatingRange and is_coloured):
 		collided.Launch()
 
 func resetAbilities():
@@ -47,8 +58,17 @@ func handleMove(input_dir: Vector2, camera_basis: Basis, delta: float) -> void:
 		else:
 			timeDashed -= delta/2;
 			timeDashed = max(0, timeDashed)
+			
+		ball_pivot.rotate_x(-min(timeDashed * 0.5, 0.5))
+		
+		rotation.y = lerp_angle(rotation.y, atan2(-direction_facing.x, -direction_facing.z), delta * rotationSpeed)
 	else :
 		super(input_dir, camera_basis, delta)
+		if(input_dir != Vector2.ZERO):
+			$rolypoly/AnimationPlayer.play("walk")
+		else:
+			$rolypoly/AnimationPlayer.stop()
+
 
 # The generic character uses gravity
 func handleGravity(delta: float) -> void:
@@ -58,16 +78,23 @@ func handleGravity(delta: float) -> void:
 func jumpButtonPressed() -> void:
 	if is_on_floor():
 		isDashing = true
+		rolling_mesh.show()
+		normal_mesh.hide()
 		
 		if(!has_dashed_before):
 			game_state_manager.hide_tutorial_prompt()
 			has_dashed_before = true
 		
-		AudioManager.play_sfx("res://Audio/SFX/Rolypoly/swish.wav")
+		intro_sfx = AudioManager.play_sfx("res://Audio/SFX/Rolypoly/swish_Intro_3.wav")
 
 func jumpButtonReleased() -> void:
 	isDashing = false;
 	timeDashed = 0
+	rolling_mesh.hide()
+	normal_mesh.show()
+	if intro_sfx:
+		intro_sfx._on_finished()
+	#intro_sfx = AudioManager.play_sfx("res://Audio/SFX/Rolypoly/swish.wav")
 
 func entered_water():
 	super()

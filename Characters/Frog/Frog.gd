@@ -10,7 +10,6 @@ var isTongueOut = false
 
 @export var timeToReachFullJumpVelocity = 0.5
 @export var gravityMultiplier = 10
-@export var rotationSpeed = 5
 @export var airborneMovementControl = 0.5;
 @export var minJumpVelocity = 20
 @export var jumpForwardVelocity = 60
