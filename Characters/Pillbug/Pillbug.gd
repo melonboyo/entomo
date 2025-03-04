@@ -92,7 +92,7 @@ func jumpButtonReleased() -> void:
 	timeDashed = 0
 	rolling_mesh.hide()
 	normal_mesh.show()
-	if intro_sfx:
+	if intro_sfx != null:
 		intro_sfx._on_finished()
 	#intro_sfx = AudioManager.play_sfx("res://Audio/SFX/Rolypoly/swish.wav")
 
