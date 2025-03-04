@@ -136,3 +136,7 @@ func enable():
 # TODO: change this to be more generalized, being able to enter different types of areas (if necessary)
 func entered_water():
 	game_state_manager.player_died()
+	
+# This method is called when the creature gets possessed
+func switched_to_this_character():
+	pass

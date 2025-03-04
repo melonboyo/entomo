@@ -1,11 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://b52yugfrhuywh"]
+[gd_scene load_steps=10 format=3 uid="uid://b52yugfrhuywh"]
 
 [ext_resource type="Script" path="res://Scenes/Menus/OptionsMenu/options_menu.gd" id="1_55mik"]
 [ext_resource type="FontFile" uid="uid://0pcsmgvhx3hf" path="res://Kavoon-Regular.ttf" id="1_xypns"]
 [ext_resource type="StyleBox" uid="uid://dhgnclwd1fv1p" path="res://buttonstyle.tres" id="2_0m3vy"]
 [ext_resource type="Script" path="res://Scripts/music_slider.gd" id="3_h5cyc"]
 [ext_resource type="Script" path="res://Scripts/sfx_slider.gd" id="4_53fsi"]
+[ext_resource type="Script" path="res://Scenes/Menus/OptionsMenu/audio.gd" id="4_woftf"]
 [ext_resource type="Script" path="res://Scenes/controls.gd" id="5_l6fbn"]
+[ext_resource type="PackedScene" uid="uid://bv3t0wpvtft44" path="res://Scenes/Menus/OptionsMenu/input_button.tscn" id="7_ubh7r"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sf83b"]
 bg_color = Color(0.556863, 0.886275, 0.529412, 1)
@@ -54,7 +56,9 @@ current_tab = 1
 [node name="Audio" type="TabBar" parent="TabContainer"]
 visible = false
 layout_mode = 2
+focus_mode = 0
 theme_override_styles/tab_selected = ExtResource("2_0m3vy")
+script = ExtResource("4_woftf")
 metadata/_tab_index = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="TabContainer/Audio"]
@@ -127,118 +131,43 @@ offset_bottom = 132.5
 grow_vertical = 2
 theme_override_constants/separation = 5
 
-[node name="move_left" type="HBoxContainer" parent="TabContainer/Controls/Inputs"]
-layout_mode = 2
-theme_override_constants/separation = 161
-
-[node name="Label" type="Label" parent="TabContainer/Controls/Inputs/move_left"]
-layout_mode = 2
-size_flags_stretch_ratio = 0.0
-text = "Move Left"
-
-[node name="Button" type="Button" parent="TabContainer/Controls/Inputs/move_left"]
-layout_mode = 2
-size_flags_horizontal = 3
-toggle_mode = true
-text = "W"
-
-[node name="move_right" type="HBoxContainer" parent="TabContainer/Controls/Inputs"]
-layout_mode = 2
-theme_override_constants/separation = 151
-
-[node name="Label" type="Label" parent="TabContainer/Controls/Inputs/move_right"]
-layout_mode = 2
-text = "Move Right"
-
-[node name="Button" type="Button" parent="TabContainer/Controls/Inputs/move_right"]
-layout_mode = 2
-size_flags_horizontal = 3
-toggle_mode = true
-text = "W"
-
-[node name="move_down" type="HBoxContainer" parent="TabContainer/Controls/Inputs"]
+[node name="InputButton" parent="TabContainer/Controls/Inputs" instance=ExtResource("7_ubh7r")]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="TabContainer/Controls/Inputs/move_down"]
+[node name="InputButton2" parent="TabContainer/Controls/Inputs" instance=ExtResource("7_ubh7r")]
 layout_mode = 2
-size_flags_horizontal = 3
-text = "Move Down"
 
-[node name="Button" type="Button" parent="TabContainer/Controls/Inputs/move_down"]
+[node name="InputButton3" parent="TabContainer/Controls/Inputs" instance=ExtResource("7_ubh7r")]
 layout_mode = 2
-size_flags_horizontal = 3
-toggle_mode = true
-text = "W"
 
-[node name="move_up" type="HBoxContainer" parent="TabContainer/Controls/Inputs"]
+[node name="InputButton4" parent="TabContainer/Controls/Inputs" instance=ExtResource("7_ubh7r")]
 layout_mode = 2
-theme_override_constants/separation = 161
 
-[node name="Label" type="Label" parent="TabContainer/Controls/Inputs/move_up"]
+[node name="InputButton5" parent="TabContainer/Controls/Inputs" instance=ExtResource("7_ubh7r")]
 layout_mode = 2
-text = "Move Left"
 
-[node name="Button" type="Button" parent="TabContainer/Controls/Inputs/move_up"]
+[node name="InputButton6" parent="TabContainer/Controls/Inputs" instance=ExtResource("7_ubh7r")]
 layout_mode = 2
-size_flags_horizontal = 3
-toggle_mode = true
-text = "W"
 
-[node name="move_jump" type="HBoxContainer" parent="TabContainer/Controls/Inputs"]
+[node name="InputButton7" parent="TabContainer/Controls/Inputs" instance=ExtResource("7_ubh7r")]
 layout_mode = 2
-theme_override_constants/separation = 197
 
-[node name="Label" type="Label" parent="TabContainer/Controls/Inputs/move_jump"]
+[node name="InputButton8" parent="TabContainer/Controls/Inputs" instance=ExtResource("7_ubh7r")]
 layout_mode = 2
-text = "Jump"
 
-[node name="Button" type="Button" parent="TabContainer/Controls/Inputs/move_jump"]
-layout_mode = 2
-size_flags_horizontal = 3
-toggle_mode = true
-text = "W"
-
-[node name="interact" type="HBoxContainer" parent="TabContainer/Controls/Inputs"]
-layout_mode = 2
-theme_override_constants/separation = 177
-
-[node name="Label" type="Label" parent="TabContainer/Controls/Inputs/interact"]
-layout_mode = 2
-text = "Interact"
-
-[node name="Button" type="Button" parent="TabContainer/Controls/Inputs/interact"]
-layout_mode = 2
-size_flags_horizontal = 3
-toggle_mode = true
-text = "W"
-
-[node name="special_ability" type="HBoxContainer" parent="TabContainer/Controls/Inputs"]
-layout_mode = 2
-theme_override_constants/separation = 130
-
-[node name="Label" type="Label" parent="TabContainer/Controls/Inputs/special_ability"]
-layout_mode = 2
-text = "Special Ability"
-
-[node name="Button" type="Button" parent="TabContainer/Controls/Inputs/special_ability"]
-layout_mode = 2
-size_flags_horizontal = 3
-toggle_mode = true
-text = "W"
-
-[node name="pause" type="HBoxContainer" parent="TabContainer/Controls/Inputs"]
-layout_mode = 2
-theme_override_constants/separation = 143
-
-[node name="Label" type="Label" parent="TabContainer/Controls/Inputs/pause"]
-layout_mode = 2
-text = "Pause Game"
-
-[node name="Button" type="Button" parent="TabContainer/Controls/Inputs/pause"]
-layout_mode = 2
-size_flags_horizontal = 3
-toggle_mode = true
-text = "W"
+[node name="ResetButton" type="Button" parent="TabContainer/Controls"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 111.0
+offset_top = -31.0
+offset_right = -121.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 0
+text = "reset to default"
 
 [node name="SaveReturn" type="Button" parent="."]
 layout_mode = 0
@@ -266,5 +195,6 @@ theme_override_styles/normal = ExtResource("2_0m3vy")
 text = "Return without saving"
 autowrap_mode = 3
 
-[connection signal="pressed" from="SaveReturn" to="." method="_on_save_return_pressed"]
-[connection signal="pressed" from="ReturnNoSave" to="." method="_on_return_no_save_pressed"]
+[connection signal="pressed" from="TabContainer/Controls/ResetButton" to="TabContainer/Controls" method="_on_reset_button_pressed"]
+[connection signal="pressed" from="SaveReturn" to="TabContainer/Controls" method="_on_save_return_pressed"]
+[connection signal="pressed" from="ReturnNoSave" to="TabContainer/Controls" method="_on_return_no_save_pressed"]

@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://drbhm2oegdo75"]
+
+[ext_resource type="Script" path="res://Scripts/Movable.gd" id="1_6ar03"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_sepbx"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vaxmu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iryty"]
+next_pass = SubResource("ParticleProcessMaterial_vaxmu")
+albedo_color = Color(0.529412, 0.529412, 0.529412, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rk4xr"]
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+transform = Transform3D(35, 0, 0, 0, 35, 0, 0, 0, 35, 0, 0, 0)
+script = ExtResource("1_6ar03")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_sepbx")
+surface_material_override/0 = SubResource("StandardMaterial3D_iryty")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_rk4xr")

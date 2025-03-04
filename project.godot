@@ -17,6 +17,7 @@ config/icon="res://Sprites/icon.png"
 
 [autoload]
 
+ConfigFileHandler="*res://Scripts/config_file_handler.gd"
 AudioManager="*res://AudioManager/AudioManager.tscn"
 
 [display]

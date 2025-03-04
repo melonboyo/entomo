@@ -19,9 +19,9 @@ gravityMultiplier = 18
 rotationSpeed = 5
 airborneMovementControl = 0.75
 minJumpVelocity = 50
-jumpForwardVelocity = 45
+jumpForwardVelocity = 60
 size = 4
-SPEED = 30.0
+SPEED = 50.0
 JUMP_VELOCITY = 200.0
 CAMERA_SIZE = 350
 
