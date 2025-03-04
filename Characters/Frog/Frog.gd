@@ -78,7 +78,6 @@ func _process(delta: float) -> void:
 
 # On toggle special ability
 func specialAbilityButtonPressed() -> void:
-	$froggy_v3/AnimationPlayer.play("idle_croak")
 	# If the tongue is out, retract it
 	if(isTongueOut):
 		lerpTongueMesh(tongueCollision.scale.z, 0.1, 0.2)
@@ -89,6 +88,7 @@ func specialAbilityButtonPressed() -> void:
 		isTongueOut = false
 	# If close enough, launch the toungue
 	elif(raycast.is_colliding()):
+		$froggy_v3/AnimationPlayer.play("gape")
 		velocity = Vector3()
 		var collisionPoint = raycast.get_collision_point()
 		var distance = collisionPoint.distance_to(raycast.global_position)
@@ -122,6 +122,7 @@ func lerpTongueMesh(distanceStart, distanceEnd, delay):
 	
 # Quickly extend and retract the tongue mesh
 func quickTongueAnimation(distance, delay):
+	$froggy_v3/AnimationPlayer.play("gape")
 	lerpTongueMesh(0.1, distance, delay)
 	await get_tree().create_timer(delay).timeout
 	lerpTongueMesh(distance, 0.1, delay)
