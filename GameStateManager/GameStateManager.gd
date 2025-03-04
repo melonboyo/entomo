@@ -6,9 +6,12 @@ class_name GameStateManager
 @export var camera: Camera3D = null
 @export var first_flag: Flag
 @export var tutorial_prompt: TutorialPrompt
+@export var final_camera_focus: Node3D
 
 var isInputEnabled = true
 var is_player_alive = true
+
+var maxStageReached = 0
 
 signal zoom_changed(newFocus: Node3D, zoomSize: int)
 signal toggle_game_paused(is_paused : bool)
@@ -76,6 +79,9 @@ func _input(event: InputEvent):
 		
 
 func switchCharacter(character: GenericCharacterController):
+	if(character.size > maxStageReached):
+		maxStageReached = character.size
+	
 	zoom_changed.emit(character, character.size)
 	currentPossessedCreature = character
 	character.switched_to_this_character()
@@ -94,13 +100,13 @@ func show_flag(next_flag: Flag):
 # Zooms out and shows the victory screen
 func ending_reached():
 	isInputEnabled = false
-	zoom_changed.emit(currentPossessedCreature, 20)
+	zoom_changed.emit(final_camera_focus, 80)
 	show_tutorial_prompt("Woah, the world is so beautiful from up here! What an adventure")
 	await(get_tree().create_timer(3).timeout)
 	isInputEnabled = true
 	game_paused = true
 	show_victory_screen.emit()
-	
+
 func player_died():
 	is_player_alive = false;
 	zoom_changed.emit(currentPossessedCreature, currentPossessedCreature.size + 1)
