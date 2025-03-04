@@ -6,3 +6,4 @@ When making a new creature/character:
 - Attach a script that extends GenericCharacterController.gd
 - Override handleMove(), handleJump(), etc. to define how the creature moves and its abilities (use super() to reuse the contents of the functions in the generic script) 
 - Add whatever else is needed
+
