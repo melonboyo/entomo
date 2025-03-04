@@ -12,6 +12,7 @@ var isFlying = false
 @export var normal_mesh: RolypolyMaterialSwitcher
 @export var rolling_mesh: RolypolyMaterialSwitcher
 @export var ball_pivot: Node3D
+var intro_sfx
 
 var timeDashed = 0;
 var is_coloured = false
@@ -88,13 +89,16 @@ func jumpButtonPressed() -> void:
 			game_state_manager.hide_tutorial_prompt()
 			has_dashed_before = true
 		
-		AudioManager.play_sfx("res://Audio/SFX/Rolypoly/swish.wav")
+		intro_sfx = AudioManager.play_sfx("res://Audio/SFX/Rolypoly/swish_Intro_3.wav")
 
 func jumpButtonReleased() -> void:
 	isDashing = false;
 	timeDashed = 0
 	rolling_mesh.hide()
 	normal_mesh.show()
+	if intro_sfx:
+		intro_sfx._on_finished()
+	#intro_sfx = AudioManager.play_sfx("res://Audio/SFX/Rolypoly/swish.wav")
 
 func entered_water():
 	super()

@@ -60,7 +60,7 @@ point_count = 8
 transform = Transform3D(1.01827, 0, 0, 0, 1.01827, 0, 0, 0, 1.01827, 0, 0, 0)
 
 [node name="GameStateManager" parent="." node_paths=PackedStringArray("currentPossessedCreature", "camera", "first_flag", "tutorial_prompt") instance=ExtResource("2_cqo16")]
-currentPossessedCreature = NodePath("../Parasite")
+currentPossessedCreature = NodePath("../Pillbug")
 camera = NodePath("../CameraRoot/RotationRoot/Camera3D")
 first_flag = NodePath("../Blockout/Flags/Flag1")
 tutorial_prompt = NodePath("../TutorialPrompt")
