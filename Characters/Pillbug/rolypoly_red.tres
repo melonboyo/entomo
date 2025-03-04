@@ -3,7 +3,4 @@
 [ext_resource type="Texture2D" uid="uid://duri6kusljvcj" path="res://Characters/Pillbug/rolypoly_red.png" id="1_0sdl2"]
 
 [resource]
-resource_name = "Material"
-cull_mode = 2
 albedo_texture = ExtResource("1_0sdl2")
-roughness = 0.5
