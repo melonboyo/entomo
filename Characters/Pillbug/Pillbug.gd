@@ -66,11 +66,14 @@ func jumpButtonPressed() -> void:
 			game_state_manager.hide_tutorial_prompt()
 			has_dashed_before = true
 		
-		AudioManager.play_sfx("res://Audio/SFX/Rolypoly/swish.wav")
+		intro_sfx = AudioManager.play_sfx("res://Audio/SFX/Rolypoly/swish_Intro_3.wav")
 
 func jumpButtonReleased() -> void:
 	isDashing = false;
 	timeDashed = 0
+	if intro_sfx:
+		intro_sfx._on_finished()
+	#intro_sfx = AudioManager.play_sfx("res://Audio/SFX/Rolypoly/swish.wav")
 
 func entered_water():
 	super()
