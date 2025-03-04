@@ -21,9 +21,8 @@ var current_focus_move_speed = focus_move_speed
 @export_range(1, 10) var zoom_level := 1:
 	set(value):
 		var new_zoom_level = clampi(value, 1, zooms.size())
-		if zoom_level != new_zoom_level:
-			zoom_level = new_zoom_level
-			zoom()
+		zoom_level = new_zoom_level
+		zoom()
 @export var focus: Node3D
 
 var zoom_tween: Tween
@@ -41,11 +40,11 @@ func _physics_process(delta):
 		return
 	
 	# For testing, up and down keys to manually change zoom
-	if not zoom_tween or not zoom_tween.is_running():
-		if Input.is_action_just_pressed("ui_down"):
-			zoom_level += 1
-		elif Input.is_action_just_pressed("ui_up"):
-			zoom_level -= 1
+	#if not zoom_tween or not zoom_tween.is_running():
+	#	if Input.is_action_just_pressed("ui_down"):
+	#		zoom_level += 1
+	#	elif Input.is_action_just_pressed("ui_up"):
+	#		zoom_level -= 1
 
 # Creates a tween that animates between the previous zoom and the new zoom
 func zoom():

@@ -24,12 +24,19 @@ func handleMove(input_dir: Vector2, camera_basis: Basis, delta: float) -> void:
 	if(input_dir != Vector2.ZERO):
 		rotation.y = lerp_angle(rotation.y, atan2(-direction.x, -direction.z), delta * rotationSpeed)
 
+var has_shown_stamina_prompt_before = false # Used to show the tiredness prompt the first time
 func _process(delta: float) -> void:
 	if(isFlying and currentFlyingStamina > 0):
 		var currentStamina = int((currentFlyingStamina / maxFlyingStamina) * 100)
 		if(Time.get_ticks_msec() % 500 == 0):  
 			print("Bumblebee stamina: " + str(currentStamina) + "%");
 		currentFlyingStamina -= delta
+		
+		if(!has_shown_stamina_prompt_before and currentStamina < 50):
+			has_shown_stamina_prompt_before = true
+			game_state_manager.show_tutorial_prompt("This is heavy, I can't make it much longer..." )
+			await(get_tree().create_timer(1.5).timeout)
+			game_state_manager.hide_tutorial_prompt()
 		
 	if(currentFlyingStamina <= 0):
 		currentFlyingStamina = 0
@@ -42,6 +49,10 @@ func jumpButtonPressed() -> void:
 	if is_on_floor():
 		print("Bumblebee stamina: " + str(100) + "%");
 		velocity.y = JUMP_VELOCITY * gravityMultiplier
+		
+		if(!has_flown_before):
+			has_flown_before = true
+			game_state_manager.hide_tutorial_prompt()
 		
 	if(currentFlyingStamina > 0):
 		isFlying = true;
@@ -58,3 +69,55 @@ func handleGravity(delta: float) -> void:
 	
 func resetAbilities():
 	isFlying = false
+
+############################################### Tutorial prompts about this creature ###############################################
+var has_been_controlled_before = false # Used to show a prompt when the player enteres this creature's area for the first time
+var has_flown_before = false # Used to show a prompt the first time the player flies
+func _on_switch_area_body_entered(body):
+	super(body)
+	
+	if(body == self):
+		return
+	
+	if(has_been_controlled_before):
+		return
+	
+	if(body as Parasite):
+		var key = InputMap.action_get_events("interact")[0].as_text().trim_suffix(" (Physical)")
+		if(key.length() == 0):
+			key = "null"
+		key[0] = key[0].to_upper()
+		game_state_manager.show_tutorial_prompt("A bumblebee! Press [" + key + "] to possess" )
+
+# Called when a character exits this character's switch area
+func _on_switch_area_body_exited(body):
+	super(body)
+	
+	if(body == self):
+		return
+	
+	if(has_been_controlled_before):
+		return
+	
+	if(body as Parasite):
+		game_state_manager.hide_tutorial_prompt()
+		
+func switched_to_this_character():
+	if(has_been_controlled_before):
+		return
+	
+	has_been_controlled_before = true
+	game_state_manager.hide_tutorial_prompt()
+	
+	await(get_tree().create_timer(1.5).timeout)
+	
+	var key = InputMap.action_get_events("move_jump")[0].as_text().trim_suffix(" (Physical)")
+	if(key.length() == 0):
+		key = "null"
+	key[0] = key[0].to_upper()
+	
+	# The player may already have flown during the 1.5s wait above
+	if(has_flown_before):
+		return
+		
+	game_state_manager.show_tutorial_prompt("Woah! Let's explore! Hold [" + key + "] to hover")

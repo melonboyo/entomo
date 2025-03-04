@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://bv3t0wpvtft44"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7rhqn"]
+bg_color = Color(1, 1, 1, 0.392157)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lsskv"]
+bg_color = Color(0, 0, 0, 0.392157)
+
+[node name="InputButton" type="Button"]
+custom_minimum_size = Vector2(0, 18)
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+focus_mode = 0
+theme_override_styles/hover = SubResource("StyleBoxFlat_7rhqn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7rhqn")
+theme_override_styles/normal = SubResource("StyleBoxFlat_lsskv")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="LabelAction" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+text = "action name"
+
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+
+[node name="LabelInput" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+text = "input key"
