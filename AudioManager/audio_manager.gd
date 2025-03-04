@@ -81,6 +81,7 @@ func play_sfx(path: String, volume_modifier: float = 0):
 	sfx.stream = load(path)
 	sfx.volume_db = 0 + volume_modifier
 	add_child(sfx)
+	return sfx
 	
 func play_frog_sfx_pack(volume_modifier: float = 0):
 	var sfx = sfx_scene.instantiate()

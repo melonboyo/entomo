@@ -9,6 +9,7 @@ var isFlying = false
 @export var MAXROLLSPEED = 10.0
 @export var CUSTOMGRAVITY = 10.0
 @export var COLOR : ColouredBug
+var intro_sfx
 
 var timeDashed = 0;
 

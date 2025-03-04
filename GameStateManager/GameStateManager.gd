@@ -50,6 +50,10 @@ func _physics_process(delta: float) -> void:
 		delta
 	)
 	
+	if(!has_shown_movement_tutorial && Input.get_vector("move_left", "move_right", "move_forward", "move_backward") != Vector2.ZERO):
+		has_shown_movement_tutorial = true
+		hide_tutorial_prompt()
+
 	# Handle interacting
 	if(Input.is_action_just_pressed("interact")):
 		currentPossessedCreature.handleInteract()
@@ -110,8 +114,9 @@ func player_died():
 	show_death_screen.emit()
 
 #################################################### Tutorial stuff ####################################################
+var has_shown_movement_tutorial = false
 @export var intro_tutorial_lines = [
-	"Life as a parasite is so boring...", 
+	"I'm just a tiny little parasite, life is so boring...", 
 	"I want to see the world, but I'm stuck here!", 
 	"If only I could find a creature to control...",
 	]
@@ -139,6 +144,15 @@ func continue_intro_tutorial():
 		show_flag(first_flag)
 		can_progress_tutorial = false
 		is_intro_tutorial_done = true
+		
+		await(get_tree().create_timer(7).timeout)
+		if(!has_shown_movement_tutorial):
+			var key1 = InputMap.action_get_events("move_forward")[0].as_text().trim_suffix(" (Physical)")
+			var key2 = InputMap.action_get_events("move_left")[0].as_text().trim_suffix(" (Physical)")
+			var key3 = InputMap.action_get_events("move_backward")[0].as_text().trim_suffix(" (Physical)")
+			var key4 = InputMap.action_get_events("move_right")[0].as_text().trim_suffix(" (Physical)")
+			
+			show_tutorial_prompt("Use " + key1 + ", " + key2 + ", " + key3 + " and " + key4 + " to move")
 		return
 	
 	show_tutorial_prompt(intro_tutorial_lines[intro_tutorial_index])
