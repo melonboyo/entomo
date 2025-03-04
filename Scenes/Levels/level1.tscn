@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cfyb34soy0h7x"]
+[gd_scene load_steps=33 format=3 uid="uid://cfyb34soy0h7x"]
 
 [ext_resource type="PackedScene" uid="uid://cxrj60oxxptdh" path="res://Characters/Parasite/Parasite.tscn" id="1_nc2ee"]
 [ext_resource type="Script" path="res://GameController/Camera.gd" id="1_x6jyc"]
@@ -15,7 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://drbhm2oegdo75" path="res://EnvironmentAssets/MovableStone/MovableStone.tscn" id="12_w08rn"]
 [ext_resource type="PackedScene" uid="uid://cynjesuoq6b5x" path="res://EnvironmentAssets/StaticObjects/StaticCube.tscn" id="14_wvx2g"]
 [ext_resource type="PackedScene" uid="uid://caxb37ohqq7q3" path="res://EnvironmentAssets/Flag/Flag.tscn" id="15_3xa5f"]
-[ext_resource type="PackedScene" uid="uid://ddqi27ajx4hx4" path="res://EnvironmentAssets/Mountain/stage3-mountainNewNew.glb" id="15_5uh5g"]
 [ext_resource type="Material" uid="uid://b0f08nx0esit5" path="res://Characters/Pillbug/rolypoly_red.tres" id="16_3fps6"]
 [ext_resource type="PackedScene" uid="uid://bvs8he515iq2m" path="res://EnvironmentAssets/Water/Water.tscn" id="16_yn4d4"]
 [ext_resource type="PackedScene" uid="uid://dgbb4hupj6ope" path="res://EnvironmentAssets/Flower/Flower.tscn" id="17_sf6lv"]
@@ -322,7 +321,7 @@ frog = NodePath("../../../../Frog")
 gameState = NodePath("../../../../GameStateManager")
 
 [node name="Dragonfly6" parent="Blockout/Stage2/Dragonflies" node_paths=PackedStringArray("frog", "gameState") instance=ExtResource("10_f6exh")]
-transform = Transform3D(-0.59375, 3.17894e-06, -0.804632, 6.37977e-06, 1, -7.57036e-07, 0.804632, -5.58301e-06, -0.59375, -372.547, 9.55251e-05, 117.899)
+transform = Transform3D(-0.59375, 3.17894e-06, -0.804632, 6.37977e-06, 1, -7.57037e-07, 0.804632, -5.58301e-06, -0.59375, -372.547, 9.55251e-05, 117.899)
 progress = 600.0
 frogPoint = 840.0
 frog = NodePath("../../../../Frog")
@@ -435,9 +434,6 @@ surface_material_override/0 = ExtResource("16_3fps6")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Blockout/Stage3/StaticBody3D"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Blockout/Stage3/StaticBody3D"]
-
-[node name="stage3-mountainNewNew" parent="Blockout/Stage3" instance=ExtResource("15_5uh5g")]
-transform = Transform3D(-8.43836, 0, 5.69925, 0, 10.1827, 0, -5.69925, 0, -8.43836, 969.347, 137.084, -670.194)
 
 [node name="StaticCylinder" parent="Blockout/Stage3" instance=ExtResource("20_1gghd")]
 transform = Transform3D(38.57, 0, 71.7522, 0, 30.5482, 0, -71.7522, 0, 38.57, -8.55193, -11.6255, 134.506)
