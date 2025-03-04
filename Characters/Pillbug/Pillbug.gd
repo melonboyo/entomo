@@ -9,6 +9,7 @@ var isFlying = false
 @export var MAXROLLSPEED = 10.0
 @export var CUSTOMGRAVITY = 10.0
 @export var COLOR : ColouredBug
+var intro_sfx
 
 var timeDashed = 0;
 
@@ -60,10 +61,11 @@ func handleGravity(delta: float) -> void:
 func jumpButtonPressed() -> void:
 	if is_on_floor():
 		isDashing = true
-		
+	intro_sfx = AudioManager.play_sfx("res://Audio/SFX/Rolypoly/swish_intro_3.wav")
 		
 
 func jumpButtonReleased() -> void:
 	isDashing = false;
 	timeDashed = 0
+	intro_sfx._on_finished()
 	AudioManager.play_sfx("res://Audio/SFX/Rolypoly/swish.wav")
