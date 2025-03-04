@@ -8,8 +8,7 @@ extends Node
 var songlist: Dictionary = {}  # Dictionary to store song references by name
 var froglist: Dictionary = {}  # Dictionary to store song references by name
 var switchlist: Dictionary = {}  # Dictionary to store song references by name
-
-
+var vol_sfx = 0.0
 
 
 
@@ -79,7 +78,7 @@ func load_switch_sfx_pack(folder_path: String = ""):
 func play_sfx(path: String, volume_modifier: float = 0):
 	var sfx = sfx_scene.instantiate()
 	sfx.stream = load(path)
-	sfx.volume_db = 0 + volume_modifier
+	sfx.volume_db = 0 + volume_modifier + vol_sfx
 	add_child(sfx)
 	return sfx
 	
@@ -88,7 +87,7 @@ func play_frog_sfx_pack(volume_modifier: float = 0):
 	var num = randi_range(0, 2)
 	print(froglist.get(num))
 	sfx.stream = load(froglist.get(num))
-	sfx.volume_db = 0 + volume_modifier
+	sfx.volume_db = 0 + volume_modifier + vol_sfx
 	add_child(sfx)
 	
 func play_switch_sfx_pack(volume_modifier: float = 0):
@@ -96,7 +95,7 @@ func play_switch_sfx_pack(volume_modifier: float = 0):
 	var num = randi_range(0, 2)
 	print(switchlist.get(num))
 	sfx.stream = load(switchlist.get(num))
-	sfx.volume_db = 0 + volume_modifier
+	sfx.volume_db = 0 + volume_modifier + vol_sfx
 	add_child(sfx)
 
 
@@ -133,6 +132,8 @@ func set_global_volume(bus_name: String, amount: float):
 	amount = linear_to_db(amount)
 	AudioServer.set_bus_volume_db(bus_index, amount)
 
+func change_sfx_volume(volume_sfx):
+	vol_sfx += volume_sfx
 # Increases/decreases by db amount
 func change_music_volume(db, fade_time: float = 0):
 	db = 0 + db
