@@ -13,7 +13,7 @@ script = ExtResource("1_2divt")
 speed = 30.0
 color = NodePath("ColouredBug")
 frogPoint = 465.0
-distanceToFrog = 100.0
+distanceToFrog = 90.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(12.0016, 0, 0, 0, 5.99771, 0, 0, 0, 12.0016, 0, 0, 0)

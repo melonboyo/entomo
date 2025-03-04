@@ -40,8 +40,9 @@ func setColour():
 		color.resetColor()
 
 func checkIfEaten():
+	checked = true
 	if color.is_coloured and gameState.maxStageReached < 4:
 		frog.quickTongueAnimation(distanceToFrog, 0.1)
 		await get_tree().create_timer(0.1).timeout
 		color.MESH.visible = false
-	checked = true
+	
