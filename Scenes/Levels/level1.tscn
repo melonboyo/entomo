@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://b4v7eokxybk5v" path="res://Characters/Frog/Frog.tscn" id="8_slu6r"]
 [ext_resource type="PackedScene" uid="uid://msprui4s0rep" path="res://Scenes/dragonfly.tscn" id="10_f6exh"]
 [ext_resource type="PackedScene" uid="uid://daoe6gj0bo2qr" path="res://Scenes/Menus/PauseMenu/pause_menu.tscn" id="11_c6575"]
+[ext_resource type="PackedScene" uid="uid://bxy4sgn7wpkps" path="res://EnvironmentAssets/paintcan/paintcan.glb" id="12_ddyem"]
 [ext_resource type="PackedScene" uid="uid://drbhm2oegdo75" path="res://EnvironmentAssets/MovableStone/MovableStone.tscn" id="12_w08rn"]
 [ext_resource type="PackedScene" uid="uid://cynjesuoq6b5x" path="res://EnvironmentAssets/StaticObjects/StaticCube.tscn" id="14_wvx2g"]
 [ext_resource type="PackedScene" uid="uid://caxb37ohqq7q3" path="res://EnvironmentAssets/Flag/Flag.tscn" id="15_3xa5f"]
@@ -40,9 +41,6 @@ size = Vector3(1, 0.97226, 1)
 albedo_color = Color(0.160784, 0.678431, 0.372549, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_he0qs"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bvpe7"]
-albedo_color = Color(0.529067, 0.529067, 0.529067, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iboan"]
 albedo_color = Color(1, 0.271, 0, 1)
@@ -224,7 +222,7 @@ mesh = SubResource("CylinderMesh_6jy56")
 surface_material_override/0 = SubResource("StandardMaterial3D_4j3rk")
 
 [node name="PaintBucket" type="CharacterBody3D" parent="Blockout/Stage2"]
-transform = Transform3D(0.815789, 0, 0.932186, 0, 20.4856, 0, -0.815789, 0, 0.932186, -33.1574, 23.9056, 311.615)
+transform = Transform3D(-1.35694, 0.092649, -0.888055, 0.00260466, 21.7011, 0.0101445, 0.777693, 0.088975, -1.54953, -33.1574, 24.513, 311.615)
 script = ExtResource("7_yxptn")
 MOVESPEED = 200.0
 
@@ -232,10 +230,8 @@ MOVESPEED = 200.0
 transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0.00984168, 0)
 shape = SubResource("BoxShape3D_ww5pt")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Blockout/Stage2/PaintBucket"]
-transform = Transform3D(21.1851, 0, 0, 0, 1.00939, 0, 0, 0, 19.3849, 0, 0, 0)
-mesh = SubResource("BoxMesh_he0qs")
-surface_material_override/0 = SubResource("StandardMaterial3D_bvpe7")
+[node name="paintcan" parent="Blockout/Stage2/PaintBucket" instance=ExtResource("12_ddyem")]
+transform = Transform3D(6.545, 0, 0, 0, 0.449, 0, 0, 0, 5.865, 0, -0.6263, 0)
 
 [node name="Paint" type="CharacterBody3D" parent="Blockout/Stage2/PaintBucket"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03763, 0)
@@ -247,6 +243,7 @@ shape = SubResource("BoxShape3D_ww5pt")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Blockout/Stage2/PaintBucket/Paint"]
 transform = Transform3D(21.1851, 0, 0, 0, 0.0652168, 0, 0, 0, 19.3849, 0, -0.482895, 0)
+visible = false
 mesh = SubResource("BoxMesh_he0qs")
 surface_material_override/0 = SubResource("StandardMaterial3D_iboan")
 
@@ -289,35 +286,35 @@ frog = NodePath("../../../../Frog")
 gameState = NodePath("../../../../GameStateManager")
 
 [node name="Dragonfly6" parent="Blockout/Stage2/Dragonflies" node_paths=PackedStringArray("frog", "gameState") instance=ExtResource("10_f6exh")]
-transform = Transform3D(-0.59375, 3.17894e-06, -0.804632, 6.37977e-06, 1, -7.57036e-07, 0.804632, -5.58301e-06, -0.59375, -372.547, 9.55251e-05, 117.899)
+transform = Transform3D(-0.59375, 3.17894e-06, -0.804632, 6.37977e-06, 1, -7.57037e-07, 0.804632, -5.58301e-06, -0.59375, -372.547, 9.55251e-05, 117.899)
 progress = 600.0
 frogPoint = 840.0
 frog = NodePath("../../../../Frog")
 gameState = NodePath("../../../../GameStateManager")
 
 [node name="Dragonfly7" parent="Blockout/Stage2/Dragonflies" node_paths=PackedStringArray("frog", "gameState") instance=ExtResource("10_f6exh")]
-transform = Transform3D(-0.447055, 0.0224624, -0.894203, -0.00235876, 0.999646, 0.0262897, 0.894482, 0.0138626, -0.446846, -331.562, -0.213483, 146.441)
+transform = Transform3D(-0.447055, 0.0224624, -0.894203, -0.00235877, 0.999646, 0.0262897, 0.894482, 0.0138626, -0.446846, -331.562, -0.213483, 146.441)
 progress = 650.0
 frogPoint = 840.0
 frog = NodePath("../../../../Frog")
 gameState = NodePath("../../../../GameStateManager")
 
 [node name="Dragonfly8" parent="Blockout/Stage2/Dragonflies" node_paths=PackedStringArray("frog", "gameState") instance=ExtResource("10_f6exh")]
-transform = Transform3D(0.475954, 0.134079, -0.869165, -0.0784976, 0.990842, 0.109857, 0.875934, 0.0159412, 0.48212, -283.879, -4.03107, 146.575)
+transform = Transform3D(0.475954, 0.134079, -0.869165, -0.0784975, 0.990842, 0.109857, 0.875934, 0.0159411, 0.48212, -283.879, -4.03107, 146.575)
 progress = 700.0
 frogPoint = 840.0
 frog = NodePath("../../../../Frog")
 gameState = NodePath("../../../../GameStateManager")
 
 [node name="Dragonfly9" parent="Blockout/Stage2/Dragonflies" node_paths=PackedStringArray("frog", "gameState") instance=ExtResource("10_f6exh")]
-transform = Transform3D(0.698975, 0.0965039, -0.708574, -0.108944, 0.993657, 0.0278561, 0.706767, 0.057727, 0.705055, -247.029, -8.22534, 113.358)
+transform = Transform3D(0.698975, 0.0965041, -0.708574, -0.108945, 0.993657, 0.0278561, 0.706767, 0.0577272, 0.705055, -247.029, -8.22533, 113.358)
 progress = 750.0
 frogPoint = 840.0
 frog = NodePath("../../../../Frog")
 gameState = NodePath("../../../../GameStateManager")
 
 [node name="Dragonfly10" parent="Blockout/Stage2/Dragonflies" node_paths=PackedStringArray("frog", "gameState") instance=ExtResource("10_f6exh")]
-transform = Transform3D(-0.000932512, 0.229064, -0.973385, -0.00473298, 0.973398, 0.22906, 0.999962, 0.00482087, 0.000176449, -202.231, -15.4499, 96.7518)
+transform = Transform3D(-0.000931724, 0.229064, -0.973385, -0.00473317, 0.973398, 0.22906, 0.999962, 0.00482087, 0.000177261, -202.231, -15.4499, 96.7518)
 progress = 800.0
 frogPoint = 840.0
 frog = NodePath("../../../../Frog")
