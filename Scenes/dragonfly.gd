@@ -23,7 +23,7 @@ func _process(delta):
 	progress += speed * delta
 	
 	if (progress < lastProgressCheck):
-		color.MESH.visible = true
+		rolypoly_material_switcher.show()
 		checked = false
 	elif (!checked and progress > frogPoint):
 		checkIfEaten()
