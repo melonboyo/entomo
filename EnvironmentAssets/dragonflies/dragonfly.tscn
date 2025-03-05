@@ -1,0 +1,12 @@
+[gd_scene load_steps=5 format=3 uid="uid://s6deesora520"]
+
+[ext_resource type="PackedScene" uid="uid://b7nlpmenmp86s" path="res://EnvironmentAssets/dragonflies/dragonfly.glb" id="1_unpjb"]
+[ext_resource type="Script" path="res://Characters/Pillbug/RolypolyMaterialSwitcher.gd" id="2_v6tl3"]
+[ext_resource type="Material" uid="uid://b0f08nx0esit5" path="res://Characters/Pillbug/rolypoly_red.tres" id="3_thw0u"]
+[ext_resource type="Material" uid="uid://b1mn41kpthklj" path="res://Characters/Pillbug/rolypoly_normal.tres" id="4_lobv6"]
+
+[node name="dragonfly" node_paths=PackedStringArray("meshes") instance=ExtResource("1_unpjb")]
+script = ExtResource("2_v6tl3")
+paint_material = ExtResource("3_thw0u")
+meshes = [NodePath("Cube_007")]
+normal_material = ExtResource("4_lobv6")

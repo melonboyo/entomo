@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://ceq3k2pduj7cb"]
+[gd_scene load_steps=9 format=3 uid="uid://ceq3k2pduj7cb"]
 
 [ext_resource type="PackedScene" uid="uid://baiok6rvrnsqh" path="res://Characters/Generic/GenericCharacter.tscn" id="1_yggj8"]
 [ext_resource type="Script" path="res://Characters/Pillbug/Pillbug.gd" id="2_6n07y"]
+[ext_resource type="Material" uid="uid://b1mn41kpthklj" path="res://Characters/Pillbug/rolypoly_normal.tres" id="5_0xdn6"]
 [ext_resource type="PackedScene" uid="uid://cymvr25bfe8h7" path="res://Characters/Pillbug/PaintedRolypolyModel.tscn" id="5_53whx"]
 [ext_resource type="PackedScene" uid="uid://pybsf0l33dhf" path="res://Characters/Pillbug/NormalRolypolyModel.tscn" id="5_675f0"]
 
@@ -44,12 +45,14 @@ shape = SubResource("CylinderShape3D_ow3bi")
 
 [node name="rolypoly" parent="." index="3" instance=ExtResource("5_675f0")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -11, 0)
+normal_material = ExtResource("5_0xdn6")
 
 [node name="BallPivot" type="Node3D" parent="." index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.581279, 0)
 
 [node name="rolypolyBALL" parent="BallPivot" index="0" instance=ExtResource("5_53whx")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -7.068, 1.729)
+normal_material = ExtResource("5_0xdn6")
 
 [node name="ExitPosition" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.85, 0)
