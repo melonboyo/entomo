@@ -20,5 +20,6 @@ monitorable = false
 [node name="ExitPosition" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
+[connection signal="area_entered" from="SwitchArea" to="." method="_on_switch_area_area_entered"]
 [connection signal="body_entered" from="SwitchArea" to="." method="_on_switch_area_body_entered"]
 [connection signal="body_exited" from="SwitchArea" to="." method="_on_switch_area_body_exited"]

@@ -105,22 +105,33 @@ func handleExit() -> void:
 
 # Called when a character enters this character's switch area
 func _on_switch_area_body_entered(body):
-	if game_state_manager.currentPossessedCreature != self:
+	if game_state_manager.currentPossessedCreature == self:
 		return
 	if body == self:
 		return
-	is_in_switch_area = true
-	current_switchable_character = body
+	var c = body as GenericCharacterController
+	if(c == null):
+		return
+	c.set_switchable_body_to(self)
 
 # Called when a character exits this character's switch area
 func _on_switch_area_body_exited(body):
-	if game_state_manager.currentPossessedCreature != self:
+	if game_state_manager.currentPossessedCreature == self:
 		return
 	if body == self:
 		return
-	print("Exited")
-	is_in_switch_area = false
+	var c = body as GenericCharacterController
+	if(c == null):
+		return
+	c.reset_switchable_body()
+
+func set_switchable_body_to(body: GenericCharacterController) -> void:
+	current_switchable_character = body
+	is_in_switch_area = true
+
+func reset_switchable_body() -> void:
 	current_switchable_character = null
+	is_in_switch_area = false
 
 # Generic function for disabling the creature
 # Hides and makes it intangible
@@ -139,8 +150,15 @@ func enable():
 # Kills the player when they enter water, override this method in child class to stop this behaviour
 # TODO: change this to be more generalized, being able to enter different types of areas (if necessary)
 func entered_water():
+	if(game_state_manager.currentPossessedCreature != self):
+		return
+		
 	game_state_manager.player_died()
 	
 # This method is called when the creature gets possessed
 func switched_to_this_character():
 	pass
+
+
+func _on_switch_area_area_entered(area: Area3D) -> void:
+	pass # Replace with function body.

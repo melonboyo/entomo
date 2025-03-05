@@ -58,3 +58,4 @@ normal_material = ExtResource("5_0xdn6")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.85, 0)
 
 [connection signal="body_entered" from="RampCheckArea" to="." method="detectCollision"]
+[connection signal="area_entered" from="SwitchArea" to="." method="_on_switch_area_area_entered"]
