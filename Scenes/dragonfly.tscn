@@ -1,24 +1,30 @@
-[gd_scene load_steps=5 format=3 uid="uid://msprui4s0rep"]
+[gd_scene load_steps=6 format=3 uid="uid://msprui4s0rep"]
 
 [ext_resource type="Script" path="res://Scenes/dragonfly.gd" id="1_2divt"]
 [ext_resource type="Script" path="res://Scripts/coloured_bug.gd" id="2_0bl5j"]
+[ext_resource type="PackedScene" uid="uid://s6deesora520" path="res://EnvironmentAssets/dragonflies/dragonfly.tscn" id="3_mqsdm"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_pgsf4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_am8k6"]
 
-[node name="Dragonfly" type="PathFollow3D" node_paths=PackedStringArray("color")]
-transform = Transform3D(0.244451, 0, -0.969662, 0, 1, 0, 0.969662, 0, 0.244451, -393.114, 0, -71.5789)
+[node name="Dragonfly" type="PathFollow3D" node_paths=PackedStringArray("color", "rolypoly_material_switcher")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("1_2divt")
 speed = 30.0
 color = NodePath("ColouredBug")
 frogPoint = 465.0
+rolypoly_material_switcher = NodePath("dragonfly")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(12.0016, 0, 0, 0, 5.99771, 0, 0, 0, 12.0016, 0, 0, 0)
+visible = false
 mesh = SubResource("BoxMesh_pgsf4")
 surface_material_override/0 = SubResource("StandardMaterial3D_am8k6")
 
 [node name="ColouredBug" type="Node" parent="." node_paths=PackedStringArray("MESH")]
 script = ExtResource("2_0bl5j")
 MESH = NodePath("../MeshInstance3D")
+
+[node name="dragonfly" parent="." instance=ExtResource("3_mqsdm")]
+transform = Transform3D(3.74, 0, 0, 0, 3.74, 0, 0, 0, 3.74, 0, 0, 0)

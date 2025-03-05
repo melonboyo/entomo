@@ -5,14 +5,15 @@ class_name Dragonfly
 @export var speed : float
 @export var color : ColouredBug
 @export var frogPoint : float
+@export var rolypoly_material_switcher : RolypolyMaterialSwitcher
 
 var lastProgressCheck = 0
 var rng = RandomNumberGenerator.new()
 var checked := false
 
 func _ready():
-	color.MESH.set_surface_override_material(0, color.MESH.get_surface_override_material(0).duplicate())
 	setColour()
+	$dragonfly/AnimationPlayer.play("fly")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -27,14 +28,16 @@ func _process(delta):
 		
 
 func setColour():
-	color.MESH.visible = true
 	checked = false
+	rolypoly_material_switcher.show()
 	if(rng.randi_range(1,3) == 3):
 		color.changeColor()
+		rolypoly_material_switcher.set_painted()
 	else:
 		color.resetColor()
+		rolypoly_material_switcher.set_unpainted()
 
 func checkIfEaten():
-	if color.is_coloured:
-		color.MESH.visible = false
 	checked = true
+	if color.is_coloured == true :
+		rolypoly_material_switcher.hide()
