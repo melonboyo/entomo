@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b4v7eokxybk5v"]
+[gd_scene load_steps=9 format=3 uid="uid://b4v7eokxybk5v"]
 
 [ext_resource type="PackedScene" uid="uid://baiok6rvrnsqh" path="res://Characters/Generic/GenericCharacter.tscn" id="1_ufw1a"]
 [ext_resource type="Script" path="res://Characters/Frog/Frog.gd" id="2_ehqrl"]
@@ -9,16 +9,30 @@ radius = 20.5593
 height = 41.1186
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_nc2sr"]
-height = 58.1278
-radius = 43.2736
+height = 64.0709
+radius = 26.97
 
-[node name="Frog" instance=ExtResource("1_ufw1a")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_qs64a"]
+size = Vector3(10, 3.073, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_h37aa"]
+height = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w8cfn"]
+albedo_color = Color(0.976471, 0.690196, 0.509804, 1)
+
+[node name="Frog" node_paths=PackedStringArray("raycast", "tongueCollision", "tongueMesh") instance=ExtResource("1_ufw1a")]
 script = ExtResource("2_ehqrl")
 timeToReachFullJumpVelocity = 0.5
 gravityMultiplier = 18
 airborneMovementControl = 0.75
 minJumpVelocity = 50
 jumpForwardVelocity = 60
+raycast = NodePath("TongueDistanceCheck")
+tongueCollision = NodePath("TongueCollider")
+tongueMesh = NodePath("TongueMesh")
+collisionScaleDifference = 60.0
+collisionOffsetDifference = 10.0
 size = 4
 SPEED = 50.0
 JUMP_VELOCITY = 200.0
@@ -32,7 +46,22 @@ shape = SubResource("CapsuleShape3D_3nnd8")
 shape = SubResource("CylinderShape3D_nc2sr")
 
 [node name="froggy_v3" parent="." index="2" instance=ExtResource("3_xspcd")]
-transform = Transform3D(-8.74228e-07, 0, 20, 0, 20, 0, -20, 0, -8.74228e-07, 0, -28.014, 0)
+transform = Transform3D(-3.96718, 0, 19.6026, 0, 20, 0, -19.6026, 0, -3.96718, 0, -28.014, 0)
 
 [node name="ExitPosition" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.7529, 0)
+
+[node name="TongueDistanceCheck" type="RayCast3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.86, 0)
+target_position = Vector3(0, 0, -200)
+
+[node name="TongueCollider" type="CollisionShape3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.039, 0)
+shape = SubResource("BoxShape3D_qs64a")
+
+[node name="TongueMesh" type="MeshInstance3D" parent="." index="6"]
+transform = Transform3D(10, 0, 0, 0, -4.37114e-09, -2, 0, 0.1, -8.74228e-08, 0, -2.768, 0)
+visible = false
+mesh = SubResource("CylinderMesh_h37aa")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_w8cfn")

@@ -8,7 +8,6 @@ var isFlying = false
 @export var ROLLSPEED = 10.0
 @export var MAXROLLSPEED = 10.0
 @export var CUSTOMGRAVITY = 10.0
-@export var COLOR : ColouredBug
 @export var normal_mesh: RolypolyMaterialSwitcher
 @export var rolling_mesh: RolypolyMaterialSwitcher
 @export var ball_pivot: Node3D
@@ -38,10 +37,7 @@ func detectCollision(collided: Node):
 		normal_mesh.set_painted()
 		is_coloured = true
 	elif(collided is PillbugEatingRange and is_coloured):
-		isFlying = true
-		velocity = collided.FORCEPUSH
-		await get_tree().create_timer(0.2).timeout
-		isFlying = false
+		collided.Launch()
 
 func resetAbilities():
 	isDashing = false
@@ -96,7 +92,7 @@ func jumpButtonReleased() -> void:
 	timeDashed = 0
 	rolling_mesh.hide()
 	normal_mesh.show()
-	if intro_sfx:
+	if intro_sfx != null:
 		intro_sfx._on_finished()
 	#intro_sfx = AudioManager.play_sfx("res://Audio/SFX/Rolypoly/swish.wav")
 

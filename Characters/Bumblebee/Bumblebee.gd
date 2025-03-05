@@ -8,6 +8,9 @@ var isFlying = false
 @export var right_wing : Node3D
 var currentFlyingStamina = 0.0
 
+# This goes from 0 to 1, and is used to smoothly go between the squish animation and being still
+var animation_amount = 0
+
 # Overrides the handleMove method of GenericCharacterController
 func handleMove(input_dir: Vector2, camera_basis: Basis, delta: float) -> void:
 	
@@ -27,21 +30,12 @@ func handleMove(input_dir: Vector2, camera_basis: Basis, delta: float) -> void:
 
 var has_shown_stamina_prompt_before = false # Used to show the tiredness prompt the first time
 func _process(delta: float) -> void:
+	var stamina_fraction = currentFlyingStamina / maxFlyingStamina
 	if(isFlying and currentFlyingStamina > 0):
-		var stamina_fraction = currentFlyingStamina / maxFlyingStamina
 		var currentStamina = int(stamina_fraction * 100)
 		if(Time.get_ticks_msec() % 500 == 0):  
 			print("Bumblebee stamina: " + str(currentStamina) + "%");
 		currentFlyingStamina -= delta
-		
-		var f = 1 - stamina_fraction
-		var wing_flap_intensity = 1 - (f * f * f * f)
-		
-		var flaps_per_second = 60
-		var flap_magnitude = 30
-		
-		left_wing.rotation_degrees.z = (13.4 - sin(Time.get_ticks_msec() * 0.001 * flaps_per_second) * flap_magnitude * wing_flap_intensity)
-		right_wing.rotation_degrees.z = (13.4 + sin(Time.get_ticks_msec() * 0.001 * flaps_per_second) * flap_magnitude * wing_flap_intensity) 
 		
 		if(!has_shown_stamina_prompt_before and currentStamina < 50):
 			has_shown_stamina_prompt_before = true
@@ -55,6 +49,21 @@ func _process(delta: float) -> void:
 		
 	if is_on_floor():
 		currentFlyingStamina = maxFlyingStamina
+	
+	if(!isFlying):
+		animation_amount -= delta * 5
+	else:
+		animation_amount += delta * 5
+	
+	var f = 1 - stamina_fraction
+	var max_flap_intensity = 1 - (f * f * f * f)
+	animation_amount = max(min(animation_amount, max_flap_intensity), 0);
+	
+	var flaps_per_second = 60
+	var flap_magnitude = 30
+	
+	left_wing.rotation_degrees.z = (13.4 - sin(Time.get_ticks_msec() * 0.001 * flaps_per_second) * flap_magnitude * animation_amount)
+	right_wing.rotation_degrees.z = (13.4 + sin(Time.get_ticks_msec() * 0.001 * flaps_per_second) * flap_magnitude * animation_amount)
 		
 func jumpButtonPressed() -> void:
 	if is_on_floor():
