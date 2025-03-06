@@ -66,9 +66,9 @@ func handleMove(input_dir: Vector2, camera_basis: Basis, delta: float) -> void:
 	else :
 		super(input_dir, camera_basis, delta)
 		if(input_dir != Vector2.ZERO):
-			$rolypoly/AnimationPlayer.play("walk")
+			$MeshPivot/rolypoly/AnimationPlayer.play("walk")
 		else:
-			$rolypoly/AnimationPlayer.stop()
+			$MeshPivot/rolypoly/AnimationPlayer.stop()
 
 
 # The generic character uses gravity
@@ -135,6 +135,7 @@ func _on_switch_area_body_exited(body):
 		game_state_manager.hide_tutorial_prompt()
 		
 func switched_to_this_character():
+	super()
 	if(has_been_controlled_before):
 		return
 	

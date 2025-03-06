@@ -125,6 +125,7 @@ func _on_switch_area_body_exited(body):
 		game_state_manager.hide_tutorial_prompt()
 		
 func switched_to_this_character():
+	super()
 	if(has_been_controlled_before):
 		return
 	

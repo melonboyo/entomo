@@ -19,7 +19,6 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_4j3a4")
 
 [node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0218246, -3.8147e-07, 0.00978432)
 collision_layer = 0
 collision_mask = 2
 

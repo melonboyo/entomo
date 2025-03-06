@@ -8,7 +8,7 @@
 [ext_resource type="WwiseState" uid="uid://c8i1lon2rqwbo" path="res://Wwise/resources/State/{9DA82AF2-FF2E-4633-8990-09904DABE7C4}.tres" id="6_x1wpg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dib3q"]
-radius = 0.440761
+radius = 0.403235
 height = 1.33172
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5dqkc"]
@@ -319,66 +319,69 @@ script = ExtResource("2_70g27")
 gravityMultiplier = 2
 flyingSpeed = 24
 maxFlyingStamina = 3
-left_wing = NodePath("bumblebee/Plane_001")
-right_wing = NodePath("bumblebee/Plane")
+left_wing = NodePath("MeshPivot/bumblebee/Plane_001")
+right_wing = NodePath("MeshPivot/bumblebee/Plane")
 size = 2
 SPEED = 18.0
 JUMP_VELOCITY = 9.0
 CAMERA_SIZE = 75
 
 [node name="CollisionShape3D" parent="." index="0"]
-transform = Transform3D(10, 0.00442272, -1.32493e-09, 7.53744e-10, -4.38886e-07, 10, 0.00442272, -10, -4.35393e-07, -0.000598074, 2.06967, -0.240038)
+transform = Transform3D(10, 0.00442272, -1.55779e-09, 7.54142e-10, -4.39119e-07, 10, 0.00442272, -10, -4.3516e-07, -0.000610623, 2.11083, -0.240048)
 shape = SubResource("CapsuleShape3D_dib3q")
 
 [node name="CollisionShape3D" parent="SwitchArea" index="0"]
 transform = Transform3D(1, 0.000442272, -0.000167532, 0.000167532, 4.91855e-08, 1, 0.000442272, -1, -2.48547e-08, -0.000556698, 1.82603, -0.000460644)
 shape = SubResource("CapsuleShape3D_5dqkc")
 
-[node name="bumblebee" type="Node3D" parent="." index="2"]
+[node name="ExitPosition" parent="." index="2"]
+transform = Transform3D(1, -4.60076e-12, 7.27596e-11, 3.44968e-12, 1, 0, 0, 0, 1, -0.00120213, 7.35253, -3.12933)
+
+[node name="EnterPosition" parent="." index="3"]
+transform = Transform3D(1, -4.59721e-12, 2.91038e-11, 3.44968e-12, 1, 0, 0, 0, 1, -0.000304041, 4.8056, -4.01393)
+
+[node name="AkState" type="AkState" parent="." index="4"]
+state = ExtResource("6_x1wpg")
+
+[node name="bumblebee" type="Node3D" parent="MeshPivot" index="0"]
 transform = Transform3D(3.31477, -0.00101056, -0.000455604, 0.00101072, 3.31477, 0.000836017, 0.000455267, -0.000836199, 3.31477, 0, 0, 0)
 
-[node name="Cube" type="MeshInstance3D" parent="bumblebee" index="0"]
+[node name="Cube" type="MeshInstance3D" parent="MeshPivot/bumblebee" index="0"]
 transform = Transform3D(0.982182, 0, 0, 0, 0.982182, 0, 0, 0, 2.18558, 0, 0.835515, 0)
 mesh = SubResource("ArrayMesh_8yqdg")
 skeleton = NodePath("")
 
-[node name="Plane" type="MeshInstance3D" parent="bumblebee" index="1"]
+[node name="Plane" type="MeshInstance3D" parent="MeshPivot/bumblebee" index="1"]
 transform = Transform3D(0.68265, -0.287546, -2.19153e-08, 0.162086, 1.20211, -0.0602818, 0.0139748, 0.103644, 0.699174, 0.5, 1.7, 0)
 mesh = SubResource("ArrayMesh_fuicy")
 skeleton = NodePath("")
 
-[node name="Cube_001" type="MeshInstance3D" parent="bumblebee" index="2"]
+[node name="Cube_001" type="MeshInstance3D" parent="MeshPivot/bumblebee" index="2"]
 transform = Transform3D(0.981928, 0, 0, 0, 0.981928, 0, 0, 0, 2.18502, -0.0303198, 1.09974, -1.49525)
 mesh = SubResource("ArrayMesh_4tf25")
 skeleton = NodePath("")
 
-[node name="BézierCurve" type="MeshInstance3D" parent="bumblebee" index="3"]
+[node name="BézierCurve" type="MeshInstance3D" parent="MeshPivot/bumblebee" index="3"]
 transform = Transform3D(0, -0.165187, 2.81582e-07, -0.165187, 4.79992e-13, 2.81582e-07, -2.81582e-07, -2.81582e-07, -0.165187, 0, 2.02396, -1.48214)
 mesh = SubResource("ArrayMesh_7gnxp")
 skeleton = NodePath("")
 
-[node name="BumblebeeEyes" type="MeshInstance3D" parent="bumblebee" index="4"]
+[node name="BumblebeeEyes" type="MeshInstance3D" parent="MeshPivot/bumblebee" index="4"]
 transform = Transform3D(-1.2733, -2.07447e-07, -2.07447e-07, 2.07447e-07, 0, -1.2733, 2.07447e-07, -1.2733, 3.37975e-14, -0.0157512, 1.3553, -2.12214)
 mesh = SubResource("ArrayMesh_ngq7f")
 skeleton = NodePath("")
 
-[node name="mouth" type="MeshInstance3D" parent="bumblebee" index="5"]
+[node name="mouth" type="MeshInstance3D" parent="MeshPivot/bumblebee" index="5"]
 transform = Transform3D(-2.91948, -4.75644e-07, -4.75644e-07, 4.75644e-07, 0, -2.91948, 4.75644e-07, -2.91948, 7.74922e-14, 0.0779172, 1.22558, -2.3607)
 mesh = SubResource("ArrayMesh_r2gc6")
 skeleton = NodePath("")
 
-[node name="Cube_002" type="MeshInstance3D" parent="bumblebee" index="6"]
+[node name="Cube_002" type="MeshInstance3D" parent="MeshPivot/bumblebee" index="6"]
 transform = Transform3D(0.075802, 0, -0.0398067, 0, 0.0521718, 0, 0.024205, 0, 0.124662, 0.689113, 2.21374, -1.86389)
 mesh = SubResource("ArrayMesh_gtmgh")
 skeleton = NodePath("")
 
-[node name="Plane_001" type="MeshInstance3D" parent="bumblebee" index="7"]
+[node name="Plane_001" type="MeshInstance3D" parent="MeshPivot/bumblebee" index="7"]
 transform = Transform3D(0.68265, -0.287546, -2.47164e-08, 0.162086, 1.20211, -0.0602818, 0.0139748, 0.103644, 0.699174, -0.5, 1.7, 0)
 mesh = SubResource("ArrayMesh_byuby")
 skeleton = NodePath("")
-
-[node name="ExitPosition" parent="." index="3"]
-transform = Transform3D(1, -4.60076e-12, 7.27596e-11, 3.44968e-12, 1, 0, 0, 0, 1, -0.00120213, 7.35253, -3.12933)
-
-[node name="AkState" type="AkState" parent="." index="4"]
-state = ExtResource("6_x1wpg")

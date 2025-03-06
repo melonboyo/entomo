@@ -8,8 +8,10 @@
 [ext_resource type="WwiseState" uid="uid://d031mkiyimaa5" path="res://Wwise/resources/State/{30259643-AD54-4DED-8331-1553EB9472FA}.tres" id="5_nsioc"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_tdvly"]
+radius = 0.440608
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0kang"]
+radius = 0.450571
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ow3bi"]
 height = 1.0
@@ -20,19 +22,19 @@ script = ExtResource("2_6n07y")
 ROLLSPEED = 300.0
 MAXROLLSPEED = 2000.0
 CUSTOMGRAVITY = 10.0
-normal_mesh = NodePath("rolypoly")
-rolling_mesh = NodePath("BallPivot/rolypolyBALL")
-ball_pivot = NodePath("BallPivot")
+normal_mesh = NodePath("MeshPivot/rolypoly")
+rolling_mesh = NodePath("MeshPivot/BallPivot/rolypolyBALL")
+ball_pivot = NodePath("MeshPivot/BallPivot")
 size = 3
 SPEED = 50.0
 CAMERA_SIZE = 150
 
 [node name="CollisionShape3D" parent="." index="0"]
-transform = Transform3D(22, 0, 0, 0, 22, 0, 0, 0, 22, 0, 0, 0)
+transform = Transform3D(22, 0, 0, 0, 22, 0, 0, 0, 22, 0, -1.20721, 0)
 shape = SubResource("SphereShape3D_tdvly")
 
 [node name="RampCheckArea" type="Area3D" parent="." index="1"]
-transform = Transform3D(22, 0, 0, 0, 22, 0, 0, 0, 22, 0, 0, 0)
+transform = Transform3D(22, 0, 0, 0, 22, 0, 0, 0, 22, 0, -1.207, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RampCheckArea" index="0"]
 transform = Transform3D(1.05, 0, 0, 0, 1.05, 0, 0, 0, 1.05, 0, 0, 0)
@@ -44,19 +46,22 @@ transform = Transform3D(22, 0, 0, 0, 22, 0, 0, 0, 22, 0, 0, 0)
 [node name="CollisionShape3D" parent="SwitchArea" index="0"]
 shape = SubResource("CylinderShape3D_ow3bi")
 
-[node name="rolypoly" parent="." index="3" instance=ExtResource("5_675f0")]
+[node name="ExitPosition" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.3383, -4.34712)
+
+[node name="EnterPosition" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.53668, -8.96244)
+
+[node name="rolypoly" parent="MeshPivot" index="0" instance=ExtResource("5_675f0")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -11, 0)
 normal_material = ExtResource("5_0xdn6")
 
-[node name="BallPivot" type="Node3D" parent="." index="4"]
+[node name="BallPivot" type="Node3D" parent="MeshPivot" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.581279, 0)
 
-[node name="rolypolyBALL" parent="BallPivot" index="0" instance=ExtResource("5_53whx")]
+[node name="rolypolyBALL" parent="MeshPivot/BallPivot" index="0" instance=ExtResource("5_53whx")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -7.068, 1.729)
 normal_material = ExtResource("5_0xdn6")
-
-[node name="ExitPosition" parent="." index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.85, 0)
 
 [node name="AkState" type="AkState" parent="." index="6"]
 state = ExtResource("5_nsioc")
