@@ -316,14 +316,14 @@ shadow_mesh = SubResource("ArrayMesh_vc2bv")
 [node name="Bumblebee" node_paths=PackedStringArray("left_wing", "right_wing") instance=ExtResource("1_dr623")]
 transform = Transform3D(1, 0.000304902, 0.00013737, -0.000304879, 1, -0.000252252, -0.000137422, 0.000252223, 1, 0, 0, 0)
 script = ExtResource("2_70g27")
-gravityMultiplier = 2
-flyingSpeed = 24
-maxFlyingStamina = 3
+gravityMultiplier = 6
+flyingSpeed = 38
+maxFlyingStamina = 1.5
 left_wing = NodePath("MeshPivot/bumblebee/Plane_001")
 right_wing = NodePath("MeshPivot/bumblebee/Plane")
 size = 2
-SPEED = 18.0
-JUMP_VELOCITY = 9.0
+SPEED = 24.0
+JUMP_VELOCITY = 5.0
 CAMERA_SIZE = 75
 
 [node name="CollisionShape3D" parent="." index="0"]
@@ -338,7 +338,7 @@ shape = SubResource("CapsuleShape3D_5dqkc")
 transform = Transform3D(1, -4.60076e-12, 7.27596e-11, 3.44968e-12, 1, 0, 0, 0, 1, -0.00120213, 7.35253, -3.12933)
 
 [node name="EnterPosition" parent="." index="3"]
-transform = Transform3D(1, -4.59721e-12, 2.91038e-11, 3.44968e-12, 1, 0, 0, 0, 1, -0.000304041, 4.8056, -4.01393)
+transform = Transform3D(1, -4.59721e-12, 5.82077e-11, 3.44968e-12, 1, 0, 0, 0, 1, -0.000291254, 5.27442, -5.1476)
 
 [node name="AkState" type="AkState" parent="." index="4"]
 state = ExtResource("6_x1wpg")

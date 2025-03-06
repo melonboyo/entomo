@@ -104,7 +104,7 @@ func show_flag(next_flag: Flag):
 func ending_reached():
 	isInputEnabled = false
 	zoom_changed.emit(final_camera_focus, 80)
-	show_tutorial_prompt("Woah, the world is so beautiful from up here! What an adventure")
+	show_tutorial_prompt_with_sound("Woah, the world is so beautiful from up here! What an adventure", "Parasite/Haha.wav")
 	await(get_tree().create_timer(3).timeout)
 	isInputEnabled = true
 	game_paused = true
@@ -159,7 +159,11 @@ func continue_intro_tutorial():
 			show_tutorial_prompt("Use " + key1 + ", " + key2 + ", " + key3 + " and " + key4 + " to move")
 		return
 	
-	show_tutorial_prompt(intro_tutorial_lines[intro_tutorial_index])
+	if(intro_tutorial_index != 0):
+		show_tutorial_prompt(intro_tutorial_lines[intro_tutorial_index])
+	else:
+		show_tutorial_prompt_with_sound(intro_tutorial_lines[0], "Parasite/hmm.wav")
+	
 	intro_tutorial_index += 1
 	
 	var current_index = intro_tutorial_index
@@ -183,5 +187,9 @@ func skip_intro_tutorial():
 # For instance, the Bumblebee calls them to show the initial "press [E] to possess" prompt
 func show_tutorial_prompt(prompt: String):
 	tutorial_prompt.show_prompt(prompt)
+	
+func show_tutorial_prompt_with_sound(prompt: String, soundFile: String):
+	tutorial_prompt.show_prompt_with_audio(prompt, soundFile)
+	
 func hide_tutorial_prompt():
 	tutorial_prompt.hide_prompt()
