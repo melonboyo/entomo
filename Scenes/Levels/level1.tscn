@@ -288,7 +288,7 @@ frog = NodePath("../../../../Frog")
 gameState = NodePath("../../../../GameStateManager")
 
 [node name="Dragonfly10" parent="Blockout/Stage2/Dragonflies" node_paths=PackedStringArray("frog", "gameState") instance=ExtResource("10_f6exh")]
-transform = Transform3D(0.00478948, -0.0664569, -0.997749, -0.137959, 0.988201, -0.0664797, 0.990399, 0.137974, -0.00443538, -201.599, -6.23633, 96.7532)
+transform = Transform3D(0.00478948, -0.066457, -0.997751, -0.137959, 0.988202, -0.0664799, 0.9904, 0.137975, -0.00443539, -201.599, -6.23633, 96.7532)
 progress = 800.0
 frogPoint = 840.0
 frog = NodePath("../../../../Frog")
