@@ -5,6 +5,11 @@ extends Node
 @export_dir var music_folder_path: String = "res://Audio/Music"
 @export_dir var frog_folder_path: String = "res://Audio/SFX/Frog/"
 @export_dir var switch_folder_path: String = "res://Audio/SFX/Switch/"
+@export var wwiseRTPC:WwiseRTPC
+
+#music
+
+
 var songlist: Dictionary = {}  # Dictionary to store song references by name
 var froglist: Dictionary = {}  # Dictionary to store song references by name
 var switchlist: Dictionary = {}  # Dictionary to store song references by name
@@ -131,11 +136,13 @@ func set_global_volume(bus_name: String, amount: float):
 	var bus_index = AudioServer.get_bus_index(bus_name)
 	amount = linear_to_db(amount)
 	AudioServer.set_bus_volume_db(bus_index, amount)
+	wwiseRTPC.set_value($AkEvent3D, amount)
 
-func change_sfx_volume(volume_sfx):
-	vol_sfx += volume_sfx
+#THIS METHOD ADDS AND REDUCES THE AMOUNT OF VOLUME SO YOU HAVE TO GET THE DIFFERENCE
+func set_sfx_volume(amount):
+	vol_sfx += amount
 # Increases/decreases by db amount
-func change_music_volume(db, fade_time: float = 0):
-	db = 0 + db
-	var tween = get_tree().create_tween()
-	tween.tween_property(music_player, "volume_db", db, fade_time)
+
+#USE A VALUE BETWEEN 0 and 1
+func set_music_volume(amount):
+	wwiseRTPC.set_value($AkEvent3D, amount)
