@@ -316,12 +316,12 @@ shadow_mesh = SubResource("ArrayMesh_vc2bv")
 transform = Transform3D(1, 0.000304902, 0.00013737, -0.000304879, 1, -0.000252252, -0.000137422, 0.000252223, 1, 0, 0, 0)
 script = ExtResource("2_70g27")
 gravityMultiplier = 2
-flyingSpeed = 24
-maxFlyingStamina = 3
+flyingSpeed = 38
+maxFlyingStamina = 1
 left_wing = NodePath("bumblebee/Plane_001")
 right_wing = NodePath("bumblebee/Plane")
 size = 2
-SPEED = 18.0
+SPEED = 24.0
 JUMP_VELOCITY = 9.0
 CAMERA_SIZE = 75
 

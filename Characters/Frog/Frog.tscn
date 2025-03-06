@@ -23,8 +23,8 @@ albedo_color = Color(0.976471, 0.690196, 0.509804, 1)
 
 [node name="Frog" node_paths=PackedStringArray("raycast", "tongueCollision", "tongueMesh") instance=ExtResource("1_ufw1a")]
 script = ExtResource("2_ehqrl")
-timeToReachFullJumpVelocity = 0.5
-gravityMultiplier = 18
+timeToReachFullJumpVelocity = 0.2
+gravityMultiplier = 30
 airborneMovementControl = 0.75
 minJumpVelocity = 50
 jumpForwardVelocity = 60
@@ -34,9 +34,10 @@ tongueMesh = NodePath("TongueMesh")
 collisionScaleDifference = 60.0
 collisionOffsetDifference = 10.0
 size = 4
-SPEED = 50.0
-JUMP_VELOCITY = 200.0
+SPEED = 100.0
+JUMP_VELOCITY = 300.0
 CAMERA_SIZE = 350
+rotationSpeed = 10
 
 [node name="CollisionShape3D" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.60564, 0)

@@ -81,9 +81,7 @@ func jumpButtonPressed() -> void:
 		rolling_mesh.show()
 		normal_mesh.hide()
 		
-		if(!has_dashed_before):
-			game_state_manager.hide_tutorial_prompt()
-			has_dashed_before = true
+		game_state_manager.hide_tutorial_prompt()
 		
 		intro_sfx = AudioManager.play_sfx("res://Audio/SFX/Rolypoly/swish_Intro_3.wav")
 
@@ -94,6 +92,11 @@ func jumpButtonReleased() -> void:
 	normal_mesh.show()
 	if intro_sfx != null:
 		intro_sfx._on_finished()
+
+	if(!has_dashed_before):
+		game_state_manager.show_tutorial_prompt("I need a long run-up to get enough momentum.")
+		has_dashed_before = true
+	
 	#intro_sfx = AudioManager.play_sfx("res://Audio/SFX/Rolypoly/swish.wav")
 
 func entered_water():

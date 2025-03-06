@@ -13,7 +13,7 @@ radius = 1.58
 collision_layer = 6
 script = ExtResource("1_a2cng")
 parasite_model = NodePath("ParasitePivot")
-SPEED = 6.0
+SPEED = 10.0
 
 [node name="CollisionShape3D" parent="." index="0"]
 shape = SubResource("SphereShape3D_d6tf5")

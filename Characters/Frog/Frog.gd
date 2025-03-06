@@ -79,6 +79,10 @@ func _process(delta: float) -> void:
 func specialAbilityButtonPressed() -> void:
 	# If the tongue is out, retract it
 	if(isTongueOut):
+		if(!has_tongued_before):
+			game_state_manager.hide_tutorial_prompt()
+			has_tongued_before = true
+		
 		lerpTongueMesh(tongueCollision.scale.z, 0.1, 0.2)
 		
 		tongueCollision.scale.z = 0.1
@@ -98,9 +102,21 @@ func specialAbilityButtonPressed() -> void:
 		tongueCollision.scale.z = distance # - collisionScaleDifference
 		
 		isTongueOut = true
+		
+		if(!has_tongued_before):
+			var key = InputMap.action_get_events("special_ability")[0].as_text().trim_suffix(" (Physical)")
+			if(key.length() == 0):
+				key = "null"
+			key[0] = key[0].to_upper()
+			
+			game_state_manager.show_tutorial_prompt("Press [" + key + "] again to release it")
 	# Else do a quick animation
 	else:
 		quickTongueAnimation(100, 0.15)
+		
+		if(!has_tongued_before):
+			
+			game_state_manager.show_tutorial_prompt("Aim the tongue at something in front of the frog")
 
 # Extend (Scale and offset) the tongue mesh over a period of time
 func lerpTongueMesh(distanceStart, distanceEnd, delay):
@@ -143,6 +159,16 @@ func jumpButtonReleased() -> void:
 		if(!has_jumped_before):
 			has_jumped_before = true
 			game_state_manager.hide_tutorial_prompt()
+			
+			get_tree().create_timer(3).timeout
+			
+			var key = InputMap.action_get_events("special_ability")[0].as_text().trim_suffix(" (Physical)")
+			if(key.length() == 0):
+				key = "null"
+			key[0] = key[0].to_upper()
+			
+			game_state_manager.show_tutorial_prompt("Stick out the frog's tongue using [" + key + "]")
+
 
 func jump(jumpSpeed: float, direction: Vector3) -> void:
 	velocity.x = direction.x * jumpForwardVelocity
@@ -161,6 +187,8 @@ func entered_water():
 ############################################### Tutorial prompts about this creature ###############################################
 var has_been_controlled_before = false # Used to show a prompt when the player enteres this creature's area for the first time
 var has_jumped_before = false # Used to show a prompt about how to dash
+var has_tongued_before = false
+
 func _on_switch_area_body_entered(body):
 	super(body)
 	
