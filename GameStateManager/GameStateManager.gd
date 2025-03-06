@@ -19,7 +19,6 @@ signal show_victory_screen()
 signal show_death_screen()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:	
-	AudioManager.play_music("Froggu_Final", AudioManager.music_volume_db)
 	if(first_flag != null):
 		start_intro_tutorial()
 

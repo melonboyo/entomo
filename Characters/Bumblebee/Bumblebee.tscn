@@ -1,10 +1,11 @@
-[gd_scene load_steps=28 format=4 uid="uid://d345ctgph51uj"]
+[gd_scene load_steps=29 format=4 uid="uid://d345ctgph51uj"]
 
 [ext_resource type="PackedScene" uid="uid://baiok6rvrnsqh" path="res://Characters/Generic/GenericCharacter.tscn" id="1_dr623"]
 [ext_resource type="Script" path="res://Characters/Bumblebee/Bumblebee.gd" id="2_70g27"]
 [ext_resource type="Texture2D" uid="uid://ckhva7rstwten" path="res://Characters/Bumblebee/bumblebee_bumblebee.png" id="3_1lxwg"]
 [ext_resource type="Texture2D" uid="uid://dt31kc4c7q83o" path="res://Characters/Bumblebee/bumblebee_BumblebeeEyes.png" id="4_t1jc6"]
 [ext_resource type="Texture2D" uid="uid://bwojlgsipwkaf" path="res://Characters/Bumblebee/bumblebee_2.png" id="5_5mti0"]
+[ext_resource type="WwiseState" uid="uid://c8i1lon2rqwbo" path="res://Wwise/resources/State/{9DA82AF2-FF2E-4633-8990-09904DABE7C4}.tres" id="6_x1wpg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dib3q"]
 radius = 0.440761
@@ -378,3 +379,6 @@ skeleton = NodePath("")
 
 [node name="ExitPosition" parent="." index="3"]
 transform = Transform3D(1, -4.60076e-12, 7.27596e-11, 3.44968e-12, 1, 0, 0, 0, 1, -0.00120213, 7.35253, -3.12933)
+
+[node name="AkState" type="AkState" parent="." index="4"]
+state = ExtResource("6_x1wpg")

@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://bnigqpqeb5ndd"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Music"
+id = 3991942870
+guid = "{5F5F2C09-1FA5-4666-8618-7968476CF77D}"
+dummy = true

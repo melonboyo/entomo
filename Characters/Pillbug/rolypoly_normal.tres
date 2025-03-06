@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b1mn41kpthklj"]
+
+[ext_resource type="Texture2D" uid="uid://cykyykmto7pmu" path="res://EnvironmentAssets/dragonflies/dragonfly_bumblebee.png" id="1_5on3v"]
+
+[resource]
+albedo_texture = ExtResource("1_5on3v")

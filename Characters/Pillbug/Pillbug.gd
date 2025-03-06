@@ -11,6 +11,7 @@ var isFlying = false
 @export var normal_mesh: RolypolyMaterialSwitcher
 @export var rolling_mesh: RolypolyMaterialSwitcher
 @export var ball_pivot: Node3D
+@onready var akState = $AkState
 var intro_sfx
 
 var timeDashed = 0;
@@ -118,6 +119,7 @@ func _on_switch_area_body_entered(body):
 			key = "null"
 		key[0] = key[0].to_upper()
 		game_state_manager.show_tutorial_prompt("A Rolypoly! Press [" + key + "] to possess" )
+		akState.set_value()
 
 # Called when a character exits this character's switch area
 func _on_switch_area_body_exited(body):
