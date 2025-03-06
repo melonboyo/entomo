@@ -140,11 +140,10 @@ func set_global_volume(bus_name: String, amount: float):
 	AudioServer.set_bus_volume_db(bus_index, amount)
 	wwiseRTPC.set_value($AkEvent3D, amount)
 
-<<<<<<< HEAD
+
 #THIS METHOD ADDS AND REDUCES THE AMOUNT OF VOLUME SO YOU HAVE TO GET THE DIFFERENCE
 func set_sfx_volume(amount):
 	vol_sfx += amount
-=======
 #func set_music_volume(volume_db: float):
 #	music_volume_db = volume_db
 #	music_player.volume_db = music_volume_db
@@ -153,7 +152,6 @@ func set_sfx_volume(amount):
 func change_sfx_volume(volume_sfx):
 	vol_sfx = volume_sfx
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Effects"), vol_sfx)
->>>>>>> 7f439069bb45f6fcf6f545216e26d2697e46f21a
 # Increases/decreases by db amount
 
 #USE A VALUE BETWEEN 0 and 1
