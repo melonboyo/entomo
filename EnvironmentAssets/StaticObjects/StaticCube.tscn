@@ -1,13 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://cynjesuoq6b5x"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_2040i"]
+[ext_resource type="PackedScene" uid="uid://d0afubeh8fxeo" path="res://EnvironmentAssets/StaticObjects/environmentCubesFLAT.glb" id="1_hib3m"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mr5l0"]
 
 [node name="StaticBody3D" type="StaticBody3D"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_2040i")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_mr5l0")
+
+[node name="environmentCubesFLAT" parent="." instance=ExtResource("1_hib3m")]
+transform = Transform3D(0.427121, 0, 0, 0, 0.478652, 0, 0, 0, 0.433326, 0, -0.644114, 0)
