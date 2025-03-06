@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
     "Language": "SFX",
-    "Hash": "{1B6300D5-373E-3421-93A6-E97147A87E09}",
+    "Hash": "{496F2D06-3EAB-88E2-D3DC-34C072B3A2B8}",
     "ObjectPath": "Init",
     "ShortName": "Init",
     "Path": "Init.bnk",
@@ -35,6 +35,13 @@
      ]
     },
     "Busses": [
+     {
+      "Id": "2415836739",
+      "Name": "Volume",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Volume",
+      "GUID": "{A7DA3454-A665-41D6-B480-8BC6250AE87E}",
+      "Color": "11"
+     },
      {
       "Id": "3803692087",
       "Name": "Master Audio Bus",
@@ -84,6 +91,12 @@
       "Name": "SS_Air_TimeOfDay",
       "ObjectPath": "\\Game Parameters\\Factory Soundseed Air Game Syncs\\SS_Air_TimeOfDay",
       "GUID": "{536FA72C-8C7E-4C8B-AE03-EF34FDADC314}"
+     },
+     {
+      "Id": "3645722229",
+      "Name": "Volume_Slider",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\Volume_Slider",
+      "GUID": "{A185EAE2-5CBD-42C1-AB8A-FA22736E3BBC}"
      },
      {
       "Id": "3715662592",
@@ -623,6 +636,6 @@
     ]
    }
   ],
-  "FileHash": "{F64A8084-B083-B0DC-1664-6D8C2EF6D887}"
+  "FileHash": "{B50EB5D9-6643-D6E5-0EEE-5DA43E2D61FE}"
  }
 }

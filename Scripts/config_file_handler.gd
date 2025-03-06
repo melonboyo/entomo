@@ -28,10 +28,10 @@ func save_audio_setting(key: String, value):
 	newConfig.set_value("audio", key, value)
 	newConfig.save(SETTINGS_FILE_PATH)
 
-func load_audio_setting(key: String, value):
-	for audio_key in newConfig.get_section_keys("audio"):
-		audio_settings[key] = newConfig.get_value("audio", audio_key)
-	return audio_settings
+func load_audio_setting(key: String, default_value: float):
+	if newConfig.has_section_key("audio", key):
+		return newConfig.get_value("audio",key, default_value)
+	return default_value
 
 func save_keybinding(action: StringName, event: InputEvent):
 	var event_str

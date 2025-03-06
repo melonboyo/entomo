@@ -1,8 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://xxtnctr4nrlq"]
+[gd_scene load_steps=5 format=3 uid="uid://xxtnctr4nrlq"]
 
 [ext_resource type="Script" path="res://AudioManager/audio_manager.gd" id="1_pltwv"]
+[ext_resource type="WwiseEvent" uid="uid://bnigqpqeb5ndd" path="res://Wwise/resources/Event/{5F5F2C09-1FA5-4666-8618-7968476CF77D}.tres" id="2_q0hlr"]
+[ext_resource type="WwiseRTPC" uid="uid://igs5aluw52dg" path="res://Wwise/resources/Game Parameter/{A185EAE2-5CBD-42C1-AB8A-FA22736E3BBC}.tres" id="2_rq6hi"]
+[ext_resource type="WwiseBank" uid="uid://cdv2fi03r7ojc" path="res://Wwise/resources/SoundBank/{258E8AF3-C148-42A0-BC80-34BC58C89550}.tres" id="5_eodj6"]
 
 [node name="AudioManager" type="Node"]
 script = ExtResource("1_pltwv")
+wwiseRTPC = ExtResource("2_rq6hi")
 
 [node name="poop" type="AudioStreamPlayer" parent="."]
+
+[node name="AkEvent3D" type="AkEvent3D" parent="."]
+event = ExtResource("2_q0hlr")
+trigger_on = 2
+stop_on = 3
+
+[node name="AkBank" type="AkBank" parent="."]
+bank = ExtResource("5_eodj6")
+load_on = 1
+
+[node name="AkListener3D" type="AkListener3D" parent="."]

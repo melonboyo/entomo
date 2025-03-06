@@ -1,0 +1,7 @@
+[gd_resource type="WwiseRTPC" format=3 uid="uid://igs5aluw52dg"]
+
+[resource]
+name = "Volume_Slider"
+id = 3645722229
+guid = "{A185EAE2-5CBD-42C1-AB8A-FA22736E3BBC}"
+dummy = true
