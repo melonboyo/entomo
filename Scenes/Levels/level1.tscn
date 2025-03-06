@@ -506,4 +506,6 @@ game_manager = NodePath("../GameStateManager")
 [node name="FinalCameraFocus" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -243.373, 642.311, 343.335)
 
+[node name="AkListener3D" type="AkListener3D" parent="."]
+
 [connection signal="zoom_changed" from="GameStateManager" to="CameraRoot" method="_on_game_state_manager_zoom_changed"]
