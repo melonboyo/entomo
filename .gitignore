@@ -5,3 +5,16 @@ Exports/*
 !Exports/*.ps1
 .vscode/
 *.tmp
+
+# Godot wwise specific ignores
+*.log
+.vs/
+.godot/
+.import/
+export.cfg
+export_presets.cfg
+addons/Wwise/native/src**/*.obj
+*.wsettings
+*.validationcache
+**/WwiseProjectData.tres
+tests/WwiseProject/.cache/
