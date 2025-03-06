@@ -393,10 +393,10 @@ transform = Transform3D(78.5836, 0, 78.0646, 0, 58.56, 0, -78.5836, 0, 78.0646, 
 transform = Transform3D(22.5456, 0, 67.0375, 0, 58.56, 0, -22.5456, 0, 67.0375, 18.8612, -18.5119, 271.605)
 
 [node name="StaticBody3D23" parent="Blockout/Stage2" instance=ExtResource("14_wvx2g")]
-transform = Transform3D(37.8126, 0, 33.4199, 0, 58.56, 0, -37.8126, 0, 33.4199, -50.3576, -18.5119, 307.994)
+transform = Transform3D(37.8126, 0, 33.4199, 0, 58.56, 0, -37.8126, 0, 33.4199, -55.4387, -18.5119, 313.075)
 
 [node name="StaticBody3D27" parent="Blockout/Stage2" instance=ExtResource("14_wvx2g")]
-transform = Transform3D(37.8126, 0, 10.7936, 0, 58.56, 0, -37.8126, 0, 10.7936, -26.256, -18.5119, 260.425)
+transform = Transform3D(37.8126, 0, 10.7936, 0, 58.56, 0, -37.8126, 0, 10.7936, -30.2622, -18.5119, 264.431)
 
 [node name="StaticBody3D26" parent="Blockout/Stage2" instance=ExtResource("14_wvx2g")]
 transform = Transform3D(79.2827, 0, 22.3342, 0, 58.56, 0, -79.2827, 0, 22.3342, 12.0043, -18.3988, 345.566)

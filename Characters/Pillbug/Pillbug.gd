@@ -94,7 +94,7 @@ func jumpButtonReleased() -> void:
 		intro_sfx._on_finished()
 
 	if(!has_dashed_before):
-		game_state_manager.show_tutorial_prompt("I need a long run-up to get enough momentum.")
+		game_state_manager.show_tutorial_prompt_with_sound("I need a long run-up to get enough momentum.", "Parasite/hmm.wav")
 		has_dashed_before = true
 	
 	#intro_sfx = AudioManager.play_sfx("res://Audio/SFX/Rolypoly/swish.wav")
@@ -120,7 +120,7 @@ func _on_switch_area_body_entered(body):
 		if(key.length() == 0):
 			key = "null"
 		key[0] = key[0].to_upper()
-		game_state_manager.show_tutorial_prompt("A Rolypoly! Press [" + key + "] to possess" )
+		game_state_manager.show_tutorial_prompt_with_sound("A Rolypoly! Press [" + key + "] to possess", "Parasite/Haha.wav")
 
 # Called when a character exits this character's switch area
 func _on_switch_area_body_exited(body):

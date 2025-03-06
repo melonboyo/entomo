@@ -25,6 +25,8 @@ func _on_switch_area_body_entered(body: Node3D) -> void:
 	unique_material.albedo_color = Color(0, 1, 0)  # Set to green, for example
 	flag_mesh.material_override = unique_material
 	has_been_triggered = true
+		
+	AudioManager.play_sfx("res://Audio/SFX/Other/Flag.wav")
 	
 	# The ending is reached if this is the last flag, i.e. next_flag is null
 	if(next_flag == null):

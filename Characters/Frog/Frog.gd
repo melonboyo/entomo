@@ -89,6 +89,7 @@ func specialAbilityButtonPressed() -> void:
 		tongueCollision.position.z = 0
 		
 		isTongueOut = false
+		AudioManager.play_sfx("res://Audio/SFX/Frog/slurp.wav")
 	# If close enough, launch the toungue
 	elif(raycast.is_colliding()):
 		$froggy_v3/AnimationPlayer.play("gape")
@@ -110,6 +111,8 @@ func specialAbilityButtonPressed() -> void:
 			key[0] = key[0].to_upper()
 			
 			game_state_manager.show_tutorial_prompt("Press [" + key + "] again to release it")
+		
+		AudioManager.play_sfx("res://Audio/SFX/Frog/slurp.wav")
 	# Else do a quick animation
 	else:
 		quickTongueAnimation(100, 0.15)
@@ -203,7 +206,7 @@ func _on_switch_area_body_entered(body):
 		if(key.length() == 0):
 			key = "null"
 		key[0] = key[0].to_upper()
-		game_state_manager.show_tutorial_prompt("A Frog! Press [" + key + "] to possess" )
+		game_state_manager.show_tutorial_prompt_with_sound("A Frog! Press [" + key + "] to possess", "Parasite/Haha.wav" )
 
 # Called when a character exits this character's switch area
 func _on_switch_area_body_exited(body):
