@@ -11,6 +11,29 @@
 
 namespace AK
 {
+    namespace EVENTS
+    {
+        static const AkUniqueID MUSIC = 3991942870U;
+    } // namespace EVENTS
+
+    namespace STATES
+    {
+        namespace CONTROLLEDCHARACTER
+        {
+            static const AkUniqueID GROUP = 835976592U;
+
+            namespace STATE
+            {
+                static const AkUniqueID BUMBLEBEE = 985761414U;
+                static const AkUniqueID FROG = 2492899947U;
+                static const AkUniqueID NONE = 748895195U;
+                static const AkUniqueID PARASITE = 1336365862U;
+                static const AkUniqueID ROLYPOLY = 3064139431U;
+            } // namespace STATE
+        } // namespace CONTROLLEDCHARACTER
+
+    } // namespace STATES
+
     namespace GAME_PARAMETERS
     {
         static const AkUniqueID SS_AIR_FEAR = 1351367891U;
@@ -24,6 +47,12 @@ namespace AK
         static const AkUniqueID SS_AIR_TIMEOFDAY = 3203397129U;
         static const AkUniqueID SS_AIR_TURBULENCE = 4160247818U;
     } // namespace GAME_PARAMETERS
+
+    namespace BANKS
+    {
+        static const AkUniqueID INIT = 1355168291U;
+        static const AkUniqueID MAIN = 3161908922U;
+    } // namespace BANKS
 
     namespace BUSSES
     {

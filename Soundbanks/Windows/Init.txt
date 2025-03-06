@@ -1,3 +1,13 @@
+State Group	ID	Name			Wwise Object Path	Notes
+	835976592	ControlledCharacter			\Default Work Unit\ControlledCharacter	
+
+State	ID	Name	State Group			Notes
+	748895195	None	ControlledCharacter			
+	985761414	Bumblebee	ControlledCharacter			
+	1336365862	Parasite	ControlledCharacter			
+	2492899947	Frog	ControlledCharacter			
+	3064139431	RolyPoly	ControlledCharacter			
+
 Game Parameter	ID	Name			Wwise Object Path	Notes
 	504532776	Brick			\Factory Acoustic Textures\Textures\Brick	
 	513139656	Mountain			\Factory Acoustic Textures\Textures\Mountain	

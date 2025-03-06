@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cxrj60oxxptdh"]
+[gd_scene load_steps=8 format=3 uid="uid://cxrj60oxxptdh"]
 
 [ext_resource type="Script" path="res://Characters/Parasite/ParasiteController.gd" id="1_a2cng"]
 [ext_resource type="PackedScene" uid="uid://baiok6rvrnsqh" path="res://Characters/Generic/GenericCharacter.tscn" id="1_lhite"]
 [ext_resource type="PackedScene" uid="uid://dqbad35g1o8xu" path="res://Characters/Parasite/parasite.glb" id="3_shiyk"]
+[ext_resource type="WwiseEvent" uid="uid://bnigqpqeb5ndd" path="res://Wwise/resources/Event/{5F5F2C09-1FA5-4666-8618-7968476CF77D}.tres" id="4_lpo7t"]
+[ext_resource type="WwiseState" uid="uid://byiwrjqbown08" path="res://Wwise/resources/State/{29AD8AB1-D64C-4E38-8156-D03191B57D8F}.tres" id="5_7lcci"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_d6tf5"]
 
@@ -23,3 +25,14 @@ shape = SubResource("CylinderShape3D_xhkis")
 
 [node name="parasite" parent="." index="3" instance=ExtResource("3_shiyk")]
 transform = Transform3D(-1.09278e-08, 0, -0.25, 0, 0.25, 0, 0.25, 0, -1.09278e-08, 0, -0.285094, 0)
+
+[node name="AkEvent3D" type="AkEvent3D" parent="." index="4"]
+event = ExtResource("4_lpo7t")
+trigger_on = 2
+stop_on = 3
+
+[node name="AkState" type="AkState" parent="." index="5"]
+state = ExtResource("5_7lcci")
+trigger_on = 2
+
+[connection signal="music_play_started" from="AkEvent3D" to="." method="_on_ak_event_3d_music_play_started"]

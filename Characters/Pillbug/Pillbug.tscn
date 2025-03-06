@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://ceq3k2pduj7cb"]
+[gd_scene load_steps=9 format=3 uid="uid://ceq3k2pduj7cb"]
 
 [ext_resource type="PackedScene" uid="uid://baiok6rvrnsqh" path="res://Characters/Generic/GenericCharacter.tscn" id="1_yggj8"]
 [ext_resource type="Script" path="res://Characters/Pillbug/Pillbug.gd" id="2_6n07y"]
 [ext_resource type="PackedScene" uid="uid://cymvr25bfe8h7" path="res://Characters/Pillbug/PaintedRolypolyModel.tscn" id="5_53whx"]
 [ext_resource type="PackedScene" uid="uid://pybsf0l33dhf" path="res://Characters/Pillbug/NormalRolypolyModel.tscn" id="5_675f0"]
+[ext_resource type="WwiseState" uid="uid://d031mkiyimaa5" path="res://Wwise/resources/State/{30259643-AD54-4DED-8331-1553EB9472FA}.tres" id="5_nsioc"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_tdvly"]
 
@@ -53,5 +54,8 @@ transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -7.068, 1.729)
 
 [node name="ExitPosition" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.85, 0)
+
+[node name="AkState" type="AkState" parent="." index="6"]
+state = ExtResource("5_nsioc")
 
 [connection signal="body_entered" from="RampCheckArea" to="." method="detectCollision"]

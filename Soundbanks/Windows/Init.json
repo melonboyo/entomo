@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
     "Language": "SFX",
-    "Hash": "{8211EA32-DCE5-28B8-77AA-FC48DB76F216}",
+    "Hash": "{1B6300D5-373E-3421-93A6-E97147A87E09}",
     "ObjectPath": "Init",
     "ShortName": "Init",
     "Path": "Init.bnk",
@@ -102,6 +102,46 @@
       "Name": "SS_Air_Turbulence",
       "ObjectPath": "\\Game Parameters\\Factory Soundseed Air Game Syncs\\SS_Air_Turbulence",
       "GUID": "{EDA87B19-73AA-40A0-9F19-2073606DB710}"
+     }
+    ],
+    "StateGroups": [
+     {
+      "Id": "835976592",
+      "Name": "ControlledCharacter",
+      "ObjectPath": "\\States\\Default Work Unit\\ControlledCharacter",
+      "GUID": "{C763667F-55F0-4582-8C0B-E31A7D3CFC7E}",
+      "States": [
+       {
+        "Id": "748895195",
+        "Name": "None",
+        "ObjectPath": "\\States\\Default Work Unit\\ControlledCharacter\\None",
+        "GUID": "{3008BEB2-202A-4CC1-BC74-2C53E8358739}"
+       },
+       {
+        "Id": "985761414",
+        "Name": "Bumblebee",
+        "ObjectPath": "\\States\\Default Work Unit\\ControlledCharacter\\Bumblebee",
+        "GUID": "{9DA82AF2-FF2E-4633-8990-09904DABE7C4}"
+       },
+       {
+        "Id": "1336365862",
+        "Name": "Parasite",
+        "ObjectPath": "\\States\\Default Work Unit\\ControlledCharacter\\Parasite",
+        "GUID": "{29AD8AB1-D64C-4E38-8156-D03191B57D8F}"
+       },
+       {
+        "Id": "2492899947",
+        "Name": "Frog",
+        "ObjectPath": "\\States\\Default Work Unit\\ControlledCharacter\\Frog",
+        "GUID": "{C23D3019-9FCE-4B94-AB6C-26A1EE51CDE3}"
+       },
+       {
+        "Id": "3064139431",
+        "Name": "RolyPoly",
+        "ObjectPath": "\\States\\Default Work Unit\\ControlledCharacter\\RolyPoly",
+        "GUID": "{30259643-AD54-4DED-8331-1553EB9472FA}"
+       }
+      ]
      }
     ],
     "AcousticTextures": [
@@ -583,6 +623,6 @@
     ]
    }
   ],
-  "FileHash": "{951FA278-FB06-27B7-5F1B-37A69F59461C}"
+  "FileHash": "{F64A8084-B083-B0DC-1664-6D8C2EF6D887}"
  }
 }

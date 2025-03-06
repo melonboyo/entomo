@@ -1,0 +1,11 @@
+[gd_resource type="WwiseState" load_steps=2 format=3 uid="uid://d031mkiyimaa5"]
+
+[ext_resource type="WwiseStateGroup" uid="uid://dbwyntks2lo2c" path="res://Wwise/resources/State Group/{C763667F-55F0-4582-8C0B-E31A7D3CFC7E}.tres" id="1_4w58f"]
+
+[resource]
+group_ref = ExtResource("1_4w58f")
+group_id = 835976592
+name = "RolyPoly"
+id = 3064139431
+guid = "{30259643-AD54-4DED-8331-1553EB9472FA}"
+dummy = true
