@@ -26,13 +26,13 @@ func _physics_process(delta: float) -> void:
 	
 		# move_and_slide is called each physics tick
 		move_and_slide()
-	else:
+	elif !is_inside_other_creature:
 		move_and_collide(get_gravity() * delta)
 		
 # The generic character uses gravity
 func handleGravity(delta: float) -> void:
 	if not is_on_floor():
-			velocity += get_gravity() * delta
+		velocity += get_gravity() * delta
 
 # The generic character jumps when the jump button is pressed and they are on the ground, override this in the creature-specific script for additional functionality 
 func jumpButtonPressed() -> void:
@@ -133,12 +133,14 @@ func reset_switchable_body() -> void:
 	current_switchable_character = null
 	is_in_switch_area = false
 
+var is_inside_other_creature = false
 # Generic function for disabling the creature
 # Hides and makes it intangible
 func disable():
 	hide()
 	$CollisionShape3D.disabled = true
 	$SwitchArea.monitoring = false
+	is_inside_other_creature = true
 
 # Generic function to enable the creature
 # Unhides and makes it tangible
@@ -146,6 +148,7 @@ func enable():
 	show()
 	$CollisionShape3D.disabled = false
 	$SwitchArea.monitoring = true
+	is_inside_other_creature = false
 
 # Kills the player when they enter water, override this method in child class to stop this behaviour
 # TODO: change this to be more generalized, being able to enter different types of areas (if necessary)

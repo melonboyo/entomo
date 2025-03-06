@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bwojlgsipwkaf" path="res://Characters/Bumblebee/bumblebee_2.png" id="5_5mti0"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dib3q"]
-radius = 0.440761
+radius = 0.403235
 height = 1.33172
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5dqkc"]
@@ -326,7 +326,7 @@ JUMP_VELOCITY = 9.0
 CAMERA_SIZE = 75
 
 [node name="CollisionShape3D" parent="." index="0"]
-transform = Transform3D(10, 0.00442272, -1.32493e-09, 7.53744e-10, -4.38886e-07, 10, 0.00442272, -10, -4.35393e-07, -0.000598074, 2.06967, -0.240038)
+transform = Transform3D(10, 0.00442272, -1.55779e-09, 7.54142e-10, -4.39119e-07, 10, 0.00442272, -10, -4.3516e-07, -0.000610623, 2.11083, -0.240048)
 shape = SubResource("CapsuleShape3D_dib3q")
 
 [node name="CollisionShape3D" parent="SwitchArea" index="0"]
