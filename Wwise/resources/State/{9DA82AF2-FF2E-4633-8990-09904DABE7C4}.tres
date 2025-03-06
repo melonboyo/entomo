@@ -1,0 +1,11 @@
+[gd_resource type="WwiseState" load_steps=2 format=3 uid="uid://c8i1lon2rqwbo"]
+
+[ext_resource type="WwiseStateGroup" uid="uid://dbwyntks2lo2c" path="res://Wwise/resources/State Group/{C763667F-55F0-4582-8C0B-E31A7D3CFC7E}.tres" id="1_vubft"]
+
+[resource]
+group_ref = ExtResource("1_vubft")
+group_id = 835976592
+name = "Bumblebee"
+id = 985761414
+guid = "{9DA82AF2-FF2E-4633-8990-09904DABE7C4}"
+dummy = true

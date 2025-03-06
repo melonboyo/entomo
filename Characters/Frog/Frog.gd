@@ -20,14 +20,14 @@ var isTongueOut = false
 @export var tongueMesh : Node3D
 @export var collisionScaleDifference : float
 @export var collisionOffsetDifference : float
-
+@onready var akState = $AkState
 var was_on_floor_last_frame = true
 
 var reachedStage3 = false
 
 func _ready() -> void:
 	super._ready()
-	$froggy_v3/AnimationPlayer.play("idle_croak")
+	$MeshPivot/froggy_v3/AnimationPlayer.play("idle_croak")
 	
 
 # Overrides the handleMove method of GenericCharacterController
@@ -37,7 +37,7 @@ func handleMove(input_dir: Vector2, camera_basis: Basis, delta: float) -> void:
 		return
 	
 	if(is_on_floor() && !was_on_floor_last_frame):
-		$froggy_v3/AnimationPlayer.play("idle_croak")
+		$MeshPivot/froggy_v3/AnimationPlayer.play("idle_croak")
 	
 	was_on_floor_last_frame = is_on_floor();
 	
@@ -92,7 +92,7 @@ func specialAbilityButtonPressed() -> void:
 		AudioManager.play_sfx("res://Audio/SFX/Frog/slurp.wav")
 	# If close enough, launch the toungue
 	elif(raycast.is_colliding()):
-		$froggy_v3/AnimationPlayer.play("gape")
+		$MeshPivot/froggy_v3/AnimationPlayer.play("gape")
 		velocity = Vector3()
 		var collisionPoint = raycast.get_collision_point()
 		var distance = collisionPoint.distance_to(raycast.global_position)
@@ -140,7 +140,7 @@ func lerpTongueMesh(distanceStart, distanceEnd, delay):
 	
 # Quickly extend and retract the tongue mesh
 func quickTongueAnimation(distance, delay):
-	$froggy_v3/AnimationPlayer.play("gape")
+	$MeshPivot/froggy_v3/AnimationPlayer.play("gape")
 	lerpTongueMesh(0.1, distance, delay)
 	await get_tree().create_timer(delay).timeout
 	lerpTongueMesh(distance, 0.1, delay)
@@ -149,7 +149,7 @@ func jumpButtonPressed() -> void:
 	if(!isTongueOut):
 		currentJumpVelocityPercentage = 0
 		isChargingJump = true
-		$froggy_v3/AnimationPlayer.play("squish")
+		$MeshPivot/froggy_v3/AnimationPlayer.play("squish")
 		
 func jumpButtonReleased() -> void:
 	if(isChargingJump and is_on_floor() and !isTongueOut):
@@ -158,7 +158,7 @@ func jumpButtonReleased() -> void:
 			currentMovementDirection if currentMovementDirection else -global_transform.basis.z.normalized()
 		)
 		AudioManager.play_frog_sfx_pack()
-		$froggy_v3/AnimationPlayer.play("jump")
+		$MeshPivot/froggy_v3/AnimationPlayer.play("jump")
 		if(!has_jumped_before):
 			has_jumped_before = true
 			game_state_manager.hide_tutorial_prompt()
@@ -207,6 +207,7 @@ func _on_switch_area_body_entered(body):
 			key = "null"
 		key[0] = key[0].to_upper()
 		game_state_manager.show_tutorial_prompt_with_sound("A Frog! Press [" + key + "] to possess", "Parasite/Haha.wav" )
+		akState.set_value()
 
 # Called when a character exits this character's switch area
 func _on_switch_area_body_exited(body):
@@ -222,6 +223,7 @@ func _on_switch_area_body_exited(body):
 		game_state_manager.hide_tutorial_prompt()
 		
 func switched_to_this_character():
+	super()
 	if(has_been_controlled_before):
 		return
 	

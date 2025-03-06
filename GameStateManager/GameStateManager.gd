@@ -19,7 +19,6 @@ signal show_victory_screen()
 signal show_death_screen()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:	
-	AudioManager.play_music("Froggu_Final", -5)
 	if(first_flag != null):
 		start_intro_tutorial()
 
@@ -85,6 +84,10 @@ func switchCharacter(character: GenericCharacterController):
 	zoom_changed.emit(character, character.size)
 	currentPossessedCreature = character
 	character.switched_to_this_character()
+	
+	isInputEnabled = false
+	await(get_tree().create_timer(1).timeout)
+	isInputEnabled = true
 
 # Zooms out, pans over to the next flag, and zooms back to the player character
 func show_flag(next_flag: Flag):

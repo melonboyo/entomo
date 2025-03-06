@@ -1,0 +1,235 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "3161908922",
+    "Type": "User",
+    "GUID": "{258E8AF3-C148-42A0-BC80-34BC58C89550}",
+    "Language": "SFX",
+    "Hash": "{F4279DB3-D35D-C8DD-C66D-81554EE5E316}",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\Main",
+    "ShortName": "Main",
+    "Path": "Main.bnk",
+    "Media": [
+     {
+      "Id": "6984811",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "keys_whistle_bass_drums_alt.wav",
+      "CachePath": "95/{95E82032-3BBC-92D5-7472-655C1F7E7940}.wem"
+     },
+     {
+      "Id": "205804443",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Frog.wav",
+      "CachePath": "F7/{F72F1782-CDAC-196E-0FE7-DB88C1AEC561}.wem"
+     },
+     {
+      "Id": "222639222",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Frog_2.wav",
+      "CachePath": "2F/{2F3425C9-82A9-102F-E273-E5235AFBF58A}.wem"
+     },
+     {
+      "Id": "342141552",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "keys_whistle_bass_drums.wav",
+      "CachePath": "2B/{2B0A5709-E406-F657-374F-B96765693342}.wem"
+     },
+     {
+      "Id": "353885819",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "keys_whistle_bass.wav",
+      "CachePath": "C6/{C6775B70-B96E-9251-7CC8-9D211712A066}.wem"
+     },
+     {
+      "Id": "526836869",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Intro_wo_lfo.wav",
+      "CachePath": "2B/{2B807014-A05B-C46B-AC8E-50F3239E3B3A}.wem"
+     },
+     {
+      "Id": "679471756",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Frog_3.wav",
+      "CachePath": "03/{035C6107-7CEA-B8E3-6122-3A46C4E403AA}.wem"
+     },
+     {
+      "Id": "752074181",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Frog_5_bass.wav",
+      "CachePath": "B1/{B1CDFA29-BABB-2D54-8E3E-7C6ECD139925}.wem"
+     },
+     {
+      "Id": "897316199",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Frog_4_bass.wav",
+      "CachePath": "0B/{0B9A30DB-0350-3F06-5C9E-28874FE067F6}.wem"
+     },
+     {
+      "Id": "1070954450",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "keys_whistle.wav",
+      "CachePath": "46/{466D2F34-B7A3-B703-2585-5DBC68C3278B}.wem"
+     },
+     {
+      "Id": "1073519877",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "keys.wav",
+      "CachePath": "0E/{0EC1A070-BD21-4BDE-F930-5994386CE3AD}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "3991942870",
+      "Name": "Music",
+      "ObjectPath": "\\Events\\Default Work Unit\\Music",
+      "GUID": "{5F5F2C09-1FA5-4666-8618-7968476CF77D}",
+      "DurationType": "Infinite",
+      "SwitchContainers": [
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "835976592",
+         "Id": "1336365862",
+         "GUID": "{29AD8AB1-D64C-4E38-8156-D03191B57D8F}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "526836869"
+         },
+         {
+          "Id": "1073519877"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "835976592",
+         "Id": "2492899947",
+         "GUID": "{C23D3019-9FCE-4B94-AB6C-26A1EE51CDE3}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "205804443"
+         },
+         {
+          "Id": "222639222"
+         },
+         {
+          "Id": "679471756"
+         },
+         {
+          "Id": "752074181"
+         },
+         {
+          "Id": "897316199"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "835976592",
+         "Id": "3064139431",
+         "GUID": "{30259643-AD54-4DED-8331-1553EB9472FA}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "6984811"
+         },
+         {
+          "Id": "342141552"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "835976592",
+         "Id": "985761414",
+         "GUID": "{9DA82AF2-FF2E-4633-8990-09904DABE7C4}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "353885819"
+         },
+         {
+          "Id": "1070954450"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "StateGroups": [
+     {
+      "Id": "835976592",
+      "Name": "ControlledCharacter",
+      "ObjectPath": "\\States\\Default Work Unit\\ControlledCharacter",
+      "GUID": "{C763667F-55F0-4582-8C0B-E31A7D3CFC7E}",
+      "States": [
+       {
+        "Id": "748895195",
+        "Name": "None",
+        "ObjectPath": "\\States\\Default Work Unit\\ControlledCharacter\\None",
+        "GUID": "{3008BEB2-202A-4CC1-BC74-2C53E8358739}"
+       },
+       {
+        "Id": "985761414",
+        "Name": "Bumblebee",
+        "ObjectPath": "\\States\\Default Work Unit\\ControlledCharacter\\Bumblebee",
+        "GUID": "{9DA82AF2-FF2E-4633-8990-09904DABE7C4}"
+       },
+       {
+        "Id": "1336365862",
+        "Name": "Parasite",
+        "ObjectPath": "\\States\\Default Work Unit\\ControlledCharacter\\Parasite",
+        "GUID": "{29AD8AB1-D64C-4E38-8156-D03191B57D8F}"
+       },
+       {
+        "Id": "2492899947",
+        "Name": "Frog",
+        "ObjectPath": "\\States\\Default Work Unit\\ControlledCharacter\\Frog",
+        "GUID": "{C23D3019-9FCE-4B94-AB6C-26A1EE51CDE3}"
+       },
+       {
+        "Id": "3064139431",
+        "Name": "RolyPoly",
+        "ObjectPath": "\\States\\Default Work Unit\\ControlledCharacter\\RolyPoly",
+        "GUID": "{30259643-AD54-4DED-8331-1553EB9472FA}"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{35FF1243-21AB-6C8F-7627-272CA8C2857D}"
+ }
+}

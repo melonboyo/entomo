@@ -19,6 +19,7 @@ config/icon="res://Sprites/icon.png"
 
 ConfigFileHandler="*res://Scripts/config_file_handler.gd"
 AudioManager="*res://AudioManager/AudioManager.tscn"
+WwiseRuntimeManager="*res://addons/Wwise/runtime/wwise_runtime_manager.gd"
 
 [display]
 
@@ -84,3 +85,8 @@ pause={
 3d_physics/layer_1="Level Geometry"
 3d_physics/layer_2="Characters"
 3d_physics/layer_3="Parasite"
+
+[wwise]
+
+common_user_settings/root_output_path="res://Soundbanks"
+project_settings/windows_platform_info="res://Wwise/resources/Windows.tres"

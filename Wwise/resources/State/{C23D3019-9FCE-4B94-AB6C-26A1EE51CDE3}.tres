@@ -1,0 +1,11 @@
+[gd_resource type="WwiseState" load_steps=2 format=3 uid="uid://ckbwprny1qu23"]
+
+[ext_resource type="WwiseStateGroup" uid="uid://dbwyntks2lo2c" path="res://Wwise/resources/State Group/{C763667F-55F0-4582-8C0B-E31A7D3CFC7E}.tres" id="1_jjx8h"]
+
+[resource]
+group_ref = ExtResource("1_jjx8h")
+group_id = 835976592
+name = "Frog"
+id = 2492899947
+guid = "{C23D3019-9FCE-4B94-AB6C-26A1EE51CDE3}"
+dummy = true
