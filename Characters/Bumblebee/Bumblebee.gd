@@ -7,6 +7,7 @@ var isFlying = false
 @export var left_wing : Node3D
 @export var right_wing : Node3D
 var currentFlyingStamina = 0.0
+@onready var akState = $AkState
 
 # This goes from 0 to 1, and is used to smoothly go between the squish animation and being still
 var animation_amount = 0
@@ -108,6 +109,7 @@ func _on_switch_area_body_entered(body):
 			key = "null"
 		key[0] = key[0].to_upper()
 		game_state_manager.show_tutorial_prompt("A bumblebee! Press [" + key + "] to possess" )
+		akState.set_value()
 
 # Called when a character exits this character's switch area
 func _on_switch_area_body_exited(body):

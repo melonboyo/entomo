@@ -20,7 +20,7 @@ var isTongueOut = false
 @export var tongueMesh : Node3D
 @export var collisionScaleDifference : float
 @export var collisionOffsetDifference : float
-
+@onready var akState = $AkState
 var was_on_floor_last_frame = true
 
 var reachedStage3 = false
@@ -176,6 +176,7 @@ func _on_switch_area_body_entered(body):
 			key = "null"
 		key[0] = key[0].to_upper()
 		game_state_manager.show_tutorial_prompt("A Frog! Press [" + key + "] to possess" )
+		akState.set_value()
 
 # Called when a character exits this character's switch area
 func _on_switch_area_body_exited(body):
