@@ -107,6 +107,7 @@ func resetAbilities():
 func handleExit() -> void:
 	resetAbilities()
 	held_character.global_position = enter_position.global_position
+	held_character.global_rotation = enter_position.global_rotation
 	held_character.animate_exiting_character(exitPosition.global_position)
 	game_state_manager.switchCharacter(held_character)
 	velocity = Vector3.ZERO

@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://b4v7eokxybk5v"]
+[gd_scene load_steps=10 format=3 uid="uid://b4v7eokxybk5v"]
 
 [ext_resource type="PackedScene" uid="uid://baiok6rvrnsqh" path="res://Characters/Generic/GenericCharacter.tscn" id="1_ufw1a"]
 [ext_resource type="Script" path="res://Characters/Frog/Frog.gd" id="2_ehqrl"]
 [ext_resource type="PackedScene" uid="uid://udcbq88gckm3" path="res://Characters/Frog/froggy_v3.glb" id="3_xspcd"]
+[ext_resource type="WwiseState" uid="uid://ckbwprny1qu23" path="res://Wwise/resources/State/{C23D3019-9FCE-4B94-AB6C-26A1EE51CDE3}.tres" id="4_nmfv7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3nnd8"]
 radius = 20.5593
@@ -68,3 +69,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_w8cfn")
 
 [node name="froggy_v3" parent="MeshPivot" index="1" instance=ExtResource("3_xspcd")]
 transform = Transform3D(-3.96718, 0, 19.6026, 0, 20, 0, -19.6026, 0, -3.96718, 0, -28.014, 0)
+
+[node name="AkState" type="AkState" parent="." index="7"]
+state = ExtResource("4_nmfv7")

@@ -1,0 +1,7 @@
+[gd_resource type="WwiseStateGroup" format=3 uid="uid://dbwyntks2lo2c"]
+
+[resource]
+name = "ControlledCharacter"
+id = 835976592
+guid = "{C763667F-55F0-4582-8C0B-E31A7D3CFC7E}"
+dummy = true

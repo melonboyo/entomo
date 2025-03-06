@@ -1,0 +1,26 @@
+Event	ID	Name			Wwise Object Path	Notes
+	3991942870	Music			\Default Work Unit\Music	
+
+State Group	ID	Name			Wwise Object Path	Notes
+	835976592	ControlledCharacter			\Default Work Unit\ControlledCharacter	
+
+State	ID	Name	State Group			Notes
+	748895195	None	ControlledCharacter			
+	985761414	Bumblebee	ControlledCharacter			
+	1336365862	Parasite	ControlledCharacter			
+	2492899947	Frog	ControlledCharacter			
+	3064139431	RolyPoly	ControlledCharacter			
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	6984811	keys_whistle_bass_drums_alt	D:\D\Entomo\EntomoWwise\Entomo\.cache\95\{95E82032-3BBC-92D5-7472-655C1F7E7940}.wem		\Interactive Music Hierarchy\Music\Frog_Music\RolyPoly\keys_whistle_bass_drums_alt\keys_whistle_bass_drums_alt		1498696
+	205804443	Frog	D:\D\Entomo\EntomoWwise\Entomo\.cache\F7\{F72F1782-CDAC-196E-0FE7-DB88C1AEC561}.wem		\Interactive Music Hierarchy\Music\Frog_Music\FrogSection\Frog\Frog		1310424
+	222639222	Frog_2	D:\D\Entomo\EntomoWwise\Entomo\.cache\2F\{2F3425C9-82A9-102F-E273-E5235AFBF58A}.wem		\Interactive Music Hierarchy\Music\Frog_Music\FrogSection\Frog_2\Frog_2		1310424
+	342141552	keys_whistle_bass_drums	D:\D\Entomo\EntomoWwise\Entomo\.cache\2B\{2B0A5709-E406-F657-374F-B96765693342}.wem		\Interactive Music Hierarchy\Music\Frog_Music\RolyPoly\keys_whistle_bass_drums\keys_whistle_bass_drums		1489368
+	353885819	keys_whistle_bass	D:\D\Entomo\EntomoWwise\Entomo\.cache\C6\{C6775B70-B96E-9251-7CC8-9D211712A066}.wem		\Interactive Music Hierarchy\Music\Frog_Music\BumblebeeSection\keys_whistle_bass\keys_whistle_bass		1488520
+	526836869	Intro_wo_lfo	D:\D\Entomo\EntomoWwise\Entomo\.cache\2B\{2B807014-A05B-C46B-AC8E-50F3239E3B3A}.wem		\Interactive Music Hierarchy\Music\Frog_Music\ParasiteSection\Intro_wo_lfo\Intro_wo_lfo		1303640
+	679471756	Frog_3	D:\D\Entomo\EntomoWwise\Entomo\.cache\03\{035C6107-7CEA-B8E3-6122-3A46C4E403AA}.wem		\Interactive Music Hierarchy\Music\Frog_Music\FrogSection\Frog_3\Frog_3		1310424
+	752074181	Frog_5_bass	D:\D\Entomo\EntomoWwise\Entomo\.cache\B1\{B1CDFA29-BABB-2D54-8E3E-7C6ECD139925}.wem		\Interactive Music Hierarchy\Music\Frog_Music\FrogSection\Frog_5_bass\Frog_5_bass		994940
+	897316199	Frog_4_bass	D:\D\Entomo\EntomoWwise\Entomo\.cache\0B\{0B9A30DB-0350-3F06-5C9E-28874FE067F6}.wem		\Interactive Music Hierarchy\Music\Frog_Music\FrogSection\Frog_4_bass\Frog_4_bass		1310424
+	1070954450	keys_whistle	D:\D\Entomo\EntomoWwise\Entomo\.cache\46\{466D2F34-B7A3-B703-2585-5DBC68C3278B}.wem		\Interactive Music Hierarchy\Music\Frog_Music\BumblebeeSection\keys_whistle\keys_whistle		1489368
+	1073519877	keys	D:\D\Entomo\EntomoWwise\Entomo\.cache\0E\{0EC1A070-BD21-4BDE-F930-5994386CE3AD}.wem		\Interactive Music Hierarchy\Music\Frog_Music\ParasiteSection\keys\keys		1489368
+
