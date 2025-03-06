@@ -17,4 +17,5 @@ addons/Wwise/native/src**/*.obj
 *.wsettings
 *.validationcache
 **/WwiseProjectData.tres
+**/~libwwise.windows.editor.profile.dll
 tests/WwiseProject/.cache/
