@@ -73,19 +73,27 @@ directional_shadow_max_distance = 3386.3
 
 [node name="Parasite" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("1_nc2ee")]
 transform = Transform3D(-0.5, 0, 0.866026, 0, 1, 0, -0.866026, 0, -0.5, -40.3542, 1.80459, -52.8071)
+size = 1
 game_state_manager = NodePath("../GameStateManager")
+JUMP_VELOCITY = 4.5
+CAMERA_SIZE = 10
+rotationSpeed = 5
 
 [node name="Bumblebee" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("4_usii5")]
 transform = Transform3D(-0.872259, 0, -0.489048, 0, 1, 0, 0.489048, 0, -0.872259, -32.5495, 4.55651, -67.5729)
 game_state_manager = NodePath("../GameStateManager")
+rotationSpeed = 5
 
 [node name="Pillbug" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("4_gd3qd")]
 transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 216.17, 22.1063, -43.3409)
 game_state_manager = NodePath("../GameStateManager")
+JUMP_VELOCITY = 4.5
+rotationSpeed = 5
 
 [node name="Frog" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("8_slu6r")]
 transform = Transform3D(-0.960327, 0, -0.205473, 0, 0.982059, 0, 0.205473, 0, -0.960327, -5.83656, 73.0741, 142.506)
 game_state_manager = NodePath("../GameStateManager")
+rotationSpeed = 5
 
 [node name="CameraRoot" type="Node3D" parent="." node_paths=PackedStringArray("camera", "game_state_manager", "focus")]
 process_priority = 1
@@ -289,7 +297,7 @@ frog = NodePath("../../../../Frog")
 gameState = NodePath("../../../../GameStateManager")
 
 [node name="Dragonfly6" parent="Blockout/Stage2/Dragonflies" node_paths=PackedStringArray("frog", "gameState") instance=ExtResource("10_f6exh")]
-transform = Transform3D(-0.59375, 3.17894e-06, -0.804632, 6.37977e-06, 1, -7.57037e-07, 0.804632, -5.58301e-06, -0.59375, -372.547, 9.55251e-05, 117.899)
+transform = Transform3D(-0.59375, 3.17894e-06, -0.804632, 6.37977e-06, 1, -7.57036e-07, 0.804632, -5.58301e-06, -0.59375, -372.547, 9.55251e-05, 117.899)
 progress = 600.0
 frogPoint = 840.0
 frog = NodePath("../../../../Frog")

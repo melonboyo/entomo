@@ -8,6 +8,8 @@ class_name GenericCharacterController extends CharacterBody3D
 @export var JUMP_VELOCITY = 4.5
 @export var CAMERA_SIZE = 10 # Assumes orthographic camera
 @export var exitPosition: Node3D
+@export var enter_position: Node3D
+@export var mesh_pivot: Node3D
 @export var rotationSpeed = 5
 var held_character: GenericCharacterController = null
 
@@ -90,15 +92,22 @@ func handleSwitch() -> void:
 	game_state_manager.switchCharacter(current_switchable_character)
 	current_switchable_character.held_character = self
 	AudioManager.play_switch_sfx_pack(-15.0)
-	disable()
+	
+	$CollisionShape3D.disabled = true
+	var move_tween = get_tree().create_tween()
+	move_tween.parallel().tween_property(self, "global_position", current_switchable_character.enter_position.global_position, 1)
+	
+	var scale_tween = create_tween()
+	scale_tween.tween_property(mesh_pivot, "scale", Vector3(0.2, 0.2, 0.2), 1)
+	move_tween.tween_callback(disable)
 
 func resetAbilities():
 	pass
 
 func handleExit() -> void:
 	resetAbilities()
-	held_character.global_position = exitPosition.global_position
-	held_character.enable()
+	held_character.global_position = enter_position.global_position
+	held_character.animate_exiting_character(exitPosition.global_position)
 	game_state_manager.switchCharacter(held_character)
 	velocity = Vector3.ZERO
 	held_character = null
@@ -142,6 +151,18 @@ func disable():
 	$SwitchArea.monitoring = false
 	is_inside_other_creature = true
 
+func animate_exiting_character(move_to_position: Vector3):
+	show()
+	$CollisionShape3D.disabled = true
+	$SwitchArea.monitoring = false
+	
+	var move_tween = create_tween()
+	move_tween.parallel().tween_property(self, "global_position", move_to_position, 1)
+	
+	var scale_tween = create_tween()
+	scale_tween.tween_property(mesh_pivot, "scale", Vector3.ONE, 1)
+	move_tween.tween_callback(enable)
+
 # Generic function to enable the creature
 # Unhides and makes it tangible
 func enable():
@@ -160,8 +181,11 @@ func entered_water():
 	
 # This method is called when the creature gets possessed
 func switched_to_this_character():
+	#var bounce_tween = create_tween()
+	#bounce_tween.tween_property(mesh_pivot, "scale", Vector3.ONE * 1.2, 1.0).set_trans(Tween.TRANS_BACK).set_delay(0.5)
+	#bounce_tween.tween_property(mesh_pivot, "scale", Vector3.ONE, 1.0);
+	#print("DASUHIO")
 	pass
-
 
 func _on_switch_area_area_entered(area: Area3D) -> void:
 	pass # Replace with function body.
