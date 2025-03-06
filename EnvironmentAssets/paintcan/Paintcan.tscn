@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://dt4e6nxmxyp41"]
+
+[ext_resource type="Script" path="res://Scripts/Movable.gd" id="1_661pw"]
+[ext_resource type="PackedScene" uid="uid://bxy4sgn7wpkps" path="res://EnvironmentAssets/paintcan/paintcan.glb" id="2_xxs6x"]
+[ext_resource type="Script" path="res://Scripts/paint.gd" id="3_54gwg"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_dwuh8"]
+height = 11.7775
+radius = 7.77304
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_l8ash"]
+height = 0.873897
+radius = 7.29554
+
+[node name="PaintBucket" type="CharacterBody3D"]
+transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, 0, 0, 0)
+script = ExtResource("1_661pw")
+MOVESPEED = 200.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, -1.86265e-09, 2.98023e-08, 0, 1, -7.39237e-09, -5.96046e-08, 1.11759e-08, 1, -0.00148773, 5.62191, -0.00448608)
+shape = SubResource("CylinderShape3D_dwuh8")
+
+[node name="paintcan" parent="." instance=ExtResource("2_xxs6x")]
+transform = Transform3D(-5, 0, 9.53674e-07, 0, 5, 0, -9.53674e-07, 0, -5, 0, -0.6263, 0)
+
+[node name="Paint" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03763, 0)
+script = ExtResource("3_54gwg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Paint"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.1035, 0)
+shape = SubResource("CylinderShape3D_l8ash")

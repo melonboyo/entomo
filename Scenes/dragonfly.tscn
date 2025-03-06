@@ -10,7 +10,7 @@ speed = 30.0
 color = NodePath("ColouredBug")
 frogPoint = 465.0
 rolypoly_material_switcher = NodePath("dragonfly")
-distanceToFrog = 90.0
+distanceToFrog = 120.0
 
 [node name="ColouredBug" type="Node" parent="."]
 script = ExtResource("2_0bl5j")

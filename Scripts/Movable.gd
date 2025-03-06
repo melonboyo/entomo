@@ -18,4 +18,4 @@ func _physics_process(delta: float) -> void:
 	if isMoving:
 		move_and_slide()
 	else:
-		move_and_collide(get_gravity() * delta)
+		move_and_collide(get_gravity() * delta * 3)

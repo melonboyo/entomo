@@ -24,20 +24,21 @@ albedo_color = Color(0.976471, 0.690196, 0.509804, 1)
 
 [node name="Frog" node_paths=PackedStringArray("raycast", "tongueCollision", "tongueMesh") instance=ExtResource("1_ufw1a")]
 script = ExtResource("2_ehqrl")
-timeToReachFullJumpVelocity = 0.5
-gravityMultiplier = 18
+timeToReachFullJumpVelocity = 0.2
+gravityMultiplier = 30
 airborneMovementControl = 0.75
 minJumpVelocity = 50
 jumpForwardVelocity = 60
 raycast = NodePath("TongueDistanceCheck")
 tongueCollision = NodePath("TongueCollider")
-tongueMesh = NodePath("TongueMesh")
+tongueMesh = NodePath("MeshPivot/TongueMesh")
 collisionScaleDifference = 60.0
 collisionOffsetDifference = 10.0
 size = 4
-SPEED = 50.0
-JUMP_VELOCITY = 200.0
+SPEED = 100.0
+JUMP_VELOCITY = 300.0
 CAMERA_SIZE = 350
+rotationSpeed = 10
 
 [node name="CollisionShape3D" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.60564, 0)
@@ -46,26 +47,29 @@ shape = SubResource("CapsuleShape3D_3nnd8")
 [node name="CollisionShape3D" parent="SwitchArea" index="0"]
 shape = SubResource("CylinderShape3D_nc2sr")
 
-[node name="froggy_v3" parent="." index="2" instance=ExtResource("3_xspcd")]
-transform = Transform3D(-3.96718, 0, 19.6026, 0, 20, 0, -19.6026, 0, -3.96718, 0, -28.014, 0)
+[node name="ExitPosition" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 28.0599, 0)
 
-[node name="ExitPosition" parent="." index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.7529, 0)
-
-[node name="TongueDistanceCheck" type="RayCast3D" parent="." index="4"]
+[node name="TongueDistanceCheck" type="RayCast3D" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.86, 0)
 target_position = Vector3(0, 0, -200)
 
-[node name="TongueCollider" type="CollisionShape3D" parent="." index="5"]
+[node name="TongueCollider" type="CollisionShape3D" parent="." index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.039, 0)
 shape = SubResource("BoxShape3D_qs64a")
 
-[node name="TongueMesh" type="MeshInstance3D" parent="." index="6"]
+[node name="EnterPosition" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.53715, -2.07541)
+
+[node name="TongueMesh" type="MeshInstance3D" parent="MeshPivot" index="0"]
 transform = Transform3D(10, 0, 0, 0, -4.37114e-09, -2, 0, 0.1, -8.74228e-08, 0, -2.768, 0)
 visible = false
 mesh = SubResource("CylinderMesh_h37aa")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_w8cfn")
+
+[node name="froggy_v3" parent="MeshPivot" index="1" instance=ExtResource("3_xspcd")]
+transform = Transform3D(-3.96718, 0, 19.6026, 0, 20, 0, -19.6026, 0, -3.96718, 0, -28.014, 0)
 
 [node name="AkState" type="AkState" parent="." index="7"]
 state = ExtResource("4_nmfv7")

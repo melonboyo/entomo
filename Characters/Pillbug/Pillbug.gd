@@ -66,9 +66,9 @@ func handleMove(input_dir: Vector2, camera_basis: Basis, delta: float) -> void:
 	else :
 		super(input_dir, camera_basis, delta)
 		if(input_dir != Vector2.ZERO):
-			$rolypoly/AnimationPlayer.play("walk")
+			$MeshPivot/rolypoly/AnimationPlayer.play("walk")
 		else:
-			$rolypoly/AnimationPlayer.stop()
+			$MeshPivot/rolypoly/AnimationPlayer.stop()
 
 
 # The generic character uses gravity
@@ -82,9 +82,7 @@ func jumpButtonPressed() -> void:
 		rolling_mesh.show()
 		normal_mesh.hide()
 		
-		if(!has_dashed_before):
-			game_state_manager.hide_tutorial_prompt()
-			has_dashed_before = true
+		game_state_manager.hide_tutorial_prompt()
 		
 		intro_sfx = AudioManager.play_sfx("res://Audio/SFX/Rolypoly/swish_Intro_3.wav")
 
@@ -95,6 +93,11 @@ func jumpButtonReleased() -> void:
 	normal_mesh.show()
 	if intro_sfx != null:
 		intro_sfx._on_finished()
+
+	if(!has_dashed_before):
+		game_state_manager.show_tutorial_prompt_with_sound("I need a long run-up to get enough momentum.", "Parasite/hmm.wav")
+		has_dashed_before = true
+	
 	#intro_sfx = AudioManager.play_sfx("res://Audio/SFX/Rolypoly/swish.wav")
 
 func entered_water():
@@ -118,7 +121,7 @@ func _on_switch_area_body_entered(body):
 		if(key.length() == 0):
 			key = "null"
 		key[0] = key[0].to_upper()
-		game_state_manager.show_tutorial_prompt("A Rolypoly! Press [" + key + "] to possess" )
+		game_state_manager.show_tutorial_prompt_with_sound("A Rolypoly! Press [" + key + "] to possess", "Parasite/Haha.wav")
 		akState.set_value()
 
 # Called when a character exits this character's switch area
@@ -135,6 +138,7 @@ func _on_switch_area_body_exited(body):
 		game_state_manager.hide_tutorial_prompt()
 		
 func switched_to_this_character():
+	super()
 	if(has_been_controlled_before):
 		return
 	

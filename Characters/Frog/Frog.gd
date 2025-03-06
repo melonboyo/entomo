@@ -27,7 +27,7 @@ var reachedStage3 = false
 
 func _ready() -> void:
 	super._ready()
-	$froggy_v3/AnimationPlayer.play("idle_croak")
+	$MeshPivot/froggy_v3/AnimationPlayer.play("idle_croak")
 	
 
 # Overrides the handleMove method of GenericCharacterController
@@ -37,7 +37,7 @@ func handleMove(input_dir: Vector2, camera_basis: Basis, delta: float) -> void:
 		return
 	
 	if(is_on_floor() && !was_on_floor_last_frame):
-		$froggy_v3/AnimationPlayer.play("idle_croak")
+		$MeshPivot/froggy_v3/AnimationPlayer.play("idle_croak")
 	
 	was_on_floor_last_frame = is_on_floor();
 	
@@ -79,15 +79,20 @@ func _process(delta: float) -> void:
 func specialAbilityButtonPressed() -> void:
 	# If the tongue is out, retract it
 	if(isTongueOut):
+		if(!has_tongued_before):
+			game_state_manager.hide_tutorial_prompt()
+			has_tongued_before = true
+		
 		lerpTongueMesh(tongueCollision.scale.z, 0.1, 0.2)
 		
 		tongueCollision.scale.z = 0.1
 		tongueCollision.position.z = 0
 		
 		isTongueOut = false
+		AudioManager.play_sfx("res://Audio/SFX/Frog/slurp.wav")
 	# If close enough, launch the toungue
 	elif(raycast.is_colliding()):
-		$froggy_v3/AnimationPlayer.play("gape")
+		$MeshPivot/froggy_v3/AnimationPlayer.play("gape")
 		velocity = Vector3()
 		var collisionPoint = raycast.get_collision_point()
 		var distance = collisionPoint.distance_to(raycast.global_position)
@@ -98,9 +103,23 @@ func specialAbilityButtonPressed() -> void:
 		tongueCollision.scale.z = distance # - collisionScaleDifference
 		
 		isTongueOut = true
+		
+		if(!has_tongued_before):
+			var key = InputMap.action_get_events("special_ability")[0].as_text().trim_suffix(" (Physical)")
+			if(key.length() == 0):
+				key = "null"
+			key[0] = key[0].to_upper()
+			
+			game_state_manager.show_tutorial_prompt("Press [" + key + "] again to release it")
+		
+		AudioManager.play_sfx("res://Audio/SFX/Frog/slurp.wav")
 	# Else do a quick animation
 	else:
 		quickTongueAnimation(100, 0.15)
+		
+		if(!has_tongued_before):
+			
+			game_state_manager.show_tutorial_prompt("Aim the tongue at something in front of the frog")
 
 # Extend (Scale and offset) the tongue mesh over a period of time
 func lerpTongueMesh(distanceStart, distanceEnd, delay):
@@ -121,7 +140,7 @@ func lerpTongueMesh(distanceStart, distanceEnd, delay):
 	
 # Quickly extend and retract the tongue mesh
 func quickTongueAnimation(distance, delay):
-	$froggy_v3/AnimationPlayer.play("gape")
+	$MeshPivot/froggy_v3/AnimationPlayer.play("gape")
 	lerpTongueMesh(0.1, distance, delay)
 	await get_tree().create_timer(delay).timeout
 	lerpTongueMesh(distance, 0.1, delay)
@@ -130,7 +149,7 @@ func jumpButtonPressed() -> void:
 	if(!isTongueOut):
 		currentJumpVelocityPercentage = 0
 		isChargingJump = true
-		$froggy_v3/AnimationPlayer.play("squish")
+		$MeshPivot/froggy_v3/AnimationPlayer.play("squish")
 		
 func jumpButtonReleased() -> void:
 	if(isChargingJump and is_on_floor() and !isTongueOut):
@@ -139,10 +158,20 @@ func jumpButtonReleased() -> void:
 			currentMovementDirection if currentMovementDirection else -global_transform.basis.z.normalized()
 		)
 		AudioManager.play_frog_sfx_pack()
-		$froggy_v3/AnimationPlayer.play("jump")
+		$MeshPivot/froggy_v3/AnimationPlayer.play("jump")
 		if(!has_jumped_before):
 			has_jumped_before = true
 			game_state_manager.hide_tutorial_prompt()
+			
+			get_tree().create_timer(3).timeout
+			
+			var key = InputMap.action_get_events("special_ability")[0].as_text().trim_suffix(" (Physical)")
+			if(key.length() == 0):
+				key = "null"
+			key[0] = key[0].to_upper()
+			
+			game_state_manager.show_tutorial_prompt("Stick out the frog's tongue using [" + key + "]")
+
 
 func jump(jumpSpeed: float, direction: Vector3) -> void:
 	velocity.x = direction.x * jumpForwardVelocity
@@ -161,6 +190,8 @@ func entered_water():
 ############################################### Tutorial prompts about this creature ###############################################
 var has_been_controlled_before = false # Used to show a prompt when the player enteres this creature's area for the first time
 var has_jumped_before = false # Used to show a prompt about how to dash
+var has_tongued_before = false
+
 func _on_switch_area_body_entered(body):
 	super(body)
 	
@@ -175,7 +206,7 @@ func _on_switch_area_body_entered(body):
 		if(key.length() == 0):
 			key = "null"
 		key[0] = key[0].to_upper()
-		game_state_manager.show_tutorial_prompt("A Frog! Press [" + key + "] to possess" )
+		game_state_manager.show_tutorial_prompt_with_sound("A Frog! Press [" + key + "] to possess", "Parasite/Haha.wav" )
 		akState.set_value()
 
 # Called when a character exits this character's switch area
@@ -192,6 +223,7 @@ func _on_switch_area_body_exited(body):
 		game_state_manager.hide_tutorial_prompt()
 		
 func switched_to_this_character():
+	super()
 	if(has_been_controlled_before):
 		return
 	
