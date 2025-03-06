@@ -3,7 +3,7 @@ extends GenericCharacterController
 var isFlying = false
 @export var gravityMultiplier = 2
 @export var flyingSpeed = 15
-@export var maxFlyingStamina = 5
+@export var maxFlyingStamina = 5.0
 @export var left_wing : Node3D
 @export var right_wing : Node3D
 var currentFlyingStamina = 0.0

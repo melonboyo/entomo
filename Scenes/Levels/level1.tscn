@@ -71,11 +71,11 @@ shadow_enabled = true
 directional_shadow_max_distance = 3386.3
 
 [node name="Parasite" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("1_nc2ee")]
-transform = Transform3D(-0.5, 0, 0.866026, 0, 1, 0, -0.866026, 0, -0.5, -40.3542, 1.80459, -52.8071)
+transform = Transform3D(-0.5, 0, 0.866026, 0, 1, 0, -0.866026, 0, -0.5, -38.6374, 1.80459, -65.1113)
 game_state_manager = NodePath("../GameStateManager")
 
 [node name="Bumblebee" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("4_usii5")]
-transform = Transform3D(-0.872259, 0, -0.489048, 0, 1, 0, 0.489048, 0, -0.872259, -25.2075, 4.55651, -54.9732)
+transform = Transform3D(-0.872259, 0, -0.489048, 0, 1, 0, 0.489048, 0, -0.872259, -23.4907, 4.55651, -67.2774)
 game_state_manager = NodePath("../GameStateManager")
 
 [node name="Pillbug" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("4_gd3qd")]
@@ -88,7 +88,7 @@ game_state_manager = NodePath("../GameStateManager")
 
 [node name="CameraRoot" type="Node3D" parent="." node_paths=PackedStringArray("camera", "game_state_manager", "focus")]
 process_priority = 1
-transform = Transform3D(1.00045, 0, 0, 0, 1.00045, 0, 0, 0, 1.00045, -40.3541, 1.80485, -52.8062)
+transform = Transform3D(1.00045, 0, 0, 0, 1.00045, 0, 0, 0, 1.00045, -38.6376, 1.80459, -65.1122)
 script = ExtResource("1_x6jyc")
 zooms = {
 1: 8.0,
@@ -174,22 +174,22 @@ shape = SubResource("BoxShape3D_sa0xy")
 transform = Transform3D(1.01827, 0, 0, 0, 1.01827, 0, 0, 0, 1.01827, 103.585, 11.2823, 29.0293)
 
 [node name="Flower2" parent="Blockout/Stage1" instance=ExtResource("17_sf6lv")]
-transform = Transform3D(1.01827, 0, 0, 0, 1.01827, 0, 0, 0, 1.01827, 54.1151, 11.2823, 18.6866)
+transform = Transform3D(1.01827, 0, 0, 0, 1.01827, 0, 0, 0, 1.01827, 52.1372, 11.2823, 0.707808)
 
 [node name="Flower3" parent="Blockout/Stage1" instance=ExtResource("17_sf6lv")]
-transform = Transform3D(0.983573, 0, -0.263548, 0, 1.01827, 0, 0.263548, 0, 0.983573, -29.7351, 3.74174, -63.5425)
+transform = Transform3D(0.983573, 0, -0.263548, 0, 1.01827, 0, 0.263548, 0, 0.983573, -27.9869, 3.74174, -76.0714)
 
 [node name="Flower4" parent="Blockout/Stage1" instance=ExtResource("17_sf6lv")]
-transform = Transform3D(0.983573, 0, -0.263548, 0, 1.01827, 0, 0.263548, 0, 0.983573, 41.8181, 3.74174, -32.3279)
+transform = Transform3D(0.983573, 0, -0.263548, 0, 1.01827, 0, 0.263548, 0, 0.983573, 31.8668, 3.74174, -54.5057)
 
 [node name="Lilypad" parent="Blockout/Stage1" instance=ExtResource("18_h1o36")]
-transform = Transform3D(-0.789333, 0, -0.201375, 0, 0.814616, 0, 0.201375, 0, -0.789333, 20.0594, 0.574994, -13.7474)
+transform = Transform3D(-0.789333, 0, -0.201375, 0, 0.814616, 0, 0.201375, 0, -0.789333, 18.0815, 0.574994, -31.7262)
 
 [node name="Lilypad2" parent="Blockout/Stage1" instance=ExtResource("18_h1o36")]
-transform = Transform3D(-0.286255, 0, -0.977206, 0, 1.01827, 0, 0.977206, 0, -0.286255, -30.0308, 0.574994, -66.1019)
+transform = Transform3D(-0.286255, 0, -0.977206, 0, 1.01827, 0, 0.977206, 0, -0.286255, -28.2826, 0.574994, -78.6308)
 
 [node name="Lilypad3" parent="Blockout/Stage1" instance=ExtResource("18_h1o36")]
-transform = Transform3D(-0.48129, 0, 0.16607, 0, 0.509135, 0, -0.16607, 0, -0.48129, -1.62332, 0.597866, -58.1149)
+transform = Transform3D(-0.48129, 0, 0.16607, 0, 0.509135, 0, -0.16607, 0, -0.48129, 0.124888, 0.597866, -70.6438)
 
 [node name="Stage2" type="Node" parent="Blockout"]
 
@@ -331,7 +331,7 @@ frog = NodePath("../../../../Frog")
 gameState = NodePath("../../../../GameStateManager")
 
 [node name="Dragonfly7" parent="Blockout/Stage2/Dragonflies" node_paths=PackedStringArray("frog", "gameState") instance=ExtResource("10_f6exh")]
-transform = Transform3D(-0.446982, 0.000278279, -0.894521, -2.26312e-05, 0.999998, 0.000322389, 0.894521, 0.000164352, -0.446982, -331.561, -0.00251175, 146.442)
+transform = Transform3D(-0.446982, 0.000278279, -0.894521, -2.26312e-05, 0.999997, 0.000322389, 0.894521, 0.000164352, -0.446982, -331.561, -0.00251175, 146.442)
 progress = 650.0
 frogPoint = 840.0
 frog = NodePath("../../../../Frog")
