@@ -182,10 +182,15 @@ func entered_water():
 	
 # This method is called when the creature gets possessed
 func switched_to_this_character():
-	#var bounce_tween = create_tween()
-	#bounce_tween.tween_property(mesh_pivot, "scale", Vector3.ONE * 1.2, 1.0).set_trans(Tween.TRANS_BACK).set_delay(0.5)
-	#bounce_tween.tween_property(mesh_pivot, "scale", Vector3.ONE, 1.0);
-	#print("DASUHIO")
+	var tween = create_tween()
+	var original_scale = mesh_pivot.scale
+	var hit_scale = original_scale * 1.3  # Scale up by 30%
+	var duration = 1  # Duration of the tween
+
+	# Scale up quickly
+	tween.tween_property(mesh_pivot, "scale", hit_scale, duration * 0.5).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_IN)
+	# Scale back with bounce
+	tween.tween_property(mesh_pivot, "scale", original_scale, duration * 0.5).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
 	pass
 
 func _on_switch_area_area_entered(area: Area3D) -> void:
