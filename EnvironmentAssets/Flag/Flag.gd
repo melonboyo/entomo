@@ -33,20 +33,30 @@ func _on_switch_area_body_entered(body: Node3D) -> void:
 		return
 		
 	has_been_triggered = true
-	
-	# Animate flags
-	var tween1 = create_tween()
-	tween1.tween_property(fail_flag, "position", lowered_flag_position, 1)
-	var tween2 = create_tween()
-	tween2.tween_property(win_flag, "position", raised_flag_position, 1)
-		
 	AudioManager.play_sfx("res://Audio/SFX/Other/Flag.wav")
 	
 	# The ending is reached if this is the last flag, i.e. next_flag is null
 	if(next_flag == null):
 		game_state_manager.ending_reached()
 		print("No next flag assigned, this is expected behaviour for the last flag.");
-		return
+	else:
+		# Show the next flag in the game state manager
+		game_state_manager.show_flag(next_flag)
 	
-	# Show the next flag in the game state manager
-	game_state_manager.show_flag(next_flag)
+	var tween = create_tween()
+	var original_scale = self.scale
+	var hit_scale = original_scale * 1.3  # Scale up by 30%
+	var duration = 0.8  # Duration of the tween
+
+	# Scale up quickly
+	tween.tween_property(self, "scale", hit_scale, duration).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
+	# Scale back with bounce
+	tween.tween_property(self, "scale", original_scale, duration).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT).set_delay((next_flag.focus_duration if next_flag != null else 3) + 3)
+	
+	await(get_tree().create_timer(duration).timeout)
+	
+	# Animate flags
+	var tween1 = create_tween()
+	tween1.tween_property(fail_flag, "position", lowered_flag_position, 1)
+	var tween2 = create_tween()
+	tween2.tween_property(win_flag, "position", raised_flag_position, 1)

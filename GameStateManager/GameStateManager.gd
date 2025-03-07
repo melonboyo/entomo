@@ -93,6 +93,7 @@ func switchCharacter(character: GenericCharacterController):
 func show_flag(next_flag: Flag):
 	isInputEnabled = false
 	currentPossessedCreature.resetAbilities()
+	await(get_tree().create_timer(1).timeout) # This timeout is to showcase the flag animation a little longer, should probably be moved somewhere else in the future
 	zoom_changed.emit(currentPossessedCreature, next_flag.zoom_size)
 	await(get_tree().create_timer(next_flag.zoom_out_duration).timeout)
 	zoom_changed.emit(next_flag, next_flag.zoom_size, next_flag.focus_move_speed)
@@ -103,8 +104,9 @@ func show_flag(next_flag: Flag):
 # Zooms out and shows the victory screen
 func ending_reached():
 	isInputEnabled = false
-	zoom_changed.emit(final_camera_focus, 80)
 	show_tutorial_prompt_with_sound("Woah, the world is so beautiful from up here! What an adventure", "Parasite/Haha.wav")
+	await(get_tree().create_timer(2).timeout) # This timeout is to showcase the flag animation a little longer, should probably be moved somewhere else in the future
+	zoom_changed.emit(final_camera_focus, 80)
 	await(get_tree().create_timer(3).timeout)
 	isInputEnabled = true
 	game_paused = true
