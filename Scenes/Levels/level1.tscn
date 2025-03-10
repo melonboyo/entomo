@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cfyb34soy0h7x"]
+[gd_scene load_steps=32 format=3 uid="uid://cfyb34soy0h7x"]
 
 [ext_resource type="PackedScene" uid="uid://cxrj60oxxptdh" path="res://Characters/Parasite/Parasite.tscn" id="1_nc2ee"]
 [ext_resource type="Script" path="res://GameController/Camera.gd" id="1_x6jyc"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://dt4e6nxmxyp41" path="res://EnvironmentAssets/paintcan/Paintcan.tscn" id="18_4gv8u"]
 [ext_resource type="PackedScene" uid="uid://c3cmfp8nipyi3" path="res://EnvironmentAssets/Lilypad/Lilypad.tscn" id="18_h1o36"]
 [ext_resource type="PackedScene" uid="uid://bndnynpd7wftq" path="res://EnvironmentAssets/StaticObjects/StaticCylinder.tscn" id="20_1gghd"]
+[ext_resource type="PackedScene" uid="uid://b0ouwti18r6et" path="res://EnvironmentAssets/Water/water_shader.tscn" id="20_1kkki"]
 [ext_resource type="PackedScene" uid="uid://bkw6fjstele8" path="res://Scenes/Tutorial/TutorialPrompt.tscn" id="21_e8mcr"]
 [ext_resource type="WwiseBank" uid="uid://cdv2fi03r7ojc" path="res://Wwise/resources/SoundBank/{258E8AF3-C148-42A0-BC80-34BC58C89550}.tres" id="22_c0s1l"]
 [ext_resource type="PackedScene" uid="uid://cltekqkn4b5to" path="res://EnvironmentAssets/rolypoly_island/RolyPolyIslands.tscn" id="23_2olhn"]
@@ -264,7 +265,7 @@ frog = NodePath("../../../../Frog")
 gameState = NodePath("../../../../GameStateManager")
 
 [node name="Dragonfly7" parent="Blockout/Stage2/Dragonflies" node_paths=PackedStringArray("frog", "gameState") instance=ExtResource("10_f6exh")]
-transform = Transform3D(-0.447055, 0.0224624, -0.894203, -0.00235877, 0.999646, 0.0262897, 0.894482, 0.0138626, -0.446846, -331.562, -0.213483, 146.441)
+transform = Transform3D(-0.447055, 0.0224624, -0.894203, -0.00235877, 0.999645, 0.0262897, 0.894482, 0.0138626, -0.446846, -331.562, -0.213483, 146.441)
 progress = 650.0
 frogPoint = 840.0
 frog = NodePath("../../../../Frog")
@@ -285,7 +286,7 @@ frog = NodePath("../../../../Frog")
 gameState = NodePath("../../../../GameStateManager")
 
 [node name="Dragonfly10" parent="Blockout/Stage2/Dragonflies" node_paths=PackedStringArray("frog", "gameState") instance=ExtResource("10_f6exh")]
-transform = Transform3D(0.00478948, -0.066457, -0.997751, -0.137959, 0.988202, -0.0664798, 0.9904, 0.137975, -0.00443539, -201.599, -6.23633, 96.7532)
+transform = Transform3D(0.00478948, -0.066457, -0.99775, -0.137959, 0.988202, -0.0664797, 0.9904, 0.137975, -0.00443538, -201.599, -6.23633, 96.7532)
 progress = 800.0
 frogPoint = 840.0
 frog = NodePath("../../../../Frog")
@@ -414,6 +415,9 @@ transform = Transform3D(2000, 0, 0, 0, 10, 0, 0, 0, 2000, 415.411, -4.45, -412.4
 [node name="WaterCollider" parent="Blockout" instance=ExtResource("14_wvx2g")]
 transform = Transform3D(2000, 0, 0, 0, 10, 0, 0, 0, 2000, 415.411, -17.9384, -412.464)
 
+[node name="WaterShader" parent="Blockout" instance=ExtResource("20_1kkki")]
+transform = Transform3D(1605.93, 0, 0, 0, 2.54213, 0, 0, 0, 1563.14, 0, 1.04123, 0)
+
 [node name="Flags" type="Node" parent="Blockout"]
 
 [node name="Flag1" parent="Blockout/Flags" node_paths=PackedStringArray("next_flag", "game_state_manager") instance=ExtResource("15_3xa5f")]
@@ -458,3 +462,5 @@ load_on = 1
 [node name="AkListener3D" type="AkListener3D" parent="."]
 
 [connection signal="zoom_changed" from="GameStateManager" to="CameraRoot" method="_on_game_state_manager_zoom_changed"]
+
+[editable path="Blockout/WaterShader"]
