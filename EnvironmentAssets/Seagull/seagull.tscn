@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bv8a3l7303xr3"]
+
+[ext_resource type="PackedScene" uid="uid://0t0nfqx3gt7c" path="res://EnvironmentAssets/Seagull/seagull.blend" id="1_unbow"]
+
+[node name="seagull" instance=ExtResource("1_unbow")]

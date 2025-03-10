@@ -1,8 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://cpn7kar3goqrl"]
+[gd_scene load_steps=7 format=3 uid="uid://cpn7kar3goqrl"]
 
 [ext_resource type="Script" path="res://Scenes/Menus/MainMenu/main_menu.gd" id="1_dwquw"]
 [ext_resource type="FontFile" uid="uid://0pcsmgvhx3hf" path="res://Kavoon-Regular.ttf" id="1_eo1fa"]
-[ext_resource type="StyleBox" path="res://buttonstyle.tres" id="2_nwlum"]
+[ext_resource type="Shader" path="res://Scenes/Menus/MainMenu/MainMenu.gdshader" id="2_3kdju"]
+[ext_resource type="StyleBox" uid="uid://dhgnclwd1fv1p" path="res://buttonstyle.tres" id="2_nwlum"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j7wqy"]
+shader = ExtResource("2_3kdju")
+shader_parameter/WATER_COL = Color(0.04, 0.38, 0.88, 1)
+shader_parameter/WATER2_COL = Color(0.04, 0.35, 0.78, 1)
+shader_parameter/FOAM_COL = Color(0.8125, 0.9609, 0.9648, 1)
+shader_parameter/distortion_speed = 2.65
+shader_parameter/tile = Vector2(0.1, 0.1)
+shader_parameter/offset = Vector2(0, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sf83b"]
 bg_color = Color(0.556863, 0.886275, 0.529412, 1)
@@ -17,6 +27,7 @@ grow_vertical = 2
 script = ExtResource("1_dwquw")
 
 [node name="Panel" type="Panel" parent="."]
+material = SubResource("ShaderMaterial_j7wqy")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
