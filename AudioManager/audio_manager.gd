@@ -136,9 +136,10 @@ func stop_music(fade_time: float = 0.1):
 
 func set_global_volume(bus_name: String, amount: float):
 	var bus_index = AudioServer.get_bus_index(bus_name)
+	print("MASTER CHANGE")
+	wwiseRTPC.set_value($AkEvent3D, amount)
 	amount = linear_to_db(amount)
 	AudioServer.set_bus_volume_db(bus_index, amount)
-	wwiseRTPC.set_value($AkEvent3D, amount)
 
 
 #THIS METHOD ADDS AND REDUCES THE AMOUNT OF VOLUME SO YOU HAVE TO GET THE DIFFERENCE

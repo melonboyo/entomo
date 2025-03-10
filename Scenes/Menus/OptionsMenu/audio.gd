@@ -16,14 +16,6 @@ func _ready():
 	music_slider.value = ConfigFileHandler.load_audio_setting("music_volume",music_slider.value)
 	sfx_slider.value = ConfigFileHandler.load_audio_setting("sfx_volume",sfx_slider.value)
 	
-	_on_master_slider_value_changed(master_slider.value)
-	_on_music_slider_value_changed(music_slider.value)
-	_on_sfx_slider_value_changed(sfx_slider.value)
-	
-	audio_manager.set_global_volume("Master", linear_to_db(master_slider.value))
-	audio_manager.set_music_volume(linear_to_db(music_slider.value))
-	audio_manager.set_sfx_volume(linear_to_db(sfx_slider.value))
-	
 	save_button.connect("pressed", Callable(self, "on_save_return_pressed"))
 	
 	
