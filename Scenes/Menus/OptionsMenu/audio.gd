@@ -30,17 +30,20 @@ func _ready():
 	sfx_slider.connect("value_changed", Callable(self, "on_sfx_slider_value_changed"))
 
 func _on_master_slider_value_changed(value: float):
-	print("Master slider changed to: ", value)
-	audio_manager.set_global_volume("Master", value)
-	pending_changes["master_volume"] = value
+	pass
+	#print("Master slider changed to: ", value)
+	#audio_manager.set_global_volume("Master", value)
+	#pending_changes["master_volume"] = value
 	
 func _on_music_slider_value_changed(value: float):
-	audio_manager.change_music_volume(value)
-	pending_changes["music_volume"] = value
+	pass
+	#audio_manager.change_music_volume(value)
+	#pending_changes["music_volume"] = value
 	
 func _on_sfx_slider_value_changed(value: float):
-	audio_manager.change_sfx_volume(value)
-	pending_changes["sfx_volume"] = value
+	pass
+	#audio_manager.change_sfx_volume(value)
+	#pending_changes["sfx_volume"] = value
 
 
 	
