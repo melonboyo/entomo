@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cfyb34soy0h7x"]
+[gd_scene load_steps=37 format=3 uid="uid://cfyb34soy0h7x"]
 
 [ext_resource type="PackedScene" uid="uid://cxrj60oxxptdh" path="res://Characters/Parasite/Parasite.tscn" id="1_nc2ee"]
 [ext_resource type="Script" path="res://GameController/Camera.gd" id="1_x6jyc"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ceq3k2pduj7cb" path="res://Characters/Pillbug/Pillbug.tscn" id="4_gd3qd"]
 [ext_resource type="PackedScene" uid="uid://d345ctgph51uj" path="res://Characters/Bumblebee/Bumblebee.tscn" id="4_usii5"]
 [ext_resource type="PackedScene" uid="uid://dqkke1lxyvwta" path="res://Scenes/ramp.tscn" id="6_vnun7"]
+[ext_resource type="Script" path="res://Scenes/Levels/blockout.gd" id="7_rcky1"]
 [ext_resource type="Script" path="res://Scripts/PillbugEatingRange.gd" id="8_ha7xt"]
 [ext_resource type="PackedScene" uid="uid://b4v7eokxybk5v" path="res://Characters/Frog/Frog.tscn" id="8_slu6r"]
 [ext_resource type="PackedScene" uid="uid://d0afubeh8fxeo" path="res://EnvironmentAssets/StaticObjects/environmentCubesFLAT.glb" id="9_vkqiw"]
@@ -22,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://bndnynpd7wftq" path="res://EnvironmentAssets/StaticObjects/StaticCylinder.tscn" id="20_1gghd"]
 [ext_resource type="PackedScene" uid="uid://b0ouwti18r6et" path="res://EnvironmentAssets/Water/water_shader.tscn" id="20_1kkki"]
 [ext_resource type="PackedScene" uid="uid://bkw6fjstele8" path="res://Scenes/Tutorial/TutorialPrompt.tscn" id="21_e8mcr"]
+[ext_resource type="PackedScene" uid="uid://bv8a3l7303xr3" path="res://EnvironmentAssets/Seagull/seagull.tscn" id="21_ir08w"]
 [ext_resource type="WwiseBank" uid="uid://cdv2fi03r7ojc" path="res://Wwise/resources/SoundBank/{258E8AF3-C148-42A0-BC80-34BC58C89550}.tres" id="22_c0s1l"]
 [ext_resource type="PackedScene" uid="uid://cltekqkn4b5to" path="res://EnvironmentAssets/rolypoly_island/RolyPolyIslands.tscn" id="23_2olhn"]
 
@@ -47,6 +49,66 @@ _data = {
 point_count = 8
 
 [sub_resource type="SphereMesh" id="SphereMesh_5kmdm"]
+
+[sub_resource type="Animation" id="Animation_i7b4m"]
+resource_name = "seagull"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1465.21, 431.32, 1269.27), Vector3(500.716, 416.294, -56.5476), Vector3(-565.67, 416.294, -1766.89)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../Frog:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(460.755, 404.214, -135.764), Vector3(460.755, 404.214, -135.764), Vector3(-565.67, 416.294, -1766.89)]
+}
+
+[sub_resource type="Animation" id="Animation_f5heo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1465.21, 431.32, 1269.27)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../Frog:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(31.399, 57.691, 100.046)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5fga5"]
+_data = {
+"RESET": SubResource("Animation_f5heo"),
+"seagull": SubResource("Animation_i7b4m")
+}
 
 [node name="Node3D" type="Node3D"]
 transform = Transform3D(1.01827, 0, 0, 0, 1.01827, 0, 0, 0, 1.01827, 0, 0, 0)
@@ -76,7 +138,7 @@ transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 
 game_state_manager = NodePath("../GameStateManager")
 
 [node name="Frog" parent="." node_paths=PackedStringArray("game_state_manager") instance=ExtResource("8_slu6r")]
-transform = Transform3D(-0.971583, 0, 0.14309, 0, 0.982059, 0, -0.14309, 0, -0.971583, 31.3987, 57.6906, 100.046)
+transform = Transform3D(-0.971583, 0, 0.14309, 0, 0.982059, 0, -0.14309, 0, -0.971583, 31.399, 57.691, 100.046)
 game_state_manager = NodePath("../GameStateManager")
 
 [node name="CameraRoot" type="Node3D" parent="." node_paths=PackedStringArray("camera", "game_state_manager", "focus")]
@@ -103,6 +165,7 @@ fov = 40.0
 size = 20.0
 
 [node name="Blockout" type="Node3D" parent="."]
+script = ExtResource("7_rcky1")
 
 [node name="Stage1" type="Node" parent="Blockout"]
 
@@ -265,7 +328,7 @@ frog = NodePath("../../../../Frog")
 gameState = NodePath("../../../../GameStateManager")
 
 [node name="Dragonfly7" parent="Blockout/Stage2/Dragonflies" node_paths=PackedStringArray("frog", "gameState") instance=ExtResource("10_f6exh")]
-transform = Transform3D(-0.447055, 0.0224624, -0.894203, -0.00235877, 0.999645, 0.0262897, 0.894482, 0.0138626, -0.446846, -331.562, -0.213483, 146.441)
+transform = Transform3D(-0.447055, 0.0224624, -0.894203, -0.00235877, 0.999644, 0.0262897, 0.894482, 0.0138626, -0.446846, -331.562, -0.213483, 146.441)
 progress = 650.0
 frogPoint = 840.0
 frog = NodePath("../../../../Frog")
@@ -286,7 +349,7 @@ frog = NodePath("../../../../Frog")
 gameState = NodePath("../../../../GameStateManager")
 
 [node name="Dragonfly10" parent="Blockout/Stage2/Dragonflies" node_paths=PackedStringArray("frog", "gameState") instance=ExtResource("10_f6exh")]
-transform = Transform3D(0.00478948, -0.066457, -0.99775, -0.137959, 0.988202, -0.0664797, 0.9904, 0.137975, -0.00443538, -201.599, -6.23633, 96.7532)
+transform = Transform3D(0.00478948, -0.066457, -0.997749, -0.137959, 0.988202, -0.0664797, 0.9904, 0.137975, -0.00443538, -201.599, -6.23633, 96.7532)
 progress = 800.0
 frogPoint = 840.0
 frog = NodePath("../../../../Frog")
@@ -416,7 +479,7 @@ transform = Transform3D(2000, 0, 0, 0, 10, 0, 0, 0, 2000, 415.411, -4.45, -412.4
 transform = Transform3D(2000, 0, 0, 0, 10, 0, 0, 0, 2000, 415.411, -17.9384, -412.464)
 
 [node name="WaterShader" parent="Blockout" instance=ExtResource("20_1kkki")]
-transform = Transform3D(1605.93, 0, 0, 0, 2.54213, 0, 0, 0, 1563.14, 0, 1.04123, 0)
+transform = Transform3D(4109.5, 0, 0, 0, 6.505, 0, 0, 0, 4000, 0, 1.04123, 0)
 
 [node name="Flags" type="Node" parent="Blockout"]
 
@@ -444,6 +507,15 @@ zoom_size = 5
 focus_move_speed = 2.0
 game_state_manager = NodePath("../../../GameStateManager")
 
+[node name="Anim" type="AnimationPlayer" parent="Blockout"]
+root_node = NodePath("../seagull")
+libraries = {
+"": SubResource("AnimationLibrary_5fga5")
+}
+
+[node name="seagull" parent="Blockout" instance=ExtResource("21_ir08w")]
+transform = Transform3D(20, 0, -34.6411, 0, 40.0001, 0, 34.6411, 0, 20, 1465.21, 431.32, 1269.27)
+
 [node name="TutorialPrompt" parent="." instance=ExtResource("21_e8mcr")]
 
 [node name="PauseMenu" parent="." node_paths=PackedStringArray("game_manager") instance=ExtResource("11_c6575")]
@@ -461,6 +533,7 @@ load_on = 1
 
 [node name="AkListener3D" type="AkListener3D" parent="."]
 
+[connection signal="ending" from="GameStateManager" to="Blockout" method="_on_game_state_manager_ending"]
 [connection signal="zoom_changed" from="GameStateManager" to="CameraRoot" method="_on_game_state_manager_zoom_changed"]
 
 [editable path="Blockout/WaterShader"]
