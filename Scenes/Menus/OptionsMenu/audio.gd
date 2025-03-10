@@ -6,6 +6,7 @@ extends TabBar
 @onready var sfx_slider = $SFXSlider
 @onready var save_button = $"../../SaveReturn"
 @onready var return_nosave = $"../../ReturnNoSave"
+@export var wwiseRTPC:WwiseRTPC
 
 var pending_changes = {}
 
@@ -19,8 +20,9 @@ func _ready():
 	_on_music_slider_value_changed(music_slider.value)
 	_on_sfx_slider_value_changed(sfx_slider.value)
 	
-	audio_manager.change_music_volume(linear_to_db(music_slider.value))
-	audio_manager.change_sfx_volume(linear_to_db(sfx_slider.value))
+	audio_manager.set_global_volume("Master", linear_to_db(master_slider.value))
+	audio_manager.set_music_volume(linear_to_db(music_slider.value))
+	audio_manager.set_sfx_volume(linear_to_db(sfx_slider.value))
 	
 	save_button.connect("pressed", Callable(self, "on_save_return_pressed"))
 	
@@ -30,20 +32,22 @@ func _ready():
 	sfx_slider.connect("value_changed", Callable(self, "on_sfx_slider_value_changed"))
 
 func _on_master_slider_value_changed(value: float):
-	pass
-	#print("Master slider changed to: ", value)
-	#audio_manager.set_global_volume("Master", value)
-	#pending_changes["master_volume"] = value
+	
+	print("Master slider changed to: ", value)
+	audio_manager.set_global_volume("Master", value)
+	
+	pending_changes["master_volume"] = value
 	
 func _on_music_slider_value_changed(value: float):
-	pass
-	#audio_manager.change_music_volume(value)
-	#pending_changes["music_volume"] = value
+	print("Music slider changed to: ", value)
+	audio_manager.set_music_volume(value)
+	pending_changes["music_volume"] = value
 	
 func _on_sfx_slider_value_changed(value: float):
-	pass
-	#audio_manager.change_sfx_volume(value)
-	#pending_changes["sfx_volume"] = value
+	print("Effects slider changed to: ", value)
+	audio_manager.change_sfx_volume(value)
+	
+	pending_changes["sfx_volume"] = value
 
 
 	
