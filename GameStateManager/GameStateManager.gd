@@ -57,6 +57,7 @@ func _physics_process(delta: float) -> void:
 	# Handle interacting
 	if(Input.is_action_just_pressed("interact")):
 		currentPossessedCreature.handleInteract()
+		
 	
 	# Handle Special Ability
 	if Input.is_action_just_pressed("special_ability"):
