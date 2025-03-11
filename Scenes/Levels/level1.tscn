@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cfyb34soy0h7x"]
+[gd_scene load_steps=36 format=3 uid="uid://cfyb34soy0h7x"]
 
 [ext_resource type="PackedScene" uid="uid://cxrj60oxxptdh" path="res://Characters/Parasite/Parasite.tscn" id="1_nc2ee"]
 [ext_resource type="Script" path="res://GameController/Camera.gd" id="1_x6jyc"]
@@ -25,6 +25,9 @@
 [ext_resource type="PackedScene" uid="uid://bkw6fjstele8" path="res://Scenes/Tutorial/TutorialPrompt.tscn" id="21_e8mcr"]
 [ext_resource type="WwiseBank" uid="uid://cdv2fi03r7ojc" path="res://Wwise/resources/SoundBank/{258E8AF3-C148-42A0-BC80-34BC58C89550}.tres" id="22_c0s1l"]
 [ext_resource type="PackedScene" uid="uid://cltekqkn4b5to" path="res://EnvironmentAssets/rolypoly_island/RolyPolyIslands.tscn" id="23_2olhn"]
+[ext_resource type="PackedScene" uid="uid://b1vf7sfbqdr54" path="res://EnvironmentAssets/StaticObjects/grass.glb" id="26_1ocqb"]
+[ext_resource type="PackedScene" uid="uid://dxvb165icpbdd" path="res://EnvironmentAssets/StaticObjects/path_stone.glb" id="27_7t4d6"]
+[ext_resource type="PackedScene" uid="uid://d2uw6psufxl51" path="res://EnvironmentAssets/StaticObjects/rock.glb" id="28_7rkut"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sa0xy"]
 size = Vector3(1, 1, 1.16724)
@@ -466,6 +469,117 @@ bank = ExtResource("22_c0s1l")
 load_on = 1
 
 [node name="AkListener3D" type="AkListener3D" parent="."]
+
+[node name="grass" parent="." instance=ExtResource("26_1ocqb")]
+transform = Transform3D(70.0001, 0, 0, 0, 70.0001, 0, 0, 0, 70.0001, 23.074, 27.9602, -288.316)
+
+[node name="grass2" parent="." instance=ExtResource("26_1ocqb")]
+transform = Transform3D(-75.2758, 0, -131.391, 0, 151.427, 0, 131.391, 0, -75.2758, 9.26423, 27.9602, -288.316)
+
+[node name="grass3" parent="." instance=ExtResource("26_1ocqb")]
+transform = Transform3D(102.169, 0, 17.7909, 0, 103.707, 0, -17.7909, 0, 102.169, 6.40212, 27.9603, -301.944)
+
+[node name="grass7" parent="." instance=ExtResource("26_1ocqb")]
+transform = Transform3D(56.6213, 0, 0, 0, 56.6213, 0, 0, 0, 56.6213, 3.27139, 4.79731, 264.736)
+
+[node name="grass8" parent="." instance=ExtResource("26_1ocqb")]
+transform = Transform3D(-60.8887, 0, -106.279, 0, 122.485, 0, 106.279, 0, -60.8887, -7.89901, 4.79731, 264.736)
+
+[node name="grass9" parent="." instance=ExtResource("26_1ocqb")]
+transform = Transform3D(82.642, 0, 14.3906, 0, 83.8856, 0, -14.3906, 0, 82.642, -10.2141, 4.79732, 253.713)
+
+[node name="grass10" parent="." instance=ExtResource("26_1ocqb")]
+transform = Transform3D(-13.2122, 0, -55.0582, 0, 56.6213, 0, 55.0582, 0, -13.2122, -50.1081, 12.1379, 409.875)
+
+[node name="grass11" parent="." instance=ExtResource("26_1ocqb")]
+transform = Transform3D(-89.1371, 0, 84.0074, 0, 122.485, 0, -84.0074, 0, -89.1371, -47.5015, 12.1379, 399.013)
+
+[node name="grass12" parent="." instance=ExtResource("26_1ocqb")]
+transform = Transform3D(-5.29059, 0, -83.7186, 0, 83.8856, 0, 83.7186, 0, -5.29059, -36.2427, 12.1379, 399.334)
+
+[node name="grass4" parent="." instance=ExtResource("26_1ocqb")]
+transform = Transform3D(27.9652, 0, -55.0379, 0, 58.5916, 0, 55.2442, 0, 27.8607, -205.543, 22.6162, -130.815)
+
+[node name="grass5" parent="." instance=ExtResource("26_1ocqb")]
+transform = Transform3D(-129.055, 0, 7.33125, 0, 126.748, 0, -6.67315, 0, -141.782, -201.235, 22.6162, -135.7)
+
+[node name="grass6" parent="." instance=ExtResource("26_1ocqb")]
+transform = Transform3D(55.8149, 0, -72.2326, 0, 86.8046, 0, 74.8078, 0, 53.8935, -193.375, 22.6162, -150.397)
+
+[node name="grass13" parent="." instance=ExtResource("26_1ocqb")]
+transform = Transform3D(27.9652, 0, -55.0379, 0, 58.5916, 0, 55.2442, 0, 27.8607, -166.936, 60.0337, -170.124)
+
+[node name="grass14" parent="." instance=ExtResource("26_1ocqb")]
+transform = Transform3D(-129.055, 0, 7.33125, 0, 126.748, 0, -6.67315, 0, -141.782, -162.629, 60.0337, -175.009)
+
+[node name="grass15" parent="." instance=ExtResource("26_1ocqb")]
+transform = Transform3D(55.8149, 0, -72.2327, 0, 86.8047, 0, 74.8078, 0, 53.8935, -146.696, 60.0337, -180.932)
+
+[node name="path_stone" parent="." instance=ExtResource("27_7t4d6")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, -5.32625, 8.78862, 301.069)
+
+[node name="path_stone2" parent="." instance=ExtResource("27_7t4d6")]
+transform = Transform3D(6.30284, 0, -30.7758, 0, 50, 0, 22.5211, 0, 8.61303, -5.32625, 8.78862, 311.021)
+
+[node name="path_stone3" parent="." instance=ExtResource("27_7t4d6")]
+transform = Transform3D(-37.6827, 0, -13.0796, 0, 50, 0, 19.1796, 0, -25.6978, 6.01607, 8.78862, 313.363)
+
+[node name="path_stone4" parent="." instance=ExtResource("27_7t4d6")]
+transform = Transform3D(-11.9839, 0, 16.9165, 0, 50.0001, 0, -13.0279, 0, -15.5609, 2.95353, 8.78862, 307.509)
+
+[node name="path_stone5" parent="." instance=ExtResource("27_7t4d6")]
+transform = Transform3D(-40.8683, 0, 28.8059, 0, 50, 0, -28.8059, 0, -40.8683, -14.0059, 8.78862, 329.444)
+
+[node name="path_stone6" parent="." instance=ExtResource("27_7t4d6")]
+transform = Transform3D(7.82311, 0, 30.1172, 0, 50, 0, -22.0392, 0, 10.6905, -8.27187, 8.78862, 321.309)
+
+[node name="path_stone7" parent="." instance=ExtResource("27_7t4d6")]
+transform = Transform3D(41.8503, 0, -4.11419, 0, 50.0001, 0, 6.03295, 0, 28.5399, -16.1935, 8.78862, 312.86)
+
+[node name="path_stone8" parent="." instance=ExtResource("27_7t4d6")]
+transform = Transform3D(2.28966, 0, -22.7919, 0, 50.0001, 0, 17.5527, 0, 2.97309, -17.0631, 8.78862, 319.409)
+
+[node name="path_stone9" parent="." instance=ExtResource("27_7t4d6")]
+transform = Transform3D(-49.5818, 0, 6.45363, 0, 50, 0, -6.45363, 0, -49.5818, 15.0847, 8.78862, 304.419)
+
+[node name="path_stone10" parent="." instance=ExtResource("27_7t4d6")]
+transform = Transform3D(-3.34326, 0, 31.6301, 0, 50.0001, 0, -23.1463, 0, -4.56867, 16.3694, 8.78862, 294.55)
+
+[node name="path_stone11" parent="." instance=ExtResource("27_7t4d6")]
+transform = Transform3D(39.843, 0, 9.65327, 0, 50.0001, 0, -14.1553, 0, 27.1711, 5.42419, 8.78862, 290.763)
+
+[node name="path_stone12" parent="." instance=ExtResource("27_7t4d6")]
+transform = Transform3D(10.2022, 0, -18.7835, 0, 50.0001, 0, 14.4657, 0, 13.2473, 7.70547, 8.78862, 296.964)
+
+[node name="path_stone13" parent="." instance=ExtResource("27_7t4d6")]
+transform = Transform3D(28.3764, 0, 41.1678, 0, 50, 0, -41.1678, 0, 28.3764, -20.8661, 8.78862, 286.593)
+
+[node name="path_stone14" parent="." instance=ExtResource("27_7t4d6")]
+transform = Transform3D(22.1199, 0, -10.3745, 0, 50.0001, 0, 7.5919, 0, 30.2276, -12.6715, 8.78862, 292.242)
+
+[node name="path_stone15" parent="." instance=ExtResource("27_7t4d6")]
+transform = Transform3D(-5.59438, 0, -28.5814, 0, 50.0001, 0, 41.9112, 0, -3.8151, -4.30605, 8.78862, 284.232)
+
+[node name="path_stone16" parent="." instance=ExtResource("27_7t4d6")]
+transform = Transform3D(-17.5278, 0, -3.21161, 0, 50.0001, 0, 2.47335, 0, -22.7595, -10.8644, 8.78862, 283.431)
+
+[node name="path_stone17" parent="." instance=ExtResource("27_7t4d6")]
+transform = Transform3D(18.1653, 0, 38.7859, 0, 50, 0, -26.3538, 0, 26.7346, -19.9742, 8.78862, 272.67)
+
+[node name="path_stone18" parent="." instance=ExtResource("27_7t4d6")]
+transform = Transform3D(15.663, 0, -8.66202, 0, 50.0001, 0, 5.37578, 0, 25.2379, -13.8372, 8.78862, 276.967)
+
+[node name="path_stone19" parent="." instance=ExtResource("27_7t4d6")]
+transform = Transform3D(-3.79174, 0, -22.3982, 0, 50.0001, 0, 28.4064, 0, -2.98975, -7.57231, 8.78862, 270.874)
+
+[node name="path_stone20" parent="." instance=ExtResource("27_7t4d6")]
+transform = Transform3D(-13.56, 0, -2.36834, 0, 50.0001, 0, 1.91345, 0, -16.7836, -12.4839, 8.78862, 270.265)
+
+[node name="rock" parent="." instance=ExtResource("28_7rkut")]
+transform = Transform3D(44.7081, 0, -11.1428, 0, 50, 0, 22.3872, 0, 22.2525, -38.1859, 28.1577, -345.26)
+
+[node name="rock2" parent="." instance=ExtResource("28_7rkut")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, -53.1255, 44.0846, -374.681)
 
 [connection signal="ending" from="GameStateManager" to="Blockout" method="_on_game_state_manager_ending"]
 [connection signal="zoom_changed" from="GameStateManager" to="CameraRoot" method="_on_game_state_manager_zoom_changed"]
