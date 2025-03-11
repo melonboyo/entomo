@@ -267,7 +267,7 @@ frog = NodePath("../../../../Frog")
 gameState = NodePath("../../../../GameStateManager")
 
 [node name="Dragonfly7" parent="Blockout/Stage2/Dragonflies" node_paths=PackedStringArray("frog", "gameState") instance=ExtResource("10_f6exh")]
-transform = Transform3D(-0.447055, 0.0224624, -0.894203, -0.00235877, 0.999644, 0.0262897, 0.894482, 0.0138626, -0.446846, -331.562, -0.213483, 146.441)
+transform = Transform3D(-0.447055, 0.0224624, -0.894203, -0.00235877, 0.999643, 0.0262897, 0.894482, 0.0138626, -0.446846, -331.562, -0.213483, 146.441)
 progress = 650.0
 frogPoint = 840.0
 frog = NodePath("../../../../Frog")
@@ -288,7 +288,7 @@ frog = NodePath("../../../../Frog")
 gameState = NodePath("../../../../GameStateManager")
 
 [node name="Dragonfly10" parent="Blockout/Stage2/Dragonflies" node_paths=PackedStringArray("frog", "gameState") instance=ExtResource("10_f6exh")]
-transform = Transform3D(0.00478948, -0.066457, -0.997749, -0.137959, 0.988202, -0.0664797, 0.9904, 0.137975, -0.00443538, -201.599, -6.23633, 96.7532)
+transform = Transform3D(0.00478948, -0.066457, -0.997748, -0.137959, 0.988202, -0.0664797, 0.9904, 0.137975, -0.00443538, -201.599, -6.23633, 96.7532)
 progress = 800.0
 frogPoint = 840.0
 frog = NodePath("../../../../Frog")
@@ -384,7 +384,7 @@ surface_material_override/0 = ExtResource("16_3fps6")
 transform = Transform3D(37.5901, 0, 66.3289, 0, 29.7092, 0, -69.9293, 0, 35.6547, 31.0396, -13.9086, 108.004)
 
 [node name="StaticCylinder3" parent="Blockout/Stage3" instance=ExtResource("20_1gghd")]
-transform = Transform3D(38.5699, 0, 71.7521, 0, 30.5481, 0, -71.7521, 0, 38.5699, -39.6886, 16.2039, 66.3219)
+transform = Transform3D(-64.3812, 0, -51.5976, 0, 30.9397, 0, 51.5976, 0, -64.3812, -39.6886, 16.2039, 66.3219)
 
 [node name="StaticCylinder2" parent="Blockout/Stage3" instance=ExtResource("20_1gghd")]
 transform = Transform3D(40.7308, 0, 0, 0, 30.5481, 0, 0, 0, 40.7308, 12.7003, -14.0609, 239.808)
@@ -418,12 +418,16 @@ transform = Transform3D(2000, 0, 0, 0, 10, 0, 0, 0, 2000, 415.411, -4.45, -412.4
 transform = Transform3D(2000, 0, 0, 0, 10, 0, 0, 0, 2000, 415.411, -17.9384, -412.464)
 
 [node name="WaterShader" parent="Blockout" instance=ExtResource("20_1kkki")]
-transform = Transform3D(4109.5, 0, 0, 0, 6.505, 0, 0, 0, 4000, 0, 1.04123, 0)
+transform = Transform3D(5016.76, 0, 0, 0, 6.505, 0, 0, 0, 4883.08, 128.814, 1.04123, -78.2084)
+
+[node name="MeshInstance3D" parent="Blockout/WaterShader" index="0"]
+transform = Transform3D(-4.37114e-08, 0.171387, 0, -1, -7.49157e-09, -1.20178e-08, -8.74228e-08, -6.54934e-16, 0.137467, 9.70066e-06, -0.136973, 2.77665e-05)
+transparency = 0.89
 
 [node name="Flags" type="Node" parent="Blockout"]
 
 [node name="Flag1" parent="Blockout/Flags" node_paths=PackedStringArray("next_flag", "game_state_manager") instance=ExtResource("15_3xa5f")]
-transform = Transform3D(1.08004, 0, -1.08004, 0, 1.52741, 0, 1.08004, 0, 1.08004, 136.282, 11.3178, -13.2586)
+transform = Transform3D(1.08004, 0, -1.08004, 0, 1.52741, 0, 1.08004, 0, 1.08004, 136.282, 9.84377, -13.2586)
 next_flag = NodePath("../Flag2")
 zoom_size = 2
 game_state_manager = NodePath("../../../GameStateManager")
@@ -435,7 +439,7 @@ zoom_size = 3
 game_state_manager = NodePath("../../../GameStateManager")
 
 [node name="Flag3" parent="Blockout/Flags" node_paths=PackedStringArray("next_flag", "game_state_manager") instance=ExtResource("15_3xa5f")]
-transform = Transform3D(3.60013, 0, -3.60013, 0, 5.09135, 0, 3.60013, 0, 3.60013, -42.0585, 46.752, 69.0393)
+transform = Transform3D(3.60013, 0, -3.60013, 0, 5.09135, 0, 3.60013, 0, 3.60013, -42.0585, 46.2607, 69.0393)
 next_flag = NodePath("../Flag4")
 zoom_size = 4
 game_state_manager = NodePath("../../../GameStateManager")
