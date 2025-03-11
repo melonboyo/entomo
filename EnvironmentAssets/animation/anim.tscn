@@ -1,0 +1,67 @@
+[gd_scene load_steps=4 format=3 uid="uid://dnllax02gpmye"]
+
+[sub_resource type="Animation" id="Animation_f5heo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1465.21, 431.32, 1269.27)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../Frog:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(31.399, 57.691, 100.046)]
+}
+
+[sub_resource type="Animation" id="Animation_i7b4m"]
+resource_name = "seagull"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1465.21, 431.32, 1269.27), Vector3(500.716, 416.294, -56.5476), Vector3(-565.67, 416.294, -1766.89)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../Frog:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(460.755, 404.214, -135.764), Vector3(460.755, 404.214, -135.764), Vector3(-565.67, 416.294, -1766.89)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5fga5"]
+_data = {
+"RESET": SubResource("Animation_f5heo"),
+"seagull": SubResource("Animation_i7b4m")
+}
+
+[node name="Anim" type="AnimationPlayer"]
+root_node = NodePath("../seagull")
+libraries = {
+"": SubResource("AnimationLibrary_5fga5")
+}

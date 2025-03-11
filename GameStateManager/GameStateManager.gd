@@ -7,7 +7,6 @@ class_name GameStateManager
 @export var first_flag: Flag
 @export var tutorial_prompt: TutorialPrompt
 @export var final_camera_focus: Node3D
-
 var isInputEnabled = true
 var is_player_alive = true
 
@@ -17,6 +16,7 @@ signal zoom_changed(newFocus: Node3D, zoomSize: int)
 signal toggle_game_paused(is_paused : bool)
 signal show_victory_screen()
 signal show_death_screen()
+signal ending()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:	
 	if(first_flag != null):
@@ -106,12 +106,14 @@ func show_flag(next_flag: Flag):
 func ending_reached():
 	isInputEnabled = false
 	show_tutorial_prompt_with_sound("Woah, the world is so beautiful from up here! What an adventure", "Parasite/Haha.wav")
-	await(get_tree().create_timer(2).timeout) # This timeout is to showcase the flag animation a little longer, should probably be moved somewhere else in the future
-	zoom_changed.emit(final_camera_focus, 80)
+	await(get_tree().create_timer(2).timeout)
+	ending.emit()
+	AudioManager.play_sfx("res://Audio/SFX/Other/gull.mp3")
 	await(get_tree().create_timer(3).timeout)
 	isInputEnabled = true
 	game_paused = true
 	show_victory_screen.emit()
+
 
 func player_died():
 	is_player_alive = false;
