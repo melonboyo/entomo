@@ -1,5 +1,6 @@
-[gd_scene load_steps=37 format=3 uid="uid://cfyb34soy0h7x"]
+[gd_scene load_steps=42 format=3 uid="uid://cfyb34soy0h7x"]
 
+[ext_resource type="Texture2D" uid="uid://dp5dw1li8hp56" path="res://EnvironmentAssets/sky/lakeside_sunrise_4k.exr" id="1_dq2iy"]
 [ext_resource type="PackedScene" uid="uid://cxrj60oxxptdh" path="res://Characters/Parasite/Parasite.tscn" id="1_nc2ee"]
 [ext_resource type="Script" path="res://GameController/Camera.gd" id="1_x6jyc"]
 [ext_resource type="PackedScene" uid="uid://dclrt7yy6gtq6" path="res://GameStateManager/GameStateManager.tscn" id="2_cqo16"]
@@ -12,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://d0afubeh8fxeo" path="res://EnvironmentAssets/StaticObjects/environmentCubesFLAT.glb" id="9_vkqiw"]
 [ext_resource type="PackedScene" uid="uid://msprui4s0rep" path="res://Scenes/dragonfly.tscn" id="10_f6exh"]
 [ext_resource type="PackedScene" uid="uid://daoe6gj0bo2qr" path="res://Scenes/Menus/PauseMenu/pause_menu.tscn" id="11_c6575"]
+[ext_resource type="PackedScene" uid="uid://bk3mq1unr0oo6" path="res://EnvironmentAssets/StaticObjects/MountainSurroundings.glb" id="12_7nu0a"]
 [ext_resource type="PackedScene" uid="uid://drbhm2oegdo75" path="res://EnvironmentAssets/MovableStone/MovableStone.tscn" id="12_w08rn"]
 [ext_resource type="PackedScene" uid="uid://cynjesuoq6b5x" path="res://EnvironmentAssets/StaticObjects/StaticCube.tscn" id="14_wvx2g"]
 [ext_resource type="PackedScene" uid="uid://caxb37ohqq7q3" path="res://EnvironmentAssets/Flag/Flag.tscn" id="15_3xa5f"]
@@ -29,6 +31,19 @@
 [ext_resource type="PackedScene" uid="uid://b1vf7sfbqdr54" path="res://EnvironmentAssets/StaticObjects/grass.glb" id="26_1ocqb"]
 [ext_resource type="PackedScene" uid="uid://dxvb165icpbdd" path="res://EnvironmentAssets/StaticObjects/path_stone.glb" id="27_7t4d6"]
 [ext_resource type="PackedScene" uid="uid://d2uw6psufxl51" path="res://EnvironmentAssets/StaticObjects/rock.glb" id="28_7rkut"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_p6yro"]
+panorama = ExtResource("1_dq2iy")
+
+[sub_resource type="Sky" id="Sky_gmarb"]
+sky_material = SubResource("PanoramaSkyMaterial_p6yro")
+
+[sub_resource type="Environment" id="Environment_8adue"]
+background_mode = 2
+background_energy_multiplier = 0.21
+sky = SubResource("Sky_gmarb")
+sky_custom_fov = 80.2
+sky_rotation = Vector3(0, 2.76809, 0)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sa0xy"]
 size = Vector3(1, 1, 1.16724)
@@ -55,6 +70,9 @@ point_count = 8
 
 [node name="Node3D" type="Node3D"]
 transform = Transform3D(1.01827, 0, 0, 0, 1.01827, 0, 0, 0, 1.01827, 0, 0, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_8adue")
 
 [node name="GameStateManager" parent="." node_paths=PackedStringArray("currentPossessedCreature", "camera", "first_flag", "tutorial_prompt", "final_camera_focus") instance=ExtResource("2_cqo16")]
 currentPossessedCreature = NodePath("../Parasite")
@@ -204,6 +222,12 @@ transform = Transform3D(-28.2586, -0.0083293, -28.31, 0.0201125, 40, -0.0318446,
 
 [node name="Ramp3" parent="Blockout/Stage2/Ramps" instance=ExtResource("6_vnun7")]
 transform = Transform3D(-1.74846e-06, 0, 37.4181, 0, 29.5204, 0, -40, 0, -1.6356e-06, -144.524, 22.7425, 30.2613)
+
+[node name="MountainSurroundings" parent="Blockout/Stage2/Ramps" instance=ExtResource("12_7nu0a")]
+transform = Transform3D(-22.2989, 0, -49.5917, 0, 37.1929, 0, 41.7691, 0, -26.475, 450.137, -234.132, -307.33)
+
+[node name="MountainSurroundings2" parent="Blockout/Stage2/Ramps" instance=ExtResource("12_7nu0a")]
+transform = Transform3D(1.64006, 0, 56.1825, 0, 33.0818, 0, -47.3203, 0, 1.94721, 132.037, -234.132, 160.807)
 
 [node name="PillbugEatingRange" type="StaticBody3D" parent="Blockout/Stage2" node_paths=PackedStringArray("frog", "pillbug")]
 transform = Transform3D(17.4794, 0, -17.6234, 0, 6.30967, 0, 17.4794, 0, 17.6234, 9.03973, 13.8718, 218.122)
@@ -390,6 +414,9 @@ transform = Transform3D(37.5901, 0, 66.3289, 0, 29.7092, 0, -69.9293, 0, 35.6547
 [node name="StaticCylinder3" parent="Blockout/Stage3" instance=ExtResource("20_1gghd")]
 transform = Transform3D(-64.3812, 0, -51.5976, 0, 30.9397, 0, 51.5976, 0, -64.3812, -39.6886, 16.2039, 66.3219)
 
+[node name="StaticCylinder4" parent="Blockout/Stage3" instance=ExtResource("20_1gghd")]
+transform = Transform3D(-360.326, 0, -107.283, 0, 268.434, 0, 288.779, 0, -133.864, -613.546, 16.2039, -212.409)
+
 [node name="StaticCylinder2" parent="Blockout/Stage3" instance=ExtResource("20_1gghd")]
 transform = Transform3D(40.7308, 0, 0, 0, 30.5481, 0, 0, 0, 40.7308, 12.7003, -14.0609, 239.808)
 
@@ -422,10 +449,10 @@ transform = Transform3D(2000, 0, 0, 0, 10, 0, 0, 0, 2000, 415.411, -4.45, -412.4
 transform = Transform3D(2000, 0, 0, 0, 10, 0, 0, 0, 2000, 415.411, -17.9384, -412.464)
 
 [node name="WaterShader" parent="Blockout" instance=ExtResource("20_1kkki")]
-transform = Transform3D(5016.76, 0, 0, 0, 6.505, 0, 0, 0, 4883.08, 128.814, 1.04123, -78.2084)
+transform = Transform3D(5411.54, 0, 0, 0, 7.017, 0, 0, 0, 5267.34, 230.51, -1.33312, -10.2681)
 
 [node name="MeshInstance3D" parent="Blockout/WaterShader" index="0"]
-transform = Transform3D(-4.37114e-08, 0.171387, 0, -1, -7.49157e-09, -1.20178e-08, -8.74228e-08, -6.54934e-16, 0.137467, 9.70066e-06, -0.136973, 2.77665e-05)
+transform = Transform3D(-4.37114e-08, 0.182003, 0, -0.999998, -7.95561e-09, -1.28158e-08, -8.74227e-08, -6.95502e-16, 0.146595, 0.023737, 0.203372, -0.0163973)
 transparency = 0.89
 
 [node name="Flags" type="Node" parent="Blockout"]
