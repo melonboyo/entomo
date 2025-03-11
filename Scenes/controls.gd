@@ -85,10 +85,6 @@ func _input(event):
 
 func _update_action_list(button, event):
 	button.find_child("LabelInput").text = event.as_text().trim_suffix(" (Physical)")
-	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 
 func _on_reset_button_pressed():
@@ -99,17 +95,13 @@ func _on_reset_button_pressed():
 			ConfigFileHandler.save_keybinding(action, events[0])
 
 	_create_action_list()
-	
 
-
-func _on_save_return_pressed():
+func save_keybinds():
 	for action in pending_keybindings.keys():
 		ConfigFileHandler.save_keybinding(action, pending_keybindings[action])
 	pending_keybindings.clear()
 	print("Keybindings saved!")
-	get_tree().change_scene_to_file("res://Scenes/Menus/MainMenu/MainMenu.tscn")
-	
-func _on_return_no_save_pressed() -> void:
+
+
+func clear_keybinds():
 	pending_keybindings.clear()
-	print("Keybindings not saved!")
-	get_tree().change_scene_to_file("res://Scenes/Menus/MainMenu/MainMenu.tscn")

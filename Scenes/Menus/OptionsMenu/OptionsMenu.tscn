@@ -1,10 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://b52yugfrhuywh"]
+[gd_scene load_steps=8 format=3 uid="uid://b52yugfrhuywh"]
 
 [ext_resource type="Script" path="res://Scenes/Menus/OptionsMenu/options_menu.gd" id="1_55mik"]
 [ext_resource type="FontFile" uid="uid://0pcsmgvhx3hf" path="res://Kavoon-Regular.ttf" id="1_xypns"]
 [ext_resource type="StyleBox" uid="uid://dhgnclwd1fv1p" path="res://buttonstyle.tres" id="2_0m3vy"]
-[ext_resource type="Script" path="res://Scripts/music_slider.gd" id="3_h5cyc"]
-[ext_resource type="Script" path="res://Scripts/sfx_slider.gd" id="4_53fsi"]
 [ext_resource type="Script" path="res://Scenes/Menus/OptionsMenu/audio.gd" id="4_woftf"]
 [ext_resource type="Script" path="res://Scenes/controls.gd" id="5_l6fbn"]
 [ext_resource type="PackedScene" uid="uid://bv3t0wpvtft44" path="res://Scenes/Menus/OptionsMenu/input_button.tscn" id="7_ubh7r"]
@@ -47,13 +45,14 @@ text = "Options"
 
 [node name="TabContainer" type="TabContainer" parent="."]
 layout_mode = 0
-offset_left = 106.0
-offset_top = 213.0
-offset_right = 694.0
-offset_bottom = 595.0
+offset_left = 427.0
+offset_top = 342.0
+offset_right = 1015.0
+offset_bottom = 724.0
 current_tab = 1
 
 [node name="Audio" type="TabBar" parent="TabContainer"]
+unique_name_in_owner = true
 visible = false
 layout_mode = 2
 focus_mode = 0
@@ -94,7 +93,7 @@ offset_right = 302.0
 offset_bottom = 176.0
 max_value = 1.0
 step = 0.05
-script = ExtResource("3_h5cyc")
+value = 0.7
 
 [node name="SFXSlider" type="HSlider" parent="TabContainer/Audio"]
 layout_mode = 0
@@ -104,9 +103,10 @@ offset_right = 304.0
 offset_bottom = 265.0
 max_value = 1.0
 step = 0.05
-script = ExtResource("4_53fsi")
+value = 0.7
 
 [node name="Controls" type="TabBar" parent="TabContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 script = ExtResource("5_l6fbn")
 metadata/_tab_index = 1
@@ -171,10 +171,10 @@ text = "reset to default"
 
 [node name="SaveReturn" type="Button" parent="."]
 layout_mode = 0
-offset_left = 829.0
-offset_top = 347.0
-offset_right = 1057.0
-offset_bottom = 443.0
+offset_left = 1126.0
+offset_top = 436.0
+offset_right = 1354.0
+offset_bottom = 532.0
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_xypns")
 theme_override_font_sizes/font_size = 24
@@ -184,10 +184,10 @@ autowrap_mode = 3
 
 [node name="ReturnNoSave" type="Button" parent="."]
 layout_mode = 0
-offset_left = 828.0
-offset_top = 503.0
-offset_right = 1060.0
-offset_bottom = 587.0
+offset_left = 1125.0
+offset_top = 592.0
+offset_right = 1357.0
+offset_bottom = 676.0
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_xypns")
 theme_override_font_sizes/font_size = 24
@@ -195,6 +195,10 @@ theme_override_styles/normal = ExtResource("2_0m3vy")
 text = "Return without saving"
 autowrap_mode = 3
 
+[connection signal="value_changed" from="TabContainer/Audio/MusicSlider" to="TabContainer/Audio" method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="TabContainer/Audio/SFXSlider" to="TabContainer/Audio" method="_on_sfx_slider_value_changed"]
 [connection signal="pressed" from="TabContainer/Controls/ResetButton" to="TabContainer/Controls" method="_on_reset_button_pressed"]
+[connection signal="pressed" from="SaveReturn" to="." method="_on_save_return_pressed"]
 [connection signal="pressed" from="SaveReturn" to="TabContainer/Controls" method="_on_save_return_pressed"]
+[connection signal="pressed" from="ReturnNoSave" to="." method="_on_return_no_save_pressed"]
 [connection signal="pressed" from="ReturnNoSave" to="TabContainer/Controls" method="_on_return_no_save_pressed"]

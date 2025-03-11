@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bndnynpd7wftq"]
 
-[ext_resource type="PackedScene" uid="uid://dlvbi52gf4606" path="res://EnvironmentAssets/StaticObjects/cylinderRock.glb" id="1_c1o18"]
+[ext_resource type="PackedScene" uid="uid://dlvbi52gf4606" path="res://EnvironmentAssets/StaticObjects/cylinderRock.glb" id="1_phwg2"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_2ts0f"]
 
@@ -8,12 +8,12 @@
 
 [node name="StaticCylinder" type="StaticBody3D"]
 
+[node name="cylinderRock" parent="." instance=ExtResource("1_phwg2")]
+transform = Transform3D(0.46, 0, 0, 0, 1.63265, 0, 0, 0, 0.46, -0.0690356, 0.515775, 0)
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 visible = false
 mesh = SubResource("CylinderMesh_2ts0f")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_o7qbc")
-
-[node name="cylinderRock" parent="." instance=ExtResource("1_c1o18")]
-transform = Transform3D(0.480478, 0, 0, 0, 1.68135, 0, 0, 0, 0.48806, -0.103056, 0.52749, 0.0150985)

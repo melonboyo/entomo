@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://cfyb34soy0h7x"]
+[gd_scene load_steps=43 format=3 uid="uid://cfyb34soy0h7x"]
 
 [ext_resource type="Texture2D" uid="uid://dp5dw1li8hp56" path="res://EnvironmentAssets/sky/lakeside_sunrise_4k.exr" id="1_dq2iy"]
 [ext_resource type="PackedScene" uid="uid://cxrj60oxxptdh" path="res://Characters/Parasite/Parasite.tscn" id="1_nc2ee"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://daoe6gj0bo2qr" path="res://Scenes/Menus/PauseMenu/pause_menu.tscn" id="11_c6575"]
 [ext_resource type="PackedScene" uid="uid://bk3mq1unr0oo6" path="res://EnvironmentAssets/StaticObjects/MountainSurroundings.glb" id="12_7nu0a"]
 [ext_resource type="PackedScene" uid="uid://drbhm2oegdo75" path="res://EnvironmentAssets/MovableStone/MovableStone.tscn" id="12_w08rn"]
+[ext_resource type="PackedScene" uid="uid://duubejd71a45j" path="res://EnvironmentAssets/StaticObjects/MountainSurroundings.tscn" id="13_8k5ts"]
 [ext_resource type="PackedScene" uid="uid://cynjesuoq6b5x" path="res://EnvironmentAssets/StaticObjects/StaticCube.tscn" id="14_wvx2g"]
 [ext_resource type="PackedScene" uid="uid://caxb37ohqq7q3" path="res://EnvironmentAssets/Flag/Flag.tscn" id="15_3xa5f"]
 [ext_resource type="Material" uid="uid://b0f08nx0esit5" path="res://Characters/Pillbug/rolypoly_red.tres" id="16_3fps6"]
@@ -44,6 +45,12 @@ background_energy_multiplier = 0.21
 sky = SubResource("Sky_gmarb")
 sky_custom_fov = 80.2
 sky_rotation = Vector3(0, 2.76809, 0)
+ambient_light_color = Color(0.62269, 0.478893, 0.442296, 1)
+ambient_light_sky_contribution = 0.23
+adjustment_enabled = true
+adjustment_brightness = 1.1
+adjustment_contrast = 1.32
+adjustment_saturation = 1.1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sa0xy"]
 size = Vector3(1, 1, 1.16724)
@@ -223,11 +230,11 @@ transform = Transform3D(-28.2586, -0.0083293, -28.31, 0.0201125, 40, -0.0318446,
 [node name="Ramp3" parent="Blockout/Stage2/Ramps" instance=ExtResource("6_vnun7")]
 transform = Transform3D(-1.74846e-06, 0, 37.4181, 0, 29.5204, 0, -40, 0, -1.6356e-06, -144.524, 22.7425, 30.2613)
 
+[node name="MountainSurroundings3" parent="Blockout/Stage2/Ramps" instance=ExtResource("13_8k5ts")]
+transform = Transform3D(1.64006, 0, 56.1825, 0, 33.0818, 0, -47.3203, 0, 1.94721, 132.037, -234.132, 160.807)
+
 [node name="MountainSurroundings" parent="Blockout/Stage2/Ramps" instance=ExtResource("12_7nu0a")]
 transform = Transform3D(-22.2989, 0, -49.5917, 0, 37.1929, 0, 41.7691, 0, -26.475, 450.137, -234.132, -307.33)
-
-[node name="MountainSurroundings2" parent="Blockout/Stage2/Ramps" instance=ExtResource("12_7nu0a")]
-transform = Transform3D(1.64006, 0, 56.1825, 0, 33.0818, 0, -47.3203, 0, 1.94721, 132.037, -234.132, 160.807)
 
 [node name="PillbugEatingRange" type="StaticBody3D" parent="Blockout/Stage2" node_paths=PackedStringArray("frog", "pillbug")]
 transform = Transform3D(17.4794, 0, -17.6234, 0, 6.30967, 0, 17.4794, 0, 17.6234, 9.03973, 13.8718, 218.122)
@@ -288,14 +295,14 @@ frog = NodePath("../../../../Frog")
 gameState = NodePath("../../../../GameStateManager")
 
 [node name="Dragonfly6" parent="Blockout/Stage2/Dragonflies" node_paths=PackedStringArray("frog", "gameState") instance=ExtResource("10_f6exh")]
-transform = Transform3D(-0.59375, 3.17894e-06, -0.804632, 6.37977e-06, 1, -7.57036e-07, 0.804632, -5.58301e-06, -0.59375, -372.547, 9.55251e-05, 117.899)
+transform = Transform3D(-0.59375, 3.17894e-06, -0.804632, 6.37977e-06, 1, -7.57037e-07, 0.804632, -5.58301e-06, -0.59375, -372.547, 9.55251e-05, 117.899)
 progress = 600.0
 frogPoint = 840.0
 frog = NodePath("../../../../Frog")
 gameState = NodePath("../../../../GameStateManager")
 
 [node name="Dragonfly7" parent="Blockout/Stage2/Dragonflies" node_paths=PackedStringArray("frog", "gameState") instance=ExtResource("10_f6exh")]
-transform = Transform3D(-0.447055, 0.0224624, -0.894203, -0.00235877, 0.999643, 0.0262897, 0.894482, 0.0138626, -0.446846, -331.562, -0.213483, 146.441)
+transform = Transform3D(-0.447055, 0.0224623, -0.894203, -0.00235877, 0.999642, 0.0262897, 0.894482, 0.0138626, -0.446846, -331.562, -0.213483, 146.441)
 progress = 650.0
 frogPoint = 840.0
 frog = NodePath("../../../../Frog")
@@ -316,7 +323,7 @@ frog = NodePath("../../../../Frog")
 gameState = NodePath("../../../../GameStateManager")
 
 [node name="Dragonfly10" parent="Blockout/Stage2/Dragonflies" node_paths=PackedStringArray("frog", "gameState") instance=ExtResource("10_f6exh")]
-transform = Transform3D(0.00478948, -0.066457, -0.997748, -0.137959, 0.988202, -0.0664796, 0.9904, 0.137975, -0.00443538, -201.599, -6.23633, 96.7532)
+transform = Transform3D(0.00478948, -0.066457, -0.997747, -0.137959, 0.988202, -0.0664796, 0.9904, 0.137975, -0.00443537, -201.599, -6.23633, 96.7532)
 progress = 800.0
 frogPoint = 840.0
 frog = NodePath("../../../../Frog")

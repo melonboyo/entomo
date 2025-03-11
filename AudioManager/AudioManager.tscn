@@ -6,3 +6,4 @@
 script = ExtResource("1_pltwv")
 
 [node name="poop" type="AudioStreamPlayer" parent="."]
+bus = &"Music"

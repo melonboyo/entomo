@@ -19,6 +19,7 @@ signal show_death_screen()
 signal ending()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:	
+	print(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music")))
 	if(first_flag != null):
 		start_intro_tutorial()
 
