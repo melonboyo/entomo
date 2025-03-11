@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://cfyb34soy0h7x"]
+[gd_scene load_steps=33 format=3 uid="uid://cfyb34soy0h7x"]
 
 [ext_resource type="PackedScene" uid="uid://cxrj60oxxptdh" path="res://Characters/Parasite/Parasite.tscn" id="1_nc2ee"]
 [ext_resource type="Script" path="res://GameController/Camera.gd" id="1_x6jyc"]
@@ -23,7 +23,6 @@
 [ext_resource type="PackedScene" uid="uid://bndnynpd7wftq" path="res://EnvironmentAssets/StaticObjects/StaticCylinder.tscn" id="20_1gghd"]
 [ext_resource type="PackedScene" uid="uid://b0ouwti18r6et" path="res://EnvironmentAssets/Water/water_shader.tscn" id="20_1kkki"]
 [ext_resource type="PackedScene" uid="uid://bkw6fjstele8" path="res://Scenes/Tutorial/TutorialPrompt.tscn" id="21_e8mcr"]
-[ext_resource type="PackedScene" uid="uid://bv8a3l7303xr3" path="res://EnvironmentAssets/Seagull/seagull.tscn" id="21_ir08w"]
 [ext_resource type="WwiseBank" uid="uid://cdv2fi03r7ojc" path="res://Wwise/resources/SoundBank/{258E8AF3-C148-42A0-BC80-34BC58C89550}.tres" id="22_c0s1l"]
 [ext_resource type="PackedScene" uid="uid://cltekqkn4b5to" path="res://EnvironmentAssets/rolypoly_island/RolyPolyIslands.tscn" id="23_2olhn"]
 
@@ -49,66 +48,6 @@ _data = {
 point_count = 8
 
 [sub_resource type="SphereMesh" id="SphereMesh_5kmdm"]
-
-[sub_resource type="Animation" id="Animation_i7b4m"]
-resource_name = "seagull"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(1465.21, 431.32, 1269.27), Vector3(500.716, 416.294, -56.5476), Vector3(-565.67, 416.294, -1766.89)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../../Frog:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(460.755, 404.214, -135.764), Vector3(460.755, 404.214, -135.764), Vector3(-565.67, 416.294, -1766.89)]
-}
-
-[sub_resource type="Animation" id="Animation_f5heo"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(1465.21, 431.32, 1269.27)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../../Frog:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(31.399, 57.691, 100.046)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_5fga5"]
-_data = {
-"RESET": SubResource("Animation_f5heo"),
-"seagull": SubResource("Animation_i7b4m")
-}
 
 [node name="Node3D" type="Node3D"]
 transform = Transform3D(1.01827, 0, 0, 0, 1.01827, 0, 0, 0, 1.01827, 0, 0, 0)
@@ -506,15 +445,6 @@ transform = Transform3D(5.29109, 0, -3.05481, 0, 6.10963, 0, 3.05481, 0, 5.29109
 zoom_size = 5
 focus_move_speed = 2.0
 game_state_manager = NodePath("../../../GameStateManager")
-
-[node name="Anim" type="AnimationPlayer" parent="Blockout"]
-root_node = NodePath("../seagull")
-libraries = {
-"": SubResource("AnimationLibrary_5fga5")
-}
-
-[node name="seagull" parent="Blockout" instance=ExtResource("21_ir08w")]
-transform = Transform3D(20, 0, -34.6411, 0, 40.0001, 0, 34.6411, 0, 20, 1465.21, 431.32, 1269.27)
 
 [node name="TutorialPrompt" parent="." instance=ExtResource("21_e8mcr")]
 
