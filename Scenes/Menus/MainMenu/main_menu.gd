@@ -3,7 +3,9 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	AudioManager.change_sfx_volume(ConfigFileHandler.load_audio_setting("sfx_volume", 0.7))
+	AudioManager.set_global_volume(ConfigFileHandler.load_audio_setting("master_volume", 0.7))
+	AudioManager.set_music_volume(ConfigFileHandler.load_audio_setting("music_volume", 0.7))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

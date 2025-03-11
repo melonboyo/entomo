@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{258E8AF3-C148-42A0-BC80-34BC58C89550}",
     "Language": "SFX",
-    "Hash": "{F4279DB3-D35D-C8DD-C66D-81554EE5E316}",
+    "Hash": "{99D3ACDA-3984-0D48-B762-7066A7473DB8}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Main",
     "ShortName": "Main",
     "Path": "Main.bnk",
@@ -188,6 +188,29 @@
       ]
      }
     ],
+    "Busses": [
+     {
+      "Id": "2415836739",
+      "Name": "Volume",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Volume",
+      "GUID": "{A7DA3454-A665-41D6-B480-8BC6250AE87E}",
+      "Color": "11"
+     },
+     {
+      "Id": "3803692087",
+      "Name": "Master Audio Bus",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus",
+      "GUID": "{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}"
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "3645722229",
+      "Name": "Volume_Slider",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\Volume_Slider",
+      "GUID": "{A185EAE2-5CBD-42C1-AB8A-FA22736E3BBC}"
+     }
+    ],
     "StateGroups": [
      {
       "Id": "835976592",
@@ -230,6 +253,6 @@
     ]
    }
   ],
-  "FileHash": "{35FF1243-21AB-6C8F-7627-272CA8C2857D}"
+  "FileHash": "{67E0919C-DB32-E852-5A62-CF3217F97505}"
  }
 }

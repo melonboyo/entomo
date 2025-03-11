@@ -18,7 +18,7 @@ signal show_victory_screen()
 signal show_death_screen()
 signal ending()
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:	
+func _ready() -> void:
 	if(first_flag != null):
 		start_intro_tutorial()
 
@@ -57,6 +57,7 @@ func _physics_process(delta: float) -> void:
 	# Handle interacting
 	if(Input.is_action_just_pressed("interact")):
 		currentPossessedCreature.handleInteract()
+		
 	
 	# Handle Special Ability
 	if Input.is_action_just_pressed("special_ability"):

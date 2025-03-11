@@ -44,6 +44,7 @@ background_energy_multiplier = 0.21
 sky = SubResource("Sky_gmarb")
 sky_custom_fov = 80.2
 sky_rotation = Vector3(0, 2.76809, 0)
+[ext_resource type="WwiseState" uid="uid://bjdm8i8n0x3yc" path="res://Wwise/resources/State/{3008BEB2-202A-4CC1-BC74-2C53E8358739}.tres" id="23_75gam"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sa0xy"]
 size = Vector3(1, 1, 1.16724)
@@ -503,6 +504,14 @@ bank = ExtResource("22_c0s1l")
 load_on = 1
 
 [node name="AkListener3D" type="AkListener3D" parent="."]
+
+[node name="AkState" type="AkState" parent="."]
+state = ExtResource("23_75gam")
+trigger_on = 3
+
+[node name="AkState" type="AkState" parent="."]
+state = ExtResource("23_75gam")
+trigger_on = 3
 
 [node name="grass" parent="." instance=ExtResource("26_1ocqb")]
 transform = Transform3D(70.0001, 0, 0, 0, 70.0001, 0, 0, 0, 70.0001, 23.074, 27.9602, -288.316)
