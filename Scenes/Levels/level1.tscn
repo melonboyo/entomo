@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://cfyb34soy0h7x"]
+[gd_scene load_steps=48 format=3 uid="uid://cfyb34soy0h7x"]
 
 [ext_resource type="Texture2D" uid="uid://dp5dw1li8hp56" path="res://EnvironmentAssets/sky/lakeside_sunrise_4k.exr" id="1_dq2iy"]
 [ext_resource type="PackedScene" uid="uid://cxrj60oxxptdh" path="res://Characters/Parasite/Parasite.tscn" id="1_nc2ee"]
@@ -31,6 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://b1vf7sfbqdr54" path="res://EnvironmentAssets/StaticObjects/grass.glb" id="26_1ocqb"]
 [ext_resource type="PackedScene" uid="uid://dxvb165icpbdd" path="res://EnvironmentAssets/StaticObjects/path_stone.glb" id="27_7t4d6"]
 [ext_resource type="PackedScene" uid="uid://d2uw6psufxl51" path="res://EnvironmentAssets/StaticObjects/rock.glb" id="28_7rkut"]
+[ext_resource type="WwiseState" uid="uid://bjdm8i8n0x3yc" path="res://Wwise/resources/State/{3008BEB2-202A-4CC1-BC74-2C53E8358739}.tres" id="23_75gam"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_p6yro"]
 panorama = ExtResource("1_dq2iy")
@@ -44,7 +45,7 @@ background_energy_multiplier = 0.21
 sky = SubResource("Sky_gmarb")
 sky_custom_fov = 80.2
 sky_rotation = Vector3(0, 2.76809, 0)
-[ext_resource type="WwiseState" uid="uid://bjdm8i8n0x3yc" path="res://Wwise/resources/State/{3008BEB2-202A-4CC1-BC74-2C53E8358739}.tres" id="23_75gam"]
+
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sa0xy"]
 size = Vector3(1, 1, 1.16724)
