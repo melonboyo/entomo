@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://cfyb34soy0h7x"]
+[gd_scene load_steps=44 format=3 uid="uid://cfyb34soy0h7x"]
 
 [ext_resource type="Texture2D" uid="uid://dp5dw1li8hp56" path="res://EnvironmentAssets/sky/lakeside_sunrise_4k.exr" id="1_dq2iy"]
 [ext_resource type="PackedScene" uid="uid://cxrj60oxxptdh" path="res://Characters/Parasite/Parasite.tscn" id="1_nc2ee"]
@@ -28,7 +28,9 @@
 [ext_resource type="WwiseBank" uid="uid://cdv2fi03r7ojc" path="res://Wwise/resources/SoundBank/{258E8AF3-C148-42A0-BC80-34BC58C89550}.tres" id="22_c0s1l"]
 [ext_resource type="PackedScene" uid="uid://c8uld4j0q2bck" path="res://EnvironmentAssets/StaticObjects/leaves.glb" id="22_pcxc6"]
 [ext_resource type="PackedScene" uid="uid://cltekqkn4b5to" path="res://EnvironmentAssets/rolypoly_island/RolyPolyIslands.tscn" id="23_2olhn"]
+[ext_resource type="PackedScene" uid="uid://bv8a3l7303xr3" path="res://EnvironmentAssets/Seagull/seagull.tscn" id="25_3yvef"]
 [ext_resource type="PackedScene" uid="uid://b1vf7sfbqdr54" path="res://EnvironmentAssets/StaticObjects/grass.glb" id="26_1ocqb"]
+[ext_resource type="PackedScene" uid="uid://dnllax02gpmye" path="res://EnvironmentAssets/animation/anim.tscn" id="26_di0fs"]
 [ext_resource type="PackedScene" uid="uid://dxvb165icpbdd" path="res://EnvironmentAssets/StaticObjects/path_stone.glb" id="27_7t4d6"]
 [ext_resource type="PackedScene" uid="uid://d2uw6psufxl51" path="res://EnvironmentAssets/StaticObjects/rock.glb" id="28_7rkut"]
 
@@ -288,7 +290,7 @@ frog = NodePath("../../../../Frog")
 gameState = NodePath("../../../../GameStateManager")
 
 [node name="Dragonfly6" parent="Blockout/Stage2/Dragonflies" node_paths=PackedStringArray("frog", "gameState") instance=ExtResource("10_f6exh")]
-transform = Transform3D(-0.59375, 3.17894e-06, -0.804632, 6.37977e-06, 1, -7.57036e-07, 0.804632, -5.58301e-06, -0.59375, -372.547, 9.55251e-05, 117.899)
+transform = Transform3D(-0.59375, 3.17894e-06, -0.804632, 6.37977e-06, 1, -7.57037e-07, 0.804632, -5.58301e-06, -0.59375, -372.547, 9.55251e-05, 117.899)
 progress = 600.0
 frogPoint = 840.0
 frog = NodePath("../../../../Frog")
@@ -486,6 +488,11 @@ transform = Transform3D(35.4283, -17.4243, -34.145, 7.3569, 96.4461, -5.16668, 3
 
 [node name="leaves2" parent="Blockout" instance=ExtResource("22_pcxc6")]
 transform = Transform3D(47.8633, -16.4634, -11.7739, 7.35691, 96.4462, -5.16668, 12.4496, 6.30127, 48.3186, -84.8055, 17.3252, 84.0424)
+
+[node name="seagull" parent="Blockout" instance=ExtResource("25_3yvef")]
+transform = Transform3D(20, 0, -34.6411, 0, 40, 0, 34.6411, 0, 20, 1465.21, 431.32, 1269.27)
+
+[node name="Anim" parent="Blockout" instance=ExtResource("26_di0fs")]
 
 [node name="TutorialPrompt" parent="." instance=ExtResource("21_e8mcr")]
 
