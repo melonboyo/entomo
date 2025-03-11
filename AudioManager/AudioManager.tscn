@@ -19,5 +19,6 @@ stop_on = 3
 [node name="AkBank" type="AkBank" parent="."]
 bank = ExtResource("5_eodj6")
 load_on = 1
+unload_on = 3
 
 [node name="AkListener3D" type="AkListener3D" parent="."]

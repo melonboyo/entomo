@@ -18,7 +18,7 @@ signal toggle_game_paused(is_paused : bool)
 signal show_victory_screen()
 signal show_death_screen()
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:	
+func _ready() -> void:
 	if(first_flag != null):
 		start_intro_tutorial()
 

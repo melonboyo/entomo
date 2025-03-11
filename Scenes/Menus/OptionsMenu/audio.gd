@@ -1,6 +1,6 @@
 extends TabBar
 
-@onready var audio_manager = get_node("/root/AudioManager")
+#@onready var audio_manager = get_node("/root/AudioManager")
 @onready var master_slider = $MasterSlider
 @onready var music_slider = $MusicSlider
 @onready var sfx_slider = $SFXSlider
@@ -9,6 +9,7 @@ extends TabBar
 @export var wwiseRTPC:WwiseRTPC
 
 var pending_changes = {}
+var play_test_sfx := true
 
 
 func _ready():
@@ -26,23 +27,32 @@ func _ready():
 func _on_master_slider_value_changed(value: float):
 	
 	print("Master slider changed to: ", value)
-	audio_manager.set_global_volume("Master", value)
+	AudioManager.set_global_volume(value)
 	
 	pending_changes["master_volume"] = value
-	
+	if play_test_sfx:
+		play_test_sfx = false
+		%SFXTimer.start()
+		AudioManager.play_sfx("res://Audio/SFX/Frog/slurp.wav")
+
+
 func _on_music_slider_value_changed(value: float):
 	print("Music slider changed to: ", value)
-	audio_manager.set_music_volume(value)
+	AudioManager.set_music_volume(value)
 	pending_changes["music_volume"] = value
-	
+
+
 func _on_sfx_slider_value_changed(value: float):
 	print("Effects slider changed to: ", value)
-	audio_manager.change_sfx_volume(value)
+	AudioManager.change_sfx_volume(value)
 	
 	pending_changes["sfx_volume"] = value
+	if play_test_sfx:
+		play_test_sfx = false
+		%SFXTimer.start()
+		AudioManager.play_frog_sfx_pack()
 
 
-	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
@@ -61,3 +71,7 @@ func _on_save_return_pressed() -> void:
 func _on_return_no_save_pressed() -> void:
 	pending_changes.clear()
 	print("Audio settings not saved!")
+
+
+func _on_sfx_timer_timeout() -> void:
+	play_test_sfx = true

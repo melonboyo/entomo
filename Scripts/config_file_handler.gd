@@ -18,6 +18,7 @@ func _ready():
 		
 		#initial audio settings
 		newConfig.set_value("audio", "master_volume", 1.0)
+		newConfig.set_value("audio", "music_volume", 1.0)
 		newConfig.set_value("audio", "sfx_volume", 1.0)
 		
 		newConfig.save(SETTINGS_FILE_PATH)

@@ -4,6 +4,8 @@
 
 [node name="SoundEffect" type="AudioStreamPlayer"]
 autoplay = true
+max_polyphony = 3
+bus = &"Effects"
 script = ExtResource("1_jpl3o")
 
 [connection signal="finished" from="." to="." method="_on_finished"]

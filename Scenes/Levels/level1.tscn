@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cfyb34soy0h7x"]
+[gd_scene load_steps=32 format=3 uid="uid://cfyb34soy0h7x"]
 
 [ext_resource type="PackedScene" uid="uid://cxrj60oxxptdh" path="res://Characters/Parasite/Parasite.tscn" id="1_nc2ee"]
 [ext_resource type="Script" path="res://GameController/Camera.gd" id="1_x6jyc"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://bkw6fjstele8" path="res://Scenes/Tutorial/TutorialPrompt.tscn" id="21_e8mcr"]
 [ext_resource type="WwiseBank" uid="uid://cdv2fi03r7ojc" path="res://Wwise/resources/SoundBank/{258E8AF3-C148-42A0-BC80-34BC58C89550}.tres" id="22_c0s1l"]
 [ext_resource type="PackedScene" uid="uid://cltekqkn4b5to" path="res://EnvironmentAssets/rolypoly_island/RolyPolyIslands.tscn" id="23_2olhn"]
+[ext_resource type="WwiseState" uid="uid://bjdm8i8n0x3yc" path="res://Wwise/resources/State/{3008BEB2-202A-4CC1-BC74-2C53E8358739}.tres" id="23_75gam"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sa0xy"]
 size = Vector3(1, 1, 1.16724)
@@ -267,7 +268,7 @@ frog = NodePath("../../../../Frog")
 gameState = NodePath("../../../../GameStateManager")
 
 [node name="Dragonfly7" parent="Blockout/Stage2/Dragonflies" node_paths=PackedStringArray("frog", "gameState") instance=ExtResource("10_f6exh")]
-transform = Transform3D(-0.447055, 0.0224624, -0.894203, -0.00235877, 0.999645, 0.0262897, 0.894482, 0.0138626, -0.446846, -331.562, -0.213483, 146.441)
+transform = Transform3D(-0.447055, 0.0224624, -0.894203, -0.00235877, 0.999644, 0.0262897, 0.894482, 0.0138626, -0.446846, -331.562, -0.213483, 146.441)
 progress = 650.0
 frogPoint = 840.0
 frog = NodePath("../../../../Frog")
@@ -288,7 +289,7 @@ frog = NodePath("../../../../Frog")
 gameState = NodePath("../../../../GameStateManager")
 
 [node name="Dragonfly10" parent="Blockout/Stage2/Dragonflies" node_paths=PackedStringArray("frog", "gameState") instance=ExtResource("10_f6exh")]
-transform = Transform3D(0.00478948, -0.066457, -0.99775, -0.137959, 0.988202, -0.0664798, 0.9904, 0.137975, -0.00443539, -201.599, -6.23633, 96.7532)
+transform = Transform3D(0.00478948, -0.066457, -0.997749, -0.137959, 0.988202, -0.0664797, 0.9904, 0.137975, -0.00443538, -201.599, -6.23633, 96.7532)
 progress = 800.0
 frogPoint = 840.0
 frog = NodePath("../../../../Frog")
@@ -459,5 +460,9 @@ bank = ExtResource("22_c0s1l")
 load_on = 1
 
 [node name="AkListener3D" type="AkListener3D" parent="."]
+
+[node name="AkState" type="AkState" parent="."]
+state = ExtResource("23_75gam")
+trigger_on = 3
 
 [connection signal="zoom_changed" from="GameStateManager" to="CameraRoot" method="_on_game_state_manager_zoom_changed"]
