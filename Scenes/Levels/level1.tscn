@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://cfyb34soy0h7x"]
+[gd_scene load_steps=37 format=3 uid="uid://cfyb34soy0h7x"]
 
 [ext_resource type="PackedScene" uid="uid://cxrj60oxxptdh" path="res://Characters/Parasite/Parasite.tscn" id="1_nc2ee"]
 [ext_resource type="Script" path="res://GameController/Camera.gd" id="1_x6jyc"]
@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://b0ouwti18r6et" path="res://EnvironmentAssets/Water/water_shader.tscn" id="20_1kkki"]
 [ext_resource type="PackedScene" uid="uid://bkw6fjstele8" path="res://Scenes/Tutorial/TutorialPrompt.tscn" id="21_e8mcr"]
 [ext_resource type="WwiseBank" uid="uid://cdv2fi03r7ojc" path="res://Wwise/resources/SoundBank/{258E8AF3-C148-42A0-BC80-34BC58C89550}.tres" id="22_c0s1l"]
+[ext_resource type="PackedScene" uid="uid://c8uld4j0q2bck" path="res://EnvironmentAssets/StaticObjects/leaves.glb" id="22_pcxc6"]
 [ext_resource type="PackedScene" uid="uid://cltekqkn4b5to" path="res://EnvironmentAssets/rolypoly_island/RolyPolyIslands.tscn" id="23_2olhn"]
 [ext_resource type="PackedScene" uid="uid://b1vf7sfbqdr54" path="res://EnvironmentAssets/StaticObjects/grass.glb" id="26_1ocqb"]
 [ext_resource type="PackedScene" uid="uid://dxvb165icpbdd" path="res://EnvironmentAssets/StaticObjects/path_stone.glb" id="27_7t4d6"]
@@ -291,7 +292,7 @@ frog = NodePath("../../../../Frog")
 gameState = NodePath("../../../../GameStateManager")
 
 [node name="Dragonfly10" parent="Blockout/Stage2/Dragonflies" node_paths=PackedStringArray("frog", "gameState") instance=ExtResource("10_f6exh")]
-transform = Transform3D(0.00478948, -0.066457, -0.997748, -0.137959, 0.988202, -0.0664797, 0.9904, 0.137975, -0.00443538, -201.599, -6.23633, 96.7532)
+transform = Transform3D(0.00478948, -0.066457, -0.997748, -0.137959, 0.988202, -0.0664796, 0.9904, 0.137975, -0.00443538, -201.599, -6.23633, 96.7532)
 progress = 800.0
 frogPoint = 840.0
 frog = NodePath("../../../../Frog")
@@ -362,7 +363,7 @@ transform = Transform3D(193.183, 0, -58.3952, 0, 153.306, 0, 158.683, 0, 71.0915
 transform = Transform3D(15, 0, -25.9808, 0, 80, 0, 25.9808, 0, 15, -295.874, 29.5757, -172.374)
 
 [node name="Ramp" parent="Blockout/Stage2" instance=ExtResource("6_vnun7")]
-transform = Transform3D(28.2843, 0, -22.6274, 0, 40, 0, 28.2843, 0, 22.6274, -109.823, 30.3738, 193.799)
+transform = Transform3D(28.2843, 0, -22.6274, 0, 40, 0, 28.2843, 0, 22.6274, -109.823, 29.6496, 193.799)
 
 [node name="Ramp2" parent="Blockout/Stage2" instance=ExtResource("6_vnun7")]
 transform = Transform3D(-28.2843, 0, 22.6274, 0, 40, 0, -28.2843, 0, -22.6274, -62.6344, 27.862, 316.024)
@@ -452,6 +453,12 @@ transform = Transform3D(5.29109, 0, -3.05481, 0, 6.10963, 0, 3.05481, 0, 5.29109
 zoom_size = 5
 focus_move_speed = 2.0
 game_state_manager = NodePath("../../../GameStateManager")
+
+[node name="leaves" parent="Blockout" instance=ExtResource("22_pcxc6")]
+transform = Transform3D(35.4283, -17.4243, -34.145, 7.3569, 96.4461, -5.16668, 34.5067, -2.67283, 36.1584, 2.33685, 58.283, -280.884)
+
+[node name="leaves2" parent="Blockout" instance=ExtResource("22_pcxc6")]
+transform = Transform3D(47.8633, -16.4634, -11.7739, 7.35691, 96.4462, -5.16668, 12.4496, 6.30127, 48.3186, -84.8055, 17.3252, 84.0424)
 
 [node name="TutorialPrompt" parent="." instance=ExtResource("21_e8mcr")]
 
@@ -580,6 +587,15 @@ transform = Transform3D(44.7081, 0, -11.1428, 0, 50, 0, 22.3872, 0, 22.2525, -38
 
 [node name="rock2" parent="." instance=ExtResource("28_7rkut")]
 transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, -53.1255, 44.0846, -374.681)
+
+[node name="rock3" parent="." instance=ExtResource("28_7rkut")]
+transform = Transform3D(39.7721, 0, -30.3015, 0, 68.9321, 0, 30.3015, 0, 39.7721, -144.887, 18.6556, -260.997)
+
+[node name="rock4" parent="." instance=ExtResource("28_7rkut")]
+transform = Transform3D(42.2126, 34.9801, 4.2189, -24.7019, 59.6082, -3.42351, -4.40094, 0.946534, 59.6823, -75.0859, 0.758317, 307.549)
+
+[node name="rock5" parent="." instance=ExtResource("28_7rkut")]
+transform = Transform3D(19.919, -0.175953, 2.18969, 0.14906, 28.1478, -0.319216, -1.7924, 0.385498, 24.3075, -77.1301, 8.83302, 317.988)
 
 [connection signal="ending" from="GameStateManager" to="Blockout" method="_on_game_state_manager_ending"]
 [connection signal="zoom_changed" from="GameStateManager" to="CameraRoot" method="_on_game_state_manager_zoom_changed"]

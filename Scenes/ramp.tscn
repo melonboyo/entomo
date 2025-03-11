@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dqkke1lxyvwta"]
+[gd_scene load_steps=6 format=3 uid="uid://dqkke1lxyvwta"]
 
 [ext_resource type="Script" path="res://Scripts/Ramp.gd" id="1_vrnmi"]
+[ext_resource type="PackedScene" uid="uid://d0wd7n1kc7lbb" path="res://EnvironmentAssets/StaticObjects/RampRock.glb" id="2_al2x2"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_2j74g"]
 left_to_right = 1.0
@@ -19,7 +20,11 @@ RAMPBOOST = 40.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.236486, 0)
+visible = false
 mesh = SubResource("PrismMesh_2j74g")
+
+[node name="RampRock" parent="." instance=ExtResource("2_al2x2")]
+transform = Transform3D(-2.0937e-08, 0, -0.667215, 0, 0.565229, 0, 0.478984, 0, -2.9165e-08, 0.00929626, -0.48006, 0.016994)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.235256, 0)
