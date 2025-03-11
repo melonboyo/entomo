@@ -36,7 +36,7 @@ func handleMove(input_dir: Vector2, camera_basis: Basis, delta: float) -> void:
 	if(isTongueOut):
 		return
 	
-	if(is_on_floor() && !was_on_floor_last_frame):
+	if(is_on_floor() && !was_on_floor_last_frame && !isChargingJump):
 		$MeshPivot/froggy_v3/AnimationPlayer.play("idle_croak")
 	
 	was_on_floor_last_frame = is_on_floor();
@@ -171,7 +171,9 @@ func jumpButtonReleased() -> void:
 			key[0] = key[0].to_upper()
 			
 			game_state_manager.show_tutorial_prompt("Stick out the frog's tongue using [" + key + "]")
-
+	if(isChargingJump):
+		isChargingJump = false
+		$MeshPivot/froggy_v3/AnimationPlayer.play("idle_croak")
 
 func jump(jumpSpeed: float, direction: Vector3) -> void:
 	velocity.x = direction.x * jumpForwardVelocity
