@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://cfyb34soy0h7x"]
+[gd_scene load_steps=45 format=3 uid="uid://cfyb34soy0h7x"]
 
 [ext_resource type="Texture2D" uid="uid://dp5dw1li8hp56" path="res://EnvironmentAssets/sky/lakeside_sunrise_4k.exr" id="1_dq2iy"]
 [ext_resource type="PackedScene" uid="uid://cxrj60oxxptdh" path="res://Characters/Parasite/Parasite.tscn" id="1_nc2ee"]
@@ -28,12 +28,12 @@
 [ext_resource type="WwiseBank" uid="uid://cdv2fi03r7ojc" path="res://Wwise/resources/SoundBank/{258E8AF3-C148-42A0-BC80-34BC58C89550}.tres" id="22_c0s1l"]
 [ext_resource type="PackedScene" uid="uid://c8uld4j0q2bck" path="res://EnvironmentAssets/StaticObjects/leaves.glb" id="22_pcxc6"]
 [ext_resource type="PackedScene" uid="uid://cltekqkn4b5to" path="res://EnvironmentAssets/rolypoly_island/RolyPolyIslands.tscn" id="23_2olhn"]
+[ext_resource type="WwiseState" uid="uid://bjdm8i8n0x3yc" path="res://Wwise/resources/State/{3008BEB2-202A-4CC1-BC74-2C53E8358739}.tres" id="23_75gam"]
 [ext_resource type="PackedScene" uid="uid://bv8a3l7303xr3" path="res://EnvironmentAssets/Seagull/seagull.tscn" id="25_3yvef"]
 [ext_resource type="PackedScene" uid="uid://b1vf7sfbqdr54" path="res://EnvironmentAssets/StaticObjects/grass.glb" id="26_1ocqb"]
 [ext_resource type="PackedScene" uid="uid://dnllax02gpmye" path="res://EnvironmentAssets/animation/anim.tscn" id="26_di0fs"]
 [ext_resource type="PackedScene" uid="uid://dxvb165icpbdd" path="res://EnvironmentAssets/StaticObjects/path_stone.glb" id="27_7t4d6"]
 [ext_resource type="PackedScene" uid="uid://d2uw6psufxl51" path="res://EnvironmentAssets/StaticObjects/rock.glb" id="28_7rkut"]
-[ext_resource type="WwiseState" uid="uid://bjdm8i8n0x3yc" path="res://Wwise/resources/State/{3008BEB2-202A-4CC1-BC74-2C53E8358739}.tres" id="23_75gam"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_p6yro"]
 panorama = ExtResource("1_dq2iy")
@@ -47,7 +47,6 @@ background_energy_multiplier = 0.21
 sky = SubResource("Sky_gmarb")
 sky_custom_fov = 80.2
 sky_rotation = Vector3(0, 2.76809, 0)
-
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sa0xy"]
 size = Vector3(1, 1, 1.16724)
@@ -292,14 +291,14 @@ frog = NodePath("../../../../Frog")
 gameState = NodePath("../../../../GameStateManager")
 
 [node name="Dragonfly6" parent="Blockout/Stage2/Dragonflies" node_paths=PackedStringArray("frog", "gameState") instance=ExtResource("10_f6exh")]
-transform = Transform3D(-0.59375, 3.17894e-06, -0.804632, 6.37977e-06, 1, -7.57037e-07, 0.804632, -5.58301e-06, -0.59375, -372.547, 9.55251e-05, 117.899)
+transform = Transform3D(-0.59375, 3.17894e-06, -0.804632, 6.37977e-06, 1, -7.57036e-07, 0.804632, -5.58301e-06, -0.59375, -372.547, 9.55251e-05, 117.899)
 progress = 600.0
 frogPoint = 840.0
 frog = NodePath("../../../../Frog")
 gameState = NodePath("../../../../GameStateManager")
 
 [node name="Dragonfly7" parent="Blockout/Stage2/Dragonflies" node_paths=PackedStringArray("frog", "gameState") instance=ExtResource("10_f6exh")]
-transform = Transform3D(-0.447055, 0.0224624, -0.894203, -0.00235877, 0.999643, 0.0262897, 0.894482, 0.0138626, -0.446846, -331.562, -0.213483, 146.441)
+transform = Transform3D(-0.447055, 0.0224623, -0.894203, -0.00235877, 0.999642, 0.0262897, 0.894482, 0.0138626, -0.446846, -331.562, -0.213483, 146.441)
 progress = 650.0
 frogPoint = 840.0
 frog = NodePath("../../../../Frog")
@@ -320,7 +319,7 @@ frog = NodePath("../../../../Frog")
 gameState = NodePath("../../../../GameStateManager")
 
 [node name="Dragonfly10" parent="Blockout/Stage2/Dragonflies" node_paths=PackedStringArray("frog", "gameState") instance=ExtResource("10_f6exh")]
-transform = Transform3D(0.00478948, -0.066457, -0.997748, -0.137959, 0.988202, -0.0664796, 0.9904, 0.137975, -0.00443538, -201.599, -6.23633, 96.7532)
+transform = Transform3D(0.00478948, -0.066457, -0.997747, -0.137959, 0.988202, -0.0664796, 0.9904, 0.137975, -0.00443537, -201.599, -6.23633, 96.7532)
 progress = 800.0
 frogPoint = 840.0
 frog = NodePath("../../../../Frog")
@@ -495,6 +494,7 @@ transform = Transform3D(47.8633, -16.4634, -11.7739, 7.35691, 96.4462, -5.16668,
 transform = Transform3D(20, 0, -34.6411, 0, 40, 0, 34.6411, 0, 20, 1465.21, 431.32, 1269.27)
 
 [node name="Anim" parent="Blockout" instance=ExtResource("26_di0fs")]
+autoplay = "RESET"
 
 [node name="TutorialPrompt" parent="." instance=ExtResource("21_e8mcr")]
 
@@ -505,6 +505,7 @@ game_manager = NodePath("../GameStateManager")
 transform = Transform3D(78.0705, 0, 0, 0, 78.0705, 0, 0, 0, 78.0705, 221.867, 9.20661, -20.4686)
 
 [node name="FinalCameraFocus" type="Node3D" parent="."]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -243.373, 642.311, 343.335)
 
 [node name="AkBank" type="AkBank" parent="."]
@@ -512,10 +513,6 @@ bank = ExtResource("22_c0s1l")
 load_on = 1
 
 [node name="AkListener3D" type="AkListener3D" parent="."]
-
-[node name="AkState" type="AkState" parent="."]
-state = ExtResource("23_75gam")
-trigger_on = 3
 
 [node name="AkState" type="AkState" parent="."]
 state = ExtResource("23_75gam")

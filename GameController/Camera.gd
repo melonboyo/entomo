@@ -9,7 +9,7 @@ extends Node3D
 	2 : 15.0,
 	3 : 23.0,
 	4 : 40.0,
-	5 : 60.0,
+	5 : 100.0,
 }
 
 @export var camera: Camera3D = null
